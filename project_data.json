@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Royal Spring",
+    "location": "Spring, TX",
+    "units": 351,
+    "year_built": 2020,
+    "status": "Acquisition",
+    "description": "Institutional-quality class-A multifamily property acquired directly from the developer at ~30% below replacement cost.",
+    "investment_highlights": [
+      "351-unit Class A asset",
+      "Located in high-growth Spring submarket",
+      "Acquired at significant discount to replacement cost",
+      "Projected 21%+ annualized return"
+    ],
+    "image": "/images/projects/royal-spring.jpg"
+  },
+  {
+    "name": "The Village on West Irving",
+    "location": "Irving, TX",
+    "units": 91,
+    "year_built": "1963/1974",
+    "status": "Value-Add",
+    "description": "91-unit community in a strong DFW submarket with significant value-add potential through management efficiencies and interior upgrades.",
+    "investment_highlights": [
+      "91 units in desirable Irving location",
+      "Double-digit projected cash-on-cash return",
+      "Value-add through professional management",
+      "Rent growth opportunity in strong submarket"
+    ],
+    "image": "/images/projects/village-west-irving.jpg"
+  },
+  {
+    "name": "El Ranchito",
+    "location": "Fort Worth, TX",
+    "units": 68,
+    "year_built": 1968,
+    "status": "Value-Add",
+    "description": "68-unit Class-C property with large units and significant upside through completion of renovations and operational improvements.",
+    "investment_highlights": [
+      "68 units with large floor plans",
+      "50% of units remaining for upgrade",
+      "Acquired at attractive basis per door",
+      "Strong occupancy history >95%"
+    ],
+    "image": "/images/projects/el-ranchito.jpg"
+  },
+  {
+    "name": "Crescent Village & Crescent Plaza",
+    "location": "Wichita Falls, TX",
+    "units": 88,
+    "year_built": "2003/2005",
+    "status": "Stable/Value-Add",
+    "description": "Two well-maintained Class B+ communities totaling 88 units, acquired from original developer with operational upside.",
+    "investment_highlights": [
+      "88 total units across two properties",
+      "Immaculate condition, built 2003/2005",
+      "Operational upside from professional management",
+      "Stable cash flow with 95%+ occupancy"
+    ],
+    "image": "/images/projects/crescent-village.jpg"
+  },
+  {
+    "name": "Antigua Village",
+    "location": "Fort Worth, TX",
+    "units": 152,
+    "year_built": 1972,
+    "status": "Revitalization",
+    "description": "152-unit community located in a city-designated revitalization zone, offering both value-add and appreciation potential.",
+    "investment_highlights": [
+      "152 units in revitalization zone",
+      "Significant neighborhood transformation underway",
+      "Value-add through interior upgrades",
+      "Strong projected returns"
+    ],
+    "image": "/images/projects/antigua-village.jpg"
+  },
+   {
+    "name": "Milagro Apartments",
+    "location": "Fort Worth, TX",
+    "units": 68,
+    "year_built": 1968,
+    "status": "Sold/Realized",
+    "description": "Successful turnaround of a Class C property in a gentrifying area. Achieved 35%+ IRR and 1.41x equity multiple in just 12 months.",
+    "investment_highlights": [
+      "Realized 35%+ IRR",
+      "1.41x Equity Multiple in 12 months",
+      "Successful execution of value-add plan",
+      "Demonstrated track record of performance"
+    ],
+    "image": "/images/projects/milagro.jpg"
+  }
+]

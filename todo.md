@@ -1,0 +1,29 @@
+- [x] Process Mikhail and Slava's photos (convert/resize/move to public/images)
+- [x] Extract project data from PDF documents (Leander Springs, Milagro, Copper Creek, etc.)
+- [x] Redesign Homepage Hero section for higher impact
+- [x] Update About page with real photos
+- [x] Create detailed Project cards/sections in Track Record page
+- [x] Source cinematic video assets for hero section (construction, renovation, architecture)
+- [x] Implement "count up" animation for key statistics on scroll
+- [x] Integrate video background into the hero section layout
+- [ ] Source high-quality construction/renovation timelapse video
+- [ ] Update About page header and hero section to match homepage style
+- [ ] Update Strategy page header and hero section to match homepage style
+- [ ] Update Track Record page header and hero section to match homepage style
+- [ ] Update Contact page header and hero section to match homepage style
+- [ ] Integrate timelapse video into Strategy page with "Fast Forward Value-Add" section
+- [ ] Add consistent entrance animations to all inner pages
+- [ ] Source active, professional cityscape/architectural video for homepage hero
+- [ ] Implement 3D rotating/odometer animation for key statistics
+- [ ] Update Home.tsx with new video and animation components
+- [ ] Verify team photo file locations
+- [ ] Update About.tsx to correctly reference team photos
+- [ ] Create ScrollToTop component
+- [ ] Integrate ScrollToTop into App.tsx to handle route changes
+- [ ] Update index.css with new Copper/Terra Cotta color variables
+- [ ] Refactor Layout.tsx to use new color scheme
+- [ ] Refactor Home.tsx to use new color scheme
+- [ ] Refactor About.tsx to use new color scheme
+- [ ] Refactor Strategy.tsx to use new color scheme
+- [ ] Refactor TrackRecord.tsx to use new color scheme
+- [ ] Refactor Contact.tsx to use new color scheme
