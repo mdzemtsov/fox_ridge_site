@@ -148,8 +148,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <span>Florida, USA</span>
                 </li>
                 <li className="pt-2">
-                  <a href="mailto:info@foxridgeequity.com" className="hover:text-white transition-colors border-b border-white/20 pb-1">
-                    info@foxridgeequity.com
+                  <a href="mailto:partners@foxridgeequity.com" className="hover:text-white transition-colors border-b border-white/20 pb-1">
+                    partners@foxridgeequity.com
                   </a>
                 </li>
               </ul>

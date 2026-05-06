@@ -228,18 +228,18 @@ export default function Home() {
               className="bg-white p-8 border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <Building2 className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-2xl font-display font-bold text-stone-900 mb-4">Multifamily Value-Add</h3>
+              <h3 className="text-2xl font-display font-bold text-stone-900 mb-4">Multifamily Light Value-Add</h3>
               <p className="text-stone-600 mb-6">
                 Acquiring underperforming assets and unlocking value through physical renovations and operational improvements.
               </p>
               <ul className="space-y-2 text-sm text-stone-500">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                  Class B & C Assets
+                  Class A & B Assets
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                  1980s-2000s Vintage
+                  2000s and Up
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
@@ -285,7 +285,7 @@ export default function Home() {
               <ul className="space-y-2 text-sm text-stone-500">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                  In-House Construction
+                  In-House Property Management Control
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />

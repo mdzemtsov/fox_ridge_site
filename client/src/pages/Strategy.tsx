@@ -124,7 +124,7 @@ export default function Strategy() {
               {
                 icon: Building2,
                 title: "Asset Class",
-                desc: "Class B & C Multifamily, 1980s vintage or newer."
+                desc: "Class A & B Multifamily, 2000 vintage and up."
               },
               {
                 icon: Search,
@@ -138,8 +138,8 @@ export default function Strategy() {
               },
               {
                 icon: DollarSign,
-                title: "Value-Add",
-                desc: "Clear path to increase rents via renovation ($150-300 premiums)."
+                title: "Light Value-Add",
+                desc: "Reasonable investments to achieve modest rent growth."
               }
             ].map((item, i) => (
               <motion.div 

@@ -57,8 +57,8 @@ export default function Contact() {
                   </div>
                   <h3 className="font-display text-xl font-bold text-primary">Email</h3>
                 </div>
-                <a href="mailto:info@foxridgeequity.com" className="text-muted-foreground hover:text-secondary transition-colors pl-14 block text-lg">
-                  info@foxridgeequity.com
+                <a href="mailto:partners@foxridgeequity.com" className="text-muted-foreground hover:text-secondary transition-colors pl-14 block text-lg">
+                  partners@foxridgeequity.com
                 </a>
               </div>
 
