@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container flex h-32 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group py-2">
             <img 
-              src="/images/logo-navy.png" 
+              src="/images/logo-white-new.jpeg" 
               alt="FoxRidge Equity Partners" 
               className="h-28 w-auto object-contain"
             />
@@ -114,7 +114,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="md:col-span-5">
               <div className="flex items-center gap-2 mb-6">
                 <img 
-                  src="/images/logo-gold.png" 
+                  src="/images/logo-black-new.jpeg" 
                   alt="FoxRidge Equity Partners" 
                   className="h-32 w-auto object-contain"
                 />

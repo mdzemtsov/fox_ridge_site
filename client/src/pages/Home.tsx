@@ -47,7 +47,7 @@ export default function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/hero-city-active.mp4" type="video/mp4" />
+            <source src="/videos/hero-american-city.mp4" type="video/mp4" />
           </video>
         </div>
 
