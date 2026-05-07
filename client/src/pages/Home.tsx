@@ -229,10 +229,10 @@ export default function Home() {
             >
               <Building2 className="w-10 h-10 text-primary mb-6" />
               <h3 className="text-2xl font-display font-bold text-stone-900 mb-4">Multifamily Light Value-Add</h3>
-              <p className="text-stone-600 mb-6">
+              <p className="text-stone-600 mb-6 text-base md:text-lg">
                 Acquiring underperforming assets and unlocking value through physical renovations and operational improvements.
               </p>
-              <ul className="space-y-2 text-sm text-stone-500">
+              <ul className="space-y-3 text-base text-stone-500">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
                   Class A & B Assets
@@ -254,10 +254,10 @@ export default function Home() {
             >
               <TrendingUp className="w-10 h-10 text-primary mb-6" />
               <h3 className="text-2xl font-display font-bold text-stone-900 mb-4">Risk-Adjusted Returns</h3>
-              <p className="text-stone-600 mb-6">
+              <p className="text-stone-600 mb-6 text-base md:text-lg">
                 Prioritizing capital preservation while delivering strong cash-on-cash returns and long-term appreciation.
               </p>
-              <ul className="space-y-2 text-sm text-stone-500">
+              <ul className="space-y-3 text-base text-stone-500">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
                   Conservative Underwriting
@@ -279,10 +279,10 @@ export default function Home() {
             >
               <Users className="w-10 h-10 text-primary mb-6" />
               <h3 className="text-2xl font-display font-bold text-stone-900 mb-4">Hands-On Management</h3>
-              <p className="text-stone-600 mb-6">
+              <p className="text-stone-600 mb-6 text-base md:text-lg">
                 Active asset management and vertically integrated construction oversight to ensure business plan execution.
               </p>
-              <ul className="space-y-2 text-sm text-stone-500">
+              <ul className="space-y-3 text-base text-stone-500">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
                   In-House Property Management Control

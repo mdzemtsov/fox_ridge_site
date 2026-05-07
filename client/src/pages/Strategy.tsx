@@ -151,8 +151,8 @@ export default function Strategy() {
                 className="p-8 bg-stone-50 border border-stone-200 hover:border-secondary/50 transition-colors group"
               >
                 <item.icon className="w-10 h-10 text-stone-400 group-hover:text-secondary transition-colors mb-6" />
-                <h3 className="text-xl font-bold text-stone-900 mb-3">{item.title}</h3>
-                <p className="text-stone-600 leading-relaxed">{item.desc}</p>
+                <h3 className="text-2xl font-bold text-stone-900 mb-4">{item.title}</h3>
+                <p className="text-stone-600 leading-relaxed text-base md:text-lg">{item.desc}</p>
               </motion.div>
             ))}
           </div>

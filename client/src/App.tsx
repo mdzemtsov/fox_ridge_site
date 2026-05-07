@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Strategy from "./pages/Strategy";
+import OurInvestors from "./pages/OurInvestors";
 import TrackRecord from "./pages/TrackRecord";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/strategy" component={Strategy} />
+        <Route path="/our-investors" component={OurInvestors} />
         <Route path="/track-record" component={TrackRecord} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
