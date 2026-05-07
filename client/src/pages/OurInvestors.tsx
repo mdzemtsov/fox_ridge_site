@@ -63,8 +63,8 @@ export default function OurInvestors() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/70 to-stone-950/30 z-10" />
           <img
-            src="/images/investor-boardroom.jpg"
-            alt="Investor Boardroom"
+            src="/images/investor-hero-people.jpg"
+            alt="Private investor meeting"
             className="w-full h-full object-cover"
           />
         </div>
