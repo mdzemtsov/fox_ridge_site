@@ -159,6 +159,133 @@ export default function Strategy() {
         </div>
       </section>
 
+      {/* Why Sun Belt — Full Section */}
+      <section className="py-32 bg-stone-950 text-white" id="why-sunbelt">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/30 text-secondary text-xs font-bold uppercase tracking-widest mb-8">
+                Market Thesis
+              </div>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
+                Why Sun Belt.<br /><span className="text-secondary">Why Now.</span>
+              </h2>
+              <p className="text-stone-400 text-lg leading-relaxed mb-6">
+                The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country by a significant margin.
+              </p>
+              <p className="text-stone-400 text-lg leading-relaxed mb-6">
+                The supply pipeline that delivered a historic wave of new apartments in 2022–2024 has now collapsed to its lowest level in fifteen years. Starts are down over 50% from the 2022 peak. The units being delivered today were financed at a different cost of capital, in a different rate environment, and by developers who no longer have access to the same debt markets.
+              </p>
+              <p className="text-stone-400 text-lg leading-relaxed">
+                Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long. FoxRidge is positioned to move when others cannot.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { stat: "+8.8%", title: "Population Growth", desc: "Texas 2020–2025 vs. ~3.1% national average", source: "U.S. Census Bureau, 2025" },
+                { stat: "2.9%", title: "Job Growth", desc: "DFW job growth rate, tied 3rd among top 30 metros", source: "BLS / WSJ, 2025" },
+                { stat: "−50%", title: "Supply Contraction", desc: "Multifamily starts from 2022 peak; decade-low pipeline", source: "RealPage, Q2 2025" },
+                { stat: "+1.5%", title: "Rent Re-Acceleration", desc: "Forecast national rent growth in 2027 as supply clears", source: "Yardi Matrix, 2026" },
+              ].map((tile, i) => (
+                <motion.div
+                  key={tile.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition-colors"
+                >
+                  <div className="text-4xl font-display font-bold text-secondary mb-2">{tile.stat}</div>
+                  <div className="text-white font-bold text-sm mb-2 uppercase tracking-wide">{tile.title}</div>
+                  <p className="text-stone-500 text-xs leading-relaxed mb-3">{tile.desc}</p>
+                  <div className="text-stone-600 text-xs">Source: {tile.source}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Invest — Full 6-Step Process */}
+      <section className="py-32 bg-white" id="how-we-invest">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
+              Our Process
+            </div>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">
+              How We <span className="text-primary">Invest</span>
+            </h2>
+            <p className="text-stone-600 text-lg leading-relaxed">
+              Every acquisition follows the same disciplined framework. No shortcuts. No exceptions.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                num: "01",
+                icon: <Search className="w-6 h-6 text-secondary" />,
+                name: "Source",
+                desc: "We source exclusively through direct broker relationships across DFW, Houston, San Antonio, Austin, and South Florida. We do not rely on listed deal flow. Our pipeline is built on years of consistent market presence and repeat transaction history."
+              },
+              {
+                num: "02",
+                icon: <BarChart3 className="w-6 h-6 text-secondary" />,
+                name: "Underwrite",
+                desc: "Every deal is underwritten from scratch using actual T-12 operating data, current market rents, and our own assumptions — never the broker's pro forma. We stress-test every scenario before submitting an LOI."
+              },
+              {
+                num: "03",
+                icon: <Building2 className="w-6 h-6 text-secondary" />,
+                name: "Diligence",
+                desc: "Full physical, financial, and legal diligence on every asset. We walk every unit. We review every lease. We verify every number. Our diligence process is designed to surface risk before it becomes our investor's problem."
+              },
+              {
+                num: "04",
+                icon: <DollarSign className="w-6 h-6 text-secondary" />,
+                name: "Structure",
+                desc: "We structure each deal around the specific capital partner — their return profile, governance preferences, hold period, and jurisdiction. No two deals are structured identically. We do not force investors into a pre-built fund box."
+              },
+              {
+                num: "05",
+                icon: <Hammer className="w-6 h-6 text-secondary" />,
+                name: "Operate",
+                desc: "Hands-on management from day one. In-house property management control, AI-driven operational tools, direct oversight of all capital improvements, and weekly KPI reporting to the capital partner. We run the asset like it is our own."
+              },
+              {
+                num: "06",
+                icon: <TrendingUp className="w-6 h-6 text-secondary" />,
+                name: "Exit",
+                desc: "We evaluate exit timing continuously against market conditions. We do not hold to an arbitrary fund timeline. When the market is right and the business plan is complete, we execute the exit that maximizes return for the capital partner."
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="bg-stone-50 border border-stone-200 p-8 hover:shadow-lg transition-shadow group"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="text-4xl font-display font-bold text-primary/20 group-hover:text-primary/40 transition-colors">{step.num}</span>
+                  <div className="w-10 h-10 bg-secondary/10 border border-secondary/30 flex items-center justify-center">
+                    {step.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-display font-bold text-stone-900 mb-4">{step.name}</h3>
+                <p className="text-stone-600 leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* International Investors Cross-Reference */}
       <section className="bg-white">
         <div className="container">

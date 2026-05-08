@@ -122,6 +122,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pipeline Statement Band */}
+      <section className="bg-stone-50 py-16 border-t border-b border-stone-200">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="w-12 h-0.5 bg-secondary mx-auto mb-8" />
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
+              Active in the Market
+            </h2>
+            <p className="text-stone-600 text-lg leading-relaxed mb-10">
+              FoxRidge is actively underwriting acquisitions across DFW, Houston, and South Florida. We close on the deals where the underwriting holds — and walk away from the ones that don't. Qualified partners interested in seeing live opportunities are welcome to reach the General Partners directly.
+            </p>
+            <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-none px-10 py-5 font-bold text-base">
+              <Link href="/contact">Contact the General Partners</Link>
+            </Button>
+            <div className="w-12 h-0.5 bg-secondary mx-auto mt-8" />
+          </div>
+        </div>
+      </section>
+
       {/* International Investors Band */}
       <section className="bg-primary py-14">
         <div className="container">
@@ -139,6 +158,82 @@ export default function Home() {
               <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-8 py-5 font-bold shrink-0 whitespace-nowrap">
                 Learn More
               </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Invest — Condensed Process Band */}
+      <section className="py-24 bg-stone-100" id="how-we-invest-home">
+        <div className="container">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-primary mb-4">How We Invest</h2>
+            <p className="text-stone-600 text-lg">A disciplined, six-step process — from sourcing to exit — applied to every asset.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {[
+              { num: "01", name: "Source", desc: "Direct relationships with leading Sun Belt brokers." },
+              { num: "02", name: "Underwrite", desc: "Rebuilt from actual operating data, not broker pro formas." },
+              { num: "03", name: "Diligence", desc: "Full institutional review before closing." },
+              { num: "04", name: "Structure", desc: "Capital stacks built deliberately for each deal." },
+              { num: "05", name: "Operate", desc: "Hands-on management from day one." },
+              { num: "06", name: "Exit", desc: "Timing-driven, multi-path, return-maximizing." },
+            ].map((step, i) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="bg-white border border-stone-200 p-6 flex flex-col gap-3 hover:shadow-md transition-shadow"
+              >
+                <span className="text-3xl font-display font-bold text-primary">{step.num}</span>
+                <h3 className="text-base font-bold text-stone-900 font-display">{step.name}</h3>
+                <p className="text-stone-500 text-sm leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/strategy#how-we-invest" className="text-secondary font-semibold hover:underline text-sm inline-flex items-center gap-1">
+              See our full process <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Sun Belt — Condensed Band */}
+      <section className="py-24 bg-primary text-white" id="why-sunbelt-home">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Why Sun Belt. Why Now.</h2>
+            <p className="text-white/75 text-lg leading-relaxed">
+              The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country, while the supply pipeline that delivered a historic wave of new apartments in 2022–2024 has now collapsed to its lowest level in fifteen years. Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            {[
+              { stat: "+8.8%", title: "Population Growth", source: "U.S. Census Bureau, 2025" },
+              { stat: "2.9%", title: "Job Growth", source: "BLS / WSJ, 2025" },
+              { stat: "−50%", title: "Supply Pipeline at 15-Year Low", source: "RealPage, Q2 2025" },
+              { stat: "+1.5%", title: "Rent Growth Re-Acceleration", source: "Yardi Matrix, 2026" },
+            ].map((tile, i) => (
+              <motion.div
+                key={tile.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="bg-white/10 border border-white/20 p-6 backdrop-blur-sm"
+              >
+                <div className="text-4xl md:text-5xl font-display font-bold text-secondary mb-2">{tile.stat}</div>
+                <div className="text-white font-bold text-sm mb-3 uppercase tracking-wide">{tile.title}</div>
+                <div className="text-white/40 text-xs">Source: {tile.source}</div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="text-center">
+            <Link href="/strategy#why-sunbelt" className="text-secondary font-semibold hover:underline text-sm inline-flex items-center gap-1">
+              Read our full market thesis <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
