@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 export default function PrivacyPolicy() {
   return (
@@ -60,6 +61,12 @@ export default function PrivacyPolicy() {
               <br />
               <a href="mailto:partners@foxridgeequity.com" className="text-secondary hover:underline">partners@foxridgeequity.com</a>
             </p>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-4 items-start">
+            <Link href="/" className="text-secondary font-semibold hover:underline text-sm">← Back to Home</Link>
+            <Link href="/terms-of-service" className="text-secondary font-semibold hover:underline text-sm">Terms of Service →</Link>
+            <Link href="/contact" className="text-secondary font-semibold hover:underline text-sm">Contact Us →</Link>
           </div>
         </motion.div>
       </div>

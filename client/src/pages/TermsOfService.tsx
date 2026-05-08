@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 export default function TermsOfService() {
   return (
@@ -53,6 +54,12 @@ export default function TermsOfService() {
               <br />
               <a href="mailto:partners@foxridgeequity.com" className="text-secondary hover:underline">partners@foxridgeequity.com</a>
             </p>
+          </div>
+
+          <div className="mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-4 items-start">
+            <Link href="/" className="text-secondary font-semibold hover:underline text-sm">← Back to Home</Link>
+            <Link href="/privacy-policy" className="text-secondary font-semibold hover:underline text-sm">Privacy Policy →</Link>
+            <Link href="/contact" className="text-secondary font-semibold hover:underline text-sm">Contact Us →</Link>
           </div>
         </motion.div>
       </div>
