@@ -122,6 +122,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* International Investors Band */}
+      <section className="bg-primary py-14">
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex items-center gap-5">
+              <div className="w-12 h-12 rounded-full bg-secondary/20 border border-secondary/40 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+              </div>
+              <div>
+                <h3 className="text-white font-display text-xl font-bold mb-1">For International Investors</h3>
+                <p className="text-white/60 text-sm">Direct partnership in U.S. Sun Belt multifamily real estate. Built for global family offices, principals, and private capital partners outside the United States.</p>
+              </div>
+            </div>
+            <Link href="/international-investors">
+              <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-8 py-5 font-bold shrink-0 whitespace-nowrap">
+                Learn More
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Dynamic Process Section - Video Grid */}
       <section className="py-32 bg-stone-950 text-white overflow-hidden">
         <div className="container">

@@ -11,6 +11,7 @@ import Strategy from "./pages/Strategy";
 import OurInvestors from "./pages/OurInvestors";
 import TrackRecord from "./pages/TrackRecord";
 import Contact from "./pages/Contact";
+import InternationalInvestors from "./pages/InternationalInvestors";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -24,6 +25,7 @@ function Router() {
         <Route path="/our-investors" component={OurInvestors} />
         <Route path="/track-record" component={TrackRecord} />
         <Route path="/contact" component={Contact} />
+        <Route path="/international-investors" component={InternationalInvestors} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

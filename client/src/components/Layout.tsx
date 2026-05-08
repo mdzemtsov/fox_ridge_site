@@ -134,6 +134,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link href="/international-investors" className="hover:text-white transition-colors">
+                    International Investors
+                  </Link>
+                </li>
               </ul>
             </div>
 

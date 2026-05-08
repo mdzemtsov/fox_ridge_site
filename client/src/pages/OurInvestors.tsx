@@ -276,6 +276,30 @@ export default function OurInvestors() {
         </div>
       </section>
 
+      {/* International Investors Callout */}
+      <section className="py-0 bg-white">
+        <div className="container py-0">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="border-l-4 border-secondary bg-stone-50 p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+          >
+            <div>
+              <h3 className="font-display text-xl font-bold text-primary mb-2">Investing from Outside the United States?</h3>
+              <p className="text-stone-600 text-base max-w-2xl">
+                We work with international family offices, principals, and capital partners across the Middle East, Asia-Pacific, Europe, Latin America, and beyond. See our dedicated page for international investors.
+              </p>
+            </div>
+            <Link href="/international-investors">
+              <Button className="bg-primary text-white hover:bg-primary/90 rounded-none px-8 py-5 font-bold shrink-0 whitespace-nowrap">
+                Learn More
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-stone-950 text-white text-center">
         <div className="container">
