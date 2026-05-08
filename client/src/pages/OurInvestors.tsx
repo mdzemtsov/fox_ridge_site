@@ -8,7 +8,7 @@ const pillars = [
     number: "01",
     icon: Users,
     title: "Decision-Making Control Without Operational Burden",
-    body: "The investor retains meaningful governance rights — major decisions, refinance timing, disposition windows, capex approvals — without having to build an asset management team. FoxRidge becomes their operational extension. In a traditional syndication, an LP with $5M is one of forty voices and effectively has no say. As the sole LP, they have a seat at the table on every material decision.",
+    body: "The investor retains meaningful governance rights — major decisions, refinance timing, disposition windows, capex approvals — without having to build an asset management team. FoxRidge becomes their operational extension. In a traditional syndication, an LP with $0.5M is one of forty voices and effectively has no say. As the sole LP, they have a seat at the table on every material decision.",
   },
   {
     number: "02",

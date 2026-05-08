@@ -104,7 +104,7 @@ export default function Home() {
                 </div>
                 <div className="h-px bg-white/10" />
                 <div>
-                  <p className="text-stone-400 text-sm uppercase tracking-wider mb-1">Units Acquired</p>
+                  <p className="text-stone-400 text-sm uppercase tracking-wider mb-1">Units Invested</p>
                   <div className="text-5xl font-display font-bold text-white">
                     <RotatingNumber value="7,000" suffix="+" />
                   </div>
