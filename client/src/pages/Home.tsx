@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Building2, TrendingUp, Users, Hammer, HardHat } from "lucide-react";
+import { ArrowRight, Building2, TrendingUp, Users, Wrench, Settings2, BrainCircuit } from "lucide-react";
 import { Link } from "wouter";
 import { motion, useScroll, useTransform, useInView, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
@@ -136,26 +136,35 @@ export default function Home() {
                 Hands-On <span className="text-secondary">Value Creation</span>
               </h2>
               <p className="text-stone-400 text-lg leading-relaxed mb-8">
-                We don't just buy assets; we transform them. Our vertically integrated approach allows us to execute complex renovations and operational turnarounds with precision.
+                We don't just acquire assets — we actively manage them. Our hands-on approach combines targeted capital improvements, institutional-grade property management, and AI-driven operational tools to maximize NOI and protect investor capital.
               </p>
               
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center border border-secondary/30 shrink-0">
-                    <HardHat className="w-6 h-6 text-secondary" />
+                    <Wrench className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Construction Management</h3>
-                    <p className="text-stone-400">Direct oversight of capital improvements, from exterior facelifts to full unit interior upgrades.</p>
+                    <h3 className="text-xl font-bold mb-2">Direct Oversight of Capital Improvements</h3>
+                    <p className="text-stone-400">Targeted light renovations — cosmetic unit upgrades, common area enhancements, and curb appeal improvements — executed with direct hands-on oversight to drive rent premiums without heavy construction risk.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center border border-secondary/30 shrink-0">
-                    <Hammer className="w-6 h-6 text-secondary" />
+                    <Settings2 className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Operational Repositioning</h3>
-                    <p className="text-stone-400">Implementing institutional management practices to optimize revenue and reduce expenses.</p>
+                    <p className="text-stone-400">In-house property management control with institutional discipline — optimizing lease-up velocity, reducing vacancy, and tightening expense ratios to grow NOI from day one.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center border border-secondary/30 shrink-0">
+                    <BrainCircuit className="w-6 h-6 text-secondary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">AI-Driven Property Management</h3>
+                    <p className="text-stone-400">Deploying AI-powered tools for tenant communication, predictive maintenance, dynamic pricing, and on-site operational efficiency — delivering institutional-grade management at every asset.</p>
                   </div>
                 </div>
               </div>
@@ -169,17 +178,13 @@ export default function Home() {
                 >
                   <div className="relative aspect-[3/4] overflow-hidden group">
                     <div className="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors z-10" />
-                    <video 
-                      autoPlay 
-                      muted 
-                      loop 
-                      playsInline
+                    <img 
+                      src="/images/value-property-mgmt.jpg"
+                      alt="Property Management"
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    >
-                      <source src="/images/construction.mp4" type="video/mp4" />
-                    </video>
+                    />
                     <div className="absolute bottom-4 left-4 z-20">
-                      <span className="bg-secondary text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Construction</span>
+                      <span className="bg-secondary text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Property Management</span>
                     </div>
                   </div>
                 </motion.div>
@@ -190,17 +195,13 @@ export default function Home() {
                 >
                   <div className="relative aspect-[3/4] overflow-hidden group">
                     <div className="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors z-10" />
-                    <video 
-                      autoPlay 
-                      muted 
-                      loop 
-                      playsInline
+                    <img 
+                      src="/images/value-ai-dashboard.jpg"
+                      alt="AI-Driven Operations"
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    >
-                      <source src="/images/renovation.mp4" type="video/mp4" />
-                    </video>
+                    />
                     <div className="absolute bottom-4 left-4 z-20">
-                      <span className="bg-secondary text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Renovation</span>
+                      <span className="bg-secondary text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">AI Operations</span>
                     </div>
                   </div>
                 </motion.div>
