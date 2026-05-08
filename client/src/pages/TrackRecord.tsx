@@ -81,7 +81,7 @@ export default function TrackRecord() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-stone-950/40 z-10" />
           <img 
-            src="/images/hero-trackrecord-garden.jpg" 
+            src="/images/hero-trackrecord-garden.png" 
             alt="Multifamily Portfolio" 
             className="w-full h-full object-cover opacity-80"
           />
