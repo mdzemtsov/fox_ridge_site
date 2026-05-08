@@ -1,495 +1,430 @@
 #!/usr/bin/env python3
 """
-FoxRidge Equity Partners — Company Overview PDF (2-page, canvas-based)
+FoxRidge Equity Partners — Premium 2-Page Company Overview PDF
+Graphic-forward. No portfolio tables.
+Page 1: Who We Are | Investment Focus | Investment Strategy | Process Diagram
+Page 2: Who Is Our Investor | How We Manage | Team | Contacts + Disclaimer
 """
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
-from reportlab.lib import colors
-from reportlab.lib.units import inch
+from reportlab.lib.colors import HexColor, white
 from reportlab.lib.utils import ImageReader
-from reportlab.platypus import Paragraph, Frame, KeepInFrame
-from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
+from reportlab.pdfbase.pdfmetrics import stringWidth
 from PIL import Image as PILImage
-import io, os
+import io
 
 W, H = letter  # 612 x 792
 
-# Colors
-NAVY      = colors.HexColor("#1E3A6E")
-GOLD      = colors.HexColor("#B8942A")
-GOLD_L    = colors.HexColor("#D4AF5A")
-S50       = colors.HexColor("#FAFAF9")
-S100      = colors.HexColor("#F5F5F4")
-S200      = colors.HexColor("#E7E5E4")
-S400      = colors.HexColor("#A8A29E")
-S600      = colors.HexColor("#57534E")
-S900      = colors.HexColor("#1C1917")
-WHITE     = colors.white
+NAVY   = HexColor("#1E3A6E")
+GOLD   = HexColor("#B8942A")
+GOLDL  = HexColor("#D4AF5A")
+STONE  = HexColor("#F5F3EF")
+LGRAY  = HexColor("#E5E7EB")
+MGRAY  = HexColor("#6B7280")
+DARK   = HexColor("#1C1917")
+WHITE  = white
 
-BASE      = "/home/ubuntu/fox_ridge_site/client/public"
-LOGO      = f"{BASE}/images/logo-white-new.jpeg"
-MIKHAIL   = f"{BASE}/images/mikhail.jpg"
-SLAVA     = f"{BASE}/images/slava.webp"
-OUTPUT    = f"{BASE}/FoxRidge_Company_Overview.pdf"
+BASE   = "/home/ubuntu/fox_ridge_site/client/public"
+LOGO   = f"{BASE}/images/LogoWhite.jpeg"
+MP     = f"{BASE}/images/mikhail.jpg"
+SP     = f"{BASE}/images/slava.webp"
+OUT    = f"{BASE}/FoxRidge_Company_Overview.pdf"
 
-def load_photo(path, tw, th):
-    """Load, crop-center, and return an ImageReader at target aspect ratio."""
+def load_img(path):
     img = PILImage.open(path)
     if img.mode in ('RGBA','LA','P'):
         bg = PILImage.new('RGB', img.size, (255,255,255))
-        if img.mode == 'P': img = img.convert('RGBA')
-        bg.paste(img, mask=img.split()[-1] if 'A' in img.mode else None)
+        src = img.convert('RGBA') if img.mode=='P' else img
+        bg.paste(src, mask=src.split()[3] if src.mode=='RGBA' else None)
         img = bg
     elif img.mode != 'RGB':
         img = img.convert('RGB')
-    iw, ih = img.size
-    tr = tw/th
-    cr = iw/ih
-    if cr > tr:
-        nw = int(ih*tr); left=(iw-nw)//2
-        img = img.crop((left,0,left+nw,ih))
-    else:
-        nh = int(iw/tr); top=0
-        img = img.crop((0,top,iw,top+nh))
     buf = io.BytesIO()
-    img.save(buf,'JPEG',quality=88)
+    img.save(buf,'JPEG',quality=90)
     buf.seek(0)
     return ImageReader(buf)
 
-def hline(c, x, y, w, thickness=0.4, color=None):
-    c.setStrokeColor(color or S200)
-    c.setLineWidth(thickness)
-    c.line(x, y, x+w, y)
-
-def rect_fill(c, x, y, w, h, color):
-    c.setFillColor(color)
-    c.rect(x, y, w, h, fill=1, stroke=0)
-
-def label(c, text, x, y, size=6.5, color=None, bold=False):
-    c.setFillColor(color or S400)
-    c.setFont("Helvetica-Bold" if bold else "Helvetica", size)
-    c.drawString(x, y, text)
-
-def rlabel(c, text, x, y, size=6.5, color=None, bold=False):
-    c.setFillColor(color or S400)
-    c.setFont("Helvetica-Bold" if bold else "Helvetica", size)
-    c.drawRightString(x, y, text)
-
-def clabel(c, text, x, y, size=6.5, color=None, bold=False):
-    c.setFillColor(color or S400)
-    c.setFont("Helvetica-Bold" if bold else "Helvetica", size)
-    c.drawCentredString(x, y, text)
-
-def wrap_text(text, font, size, max_w):
-    """Simple word-wrap returning list of lines."""
-    import re
-    # Strip basic HTML tags for plain rendering
-    plain = re.sub(r'<[^>]+>', '', text)
-    words = plain.split()
-    lines = []
-    current = ''
-    from reportlab.pdfbase.pdfmetrics import stringWidth
-    for word in words:
-        test = (current + ' ' + word).strip()
-        if stringWidth(test, font, size) <= max_w:
-            current = test
+def wraplines(text, font, size, maxw):
+    words = text.split()
+    lines, cur = [], ''
+    for w in words:
+        t = (cur+' '+w).strip()
+        if stringWidth(t, font, size) <= maxw:
+            cur = t
         else:
-            if current:
-                lines.append(current)
-            current = word
-    if current:
-        lines.append(current)
+            if cur: lines.append(cur)
+            cur = w
+    if cur: lines.append(cur)
     return lines
 
-def para_block(c, text, x, y, w, h, size=8, color=None, bold=False, leading=None, align=TA_JUSTIFY):
-    """Render a paragraph using direct canvas text drawing."""
-    font = 'Helvetica-Bold' if bold else 'Helvetica'
-    lead = leading or size * 1.45
-    lines = wrap_text(text, font, size, w)
-    c.setFillColor(color or S600)
+def drawpara(c, text, x, y, w, font='Helvetica', size=8, color=None, lead=None):
+    lead = lead or size*1.45
     c.setFont(font, size)
-    ty = y + h - size  # start from top of frame
-    for line in lines:
-        if ty < y:
-            break
-        c.drawString(x, ty, line)
-        ty -= lead
+    c.setFillColor(color or DARK)
+    for line in wraplines(text, font, size, w):
+        c.drawString(x, y, line)
+        y -= lead
+    return y
 
-def draw_header(c, full=True):
-    """Navy header band."""
-    hh = 1.4*inch if full else 0.5*inch
-    rect_fill(c, 0, H-hh, W, hh, NAVY)
-    rect_fill(c, 0, H-hh-2, W, 2, GOLD)
-    if full:
-        try:
-            logo = ImageReader(LOGO)
-            c.drawImage(logo, 0.45*inch, H-1.22*inch, width=1.0*inch, height=0.82*inch,
-                        preserveAspectRatio=True, mask='auto')
-        except: pass
-        c.setFillColor(WHITE)
-        c.setFont("Helvetica-Bold", 15)
-        c.drawString(1.65*inch, H-0.78*inch, "FOXRIDGE EQUITY PARTNERS")
-        c.setFont("Helvetica", 8)
-        c.setFillColor(GOLD_L)
-        c.drawString(1.65*inch, H-1.0*inch, "INSTITUTIONAL DISCIPLINE.  ENTREPRENEURIAL EXECUTION.")
-        c.setFillColor(WHITE)
-        c.setFont("Helvetica", 7.5)
-        c.drawRightString(W-0.45*inch, H-0.78*inch, "partners@foxridgeequity.com")
-        c.drawRightString(W-0.45*inch, H-0.98*inch, "Austin, TX  |  Miami, FL")
-    else:
-        c.setFillColor(WHITE)
-        c.setFont("Helvetica-Bold", 9)
-        c.drawString(0.45*inch, H-0.33*inch, "FOXRIDGE EQUITY PARTNERS")
-        c.setFont("Helvetica", 7.5)
-        c.drawRightString(W-0.45*inch, H-0.33*inch, "partners@foxridgeequity.com  |  foxridgeequity.com")
+def sec_label(c, text, x, y):
+    c.setFillColor(GOLD)
+    c.rect(x, y+5, 22, 2.5, fill=1, stroke=0)
+    c.setFont('Helvetica-Bold', 7)
+    c.setFillColor(NAVY)
+    c.drawString(x+28, y+3, text.upper())
+    return y - 14
 
-def draw_footer(c, page):
-    rect_fill(c, 0, 0, W, 0.42*inch, NAVY)
-    rect_fill(c, 0, 0.42*inch, W, 1.5, GOLD)
-    c.setFillColor(WHITE)
-    c.setFont("Helvetica", 6.2)
-    c.drawString(0.45*inch, 0.16*inch,
-        "This document is for informational purposes only and does not constitute an offer to sell or solicitation to buy any security. Past performance is not indicative of future results.")
-    c.setFont("Helvetica-Bold", 6.5)
-    c.drawRightString(W-0.45*inch, 0.16*inch, f"foxridgeequity.com  |  Page {page} of 2")
+def hline(c, x, y, w, col=None, thick=0.4):
+    c.setStrokeColor(col or LGRAY)
+    c.setLineWidth(thick)
+    c.line(x, y, x+w, y)
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PAGE 1
-# ─────────────────────────────────────────────────────────────────────────────
+# ─── PAGE 1 ───────────────────────────────────────────────────────────────────
 def page1(c):
-    draw_header(c, full=True)
-    draw_footer(c, 1)
+    # Header
+    c.setFillColor(NAVY); c.rect(0, H-108, W, 108, fill=1, stroke=0)
+    c.setFillColor(GOLD);  c.rect(0, H-111, W, 3,   fill=1, stroke=0)
+    try:
+        c.drawImage(load_img(LOGO), 32, H-96, width=66, height=66, preserveAspectRatio=True)
+    except: pass
+    c.setFont('Helvetica-Bold', 19); c.setFillColor(WHITE)
+    c.drawString(112, H-52, "FOXRIDGE EQUITY PARTNERS")
+    c.setFont('Helvetica', 9); c.setFillColor(GOLDL)
+    c.drawString(114, H-68, "Sun Belt Multifamily Private Equity  ·  Austin, TX  &  Miami, FL")
+    c.setFont('Helvetica', 8); c.setFillColor(WHITE)
+    c.drawRightString(W-32, H-52, "partners@foxridgeequity.com")
+    c.drawRightString(W-32, H-66, "foxridgeequity.com")
+    c.setFillColor(GOLD); c.roundRect(W-128, H-86, 96, 18, 3, fill=1, stroke=0)
+    c.setFont('Helvetica-Bold', 7.5); c.setFillColor(WHITE)
+    c.drawCentredString(W-80, H-74, "FIRM OVERVIEW 2025")
 
-    LM = 0.45*inch
-    RM = W - 0.45*inch
-    CW = RM - LM   # 5.55 inch
-    y  = H - 1.55*inch  # start just below header+gold line
-
-    # ── WHO WE ARE ────────────────────────────────────────────────────────────
-    y -= 0.18*inch
-    label(c, "WHO WE ARE", LM, y, size=6.5, color=GOLD, bold=True)
-    y -= 0.22*inch
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 17)
-    c.drawString(LM, y, "A Private Real Estate Investment Firm")
-    y -= 0.14*inch
-    hline(c, LM, y, CW, 0.5, S200)
-    y -= 0.18*inch
-    para_block(c,
-        "Fox Ridge Equity Partners is a private real estate investment firm specializing in "
-        "light value-add multifamily opportunities across high-growth Sun Belt markets. "
-        "We operate on a <b>single-investor-per-deal model</b> — partnering with one ultra-high-net-worth "
-        "individual, family office, or principal per acquisition. Typical check size: <b>$3–10M per deal</b>. "
-        "We serve as the dedicated operational arm, delivering institutional-quality execution without "
-        "requiring our partners to build an in-house team.",
-        LM, y-0.55*inch, CW, 0.6*inch, size=8.5, color=S600, align=TA_JUSTIFY)
-    y -= 0.72*inch
-
-    # ── KEY STATS ─────────────────────────────────────────────────────────────
-    y -= 0.08*inch
-    stat_w = CW / 4
+    # ── Stats bar ──────────────────────────────────────────────────────────
+    sy = H-148
     stats = [("$1B+","Transaction Volume"),("7,000+","Units Invested"),("26%","Avg Project IRR"),("1.77x","Avg Equity Multiple")]
+    sw = (W-64)/4
     for i,(val,lbl) in enumerate(stats):
-        sx = LM + i*stat_w
-        rect_fill(c, sx, y-0.62*inch, stat_w, 0.62*inch, S50)
-        c.setStrokeColor(S200); c.setLineWidth(0.4)
-        c.rect(sx, y-0.62*inch, stat_w, 0.62*inch, fill=0, stroke=1)
-        rect_fill(c, sx, y, stat_w, 2, GOLD)
-        c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 18)
-        c.drawCentredString(sx+stat_w/2, y-0.3*inch, val)
-        c.setFillColor(S400); c.setFont("Helvetica", 7)
-        c.drawCentredString(sx+stat_w/2, y-0.52*inch, lbl)
-    y -= 0.72*inch
+        sx = 32 + i*sw
+        c.setFillColor(STONE); c.rect(sx, sy-36, sw-4, 36, fill=1, stroke=0)
+        c.setFillColor(GOLD);  c.rect(sx, sy, sw-4, 2.5, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 15); c.setFillColor(NAVY)
+        c.drawCentredString(sx+(sw-4)/2, sy-18, val)
+        c.setFont('Helvetica', 6.5); c.setFillColor(MGRAY)
+        c.drawCentredString(sx+(sw-4)/2, sy-30, lbl)
 
-    # ── TWO COLUMNS ───────────────────────────────────────────────────────────
-    y -= 0.18*inch
-    col1_x = LM
-    col2_x = LM + CW*0.5 + 0.1*inch
-    col_w1 = CW*0.5 - 0.15*inch
-    col_w2 = CW*0.5 - 0.05*inch
-    col_top = y
+    # ── Two columns ────────────────────────────────────────────────────────
+    y = H - 206
+    CL, CR = 32, 318
+    CW = 262
 
-    # Left: Investment Focus
-    label(c, "INVESTMENT FOCUS", col1_x, y, size=6.5, color=GOLD, bold=True)
-    y -= 0.2*inch
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 12)
-    c.drawString(col1_x, y, "What We Do")
-    y -= 0.14*inch
-    para_block(c,
-        "We acquire Class A and B multifamily assets built in 2000 or later, 100+ units, "
-        "in high-growth Texas and Florida markets. Strategy: light value-add — targeted cosmetic "
-        "improvements, operational repositioning, and AI-driven property management.",
-        col1_x, y-0.42*inch, col_w1, 0.48*inch, size=8, color=S600, align=TA_JUSTIFY)
-    y -= 0.56*inch
+    # LEFT: Who We Are + Investment Focus
+    y = sec_label(c, "Who We Are", CL, y)
+    y -= 2
+    who = ("FoxRidge Equity Partners is a private real estate investment firm "
+           "specializing in light value-add multifamily assets across high-growth "
+           "Sun Belt markets. We operate on a single-investor-per-deal model — "
+           "partnering with one UHNW individual, family office, or principal per "
+           "acquisition. Typical check size: $3–10M per deal. We serve as the "
+           "dedicated operational arm, delivering institutional-quality execution "
+           "without requiring our partners to build an in-house team.")
+    y = drawpara(c, who, CL, y, CW, size=8.5, color=DARK, lead=13)
+    y -= 12
+    hline(c, CL, y, CW)
+    y -= 14
 
-    label(c, "ACQUISITION CRITERIA", col1_x, y, size=6.5, color=GOLD, bold=True)
-    y -= 0.17*inch
-    criteria = ["Class A & B Multifamily","Vintage: 2000 and up","Size: 100+ units",
-                "Markets: DFW · Houston · Austin · San Antonio · S. Florida","Strategy: Light Value-Add"]
-    for item in criteria:
-        c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 8); c.drawString(col1_x, y, "•")
-        c.setFillColor(S600); c.setFont("Helvetica", 8); c.drawString(col1_x+0.14*inch, y, item)
-        y -= 0.155*inch
+    y = sec_label(c, "Investment Focus", CL, y)
+    y -= 2
+    focus = [
+        ("Asset Class",  "Class A & B Multifamily"),
+        ("Vintage",      "2000 and newer"),
+        ("Size",         "100+ units per asset"),
+        ("Strategy",     "Light Value-Add"),
+        ("Markets",      "Texas · Florida · Southeast Sun Belt"),
+        ("Hold Period",  "3–7 years"),
+    ]
+    for lbl, val in focus:
+        c.setFont('Helvetica-Bold', 8); c.setFillColor(NAVY)
+        c.drawString(CL, y, lbl+":")
+        c.setFont('Helvetica', 8); c.setFillColor(DARK)
+        c.drawString(CL+78, y, val)
+        hline(c, CL, y-3, CW, thick=0.3)
+        y -= 14
+    y -= 6
+    hline(c, CL, y, CW)
+    y -= 14
 
-    y -= 0.06*inch
-    label(c, "VALUE CREATION", col1_x, y, size=6.5, color=GOLD, bold=True)
-    y -= 0.17*inch
-    vc = ["Direct oversight of capital improvements","In-house property management control",
-          "AI-driven operations & tenant management","Weekly KPI monitoring & transparent reporting"]
+    y = sec_label(c, "Value Creation Approach", CL, y)
+    y -= 2
+    vc = [
+        "Direct oversight of capital improvements",
+        "In-house property management control",
+        "AI-driven operations & tenant management",
+        "Weekly KPI monitoring & transparent reporting",
+    ]
     for item in vc:
-        c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 8); c.drawString(col1_x, y, "•")
-        c.setFillColor(S600); c.setFont("Helvetica", 8); c.drawString(col1_x+0.14*inch, y, item)
-        y -= 0.155*inch
+        c.setFillColor(GOLD); c.circle(CL+4, y-1, 2.5, fill=1, stroke=0)
+        c.setFont('Helvetica', 8); c.setFillColor(DARK)
+        c.drawString(CL+12, y, item)
+        y -= 13
 
-    # Vertical divider
-    hline(c, col2_x-0.12*inch, col_top-2.4*inch, 0, 0.4, S200)
-    c.setStrokeColor(S200); c.setLineWidth(0.4)
-    c.line(col2_x-0.12*inch, col_top+0.05*inch, col2_x-0.12*inch, col_top-2.55*inch)
+    # RIGHT: Investment Strategy + Process Diagram
+    ry = H - 206
+    ry = sec_label(c, "Investment Strategy", CR, ry)
+    ry -= 2
+    strat = ("We acquire underperforming or lightly distressed Class A and B "
+             "multifamily properties in high-growth Sun Belt markets. Our approach "
+             "combines targeted capital improvements with in-house property management "
+             "and AI-driven operational tools to drive NOI growth and position assets "
+             "for a premium exit. We do not operate as a fund — every deal is a direct "
+             "partnership with a single committed capital partner.")
+    ry = drawpara(c, strat, CR, ry, CW, size=8.5, color=DARK, lead=13)
+    ry -= 12
+    hline(c, CR, ry, CW)
+    ry -= 14
 
-    # Right: How We Invest
-    ry = col_top
-    label(c, "OUR PROCESS", col2_x, ry, size=6.5, color=GOLD, bold=True)
-    ry -= 0.2*inch
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 12)
-    c.drawString(col2_x, ry, "How We Invest")
-    ry -= 0.18*inch
+    ry = sec_label(c, "Our 6-Step Investment Process", CR, ry)
+    ry -= 6
+
     steps = [
-        ("01  Source","Direct broker relationships — no listed deal flow."),
-        ("02  Underwrite","Actual T-12 data only — never broker pro formas."),
-        ("03  Diligence","Full physical, financial, and legal review."),
-        ("04  Structure","Capital stacks tailored to each partner's profile."),
-        ("05  Operate","Hands-on management from day one."),
-        ("06  Exit","Timing-driven, multi-path, return-maximizing."),
+        ("01", "SOURCE",     "Off-market deal flow through broker relationships and direct outreach."),
+        ("02", "UNDERWRITE", "Rigorous T-12 analysis, rent comps, stress testing, and exit scenarios."),
+        ("03", "STRUCTURE",  "Bespoke LP/GP structure tailored to investor profile and jurisdiction."),
+        ("04", "ACQUIRE",    "Decisive execution — single investor eliminates syndication delays."),
+        ("05", "OPERATE",    "In-house PM, AI tools, direct oversight of all capital improvements."),
+        ("06", "EXIT",       "Strategic disposition — sale, refinance, or 1031 per investor preference."),
     ]
-    for num, desc in steps:
-        hline(c, col2_x, ry+0.02*inch, col_w2, 0.3, S200)
-        c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 8); c.drawString(col2_x, ry-0.12*inch, num)
-        c.setFillColor(S600); c.setFont("Helvetica", 8)
-        c.drawString(col2_x+1.1*inch, ry-0.12*inch, desc)
-        ry -= 0.32*inch
+    step_h = 46
+    for i, (num, title, body) in enumerate(steps):
+        sy2 = ry - i*(step_h+3)
+        bg = STONE if i%2==0 else WHITE
+        c.setFillColor(bg); c.rect(CR, sy2-step_h, CW, step_h, fill=1, stroke=0)
+        c.setFillColor(GOLD); c.rect(CR, sy2-step_h, 3.5, step_h, fill=1, stroke=0)
+        c.setFillColor(NAVY); c.circle(CR+18, sy2-step_h/2, 11, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 7.5); c.setFillColor(GOLD)
+        c.drawCentredString(CR+18, sy2-step_h/2-3, num)
+        c.setFont('Helvetica-Bold', 9); c.setFillColor(NAVY)
+        c.drawString(CR+34, sy2-14, title)
+        drawpara(c, body, CR+34, sy2-26, CW-40, size=7.5, color=MGRAY, lead=11)
+        if i < len(steps)-1:
+            ax = CR+CW/2
+            ay = sy2-step_h-1
+            c.setFillColor(GOLD); c.setStrokeColor(GOLD); c.setLineWidth(0.6)
+            c.line(ax, ay, ax, ay-1)
 
-    # ── WHY SUN BELT BAND ─────────────────────────────────────────────────────
-    band_y = 0.55*inch  # just above footer
-    band_h = 0.72*inch
-    rect_fill(c, 0, band_y, W, band_h, NAVY)
-    rect_fill(c, 0, band_y+band_h, W, 2, GOLD)
-    sb_stats = [("+8.8%","Population Growth","TX vs 3.1% national"),
-                ("2.9%","DFW Job Growth","3rd among top 30 metros"),
-                ("−50%","Supply Contraction","From 2022 peak"),
-                ("+1.5%","Rent Re-Acceleration","Forecast 2027")]
-    sw = W/4
-    for i,(val,lbl,sub) in enumerate(sb_stats):
-        sx = i*sw
-        c.setFillColor(GOLD_L); c.setFont("Helvetica-Bold", 15)
-        c.drawCentredString(sx+sw/2, band_y+0.42*inch, val)
-        c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 7)
-        c.drawCentredString(sx+sw/2, band_y+0.24*inch, lbl)
-        c.setFillColor(colors.HexColor("#6B7280")); c.setFont("Helvetica", 6.5)
-        c.drawCentredString(sx+sw/2, band_y+0.1*inch, sub)
-        if i > 0:
-            c.setStrokeColor(colors.HexColor("#2D4F8A")); c.setLineWidth(0.4)
-            c.line(sx, band_y+0.08*inch, sx, band_y+band_h-0.08*inch)
+    # Why Sun Belt strip
+    wsb_y = min(y, ry - len(steps)*(step_h+3)) - 18
+    hline(c, 32, wsb_y, W-64, col=GOLD, thick=0.8)
+    wsb_y -= 14
+    c.setFont('Helvetica-Bold', 7.5); c.setFillColor(GOLD)
+    c.drawString(32, wsb_y, "WHY SUN BELT. WHY NOW.")
+    wsb_y -= 12
+    tiles = [
+        ("+8.8%", "TX Population Growth 2020–25"),
+        ("+2.9%", "DFW Job Growth Rate"),
+        ("−50%",  "New Supply Contraction"),
+        ("+1.5%", "Rent Re-Acceleration Forecast"),
+    ]
+    tw = (W-64)/4
+    for i,(val,lbl) in enumerate(tiles):
+        tx2 = 32+i*tw
+        c.setFillColor(STONE); c.rect(tx2, wsb_y-28, tw-4, 32, fill=1, stroke=0)
+        c.setFillColor(GOLD);  c.rect(tx2, wsb_y+4, tw-4, 2, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 12); c.setFillColor(NAVY)
+        c.drawCentredString(tx2+(tw-4)/2, wsb_y-12, val)
+        c.setFont('Helvetica', 6.5); c.setFillColor(MGRAY)
+        c.drawCentredString(tx2+(tw-4)/2, wsb_y-24, lbl)
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PAGE 2
-# ─────────────────────────────────────────────────────────────────────────────
+    # Footer
+    c.setFillColor(NAVY); c.rect(0, 0, W, 26, fill=1, stroke=0)
+    c.setFont('Helvetica', 6.5); c.setFillColor(GOLDL)
+    c.drawString(32, 9, "FoxRidge Equity Partners  ·  partners@foxridgeequity.com  ·  foxridgeequity.com")
+    c.setFillColor(WHITE)
+    c.drawRightString(W-32, 9, "Page 1 of 2  ·  Confidential — For Qualified Investors Only")
+
+# ─── PAGE 2 ───────────────────────────────────────────────────────────────────
 def page2(c):
-    draw_header(c, full=False)
-    draw_footer(c, 2)
+    # Slim header
+    c.setFillColor(NAVY); c.rect(0, H-54, W, 54, fill=1, stroke=0)
+    c.setFillColor(GOLD);  c.rect(0, H-57, W, 3, fill=1, stroke=0)
+    c.setFont('Helvetica-Bold', 14); c.setFillColor(WHITE)
+    c.drawString(32, H-32, "FOXRIDGE EQUITY PARTNERS")
+    c.setFont('Helvetica', 8); c.setFillColor(GOLDL)
+    c.drawString(32, H-46, "Firm Overview 2025  ·  Continued")
+    c.setFont('Helvetica', 8); c.setFillColor(WHITE)
+    c.drawRightString(W-32, H-32, "partners@foxridgeequity.com")
+    c.drawRightString(W-32, H-46, "foxridgeequity.com")
 
-    LM = 0.45*inch
-    RM = W - 0.45*inch
-    CW = RM - LM
-    y  = H - 0.65*inch
+    CL, CR = 32, 318
+    CW = 262
+    y = H - 82
 
-    # ── THE TEAM ──────────────────────────────────────────────────────────────
-    y -= 0.15*inch
-    label(c, "THE TEAM", LM, y, size=6.5, color=GOLD, bold=True)
-    y -= 0.22*inch
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 16)
-    c.drawString(LM, y, "General Partners")
-    y -= 0.13*inch
-    hline(c, LM, y, CW, 0.5, S200)
-    y -= 0.12*inch
-    para_block(c,
-        "Led by Mikhail Pritsker and Slava Davidenko, Fox Ridge Equity Partners brings over "
-        "<b>$1 billion in combined transaction experience</b> and a hands-on approach to every asset.",
-        LM, y-0.28*inch, CW, 0.32*inch, size=8.5, color=S600, align=TA_JUSTIFY)
-    y -= 0.38*inch
+    # ── LEFT: Who Is Our Investor ──────────────────────────────────────────
+    y = sec_label(c, "Who Is Our Investor", CL, y)
+    y -= 2
+    inv_intro = ("FoxRidge operates on a single-investor-per-deal model. We partner with "
+                 "one ultra-high-net-worth individual, family office, or principal per "
+                 "acquisition — typical check size $3–10M per deal. We are not in a "
+                 "fundraising process; we deploy alongside committed capital partners who "
+                 "want institutional-quality execution without building an in-house team.")
+    y = drawpara(c, inv_intro, CL, y, CW, size=8.5, color=DARK, lead=13)
+    y -= 10
 
-    # ── PHOTO CARDS ───────────────────────────────────────────────────────────
-    photo_w = 1.3*inch
-    photo_h = 1.65*inch
-    card_w  = CW/2 - 0.08*inch
-    card_h  = 2.0*inch
+    # Investor type tags
+    tags = ["UHNW Individuals", "Family Offices", "Post-Exit Founders", "International Principals"]
+    tx = CL
+    for tag in tags:
+        tw2 = stringWidth(tag, 'Helvetica-Bold', 7) + 14
+        if tx + tw2 > CL + CW:
+            tx = CL; y -= 22
+        c.setFillColor(STONE); c.roundRect(tx, y-14, tw2, 18, 3, fill=1, stroke=0)
+        c.setFillColor(GOLD);  c.roundRect(tx, y+4, tw2, 2, 0, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 7); c.setFillColor(NAVY)
+        c.drawString(tx+7, y-8, tag)
+        tx += tw2 + 6
+    y -= 26
+    hline(c, CL, y, CW)
+    y -= 14
 
-    people = [
-        (MIKHAIL, "Mikhail Pritsker", "CO-FOUNDER & MANAGING PARTNER",
-         "Senior real estate investment executive with over <b>25 years of experience</b>. "
-         "Overseen more than <b>$1B in real estate transactions</b> across multiple market cycles. "
-         "Operates at the intersection of capital, operations, and trust.",
-         "Asset & Portfolio Leadership · NOI Optimization · Investor Relations · Capital Strategy · AI & Analytics",
-         "MBA, University of Chicago Booth  |  Engineering, MEPhI"),
-        (SLAVA, "Slava Davidenko", "CO-FOUNDER & MANAGING PARTNER",
-         "Serial entrepreneur and investor with over <b>25 years of experience</b>. "
-         "Managed and invested more than <b>$600M across diversified projects</b>. "
-         "Built a portfolio exceeding <b>7,000 units across 36 properties</b>.",
-         "Institutional Wealth Mgmt · Real Estate at Scale · Entrepreneurship · AI & Modern Practices · Capital Raising",
-         "8 full-cycle GP exits · Best deal: <b>42% IRR</b> · MD, Renaissance Capital ($500M AUM)"),
+    y = sec_label(c, "What We Offer Our Investor", CL, y)
+    y -= 2
+    offers = [
+        ("Full Governance Rights",
+         "Major decisions, refinance timing, disposition windows, and capex approvals — "
+         "without building an in-house team."),
+        ("Bespoke Deal Structuring",
+         "Every partnership is structured around the investor's profile, liquidity needs, "
+         "and jurisdiction requirements."),
+        ("Capital Certainty & Speed",
+         "Single-investor model eliminates syndication delays. We move fast when the deal is right."),
+        ("Confidentiality & Discretion",
+         "No public offering. No fund marketing. Every relationship is private and handled with full discretion."),
+        ("We Are the Family Office They Don't Need to Build",
+         "Institutional-grade reporting, asset management, and investor communication — delivered directly."),
     ]
+    for title, body in offers:
+        c.setFillColor(GOLD); c.rect(CL, y-2, 3, 10, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 8.5); c.setFillColor(NAVY)
+        c.drawString(CL+10, y, title)
+        y -= 12
+        y = drawpara(c, body, CL+10, y, CW-10, size=7.5, color=MGRAY, lead=11)
+        y -= 7
+    hline(c, CL, y, CW)
+    y -= 14
 
-    for i,(photo_path,name,title,bio,strengths,extra) in enumerate(people):
-        cx = LM + i*(card_w + 0.16*inch)
-        # Card background
-        rect_fill(c, cx, y-card_h, card_w, card_h, S50)
-        c.setStrokeColor(S200); c.setLineWidth(0.4)
-        c.rect(cx, y-card_h, card_w, card_h, fill=0, stroke=1)
-        rect_fill(c, cx, y, card_w, 2, GOLD)
-        # Photo
+    # Team
+    y = sec_label(c, "Leadership", CL, y)
+    y -= 6
+    ph = 72; pw = 56
+    for photo_path, name, role, creds in [
+        (MP, "Mikhail Pritsker", "Co-Founder & Managing Partner", "25+ yrs · $1B+ transactions · MBA Chicago Booth · CCIM"),
+        (SP, "Slava Davidenko",  "Co-Founder & Managing Partner", "25+ yrs · $600M+ managed · 7,000+ units · 42% best IRR"),
+    ]:
         try:
-            ph = load_photo(photo_path, photo_w, photo_h)
-            c.drawImage(ph, cx+0.1*inch, y-photo_h-0.1*inch, width=photo_w, height=photo_h)
-        except Exception as e:
-            print(f"Photo err: {e}")
-        # Text next to photo
-        tx = cx + photo_w + 0.2*inch
-        tw = card_w - photo_w - 0.3*inch
-        ty = y - 0.15*inch
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 11)
-        c.drawString(tx, ty, name)
-        ty -= 0.17*inch
-        c.setFillColor(GOLD); c.setFont("Helvetica", 6.5)
-        c.drawString(tx, ty, title)
-        ty -= 0.16*inch
-        para_block(c, bio, tx, ty-0.44*inch, tw, 0.5*inch, size=7.5, color=S600, align=TA_LEFT)
-        ty -= 0.58*inch
-        label(c, "STRENGTHS", tx, ty, size=6, color=GOLD, bold=True)
-        ty -= 0.14*inch
-        para_block(c, strengths, tx, ty-0.36*inch, tw, 0.42*inch, size=7, color=S600, align=TA_LEFT)
-        ty -= 0.5*inch
-        label(c, "EDUCATION / TRACK RECORD", tx, ty, size=6, color=GOLD, bold=True)
-        ty -= 0.14*inch
-        para_block(c, extra, tx, ty-0.36*inch, tw, 0.42*inch, size=7, color=S600, align=TA_LEFT)
+            c.drawImage(load_img(photo_path), CL, y-ph, width=pw, height=ph, preserveAspectRatio=False)
+        except:
+            c.setFillColor(STONE); c.rect(CL, y-ph, pw, ph, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 9); c.setFillColor(NAVY)
+        c.drawString(CL+pw+8, y-14, name)
+        c.setFont('Helvetica', 7.5); c.setFillColor(GOLD)
+        c.drawString(CL+pw+8, y-26, role)
+        c.setFont('Helvetica', 7); c.setFillColor(MGRAY)
+        c.drawString(CL+pw+8, y-38, creds)
+        y -= ph + 10
 
-    y -= card_h + 0.18*inch
+    # ── RIGHT: How We Manage ───────────────────────────────────────────────
+    ry = H - 82
+    ry = sec_label(c, "How We Manage — Our Operational Model", CR, ry)
+    ry -= 4
 
-    # ── TRACK RECORD TABLE ────────────────────────────────────────────────────
-    hline(c, LM, y, CW, 0.5, S200)
-    y -= 0.15*inch
-    label(c, "TRACK RECORD — REALIZED INVESTMENTS", LM, y, size=6.5, color=GOLD, bold=True)
-    y -= 0.2*inch
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 12)
-    c.drawString(LM, y, "Selected Portfolio")
-    y -= 0.18*inch
+    mgmt_intro = ("Once acquired, every asset is managed directly by FoxRidge. "
+                  "We do not outsource property management. Our in-house team, "
+                  "combined with AI-driven tools, delivers institutional-grade "
+                  "operations at the asset level — driving NOI, protecting capital, "
+                  "and positioning for a premium exit.")
+    ry = drawpara(c, mgmt_intro, CR, ry, CW, size=8.5, color=DARK, lead=13)
+    ry -= 12
+    hline(c, CR, ry, CW)
+    ry -= 14
 
-    # Table header
-    cols = [1.35, 1.05, 0.38, 0.5, 0.5, 0.44, 0.5, 0.43]  # inches
-    cols_pt = [v*inch for v in cols]
-    headers = ["Deal","Location","Units","Buy","Sale","Value+","Equity","IRR"]
-    row_h = 0.2*inch
-    hdr_h = 0.22*inch
+    ry = sec_label(c, "Three Pillars of Value Creation", CR, ry)
+    ry -= 6
 
-    # Header row
-    rect_fill(c, LM, y-hdr_h, CW, hdr_h, NAVY)
-    rect_fill(c, LM, y, CW, 2, GOLD)
-    c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 7)
-    cx = LM
-    for j,h in enumerate(headers):
-        if j < 2:
-            c.drawString(cx+3, y-hdr_h+0.07*inch, h)
-        else:
-            c.drawCentredString(cx+cols_pt[j]/2, y-hdr_h+0.07*inch, h)
-        cx += cols_pt[j]
-    y -= hdr_h
-
-    # Data rows
-    deals = [
-        ("El Ranchito / Milagro","Fort Worth, TX","68","$2.5M","$3.8M","+52%","1.42x","42%"),
-        ("Westcreek Townhomes","Fort Worth, TX","50","$6.7M","$10.0M","+49%","1.79x","26%"),
-        ("Antigua Village","Fort Worth, TX","152","$8.8M","$13.7M","+55%","2.27x","23%"),
-        ("Copper Creek Apts","Fort Worth, TX","274","$23.6M","$32.7M","+39%","1.66x","25%"),
-        ("Crescent Village & Plaza","Wichita Falls, TX","88","$6.6M","$9.9M","+50%","1.87x","26%"),
-        ("Village on West Irving","Irving, TX","91","$7.9M","$11.0M","+40%","1.59x","16%"),
+    pillars = [
+        ("01", "Operational Repositioning",
+         "Revenue optimization, lease-up velocity, and expense ratio discipline through "
+         "in-house property management. We tighten operations, reduce vacancy, and improve "
+         "NOI through management discipline — not construction."),
+        ("02", "Direct Oversight of Capital Improvements",
+         "Light, targeted unit upgrades and common area enhancements — cosmetic improvements "
+         "that drive rent premiums without heavy construction risk. Hands-on oversight of "
+         "every dollar spent on improvements."),
+        ("03", "AI-Driven Property Management",
+         "Implementation of AI-powered tools for tenant communication, maintenance coordination, "
+         "predictive analytics, and on-site operational efficiency — delivering institutional-grade "
+         "management at the asset level."),
     ]
-    for ri, row in enumerate(deals):
-        bg = WHITE if ri%2==0 else S50
-        rect_fill(c, LM, y-row_h, CW, row_h, bg)
-        c.setStrokeColor(S200); c.setLineWidth(0.3)
-        c.line(LM, y-row_h, LM+CW, y-row_h)
-        cx = LM
-        for j,cell in enumerate(row):
-            c.setFillColor(S600); c.setFont("Helvetica", 7.5)
-            if j < 2:
-                c.drawString(cx+3, y-row_h+0.06*inch, cell)
-            else:
-                c.drawCentredString(cx+cols_pt[j]/2, y-row_h+0.06*inch, cell)
-            cx += cols_pt[j]
-        y -= row_h
+    for num, title, body in pillars:
+        c.setFillColor(NAVY); c.circle(CR+10, ry-4, 10, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 7.5); c.setFillColor(GOLD)
+        c.drawCentredString(CR+10, ry-7, num)
+        c.setFont('Helvetica-Bold', 9); c.setFillColor(NAVY)
+        c.drawString(CR+26, ry, title)
+        ry -= 13
+        ry = drawpara(c, body, CR+26, ry, CW-26, size=7.5, color=MGRAY, lead=11)
+        ry -= 10
 
-    # Portfolio total row
-    rect_fill(c, LM, y-row_h, CW, row_h, NAVY)
-    total = ("PORTFOLIO TOTAL","6 Exits","723","$56M","$81M","+44%","1.77x","26%")
-    cx = LM
-    for j,cell in enumerate(total):
-        if j in (5,6,7):
-            c.setFillColor(GOLD_L)
-        else:
-            c.setFillColor(WHITE)
-        c.setFont("Helvetica-Bold", 7.5)
-        if j < 2:
-            c.drawString(cx+3, y-row_h+0.06*inch, cell)
-        else:
-            c.drawCentredString(cx+cols_pt[j]/2, y-row_h+0.06*inch, cell)
-        cx += cols_pt[j]
-    y -= row_h + 0.12*inch
+    hline(c, CR, ry, CW)
+    ry -= 14
 
-    # ── ACTIVE PORTFOLIO ──────────────────────────────────────────────────────
-    ap_h = 0.52*inch
-    rect_fill(c, LM, y-ap_h, CW, ap_h, S50)
-    c.setStrokeColor(S200); c.setLineWidth(0.4)
-    c.rect(LM, y-ap_h, CW, ap_h, fill=0, stroke=1)
-    rect_fill(c, LM, y, CW, 2, GOLD)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 7.5)
-    c.drawString(LM+0.1*inch, y-0.18*inch, "ACTIVE PORTFOLIO — 1,347 UNITS UNDER MANAGEMENT")
-    active = ["Royal Spring · Spring, TX · 351 units · Class A",
-              "Royal Sienna · Missouri City, TX · 330 units · Class A",
-              "The Sarah at Lake Houston · Humble, TX · 350 units · Class A+",
-              "The Gallery at Katy · Katy, TX · 316 units · Class B"]
-    aw = CW/4
-    for i,prop in enumerate(active):
-        ax = LM + i*aw
-        # Use paragraph for wrapping
-        para_block(c, prop, ax+0.05*inch, y-ap_h+0.06*inch, aw-0.1*inch, 0.3*inch, size=6.8, color=S600, align=TA_CENTER)
-        if i>0:
-            c.setStrokeColor(S200); c.setLineWidth(0.3)
-            c.line(ax, y-ap_h+0.06*inch, ax, y-0.22*inch)
-    y -= ap_h + 0.12*inch
+    ry = sec_label(c, "Target Returns", CR, ry)
+    ry -= 6
+    returns = [("Equity Multiple","1.6x – 2.2x"),("Project IRR","18% – 28%"),
+               ("Cash-on-Cash","8% – 12% Yr 1"),("Hold Period","3 – 7 Years")]
+    rw = (CW-12)/4
+    for i,(lbl,val) in enumerate(returns):
+        rx2 = CR + i*(rw+4)
+        c.setFillColor(STONE); c.rect(rx2, ry-36, rw, 38, fill=1, stroke=0)
+        c.setFillColor(GOLD);  c.rect(rx2, ry+2, rw, 2.5, fill=1, stroke=0)
+        c.setFont('Helvetica-Bold', 10); c.setFillColor(NAVY)
+        c.drawCentredString(rx2+rw/2, ry-14, val)
+        c.setFont('Helvetica', 6.5); c.setFillColor(MGRAY)
+        c.drawCentredString(rx2+rw/2, ry-28, lbl)
+    ry -= 50
 
-    # ── CTA BOX ───────────────────────────────────────────────────────────────
-    cta_h = 0.5*inch
-    c.setStrokeColor(GOLD); c.setLineWidth(1.5)
-    rect_fill(c, LM, y-cta_h, CW, cta_h, S50)
-    c.rect(LM, y-cta_h, CW, cta_h, fill=0, stroke=1)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 9)
-    c.drawCentredString(W/2, y-0.2*inch, "Ready to explore a partnership?")
-    c.setFillColor(GOLD); c.setFont("Helvetica", 8.5)
-    c.drawCentredString(W/2, y-0.38*inch, "partners@foxridgeequity.com  |  foxridgeequity.com")
+    # ── Contact + Disclaimer ───────────────────────────────────────────────
+    contact_y = min(y, ry) - 16
+    hline(c, 32, contact_y, W-64, col=GOLD, thick=0.8)
+    contact_y -= 14
 
+    c.setFont('Helvetica-Bold', 8); c.setFillColor(NAVY)
+    c.drawString(32, contact_y, "CONTACT US")
+    c.setFont('Helvetica', 8); c.setFillColor(DARK)
+    c.drawString(32, contact_y-13, "partners@foxridgeequity.com")
+    c.drawString(32, contact_y-24, "foxridgeequity.com")
 
-# ─────────────────────────────────────────────────────────────────────────────
-# RENDER
-# ─────────────────────────────────────────────────────────────────────────────
-def build():
-    c = canvas.Canvas(OUTPUT, pagesize=letter)
-    c.setTitle("FoxRidge Equity Partners — Company Overview")
-    c.setAuthor("FoxRidge Equity Partners")
-    c.setSubject("Private Real Estate Investment — Sun Belt Multifamily")
+    c.setFont('Helvetica-Bold', 8); c.setFillColor(NAVY)
+    c.drawString(220, contact_y, "OFFICES")
+    c.setFont('Helvetica', 8); c.setFillColor(DARK)
+    c.drawString(220, contact_y-13, "Austin, Texas")
+    c.drawString(220, contact_y-24, "Miami, Florida")
 
-    page1(c)
-    c.showPage()
-    page2(c)
-    c.save()
-    print(f"PDF saved: {OUTPUT}")
+    disc_y = contact_y - 40
+    disc = ("This document is for informational purposes only and does not constitute an offer to sell or a "
+            "solicitation to buy any security. Past performance is not indicative of future results. All "
+            "investments involve risk, including possible loss of principal. Prospective investors should "
+            "consult their own legal, tax, and financial advisors before making any investment decision.")
+    drawpara(c, disc, 32, disc_y, W-64, font='Helvetica-Oblique', size=6.2, color=MGRAY, lead=9)
 
-if __name__ == "__main__":
-    build()
+    # Footer
+    c.setFillColor(NAVY); c.rect(0, 0, W, 26, fill=1, stroke=0)
+    c.setFont('Helvetica', 6.5); c.setFillColor(GOLDL)
+    c.drawString(32, 9, "FoxRidge Equity Partners  ·  partners@foxridgeequity.com  ·  foxridgeequity.com")
+    c.setFillColor(WHITE)
+    c.drawRightString(W-32, 9, "Page 2 of 2  ·  Confidential — For Qualified Investors Only")
+
+# ─── RENDER ───────────────────────────────────────────────────────────────────
+cv = canvas.Canvas(OUT, pagesize=letter)
+page1(cv)
+cv.showPage()
+page2(cv)
+cv.save()
+print(f"Saved: {OUT}")
