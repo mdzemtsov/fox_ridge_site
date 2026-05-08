@@ -209,11 +209,21 @@ export default function About() {
               <h2 className="font-display text-3xl font-bold mb-2">Partner with Experienced Operators</h2>
               <p className="text-emerald-100">Institutional discipline. Entrepreneurial execution.</p>
             </div>
-            <Link href="/contact">
-              <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 px-8 py-6 text-lg rounded-none transition-colors duration-300 font-bold">
-                Get in Touch <ArrowUpRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <a
+                href="/FoxRidge_Company_Overview.pdf"
+                download
+                className="flex items-center gap-2 border border-white/40 text-white hover:bg-white/10 transition-colors px-8 py-4 text-base font-medium"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Firm Overview
+              </a>
+              <Link href="/contact">
+                <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 px-8 py-6 text-lg rounded-none transition-colors duration-300 font-bold">
+                  Get in Touch <ArrowUpRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
