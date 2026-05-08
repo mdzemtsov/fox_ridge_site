@@ -151,7 +151,7 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="text-white font-display text-xl font-bold mb-1">For International Investors</h3>
-                <p className="text-white/60 text-sm">Direct partnership in U.S. Sun Belt multifamily real estate. Built for global family offices, principals, and private capital partners outside the United States.</p>
+                <p className="text-white/60 text-sm">Direct partnership in U.S. Sun Belt multifamily real estate. Built for UHNW (Ultra-High-Net-Worth) individuals, global family offices, principals, and private capital partners outside the United States.</p>
               </div>
             </div>
             <Link href="/international-investors">
@@ -177,7 +177,7 @@ export default function Home() {
               { num: "03", name: "Diligence", desc: "Full institutional review before closing." },
               { num: "04", name: "Structure", desc: "Capital stacks built deliberately for each deal." },
               { num: "05", name: "Operate", desc: "Hands-on management from day one." },
-              { num: "06", name: "Exit", desc: "Timing-driven, multi-path, return-maximizing." },
+              { num: "06", name: "Exit / Hold / Refinance", desc: "Timing-driven, multi-path, return-maximizing." },
             ].map((step, i) => (
               <motion.div
                 key={step.num}
@@ -207,15 +207,16 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto mb-14">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Why Sun Belt. Why Now.</h2>
             <p className="text-white/75 text-lg leading-relaxed">
-              The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country, while the supply pipeline that delivered a historic wave of new apartments in 2022–2024 has now collapsed to its lowest level in fifteen years. Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long.
+              The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country, while the supply pipeline that delivered a historic wave of new apartments in 2022–2025 has now collapsed to its lowest level in fifteen years. Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long.
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
             {[
               { stat: "+8.8%", title: "Population Growth", source: "U.S. Census Bureau, 2025" },
               { stat: "2.9%", title: "Job Growth", source: "BLS / WSJ, 2025" },
               { stat: "−50%", title: "Supply Pipeline at 15-Year Low", source: "RealPage, Q2 2025" },
               { stat: "+1.5%", title: "Rent Growth Re-Acceleration", source: "Yardi Matrix, 2026" },
+              { stat: "$1.5T+", title: "Loan Maturity Tsunami — Distressed Assets at Favorable Pricing", source: "Trepp / MSCI, 2025" },
             ].map((tile, i) => (
               <motion.div
                 key={tile.title}
@@ -426,9 +427,32 @@ export default function Home() {
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">
             Partner With Us
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-12 font-light">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10 font-light">
             Join our network of investors and gain access to exclusive off-market multifamily opportunities.
           </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 mb-12">
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
+                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover object-top" />
+              </div>
+              <div>
+                <p className="text-white font-bold text-base">Mikhail Pritsker</p>
+                <p className="text-white/60 text-sm">Co-Founder &amp; Managing Partner</p>
+                <p className="text-secondary text-xs mt-1">MBA Chicago Booth · CCIM · 25+ yrs</p>
+              </div>
+            </div>
+            <div className="hidden sm:block w-px h-20 bg-white/20"></div>
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
+                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover object-top" />
+              </div>
+              <div>
+                <p className="text-white font-bold text-base">Slava Davidenko</p>
+                <p className="text-white/60 text-sm">Co-Founder &amp; Managing Partner</p>
+                <p className="text-secondary text-xs mt-1">7,000+ Units Invested · 42% Best IRR</p>
+              </div>
+            </div>
+          </div>
           <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-white border-none h-16 px-10 text-xl rounded-none">
             <Link href="/contact">
               Get in Touch <ArrowRight className="ml-2 h-6 w-6" />

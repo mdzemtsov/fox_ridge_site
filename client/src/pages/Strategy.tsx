@@ -134,7 +134,7 @@ export default function Strategy() {
               {
                 icon: TrendingUp,
                 title: "Markets",
-                desc: "High-growth MSAs in Texas and Florida."
+                desc: "High-growth MSAs in Texas and Florida — landlord-friendly states with no state income tax and pro-business regulatory frameworks."
               },
               {
                 icon: DollarSign,
@@ -179,7 +179,7 @@ export default function Strategy() {
                 The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country by a significant margin.
               </p>
               <p className="text-stone-400 text-lg leading-relaxed mb-6">
-                The supply pipeline that delivered a historic wave of new apartments in 2022–2024 has now collapsed to its lowest level in fifteen years. Starts are down over 50% from the 2022 peak. The units being delivered today were financed at a different cost of capital, in a different rate environment, and by developers who no longer have access to the same debt markets.
+                The supply pipeline that delivered a historic wave of new apartments in 2022–2025 has now collapsed to its lowest level in fifteen years. Starts are down over 50% from the 2022 peak. The units being delivered today were financed at a different cost of capital, in a different rate environment, and by developers who no longer have access to the same debt markets. Texas and Florida remain landlord-friendly states with no state income tax, pro-business regulatory environments, and streamlined processes that protect asset performance.
               </p>
               <p className="text-stone-400 text-lg leading-relaxed">
                 Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long. FoxRidge is positioned to move when others cannot.

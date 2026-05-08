@@ -92,7 +92,7 @@ export default function TrackRecord() {
       property: "Royal Spring",
       location: "Spring, TX",
       units: 351,
-      built: 2021,
+      built: 2020,
       assetClass: "Class A",
       description: "Institutional-quality garden-style community in the Houston MSA. Modern 3-story buildings, resort amenities, and strong lease-up performance.",
     },
@@ -100,7 +100,7 @@ export default function TrackRecord() {
       property: "Royal Sienna",
       location: "Missouri City, TX",
       units: 330,
-      built: 2021,
+      built: 2020,
       assetClass: "Class A",
       description: "Newly built community in the award-winning, supply-constrained Sienna master-planned corridor southwest of Houston.",
     },
@@ -180,7 +180,7 @@ export default function TrackRecord() {
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
-              <h2 className="font-display text-3xl font-bold text-stone-900 mb-2">Realized Investments</h2>
+              <h2 className="font-display text-3xl font-bold text-stone-900 mb-2">Some of Our Realized Projects</h2>
               <p className="text-stone-500 text-base">All six full-cycle exits — verified XIRR from actual dated cash flows.</p>
             </div>
             <p className="text-sm text-stone-400 italic mt-4 md:mt-0">* Representative experience of principals.</p>

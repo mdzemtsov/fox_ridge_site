@@ -179,7 +179,7 @@ export default function About() {
                   </div>
                   <div className="flex items-center gap-4 text-sm text-stone-500">
                     <Briefcase className="w-5 h-5 text-primary" />
-                    <span>7,000+ Units Owned</span>
+                    <span>7,000+ Units Invested</span>
                   </div>
                 </div>
               </div>

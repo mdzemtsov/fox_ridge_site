@@ -89,7 +89,10 @@ export default function Contact() {
                   </div>
                   <h3 className="font-display text-xl font-bold text-primary">Phone</h3>
                 </div>
-                <p className="text-muted-foreground pl-14 text-lg">+1 (786) 828-9533</p>
+                <div className="pl-14 space-y-1">
+                  <a href="tel:+17868289533" className="text-muted-foreground hover:text-secondary transition-colors block text-lg">+1 (786) 828-9533</a>
+                  <a href="tel:+14242068744" className="text-muted-foreground hover:text-secondary transition-colors block text-lg">+1 (424) 206-8744</a>
+                </div>
               </div>
             </div>
           </div>
