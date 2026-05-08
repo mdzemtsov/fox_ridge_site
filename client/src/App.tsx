@@ -12,6 +12,8 @@ import OurInvestors from "./pages/OurInvestors";
 import TrackRecord from "./pages/TrackRecord";
 import Contact from "./pages/Contact";
 import InternationalInvestors from "./pages/InternationalInvestors";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -26,6 +28,8 @@ function Router() {
         <Route path="/track-record" component={TrackRecord} />
         <Route path="/contact" component={Contact} />
         <Route path="/international-investors" component={InternationalInvestors} />
+        <Route path="/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/terms-of-service" component={TermsOfService} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

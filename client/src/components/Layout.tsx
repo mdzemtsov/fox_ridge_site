@@ -162,11 +162,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 uppercase tracking-wider">
-            <p>&copy; {new Date().getFullYear()} FoxRidge Equity Partners.</p>
+          {/* Legal Disclaimer */}
+          <div className="border-t border-white/10 pt-8 mb-6">
+            <p className="text-white/35 text-xs leading-relaxed max-w-5xl">
+              <strong className="text-white/50 uppercase tracking-wider">Important Disclosure:</strong>{" "}
+              This website is for informational and educational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any security or investment product. Nothing contained herein constitutes investment, legal, tax, or other advice. Past performance is not indicative of future results. Any investment involves significant risk, including the possible loss of principal. Prospective investors should consult with their own legal, tax, and financial advisors before making any investment decision. Fox Ridge Equity Partners does not make any representation or warranty as to the accuracy or completeness of the information contained on this website.
+            </p>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 uppercase tracking-wider">
+            <p>&copy; {new Date().getFullYear()} FoxRidge Equity Partners. All Rights Reserved.</p>
             <div className="flex gap-8">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>
