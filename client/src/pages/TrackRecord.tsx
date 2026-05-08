@@ -314,6 +314,19 @@ export default function TrackRecord() {
         </div>
       </section>
 
+      {/* International Investors Cross-Reference */}
+      <section className="bg-white">
+        <div className="container">
+          <div className="border-l-4 border-secondary bg-stone-50 px-8 py-6">
+            <p className="text-stone-600 text-sm">
+              <span className="font-bold text-stone-900">Interested in co-investing from outside the United States?</span>{" "}
+              We welcome international family offices and principals looking for direct exposure to U.S. Sun Belt multifamily assets.{" "}
+              <Link href="/international-investors" className="text-secondary font-semibold hover:underline">See our international investor program →</Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Case Study */}
       <section className="py-0 bg-primary text-white">
         <div className="flex flex-col lg:flex-row">

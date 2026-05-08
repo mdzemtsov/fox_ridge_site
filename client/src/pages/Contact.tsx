@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
@@ -45,9 +46,15 @@ export default function Contact() {
           {/* Contact Info - Left Column */}
           <div className="lg:w-5/12 p-12 lg:p-24 border-r border-border bg-slate-50">
             <h2 className="font-display text-3xl font-bold text-primary mb-8">Get in Touch</h2>
-            <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Whether you're an accredited investor looking for opportunities or a property owner interested in selling, we'd love to hear from you.
             </p>
+            <div className="border-l-4 border-secondary bg-white px-5 py-4 mb-12">
+              <p className="text-sm text-stone-600">
+                <span className="font-bold text-stone-900">Reaching out from outside the United States?</span>{" "}
+                <Link href="/international-investors" className="text-secondary font-semibold hover:underline">See our dedicated page for international investors →</Link>
+              </p>
+            </div>
 
             <div className="space-y-12">
               <div className="group">

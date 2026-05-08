@@ -188,6 +188,19 @@ export default function About() {
         </div>
       </section>
 
+      {/* International Investors Cross-Reference */}
+      <section className="bg-white">
+        <div className="container">
+          <div className="border-l-4 border-secondary bg-stone-50 px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-stone-600 text-sm">
+              <span className="font-bold text-stone-900">Based outside the United States?</span>{" "}
+              We work with international family offices and principals across the Middle East, Asia-Pacific, Europe, and Latin America.{" "}
+              <Link href="/international-investors" className="text-secondary font-semibold hover:underline">See our international investor program →</Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA - Minimal */}
       <section className="py-24 bg-primary text-white">
         <div className="container">

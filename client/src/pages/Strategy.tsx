@@ -159,6 +159,19 @@ export default function Strategy() {
         </div>
       </section>
 
+      {/* International Investors Cross-Reference */}
+      <section className="bg-white">
+        <div className="container">
+          <div className="border-l-4 border-secondary bg-stone-50 px-8 py-6">
+            <p className="text-stone-600 text-sm">
+              <span className="font-bold text-stone-900">International capital partners are welcome.</span>{" "}
+              We structure each partnership to align with your jurisdiction and wealth architecture — whether you are based in the Middle East, Asia-Pacific, Europe, or Latin America.{" "}
+              <Link href="/international-investors" className="text-secondary font-semibold hover:underline">Learn about our international investor program →</Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-primary text-white text-center">
         <div className="container">
