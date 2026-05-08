@@ -111,6 +111,17 @@ export default function OurInvestors() {
         </div>
       </section>
 
+      {/* Visual break between stats bar and intro section */}
+      <div className="bg-white border-b border-stone-100">
+        <div className="container">
+          <div className="flex items-center gap-6 py-10">
+            <div className="h-px flex-1 bg-stone-200" />
+            <span className="text-stone-400 text-xs font-mono uppercase tracking-widest px-2">Partnership Model</span>
+            <div className="h-px flex-1 bg-stone-200" />
+          </div>
+        </div>
+      </div>
+
       {/* Intro — Two Column with Image */}
       <section className="py-0 bg-white">
         <div className="container-fluid">
