@@ -79,11 +79,11 @@ export default function TrackRecord() {
       {/* Hero Section - Unified Style */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-stone-950">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-stone-950/70 z-10" />
+          <div className="absolute inset-0 bg-stone-950/40 z-10" />
           <img 
-            src="/images/hero-city-skyline.jpg" 
-            alt="City Skyline" 
-            className="w-full h-full object-cover opacity-50"
+            src="/images/hero-trackrecord-garden.jpg" 
+            alt="Multifamily Portfolio" 
+            className="w-full h-full object-cover opacity-80"
           />
         </div>
         <div className="container relative z-20 pt-20">
