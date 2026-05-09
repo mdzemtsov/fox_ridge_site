@@ -586,7 +586,11 @@ def draw_page2(c):
     c.drawString(tx_s, sy + photo_pts - 0.42*inch, '25+ yrs  ·  $600M+ managed  ·  7,000+ units  ·  42% best IRR')
 
     # ── Contact & Offices (follows leadership section) ──────────────────────
-    contact_y = min(my, sy) - 0.28*inch
+    # my/sy are the BOTTOM of the photos; contact band must start below the band top
+    # contact band is 0.58" tall, so its top = contact_y + 0.58"
+    # we need contact_y + 0.58" < my  =>  contact_y < my - 0.58"
+    # use my - 0.70" to give 0.12" breathing room below the photo
+    contact_y = min(my, sy) - 0.70*inch
     c.setFillColor(STONE)
     c.rect(0, contact_y, W, 0.58*inch, fill=1, stroke=0)
     c.setStrokeColor(STONE_MID)
