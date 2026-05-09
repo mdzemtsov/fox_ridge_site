@@ -32,6 +32,13 @@ export default function Home() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -291,8 +298,8 @@ export default function Home() {
             <div className="relative">
               <div className="grid grid-cols-2 gap-4">
                 <motion.div 
-                  style={{ y: y1 }}
-                  className="space-y-4 mt-12"
+                  style={{ y: isMobile ? 0 : y1 }}
+                  className="space-y-4 lg:mt-12"
                 >
                   <div className="relative aspect-[3/4] overflow-hidden group">
                     <div className="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors z-10" />
@@ -301,14 +308,14 @@ export default function Home() {
                       alt="Property Management"
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
-                    <div className="absolute bottom-12 left-4 z-20">
+                    <div className="absolute bottom-4 left-4 z-20">
                       <span className="bg-secondary text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Property Management</span>
                     </div>
                   </div>
                 </motion.div>
                 
                 <motion.div 
-                  style={{ y: y2 }}
+                  style={{ y: isMobile ? 0 : y2 }}
                   className="space-y-4"
                 >
                   <div className="relative aspect-[3/4] overflow-hidden group">
@@ -433,7 +440,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10 mb-12">
             <div className="flex flex-col items-center gap-3">
               <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
-                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover object-top" />
+                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover" style={{ objectPosition: '50% 20%' }} />
               </div>
               <div>
                 <p className="text-white font-bold text-base">Mikhail Pritsker</p>
@@ -444,7 +451,7 @@ export default function Home() {
             <div className="hidden sm:block w-px h-20 bg-white/20"></div>
             <div className="flex flex-col items-center gap-3">
               <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
-                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover object-top" />
+                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover" style={{ objectPosition: '50% 15%' }} />
               </div>
               <div>
                 <p className="text-white font-bold text-base">Slava Davidenko</p>
