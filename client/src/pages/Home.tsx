@@ -440,7 +440,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10 mb-12">
             <div className="flex flex-col items-center gap-3">
               <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
-                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover" style={{ objectPosition: '50% 8px' }} />
+                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover" style={{ objectPosition: '50% 18px' }} />
               </div>
               <div>
                 <p className="text-white font-bold text-base">Mikhail Pritsker</p>
@@ -451,7 +451,7 @@ export default function Home() {
             <div className="hidden sm:block w-px h-20 bg-white/20"></div>
             <div className="flex flex-col items-center gap-3">
               <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
-                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover" style={{ objectPosition: '50% 25px' }} />
+                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover" style={{ objectPosition: '50% 0px' }} />
               </div>
               <div>
                 <p className="text-white font-bold text-base">Slava Davidenko</p>
