@@ -32,7 +32,7 @@ OUT  = os.path.join(BASE, 'FoxRidge_Company_Overview.pdf')
 
 GARDEN_IMG  = os.path.join(IMG, 'hero-strategy-garden.jpg')
 MIKHAIL_IMG = os.path.join(IMG, 'mikhail.jpg')
-SLAVA_IMG   = os.path.join(IMG, 'slava.webp')
+SLAVA_IMG   = os.path.join(IMG, 'slava_nobg.png')
 LOGO_WHITE  = os.path.join(IMG, 'logo-white-new.jpeg')
 
 W, H = letter  # 612 x 792 pts
