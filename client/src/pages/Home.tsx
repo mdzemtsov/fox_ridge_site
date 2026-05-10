@@ -438,9 +438,9 @@ export default function Home() {
             Join our network of investors and gain access to exclusive off-market multifamily opportunities.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10 mb-12">
-            <div className="flex flex-col items-center gap-3">
-              <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
-                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover" style={{ objectPosition: '50% 18px' }} />
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-44 aspect-[3/4] overflow-hidden border-4 border-secondary shadow-xl">
+                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover object-top" />
               </div>
               <div>
                 <p className="text-white font-bold text-base">Mikhail Pritsker</p>
@@ -448,10 +448,10 @@ export default function Home() {
                 <p className="text-secondary text-xs mt-1">MBA Chicago Booth · CCIM · 25+ yrs</p>
               </div>
             </div>
-            <div className="hidden sm:block w-px h-20 bg-white/20"></div>
-            <div className="flex flex-col items-center gap-3">
-              <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
-                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover" style={{ objectPosition: '50% 0px' }} />
+            <div className="hidden sm:block w-px h-32 bg-white/20"></div>
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-44 aspect-[3/4] overflow-hidden border-4 border-secondary shadow-xl">
+                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover object-top" />
               </div>
               <div>
                 <p className="text-white font-bold text-base">Slava Davidenko</p>
