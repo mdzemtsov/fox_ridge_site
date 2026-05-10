@@ -51,28 +51,28 @@ def pil_to_rl(pil_img, fmt='JPEG', quality=72):
     return ImageReader(buf)
 
 # ── Helper: circular crop ────────────────────────────────────────────────────
-def circle_crop(path, size, face_y_pct=0.28):
-    img = Image.open(path).convert('RGBA')
+def portrait_crop(path, w, h):
+    """Crop image to w x h portrait rectangle, centered horizontally, top-aligned vertically."""
+    img = Image.open(path).convert('RGB')
     iw, ih = img.size
-    crop_size = min(iw, ih)
-    cx = iw // 2
-    cy = int(ih * face_y_pct)
-    half = crop_size // 2
-    left   = max(0, cx - half)
-    top    = max(0, cy - half)
-    right  = min(iw, left + crop_size)
-    bottom = min(ih, top + crop_size)
-    if right - left < crop_size:
-        left = max(0, right - crop_size)
-    if bottom - top < crop_size:
-        top = max(0, bottom - crop_size)
-    cropped = img.crop((left, top, right, bottom)).resize((size, size), Image.LANCZOS)
-    mask = Image.new('L', (size, size), 0)
-    draw = ImageDraw.Draw(mask)
-    draw.ellipse((0, 0, size-1, size-1), fill=255)
-    result = Image.new('RGBA', (size, size), (0, 0, 0, 0))
-    result.paste(cropped, (0, 0), mask)
-    return result
+    # Scale so width fills w, then crop height
+    scale = w / iw
+    new_w = w
+    new_h = int(ih * scale)
+    if new_h < h:
+        # Scale by height instead
+        scale = h / ih
+        new_w = int(iw * scale)
+        new_h = h
+    img_scaled = img.resize((new_w, new_h), Image.LANCZOS)
+    # Crop: center horizontally, top-align vertically
+    left = (new_w - w) // 2
+    top = 0
+    return img_scaled.crop((left, top, left + w, top + h))
+
+def circle_crop(path, size, face_y_pct=0.28):
+    """Legacy — kept for compatibility but not used for leadership photos."""
+    return portrait_crop(path, size, size)
 
 # ── Helper: gold rule + section label ───────────────────────────────────────
 def section_label(c, x, y, text):
@@ -544,46 +544,52 @@ def draw_page2(c):
     section_label(c, col1_x, lead_y, 'Leadership')
     lead_y -= 0.22*inch
 
-    circ_size = 110
-    mikhail_circ = circle_crop(MIKHAIL_IMG, circ_size, face_y_pct=0.28)
-    slava_circ   = circle_crop(SLAVA_IMG,   circ_size, face_y_pct=0.25)
-    photo_pts = 0.88*inch
+    # Portrait dimensions: 0.75" wide x 1.00" tall (3:4 ratio)
+    photo_w = 0.75*inch
+    photo_h = 1.00*inch
+    photo_px_w = int(photo_w / inch * 150)
+    photo_px_h = int(photo_h / inch * 150)
+
+    mikhail_img = portrait_crop(MIKHAIL_IMG, photo_px_w, photo_px_h)
+    slava_img   = portrait_crop(SLAVA_IMG,   photo_px_w, photo_px_h)
 
     # Mikhail
     mx = col1_x
-    my = lead_y - photo_pts
-    c.drawImage(pil_to_rl(mikhail_circ, 'PNG'), mx, my, photo_pts, photo_pts, mask='auto')
+    my = lead_y - photo_h
+    c.drawImage(pil_to_rl(mikhail_img), mx, my, photo_w, photo_h)
     c.setStrokeColor(GOLD)
     c.setLineWidth(1.5)
-    c.circle(mx + photo_pts/2, my + photo_pts/2, photo_pts/2 + 2, fill=0, stroke=1)
-    tx_m = mx + photo_pts + 0.14*inch
+    c.rect(mx, my, photo_w, photo_h, fill=0, stroke=1)
+    tx_m = mx + photo_w + 0.14*inch
     c.setFont('Helvetica-Bold', 10)
     c.setFillColor(NAVY)
-    c.drawString(tx_m, my + photo_pts - 0.10*inch, 'Mikhail Pritsker')
+    c.drawString(tx_m, my + photo_h - 0.14*inch, 'Mikhail Pritsker')
     c.setFont('Helvetica', 8)
     c.setFillColor(GOLD)
-    c.drawString(tx_m, my + photo_pts - 0.26*inch, 'Co-Founder & Managing Partner')
+    c.drawString(tx_m, my + photo_h - 0.30*inch, 'Co-Founder & Managing Partner')
     c.setFont('Helvetica', 8)
     c.setFillColor(TEXT_MID)
-    c.drawString(tx_m, my + photo_pts - 0.42*inch, '25+ yrs  ·  $1B+ transactions  ·  MBA Chicago Booth  ·  CCIM')
+    c.drawString(tx_m, my + photo_h - 0.46*inch, '25+ yrs  ·  $1B+ transactions')
+    c.drawString(tx_m, my + photo_h - 0.58*inch, 'MBA Chicago Booth  ·  CCIM')
 
     # Slava
     sx = col2_x
-    sy = lead_y - photo_pts
-    c.drawImage(pil_to_rl(slava_circ, 'PNG'), sx, sy, photo_pts, photo_pts, mask='auto')
+    sy = lead_y - photo_h
+    c.drawImage(pil_to_rl(slava_img), sx, sy, photo_w, photo_h)
     c.setStrokeColor(GOLD)
     c.setLineWidth(1.5)
-    c.circle(sx + photo_pts/2, sy + photo_pts/2, photo_pts/2 + 2, fill=0, stroke=1)
-    tx_s = sx + photo_pts + 0.14*inch
+    c.rect(sx, sy, photo_w, photo_h, fill=0, stroke=1)
+    tx_s = sx + photo_w + 0.14*inch
     c.setFont('Helvetica-Bold', 10)
     c.setFillColor(NAVY)
-    c.drawString(tx_s, sy + photo_pts - 0.10*inch, 'Slava Davidenko')
+    c.drawString(tx_s, sy + photo_h - 0.14*inch, 'Slava Davidenko')
     c.setFont('Helvetica', 8)
     c.setFillColor(GOLD)
-    c.drawString(tx_s, sy + photo_pts - 0.26*inch, 'Co-Founder & Managing Partner')
+    c.drawString(tx_s, sy + photo_h - 0.30*inch, 'Co-Founder & Managing Partner')
     c.setFont('Helvetica', 8)
     c.setFillColor(TEXT_MID)
-    c.drawString(tx_s, sy + photo_pts - 0.42*inch, '25+ yrs  ·  $600M+ managed  ·  7,000+ units  ·  42% best IRR')
+    c.drawString(tx_s, sy + photo_h - 0.46*inch, '25+ yrs  ·  $600M+ managed')
+    c.drawString(tx_s, sy + photo_h - 0.58*inch, '7,000+ units  ·  42% best IRR')
 
     # ── Contact & Offices (follows leadership section) ──────────────────────
     # my/sy are the BOTTOM of the photos; contact band must start below the band top
