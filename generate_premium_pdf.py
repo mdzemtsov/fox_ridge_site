@@ -156,19 +156,21 @@ def pillar_block(c, x, y_top, w, num, title, desc):
     y_bot = y_top - h  # bottom of block in PDF coords
     c.setFillColor(STONE)
     c.rect(x, y_bot, w, h, fill=1, stroke=0)
+    # Circle on the RIGHT side
     c.setFillColor(NAVY)
-    c.circle(x + 0.24*inch, y_top - 0.18*inch, 0.14*inch, fill=1, stroke=0)
+    c.circle(x + w - 0.24*inch, y_top - 0.18*inch, 0.14*inch, fill=1, stroke=0)
     c.setFont('Helvetica-Bold', 7)
     c.setFillColor(WHITE)
-    c.drawCentredString(x + 0.24*inch, y_top - 0.185*inch - 2.5, num)
+    c.drawCentredString(x + w - 0.24*inch, y_top - 0.185*inch - 2.5, num)
+    # Title and description start from the left with full space
     c.setFont('Helvetica-Bold', 8.5)
     c.setFillColor(NAVY)
-    c.drawString(x + 0.45*inch, y_top - 0.16*inch, title)
+    c.drawString(x + 0.12*inch, y_top - 0.16*inch, title)
     dy = y_top - 0.34*inch
     for ln in lines:
         c.setFont('Helvetica', 7.5)
         c.setFillColor(TEXT_MID)
-        c.drawString(x + 0.1*inch, dy, ln)
+        c.drawString(x + 0.12*inch, dy, ln)
         dy -= 10
     return y_bot  # return bottom y coordinate
 
