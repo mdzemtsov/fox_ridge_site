@@ -179,8 +179,8 @@ def pillar_block(c, x, y_top, w, num, title, desc):
 #  PAGE 1
 # ════════════════════════════════════════════════════════════════════════════
 def draw_page1(c):
-    # ── Full-bleed cover photo (top 40%) ─────────────────────────────────────
-    cover_h = H * 0.40
+    # ── Full-bleed cover photo (top 30%) ─────────────────────────────────────
+    cover_h = H * 0.30
     garden = Image.open(GARDEN_IMG).convert('RGB')
     gw, gh = garden.size
     target_aspect = W / cover_h
@@ -338,9 +338,12 @@ def draw_page1(c):
 
     # ── Why Sun Belt band ─────────────────────────────────────────────────────
     band_h = 0.78*inch
-    band_y = 0.52*inch
+    # Place band just below the lower of the two columns, with 0.20" gap
+    col_bottom = min(y, y2) - 0.20*inch
+    band_y = col_bottom - band_h
+    # Draw navy background from band_y all the way down to footer (0.48") to fill gap
     c.setFillColor(NAVY_DARK)
-    c.rect(0, band_y, W, band_h, fill=1, stroke=0)
+    c.rect(0, 0.48*inch, W, band_y + band_h - 0.48*inch, fill=1, stroke=0)
     c.setFont('Helvetica-Bold', 7)
     c.setFillColor(GOLD)
     c.drawString(0.42*inch, band_y + band_h - 0.18*inch, 'WHY SUN BELT. WHY NOW.')
