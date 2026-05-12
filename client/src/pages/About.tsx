@@ -161,7 +161,7 @@ export default function About() {
               <div className="sticky top-32">
                 <div className="aspect-[3/4] bg-stone-100 mb-8 relative overflow-hidden group border border-stone-200">
                   <img 
-                    src="/images/slava.webp" 
+                    src="/images/slava_new.webp" 
                     alt="Slava Davidenko" 
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />

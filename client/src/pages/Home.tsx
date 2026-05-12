@@ -451,7 +451,7 @@ export default function Home() {
             <div className="hidden sm:block w-px h-32 bg-white/20"></div>
             <div className="flex flex-col items-center gap-4">
               <div className="w-44 aspect-[3/4] overflow-hidden border-4 border-secondary shadow-xl">
-                <img src="/images/slava.webp" alt="Slava Davidenko" className="w-full h-full object-cover object-top" />
+                <img src="/images/slava_new.webp" alt="Slava Davidenko" className="w-full h-full object-cover object-top" />
               </div>
               <div>
                 <p className="text-white font-bold text-base">Slava Davidenko</p>
