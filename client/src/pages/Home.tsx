@@ -308,7 +308,7 @@ export default function Home() {
                       alt="Property Management"
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
-                    <div className="absolute bottom-4 left-4 z-20">
+                    <div className="absolute bottom-8 left-4 z-20">
                       <span className="bg-secondary text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">Property Management</span>
                     </div>
                   </div>
@@ -325,7 +325,7 @@ export default function Home() {
                       alt="AI-Driven Operations"
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                     />
-                    <div className="absolute bottom-4 left-4 z-20">
+                    <div className="absolute bottom-8 left-4 z-20">
                       <span className="bg-secondary text-white text-xs font-bold px-2 py-1 uppercase tracking-wider">AI Operations</span>
                     </div>
                   </div>
