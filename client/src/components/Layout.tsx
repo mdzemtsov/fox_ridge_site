@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="fixed top-0 left-0 right-0 z-50">
         <ResearchBanner />
       </div>
-      <header className="fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md" style={{ top: '44px' }}>
+      <header className="fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md" style={{ top: '64px' }}>
         <div className="container flex h-32 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group py-2">
             <img 
@@ -128,7 +128,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      <main className="flex-1 pt-[calc(8rem+44px)]">{children}</main>
+      <main className="flex-1 pt-[calc(8rem+64px)]">{children}</main>
 
       <footer className="bg-primary text-white pt-20 pb-10 border-t border-border">
         <div className="container">

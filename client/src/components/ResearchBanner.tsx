@@ -7,7 +7,7 @@ const REPORTS = [
     icon: TrendingUp,
     label: "Market Analysis",
     title: "The Texas Triangle Advantage",
-    teaser: "Six converging forces creating a rare trough-cycle entry window.",
+    teaser: "Six converging forces creating a rare trough-cycle entry window in Texas multifamily.",
     cta: "Read Report",
     href: "/research/texas-triangle-advantage.html",
   },
@@ -16,7 +16,7 @@ const REPORTS = [
     icon: FileText,
     label: "2-Page PDF",
     title: "Texas Triangle 2026: Why the Window Is Open",
-    teaser: "−56% starts · +391K new residents · $162B maturing loans.",
+    teaser: "−56% starts from peak · +391K new Texas residents · $162B in maturing loans.",
     cta: "Download PDF",
     href: "/research/texas-triangle-2026-teaser.pdf",
   },
@@ -25,13 +25,14 @@ const REPORTS = [
     icon: BarChart2,
     label: "Intelligence Dashboard",
     title: "Class B+/A Multifamily Intelligence Dashboard",
-    teaser: "10-module interactive report: macro, capital markets, risk matrix & more.",
+    teaser: "10-module interactive report: macro, capital markets, scenario analysis & risk matrix.",
     cta: "Open Dashboard",
     href: "/research/class-b-a-intelligence-dashboard.html",
   },
 ];
 
 const STORAGE_KEY = "fr_banner_index";
+const BANNER_HEIGHT = 64; // px — exported so Layout can use it
 
 function getInitialIndex(): number {
   try {
@@ -51,12 +52,11 @@ export default function ResearchBanner() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Set the per-visit starting index on mount
     setCurrent(getInitialIndex());
     setMounted(true);
   }, []);
 
-  // Auto-rotate every 7 seconds within the session
+  // Auto-rotate every 7 seconds
   useEffect(() => {
     if (!mounted || dismissed) return;
     const timer = setInterval(() => {
@@ -76,67 +76,76 @@ export default function ResearchBanner() {
   return (
     <div
       className="relative bg-stone-950 text-white overflow-hidden"
-      style={{ borderBottom: "1px solid rgba(201,168,76,0.25)" }}
+      style={{ borderBottom: "2px solid rgba(201,168,76,0.4)", minHeight: `${BANNER_HEIGHT}px` }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2 py-2 min-h-[42px]">
+      {/* Background subtle texture */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: "repeating-linear-gradient(90deg, rgba(255,255,255,0.5) 0px, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 60px)"
+      }} />
+
+      <div className="relative max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2 sm:gap-3 py-3" style={{ minHeight: `${BANNER_HEIGHT}px` }}>
 
           {/* Prev button */}
           <button
             onClick={prev}
-            className="shrink-0 p-1 text-white/30 hover:text-amber-400 transition-colors"
+            className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-white/10 text-white/40 hover:text-amber-400 hover:border-amber-400/40 transition-all"
             aria-label="Previous report"
           >
-            <ChevronLeft className="w-3.5 h-3.5" />
+            <ChevronLeft className="w-4 h-4" />
           </button>
 
           {/* Main content */}
-          <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3 min-w-0">
-            {/* Pulse dot + label */}
-            <div className="shrink-0 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-              <span className="text-amber-400 text-[10px] font-bold uppercase tracking-widest hidden sm:block whitespace-nowrap">
+          <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3 min-w-0">
+
+            {/* Label row (mobile: above title) */}
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span className="text-amber-400 text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">
                 {item.label}
               </span>
+              <span className="hidden sm:block w-px h-4 bg-white/20" />
             </div>
 
-            {/* Separator */}
-            <span className="hidden sm:block w-px h-3 bg-white/20 shrink-0" />
-
-            {/* Icon + title */}
-            <div className="flex items-center gap-1.5 min-w-0">
-              <Icon className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span className="text-white text-xs font-semibold truncate">
-                {item.title}
-              </span>
+            {/* Icon + title + teaser */}
+            <div className="flex items-start sm:items-center gap-2 min-w-0 flex-1">
+              <Icon className="w-4 h-4 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
+              <div className="min-w-0">
+                <span className="text-white text-sm font-bold leading-tight block sm:inline">
+                  {item.title}
+                </span>
+                <span className="text-white/50 text-xs hidden md:inline ml-2">
+                  — {item.teaser}
+                </span>
+                {/* Teaser on its own line on tablet */}
+                <span className="text-white/50 text-xs block md:hidden mt-0.5 leading-snug">
+                  {item.teaser}
+                </span>
+              </div>
             </div>
-
-            {/* Teaser — hidden on small screens */}
-            <span className="text-white/40 text-xs hidden lg:block truncate shrink">
-              — {item.teaser}
-            </span>
 
             {/* CTA button */}
             <a
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-1 bg-amber-500 hover:bg-amber-400 text-stone-950 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 transition-colors whitespace-nowrap ml-1"
+              className="shrink-0 inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-stone-950 text-xs font-bold uppercase tracking-wider px-4 py-2 transition-colors whitespace-nowrap self-start sm:self-auto"
             >
-              {item.cta} →
+              {item.cta}
+              <ChevronRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
-          {/* Dot indicators */}
-          <div className="shrink-0 hidden sm:flex items-center gap-1 mx-1">
+          {/* Dot indicators — visible on sm+ */}
+          <div className="shrink-0 hidden sm:flex items-center gap-1.5 mx-1">
             {REPORTS.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`rounded-full transition-all duration-300 ${
                   i === current
-                    ? "w-3 h-1.5 bg-amber-400"
-                    : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
+                    ? "w-4 h-2 bg-amber-400"
+                    : "w-2 h-2 bg-white/20 hover:bg-white/50"
                 }`}
                 aria-label={`Go to report ${i + 1}`}
               />
@@ -146,25 +155,25 @@ export default function ResearchBanner() {
           {/* Next button */}
           <button
             onClick={next}
-            className="shrink-0 p-1 text-white/30 hover:text-amber-400 transition-colors"
+            className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full border border-white/10 text-white/40 hover:text-amber-400 hover:border-amber-400/40 transition-all"
             aria-label="Next report"
           >
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRight className="w-4 h-4" />
           </button>
 
           {/* Dismiss */}
           <button
             onClick={() => setDismissed(true)}
-            className="shrink-0 p-1 text-white/20 hover:text-white/60 transition-colors ml-1"
-            aria-label="Dismiss"
+            className="shrink-0 w-7 h-7 flex items-center justify-center text-white/25 hover:text-white/70 transition-colors"
+            aria-label="Dismiss banner"
           >
-            <X className="w-3 h-3" />
+            <X className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
 
-      {/* Animated progress bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-amber-900/30">
+      {/* Animated gold progress bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-amber-900/30">
         <div
           key={`${current}-progress`}
           className="h-full bg-amber-400"
