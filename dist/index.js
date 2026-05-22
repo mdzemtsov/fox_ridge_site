@@ -20,6 +20,12 @@ async function startServer() {
     next();
   });
   app.use(express.static(staticPath));
+  app.get("/research/:file", (req, res) => {
+    const filePath = path.join(staticPath, "research", req.params.file);
+    res.sendFile(filePath, (err) => {
+      if (err) res.sendFile(path.join(staticPath, "index.html"));
+    });
+  });
   app.get("*", (_req, res) => {
     res.sendFile(path.join(staticPath, "index.html"));
   });
