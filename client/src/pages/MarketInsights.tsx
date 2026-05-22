@@ -18,6 +18,21 @@ const reports = [
     featured: true,
   },
   {
+    id: "texas-triangle-teaser",
+    title: "Texas Triangle Multifamily 2026: Why the Window Is Open",
+    subtitle: "2-Page Investment Thesis — Five Tailwinds Converging Now",
+    date: "May 2026",
+    readTime: "2 min read",
+    category: "Investment Thesis",
+    description:
+      "A concise 2-page thesis summarizing the once-in-a-generation entry window: −56% U.S. multifamily starts from peak, +391K Texas net new residents, $162B in maturing loans, and market verdicts for Houston, San Antonio, DFW, and Austin. The institutional buy signal — when Freddie Mac and Fannie Mae converge on the same call.",
+    tags: ["Texas Triangle", "Teaser", "Houston", "San Antonio", "DFW", "PDF"],
+    href: "/market-insights/texas-triangle-teaser",
+    file: "/research/texas-triangle-2026-teaser.pdf",
+    isPdf: true,
+    featured: false,
+  },
+  {
     id: "class-b-a-intelligence-dashboard",
     title: "Class B+/A Multifamily Intelligence Dashboard",
     subtitle: "Acquisition Verdict: Deploy Now into Houston, South Florida & San Antonio",
@@ -100,6 +115,12 @@ export default function MarketInsights() {
                         <span className="text-white text-xs font-bold uppercase tracking-widest">Featured Report</span>
                       </div>
                     )}
+                    {(report as any).isPdf && !report.featured && (
+                      <div className="bg-primary px-6 py-2 flex items-center gap-2">
+                        <FileText className="w-3 h-3 text-secondary" />
+                        <span className="text-secondary text-xs font-bold uppercase tracking-widest">PDF — 2-Page Teaser</span>
+                      </div>
+                    )}
                     <div className="p-8 md:p-10">
                       <div className="flex flex-wrap items-center gap-4 mb-4">
                         <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1">
@@ -131,7 +152,7 @@ export default function MarketInsights() {
                           ))}
                         </div>
                         <span className="inline-flex items-center gap-2 text-secondary font-bold text-sm group-hover:gap-3 transition-all">
-                          Read Full Report <ArrowRight className="w-4 h-4" />
+                          {(report as any).isPdf ? "Download PDF" : "Read Full Report"} <ArrowRight className="w-4 h-4" />
                         </span>
                       </div>
                     </div>
