@@ -474,7 +474,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
             >
-              <Link href="/market-insights/texas-triangle-advantage">
+              <a href="/research/texas-triangle-advantage.html" target="_blank" rel="noopener noreferrer">
                 <div className="group bg-white/5 border border-white/10 hover:border-secondary/60 transition-all duration-300 p-8 cursor-pointer hover:bg-white/10">
                   <div className="flex items-center gap-2 mb-4">
                     <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1">Featured Report</span>
@@ -495,7 +495,7 @@ export default function Home() {
                     Read Full Report <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
-              </Link>
+              </a>
             </motion.div>
           </div>
         </div>

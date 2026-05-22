@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, FileText, TrendingUp, Calendar, Clock } from "lucide-react";
 
@@ -14,6 +14,7 @@ const reports = [
       "A deep-dive into the six converging forces creating a rare trough-cycle entry opportunity across Dallas–Fort Worth, Houston, San Antonio, and Austin. Supply cliff, debt maturity wall, demand engine — all analyzed with institutional rigor.",
     tags: ["Texas Triangle", "Multifamily", "Value-Add", "Market Cycle"],
     href: "/market-insights/texas-triangle-advantage",
+    file: "/research/texas-triangle-advantage.html",
     featured: true,
   },
 ];
@@ -78,7 +79,7 @@ export default function MarketInsights() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <Link href={report.href}>
+                <a href={report.file} target="_blank" rel="noopener noreferrer">
                   <div className={`group bg-white border-2 rounded-none overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${report.featured ? "border-secondary" : "border-stone-200 hover:border-secondary"}`}>
                     {report.featured && (
                       <div className="bg-secondary px-6 py-2 flex items-center gap-2">
@@ -121,7 +122,7 @@ export default function MarketInsights() {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
