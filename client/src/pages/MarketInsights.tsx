@@ -17,6 +17,20 @@ const reports = [
     file: "/research/texas-triangle-advantage.html",
     featured: true,
   },
+  {
+    id: "class-b-a-intelligence-dashboard",
+    title: "Class B+/A Multifamily Intelligence Dashboard",
+    subtitle: "Acquisition Verdict: Deploy Now into Houston, South Florida & San Antonio",
+    date: "April 7, 2026",
+    readTime: "15 min read",
+    category: "Acquisition Intelligence",
+    description:
+      "A 10-module interactive dashboard covering the full Class B+/A investment thesis: macro framework, capital markets, supply & demand dynamics, market rankings, scenario analysis (base/bull/bear), renovation economics, risk matrix, and GSE data sources. Class B+/A outperforms on risk-adjusted returns across every cycle — and the window is open now.",
+    tags: ["Class B+/A", "Houston", "South Florida", "San Antonio", "Value-Add", "Interactive"],
+    href: "/market-insights/class-b-a-intelligence-dashboard",
+    file: "/research/class-b-a-intelligence-dashboard.html",
+    featured: false,
+  },
 ];
 
 export default function MarketInsights() {
@@ -130,8 +144,8 @@ export default function MarketInsights() {
           {/* Coming soon placeholder */}
           <div className="mt-8 p-8 border-2 border-dashed border-stone-300 text-center">
             <BookOpen className="w-8 h-8 text-stone-300 mx-auto mb-3" />
-            <p className="text-stone-400 font-medium">More research reports coming soon</p>
-            <p className="text-stone-300 text-sm mt-1">Subscribe to be notified when new reports are published</p>
+            <p className="text-stone-400 font-medium">More research reports publishing regularly</p>
+            <p className="text-stone-300 text-sm mt-1">Contact us to be notified when new reports are released</p>
             <Link href="/contact">
               <button className="mt-4 px-6 py-2 bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors">
                 Get Notified

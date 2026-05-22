@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoxRidge Equity Partners - Multifamily Intelligence Dashboard 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0a0e18;--s1:#111827;--s2:#1a2332;--b1:rgba(255,255,255,0.07);--b2:rgba(255,255,255,0.13);--tx:#e8edf5;--mu:#8896aa;--di:#506070;--go:#f0a500;--gr:#22d68e;--rd:#f1514a;--bl:#4fa3e8;--or:#fb923c;--te:#2dd4bf;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Inter,sans-serif;font-size:14px;line-height:1.6;}
+.hdr{background:linear-gradient(180deg,#0d1526,var(--bg));border-bottom:1px solid var(--b2);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.lg{width:36px;height:36px;background:var(--go);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#000;flex-shrink:0;}
+.lf{font-size:13px;font-weight:600;color:#fff;}
+.ls{font-size:11px;color:var(--mu);}
+.mb{font-size:11px;padding:4px 12px;border:1px solid var(--b2);border-radius:20px;color:var(--mu);}
+.mb.live{border-color:rgba(34,214,142,.3);color:var(--gr);}
+.mb.cf{border-color:rgba(240,165,0,.3);color:var(--go);}
+.nav{background:var(--s1);border-bottom:1px solid var(--b1);padding:0 32px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nt{padding:14px 16px;font-size:13px;color:var(--mu);cursor:pointer;white-space:nowrap;background:none;border:none;border-bottom:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:7px;}
+.nt:hover{color:var(--tx);}
+.nt.active{color:var(--go);border-bottom-color:var(--go);}
+.tn{width:18px;height:18px;background:var(--s2);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--di);}
+.nt.active .tn{background:rgba(240,165,0,.15);color:var(--go);}
+.tp{display:none;padding:32px;max-width:1400px;margin:0 auto;}
+.tp.active{display:block;}
+.sl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--go);margin-bottom:6px;font-weight:600;}
+.sh{font-size:24px;font-weight:300;color:#fff;font-family:Georgia,serif;margin-bottom:6px;}
+.sd{font-size:13px;color:var(--mu);margin-bottom:28px;line-height:1.7;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.cd{background:var(--s1);border:1px solid var(--b1);border-radius:12px;padding:20px;}
+.cd.ag{border-left:3px solid var(--go);}
+.cd.ar{border-left:3px solid var(--rd);}
+.cd.ab{border-left:3px solid var(--bl);}
+.cd.agr{border-left:3px solid var(--gr);}
+.cl{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--di);margin-bottom:8px;}
+.cv{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px;}
+.cv.sm{font-size:20px;}
+.cs{font-size:12px;color:var(--mu);line-height:1.5;}
+.ct{font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;}
+.mr{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--b1);}
+.mr:last-child{border-bottom:none;}
+.mk{font-size:12px;color:var(--mu);}
+.mv{font-size:13px;font-weight:600;color:var(--tx);}
+.mv.gr{color:var(--gr);}
+.mv.rd{color:var(--rd);}
+.mv.go{color:var(--go);}
+.bg{display:inline-flex;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;}
+.bg-go{background:rgba(34,214,142,.12);color:var(--gr);border:1px solid rgba(34,214,142,.25);}
+.bg-sn{background:rgba(240,165,0,.12);color:var(--go);border:1px solid rgba(240,165,0,.25);}
+.bg-wt{background:rgba(79,163,232,.12);color:var(--bl);border:1px solid rgba(79,163,232,.25);}
+.bg-av{background:rgba(241,81,74,.12);color:var(--rd);border:1px solid rgba(241,81,74,.25);}
+.cb{background:var(--s1);border:1px solid var(--b1);border-radius:12px;padding:20px;}
+.cbt{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:4px;}
+.cbs{font-size:11px;color:var(--di);margin-bottom:16px;}
+.cw{position:relative;height:260px;}
+.cw.tl{height:340px;}
+.cw.sh{height:200px;}
+.dt{width:100%;border-collapse:collapse;font-size:12px;}
+.dt th{text-align:left;padding:8px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--di);border-bottom:1px solid var(--b2);white-space:nowrap;}
+.dt td{padding:10px 12px;border-bottom:1px solid var(--b1);color:var(--mu);vertical-align:top;}
+.dt td:first-child{color:var(--tx);font-weight:500;}
+.dt tr:hover td{background:var(--s2);}
+.hero{background:linear-gradient(135deg,#0f1c2e,#0e1a0e 50%,#1a1200);border:1px solid var(--b2);border-radius:14px;padding:28px 32px;margin-bottom:28px;}
+.hv{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--go);margin-bottom:10px;font-weight:600;}
+.ht{font-family:Georgia,serif;font-size:30px;font-weight:300;color:#fff;line-height:1.25;margin-bottom:14px;}
+.hb{font-size:14px;color:var(--mu);line-height:1.8;max-width:900px;}
+.hb strong{color:var(--tx);font-weight:500;}
+.pb{margin:8px 0;}
+.pl{display:flex;justify-content:space-between;margin-bottom:4px;}
+.pn{font-size:12px;color:var(--mu);}
+.pp{font-size:12px;font-weight:600;color:var(--tx);}
+.pt{height:6px;background:var(--s2);border-radius:3px;}
+.pf{height:100%;border-radius:3px;}
+.mc{background:var(--s1);border:1px solid var(--b1);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.mch{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--s2);border-bottom:1px solid var(--b1);flex-wrap:wrap;gap:10px;}
+.mrk{font-size:11px;color:var(--di);font-weight:600;}
+.mn{font-size:16px;font-weight:600;color:#fff;flex:1;margin:0 14px;}
+.mb2{padding:20px;}
+.mth{font-size:13px;color:var(--mu);font-style:italic;padding-left:12px;border-left:2px solid var(--go);margin-bottom:16px;line-height:1.7;}
+.mmg{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px;}
+.mp{background:var(--s2);border-radius:8px;padding:10px 12px;}
+.mk2{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--di);margin-bottom:3px;}
+.mv2{font-size:14px;font-weight:600;color:var(--tx);}
+.mv2.g{color:var(--gr);}
+.mv2.r{color:var(--rd);}
+.mv2.a{color:var(--go);}
+.ub{background:var(--s2);border-radius:8px;padding:14px 16px;margin-bottom:12px;}
+.ut{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:12px;font-weight:600;}
+.ug{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;}
+.ui .uk{font-size:11px;color:var(--di);margin-bottom:2px;}
+.ui .uv{font-size:13px;font-weight:500;color:var(--tx);}
+.d2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.db h4{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--di);margin-bottom:8px;}
+.db ul{list-style:none;}
+.db li{font-size:12px;color:var(--mu);padding:3px 0 3px 16px;position:relative;line-height:1.5;}
+.db li::before{position:absolute;left:0;}
+.db li.pro::before{content:+;color:var(--gr);font-weight:700;}
+.db li.con::before{content:-;color:var(--rd);font-weight:700;}
+.db li.wrn::before{content:!;color:var(--or);font-weight:700;}
+.inv{background:rgba(241,81,74,.05);border:1px solid rgba(241,81,74,.2);border-radius:8px;padding:12px 16px;margin-top:12px;}
+.inv h5{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--rd);margin-bottom:6px;}
+.inv p{font-size:12px;color:var(--mu);line-height:1.6;}
+.sc-wrap{overflow-x:auto;}
+.sc{width:100%;border-collapse:collapse;font-size:13px;}
+.sc th{padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--b2);color:var(--di);}
+.sc td{padding:12px 14px;border-bottom:1px solid var(--b1);color:var(--mu);}
+.sc td.me{color:var(--tx);font-weight:500;}
+.sc .bs td{background:rgba(79,163,232,.04);}
+.sc .bu td{background:rgba(34,214,142,.04);}
+.sc .br td{background:rgba(241,81,74,.04);}
+.sc .bs td.nm{color:var(--bl);font-weight:600;}
+.sc .bu td.nm{color:var(--gr);font-weight:600;}
+.sc .br td.nm{color:var(--rd);font-weight:600;}
+.sl2{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:4px;}
+.lb{background:rgba(79,163,232,.15);color:var(--bl);}
+.lu{background:rgba(34,214,142,.15);color:var(--gr);}
+.lr{background:rgba(241,81,74,.15);color:var(--rd);}
+.ri{display:grid;grid-template-columns:200px 1fr auto;gap:16px;align-items:start;padding:14px 0;border-bottom:1px solid var(--b1);}
+.ri:last-child{border-bottom:none;}
+.rn{font-size:13px;font-weight:600;color:var(--tx);}
+.rd2{font-size:12px;color:var(--mu);line-height:1.6;}
+.rbg{font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.rh{background:rgba(241,81,74,.12);color:var(--rd);}
+.rm{background:rgba(240,165,0,.12);color:var(--go);}
+.rl{background:rgba(34,214,142,.12);color:var(--gr);}
+.src{font-size:10px;color:var(--di);padding:10px 0;border-top:1px solid var(--b1);margin-top:8px;}
+.gseb{display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;color:var(--bl);margin-bottom:12px;}
+@media(max-width:768px){.tp{padding:16px;}.g2,.g3,.g4{grid-template-columns:1fr;}.d2{grid-template-columns:1fr;}.ri{grid-template-columns:1fr;}.hdr{padding:14px 16px;}.nav{padding:0 16px;}}
+</style>
+</head>
+<body>
+
+<!-- BACK TO INSIGHTS BAR -->
+<div id="back-to-insights-bar" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:rgba(10,14,24,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(240,165,0,0.3);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;">
+  <a href="/market-insights" style="display:inline-flex;align-items:center;gap:8px;color:#f0a500;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    Back to Market Insights
+  </a>
+  <span style="color:rgba(136,150,170,0.6);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;">FoxRidge Equity &middot; Market Research</span>
+  <a href="/market-insights" style="display:inline-flex;align-items:center;gap:6px;background:#f0a500;color:#0a0e18;font-size:12px;font-weight:700;text-decoration:none;padding:6px 14px;letter-spacing:0.04em;text-transform:uppercase;" onmouseover="this.style.background='#fbbf24'" onmouseout="this.style.background='#f0a500'">
+    All Reports
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </a>
+</div>
+<style>body { padding-top: 44px; } .hdr { top: 44px !important; }</style>
+
+<header class="hdr">
+  <div style="display:flex;align-items:center;gap:14px;">
+    <div class="lg">FR</div>
+    <div><div class="lf">FoxRidge Equity Partners</div><div class="ls">Class B+/A Acquisition Intelligence Dashboard &mdash; April 2026</div></div>
+  </div>
+  <div style="display:flex;gap:16px;align-items:center;">
+    <span class="mb cf">Confidential &amp; Proprietary</span>
+    <span class="mb live">April 7, 2026</span>
+  </div>
+</header>
+<nav class="nav" id="navBar">
+  <button class="nt active" data-tab="summary"><span class="tn">1</span>Executive Summary</button>
+  <button class="nt" data-tab="macro"><span class="tn">2</span>Macro Framework</button>
+  <button class="nt" data-tab="capital"><span class="tn">3</span>Capital Markets</button>
+  <button class="nt" data-tab="supply"><span class="tn">4</span>Supply &amp; Demand</button>
+  <button class="nt" data-tab="markets"><span class="tn">5</span>Market Rankings</button>
+  <button class="nt" data-tab="scenarios"><span class="tn">6</span>Scenario Analysis</button>
+  <button class="nt" data-tab="reno"><span class="tn">7</span>Renovation &amp; Cost</button>
+  <button class="nt" data-tab="risk"><span class="tn">8</span>Risk Matrix</button>
+  <button class="nt" data-tab="gse"><span class="tn">9</span>GSE Sources</button>
+  <button class="nt" data-tab="audit"><span class="tn" style="background:rgba(63,185,80,.15);color:#3fb950">10</span>Prediction Audit</button>
+</nav>
+
+<!-- TAB 1: SUMMARY -->
+<div class="tp active" id="tab-summary">
+  <div class="hero">
+    <div class="hv">FoxRidge Equity Partners &mdash; Class B+/A Acquisition Verdict &middot; April 7, 2026</div>
+    <div class="ht">Class B+/A Is the Thesis. The Window Is Open.<br>Deploy Now into Houston, South Florida &amp; San Antonio.</div>
+    <div class="hb">
+      <strong>FoxRidge targets Class B+/A multifamily exclusively</strong> &mdash; assets 10&ndash;35 years old, middle-income renter base, genuine value-add through renovation and operational improvement. This is not a Class A trophy play. Not a Class C turnaround. <strong>Class B+/A outperforms both on risk-adjusted returns across every cycle.</strong><br><br>
+      The supply wave is overwhelmingly Class A new construction &mdash; Fannie Mae and Freddie Mac both confirm this. <strong>Class B+/A supply is not being built.</strong> B+/A occupancy nationally sits at 94.3% (Freddie Mac PDF, highest of all three classes). Class A vacancy is ~9% with concessions of 3+ months free rent in oversupplied markets. B+/A is <em>holding</em>.<br><br>
+      Freddie Mac projects Houston flips from +6,000-unit surplus (2025) to &minus;5,800-unit <strong>deficit in 2026</strong> &mdash; this is a Class A absorption story that unlocks the B+/A buy thesis. Motivated sellers of 2021&ndash;22 vintage B+/A assets with bridge loan stress are creating entry at <strong>6.0&ndash;6.5% cap rates</strong> on trailing NOI &mdash; 50&ndash;150 bps above comparable Class A. Both Freddie Mac and Fannie Mae have set $88B multifamily loan purchase caps for 2026 with GSE liquidity fully open for B+/A.
+    </div>
+  </div>
+
+  <!-- CLASS STRATEGY BADGES -->
+  <div style="display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;align-items:center;">
+    <span style="font-size:11px;color:var(--di);">FoxRidge Target Class:</span>
+    <span style="background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.4);color:var(--go);font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;letter-spacing:1px;">&#9679; CLASS B+ &mdash; PRIMARY</span>
+    <span style="background:rgba(240,165,0,0.1);border:1px solid rgba(240,165,0,0.3);color:var(--go);font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;letter-spacing:1px;">&#9679; CLASS A (value-add B+/A overlap) &mdash; SECONDARY</span>
+    <span style="background:rgba(120,120,120,0.08);border:1px solid rgba(120,120,120,0.2);color:var(--di);font-size:11px;padding:5px 14px;border-radius:20px;">Class A (trophy/core) &mdash; NOT TARGETED</span>
+    <span style="background:rgba(120,120,120,0.08);border:1px solid rgba(120,120,120,0.2);color:var(--di);font-size:11px;padding:5px 14px;border-radius:20px;">Class C &mdash; NOT TARGETED</span>
+  </div>
+
+  <!-- KEY METRICS (B+/A SPECIFIC) -->
+  <div class="g4" style="margin-bottom:24px">
+    <div class="cd ag">
+      <div class="cl">B+/A Cap Rate (Target Markets)</div>
+      <div class="cv">6.0&ndash;6.5%</div>
+      <div class="cs">Secondary market B+/A value-add. Class A primary: 4.5&ndash;5.2%. B+/A commands 50&ndash;150 bps premium vs. Class A &mdash; stronger initial cash flow, wider margin of safety in high-rate environment.</div>
+    </div>
+    <div class="cd agr">
+      <div class="cl">Class B+/A Occupancy (National)</div>
+      <div class="cv">94.3%</div>
+      <div class="cs">Freddie Mac 2025 Outlook PDF (directly fetched). Class B has HIGHEST occupancy of all 3 classes. Class A: 94.0%. Class C: 94.2%. B+/A is the occupancy leader nationally.</div>
+    </div>
+    <div class="cd ar">
+      <div class="cl">New Supply Class Mix (2026)</div>
+      <div class="cv">~85% A</div>
+      <div class="cs">Fannie Mae/Freddie Mac confirm: new deliveries are overwhelmingly Class A. B+/A supply is not being built. This means B+/A competes in a structurally supply-constrained environment.</div>
+    </div>
+    <div class="cd ab">
+      <div class="cl">B+/A Rent Growth 2024&ndash;2026E</div>
+      <div class="cv">1.3&ndash;1.7%</div>
+      <div class="cs">Class B: +1.3% (Fannie Jan 2025 commentary) to +1.7% (Apartment Loan Store 2026). Class A: flat to +1.4%. Class C: +3.4%. B+/A recovery accelerates in 2026 as Class A concessions burn off.</div>
+    </div>
+  </div>
+
+  <!-- CLASS COMPARISON CHART + IRR CHART -->
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">Class A vs. B+/A vs. C &mdash; Key Performance Metrics Comparison</div>
+      <div class="cbs">Sources: Freddie Mac 2025 Outlook PDF (Exhibit 3) &middot; Fannie Mae Jan 2025 MF Commentary &middot; RealPage Analytics &middot; Cushman &amp; Wakefield Q4 2025 MF MarketBeat &middot; CBRE Cap Rate Survey &middot; FoxRidge analysis &middot; April 2026</div>
+      <div class="cw tl"><canvas id="classComparisonChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">B+/A Cap Rate by Market vs. Agency Debt &mdash; Leverage Map</div>
+      <div class="cbs">B+/A specific cap rates &middot; All figures are for Class B+/A value-add assets in FoxRidge target submarkets &middot; Agency debt ~6.1% &middot; Red line = positive leverage threshold &middot; April 2026</div>
+      <div class="cw tl"><canvas id="classBCapRateChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- CLASS B+/A WHY NOW BOX -->
+  <div style="background:var(--s2);border:1px solid var(--b2);border-left:3px solid var(--go);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:12px;font-weight:600;">Why Class B+/A Outperforms in 2026 Specifically</div>
+    <div class="g3">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">Supply Asymmetry</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;">~85% of the 450,000 units delivering in 2026 are Class A new construction (Fannie Mae/Freddie Mac). B+/A supply pipeline is near zero. Existing B+/A assets face no new supply competition &mdash; only absorption pressure from Class A concessions filtering renters up temporarily.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">Occupancy Durability</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;">B+/A maintains 94.3% occupancy nationally (highest of all classes, Freddie Mac PDF). In recessions, renters trade DOWN into B+/A from Class A. In recoveries, C renters trade UP. B+/A benefits from dual demand dynamics across every cycle. This is why Freddie/Fannie research calls it the "all-weather" class.</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">Renter Profile Lock</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;">B+/A serves HUD-defined 80&ndash;120% AMI households &mdash; essential workers, healthcare, logistics, government. These are <em>renters by necessity</em>, not by choice. Homeownership is structurally out of reach for 3&ndash;5 years (monthly mortgage $2,050 vs. avg rent $1,870). Captive renter pool. Turnover lower than Class A.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERDICT TABLE (B+/A SPECIFIC) -->
+  <div class="cd" style="margin-bottom:24px">
+    <div class="ct" style="margin-bottom:4px">Ranked B+/A Market Verdicts &mdash; FoxRidge Acquisition Filter</div>
+    <div style="font-size:11px;color:var(--di);margin-bottom:14px;">All cap rates, vacancy, and rent growth figures are Class B+/A specific. Class A data shown as reference only.</div>
+    <div style="overflow-x:auto">
+    <table class="dt">
+      <thead><tr>
+        <th>Rank</th><th>Market</th><th>Verdict</th>
+        <th>B+/A Vacancy</th><th>Class A Vacancy (ref)</th>
+        <th>B+/A Cap Rate</th><th>Class A Cap Rate (ref)</th>
+        <th>B+/A Rent Growth 2026E</th>
+        <th>Target Price/Unit (B+/A)</th><th>LP IRR Base</th><th>Network</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>#1</td><td>Houston TX (Pearland/League City/Baytown)</td><td><span class="bg bg-go">GO NOW</span></td>
+          <td style="color:var(--go)">11.0&ndash;12%</td><td style="color:var(--di)">~12.5% (new lease-up A)</td>
+          <td style="color:var(--gr)">6.0&ndash;6.5%</td><td style="color:var(--di)">~5.3% (Class A)</td>
+          <td style="color:var(--gr)">2.5&ndash;4.9%</td>
+          <td>$100K&ndash;$140K</td><td style="color:var(--gr);font-weight:700">15&ndash;17%</td>
+          <td style="color:var(--gr)">Slava &#10003;</td>
+        </tr>
+        <tr>
+          <td>#2</td><td>Broward &amp; Palm Beach FL</td><td><span class="bg bg-go">GO NOW</span></td>
+          <td style="color:var(--gr)">5.0&ndash;6.5%</td><td style="color:var(--di)">~7.5% (new A)</td>
+          <td style="color:var(--go)">5.25&ndash;5.75%</td><td style="color:var(--di)">~4.5% (Class A)</td>
+          <td style="color:var(--gr)">2.0&ndash;3.5%</td>
+          <td>$160K&ndash;$220K</td><td style="color:var(--gr);font-weight:700">15&ndash;17%</td>
+          <td style="color:var(--gr)">Mike &#10003;</td>
+        </tr>
+        <tr>
+          <td>#3</td><td>San Antonio TX (NE/Converse)</td><td><span class="bg bg-go">GO NOW</span></td>
+          <td style="color:var(--go)">11.5&ndash;13%</td><td style="color:var(--di)">~13% (new A)</td>
+          <td style="color:var(--gr)">6.0&ndash;6.5%</td><td style="color:var(--di)">~5.2% (Class A)</td>
+          <td style="color:var(--go)">1.0&ndash;2.5%</td>
+          <td>$70K&ndash;$100K</td><td style="color:var(--gr);font-weight:700">15&ndash;17%</td>
+          <td style="color:var(--gr)">Slava &#10003;</td>
+        </tr>
+        <tr>
+          <td>#4</td><td>Charlotte NC</td><td><span class="bg bg-sn">GO SOON</span></td>
+          <td style="color:var(--rd)">10&ndash;12%</td><td style="color:var(--di)">~11.7% (Class A)</td>
+          <td style="color:var(--go)">5.75&ndash;6.25%</td><td style="color:var(--di)">~4.8% (Class A)</td>
+          <td style="color:var(--gr)">4.0&ndash;5.7%</td>
+          <td>$130K&ndash;$160K</td><td style="color:var(--go);font-weight:700">14&ndash;16%</td>
+          <td style="color:var(--rd)">Build now</td>
+        </tr>
+        <tr>
+          <td>#5</td><td>Atlanta GA (N. Suburbs)</td><td><span class="bg bg-sn">GO SOON</span></td>
+          <td style="color:var(--go)">7.0&ndash;8%</td><td style="color:var(--di)">~8.5% (Class A)</td>
+          <td style="color:var(--go)">5.75&ndash;6.25%</td><td style="color:var(--di)">~4.9% (Class A)</td>
+          <td style="color:var(--gr)">2.5&ndash;4.0%</td>
+          <td>$120K&ndash;$150K</td><td style="color:var(--go);font-weight:700">13&ndash;15%</td>
+          <td style="color:var(--rd)">Build now</td>
+        </tr>
+        <tr>
+          <td>#6</td><td>DFW TX (Frisco/McKinney)</td><td><span class="bg bg-wt">WATCH</span></td>
+          <td style="color:var(--rd)">12.0&ndash;12.5%</td><td style="color:var(--di)">~11.7% (Class A)</td>
+          <td style="color:var(--go)">5.5&ndash;6.0%</td><td style="color:var(--di)">~5.0% (Class A)</td>
+          <td style="color:var(--mu)">0&ndash;1%</td>
+          <td>$140K&ndash;$170K</td><td style="color:var(--mu)">11&ndash;13%</td>
+          <td style="color:var(--gr)">Slava &#10003;</td>
+        </tr>
+        <tr>
+          <td>#7</td><td>Indianapolis IN</td><td><span class="bg bg-wt">WATCH</span></td>
+          <td style="color:var(--gr)">5.5&ndash;7%</td><td style="color:var(--di)">~7.5% (Class A)</td>
+          <td style="color:var(--gr)">6.0&ndash;6.5%</td><td style="color:var(--di)">~5.0% (Class A)</td>
+          <td style="color:var(--gr)">2&ndash;3%</td>
+          <td>$90K&ndash;$120K</td><td style="color:var(--mu)">12&ndash;14%</td>
+          <td style="color:var(--rd)">None</td>
+        </tr>
+        <tr>
+          <td>#8</td><td>Jacksonville FL &mdash; Southside / Arlington</td><td><span class="bg bg-wt">WATCH &mdash; 2027</span></td>
+          <td style="color:var(--go)">10&ndash;12% (B+/A est.)</td><td style="color:var(--di)">~12.2% all-class</td>
+          <td style="color:var(--go)">6.0&ndash;6.5% (target)</td><td style="color:var(--di)">~5.8% avg</td>
+          <td style="color:var(--go)">0.3% 2026E &rarr; 3%+ 2027E</td>
+          <td>$140K&ndash;$180K</td><td style="color:var(--go)">11&ndash;14% (2027)</td>
+          <td style="color:var(--rd)">None &mdash; build now</td>
+        </tr>
+        <tr>
+          <td>&mdash;</td><td>Austin TX / Phoenix AZ / Tampa FL / Nashville TN</td><td><span class="bg bg-av">AVOID</span></td>
+          <td style="color:var(--rd)">12&ndash;15%</td><td style="color:var(--di)">~14&ndash;16% (A)</td>
+          <td style="color:var(--mu)">5.5%</td><td style="color:var(--di)">N/A</td>
+          <td style="color:var(--rd)">&minus;1% to &minus;4%</td>
+          <td>N/A</td><td style="color:var(--rd)">Sub-12%</td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="src">All vacancy, cap rate, and rent growth data are for Class B+/A specifically. Class A data shown in grey as reference benchmark only. Sources: Freddie Mac 2025 Outlook PDF &middot; Fannie Mae MF Commentary Jan 2025 &middot; CoStar &middot; LoopNet 2025 &middot; CBRE Cap Rate Survey &middot; Northmarq &middot; Matthews RE Q4 2025</div>
+  </div>
+
+  <!-- PROBABILITY SCORES -->
+  <div class="g2">
+    <div class="cd">
+      <div class="ct" style="margin-bottom:16px">Class B+/A Performance Probabilities &mdash; GO NOW Markets</div>
+      <div class="pb"><div class="pl"><span class="pn">B+/A Class: Occupancy stays above 93% nationally through 2027</span><span class="pp">85%</span></div><div class="pt"><div class="pf" style="width:85%;background:var(--gr)"></div></div></div>
+      <div class="pb"><div class="pl"><span class="pn">Houston B+/A: Supply deficit materializes H2 2026 (Freddie Mac)</span><span class="pp">87%</span></div><div class="pt"><div class="pf" style="width:87%;background:var(--gr)"></div></div></div>
+      <div class="pb"><div class="pl"><span class="pn">S. Florida B+/A: Vacancy holds below 7% through 2027</span><span class="pp">81%</span></div><div class="pt"><div class="pf" style="width:81%;background:var(--te)"></div></div></div>
+      <div class="pb"><div class="pl"><span class="pn">San Antonio B+/A: Military renter base remains stable 5 yrs</span><span class="pp">90%</span></div><div class="pt"><div class="pf" style="width:90%;background:var(--te)"></div></div></div>
+      <div class="pb"><div class="pl"><span class="pn">Charlotte B+/A: 4%+ rent growth materializes 2026&ndash;27</span><span class="pp">65%</span></div><div class="pt"><div class="pf" style="width:65%;background:var(--go)"></div></div></div>
+      <div class="pb"><div class="pl"><span class="pn">B+/A cap rates compress 25&ndash;50 bps nationally by 2027</span><span class="pp">68%</span></div><div class="pt"><div class="pf" style="width:68%;background:var(--bl)"></div></div></div>
+    </div>
+    <div class="cd">
+      <div class="ct" style="margin-bottom:16px">Class Differentiation &mdash; Why NOT Class A and NOT Class C</div>
+      <div style="font-size:12px;color:var(--mu);line-height:1.8;margin-bottom:14px;padding:12px 14px;background:var(--s2);border-radius:8px;border-left:2px solid var(--rd);">
+        <strong style="color:var(--tx);">Class A: NOT targeted.</strong> National Class A vacancy ~9% (Cushman Q4 2025). Concessions running 2&ndash;4 months free rent to compete with new lease-up. Class A cap rates 4.5&ndash;5.2% = deeply negative leverage at 6.1% agency debt. Value proposition dependent on cap rate compression and rent recovery &mdash; speculative thesis.
+      </div>
+      <div style="font-size:12px;color:var(--mu);line-height:1.8;margin-bottom:14px;padding:12px 14px;background:var(--s2);border-radius:8px;border-left:2px solid var(--di);">
+        <strong style="color:var(--tx);">Class C: Referenced only for benchmarking.</strong> Class C rent growth +3.4% (strongest), but cap rates 7.5&ndash;9% reflect higher risk profile, deferred maintenance, lower income renter pool, heavier management intensity, and financing constraints. FoxRidge does not target Class C.
+      </div>
+      <div style="font-size:12px;color:var(--mu);line-height:1.8;padding:12px 14px;background:var(--s2);border-radius:8px;border-left:2px solid var(--go);">
+        <strong style="color:var(--tx);">Class B+/A: The sweet spot.</strong> 94.3% occupancy (best nationally, Freddie Mac). 50&ndash;150 bps cap rate premium vs. Class A. Dual demand dynamic: A renters trade down in recession, C renters trade up in recovery. Renter-by-necessity profile = durable demand. GSE liquidity ($88B each cap) fully available for B+/A. <em>This is exactly what FoxRidge is built for.</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: MACRO -->
+<div class="tp" id="tab-macro">
+  <p class="sl">Module 1</p><h2 class="sh">Macroeconomic Framework &mdash; Class B+/A Lens</h2>
+  <p class="sd">All data presented with Class B+/A as the primary lens. Class A and C are shown as benchmarks only. FoxRidge underwrites against B+/A-specific vacancy, rent growth, and cap rate data &mdash; not blended market averages. Sources: Freddie Mac 2025 Outlook PDF (directly fetched), Fannie Mae ESR Group Jan &amp; Aug 2024 commentary, RealPage, CoStar, Cushman &amp; Wakefield.</p>
+
+  <!-- CLASS-BY-CLASS RENT GROWTH DATA BOX -->
+  <div style="background:var(--s2);border:1px solid var(--b2);border-radius:12px;padding:20px;margin-bottom:24px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:14px;font-weight:600;">Rent Growth by Property Class &mdash; Official GSE &amp; RealPage Data</div>
+    <div class="g3">
+      <div style="background:var(--bg);border-radius:8px;padding:14px 16px;border:1px solid rgba(241,81,74,0.2);">
+        <div style="font-size:11px;font-weight:700;color:var(--rd);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Class A &mdash; NOT FoxRidge Target</div>
+        <div class="mr"><span class="mk">Rent Growth 2024 (RealPage)</span><span class="mv rd">+1.4%</span></div>
+        <div class="mr"><span class="mk">Rent Growth 2026 (Apt. Loan Store)</span><span class="mv rd">~flat (0%)</span></div>
+        <div class="mr"><span class="mk">Occupancy (Freddie Mac PDF)</span><span class="mv rd">94.0%</span></div>
+        <div class="mr"><span class="mk">Concessions Q4 2025 (C&amp;W)</span><span class="mv rd">2&ndash;4 months free rent</span></div>
+        <div class="mr"><span class="mk">Vacancy (Cushman Q4 2025)</span><span class="mv rd">~9.3% nationally</span></div>
+        <div class="mr"><span class="mk">Cap Rate (primary markets)</span><span class="mv rd">4.5&ndash;5.2%</span></div>
+        <div class="mr"><span class="mk">Day-1 Leverage at 6.1% debt</span><span class="mv rd">Deeply negative</span></div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:14px 16px;border:2px solid rgba(240,165,0,0.4);">
+        <div style="font-size:11px;font-weight:700;color:var(--go);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Class B+/A &mdash; FOXRIDGE TARGET</div>
+        <div class="mr"><span class="mk">Rent Growth 2024 (Fannie Mae)</span><span class="mv go">+1.3%</span></div>
+        <div class="mr"><span class="mk">Rent Growth 2026E (Apt. Loan Store)</span><span class="mv gr">+1.7%</span></div>
+        <div class="mr"><span class="mk">Occupancy (Freddie Mac PDF)</span><span class="mv gr">94.3% (HIGHEST CLASS)</span></div>
+        <div class="mr"><span class="mk">Concessions Q1 2026</span><span class="mv go">20&ndash;28% of props offering</span></div>
+        <div class="mr"><span class="mk">Vacancy (FoxRidge target mkts)</span><span class="mv go">6.0&ndash;12% (market-dependent)</span></div>
+        <div class="mr"><span class="mk">Cap Rate (secondary value-add)</span><span class="mv gr">5.8&ndash;6.5%</span></div>
+        <div class="mr"><span class="mk">Day-1 Leverage at 6.1% debt</span><span class="mv go">Neutral to slight positive</span></div>
+      </div>
+      <div style="background:var(--bg);border-radius:8px;padding:14px 16px;border:1px solid rgba(120,120,120,0.2);">
+        <div style="font-size:11px;font-weight:700;color:var(--di);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Class C &mdash; Reference Only</div>
+        <div class="mr"><span class="mk">Rent Growth 2024 (Fannie Mae)</span><span class="mv gr">+2.6%</span></div>
+        <div class="mr"><span class="mk">Rent Growth 2026E (Apt. Loan Store)</span><span class="mv gr">+3.4%</span></div>
+        <div class="mr"><span class="mk">Occupancy (Freddie Mac PDF)</span><span class="mv">94.2%</span></div>
+        <div class="mr"><span class="mk">Concessions Q1 2026</span><span class="mv gr">~10&ndash;15% of props</span></div>
+        <div class="mr"><span class="mk">Vacancy (national)</span><span class="mv gr">~5&ndash;6%</span></div>
+        <div class="mr"><span class="mk">Cap Rate</span><span class="mv">7.5&ndash;9.0%</span></div>
+        <div class="mr"><span class="mk">Risk/Management intensity</span><span class="mv rd">High &mdash; not FoxRidge profile</span></div>
+      </div>
+    </div>
+    <div class="src">Sources: Freddie Mac 2025 Multifamily Outlook PDF (directly fetched, Exhibit 3) &middot; Fannie Mae MF Economic &amp; Market Commentary January 2025 (directly fetched) &middot; Fannie Mae August 2024 MF Commentary (CoStar data) &middot; Cushman &amp; Wakefield Q4 2025 US MF MarketBeat &middot; Apartment Loan Store 2026 data &middot; RealPage Analytics</div>
+  </div>
+
+  <div class="g4" style="margin-bottom:24px">
+    <div class="cd ag"><div class="cl">Fed Funds (Apr 2026)</div><div class="cv">3.50%</div><div class="cs">Held March 2026. Dot plot: 1 cut to 3.4% year-end. JPMorgan: 0 cuts possible. Iran war oil spike. 83% probability of hold at May FOMC. B+/A thesis does not require rate cuts &mdash; works at current 6.0&ndash;6.25% agency debt.</div></div>
+    <div class="cd ab"><div class="cl">B+/A Renter Income (80&ndash;120% AMI)</div><div class="cv">~$60&ndash;90K</div><div class="cs">HUD definition for workforce/B+/A renters. This cohort held jobs through 2025 slowdown (healthcare, logistics, government, trades). AI displacement risk LOW vs. white-collar Class A renter segment.</div></div>
+    <div class="cd agr"><div class="cl">B+/A 10-Year Avg Vacancy</div><div class="cv">6.1%</div><div class="cs">RealPage historical (2012&ndash;2022). Class B has sustained lower long-term vacancy than Class A due to renter-by-necessity demand base. In 2022 cycle trough: B+/A vacancy was 3.1%.</div></div>
+    <div class="cd"><div class="cl">Monthly Own vs. Rent Gap</div><div class="cv">$1,200</div><div class="cs">Homeownership $3,069/mo vs. avg rent $1,869/mo (Newmark). The B+/A renter earning $60&ndash;90K CANNOT buy. Captive renter pool for 3&ndash;5 years. Historical gap: ~$400. Now at record $1,200.</div></div>
+  </div>
+
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">Monthly P&amp;I vs. Multifamily Rent &mdash; Freddie Mac Official Data (Class B+/A Renter Captivity)</div>
+      <div class="cbs">Source: Freddie Mac 2025 Multifamily Outlook PDF Exhibit 3 (directly fetched) &middot; NAR &middot; RealPage &middot; NOTE: B+/A renters (80&ndash;120% AMI) earning $60K&ndash;90K cannot afford $2,050/mo P&I on median home &mdash; locked into rental market</div>
+      <div class="cw"><canvas id="mortgageRentChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">Rent Growth by Property Class &mdash; 2019&ndash;2026E</div>
+      <div class="cbs">Sources: Fannie Mae MF Commentary Jan 2025 &amp; Aug 2024 (RealPage/CoStar data) &middot; Apartment Loan Store 2026 data &middot; FoxRidge 2026 projections for B+/A in GO NOW markets &middot; Freddie Mac LT avg 2.8%</div>
+      <div class="cw"><canvas id="classRentGrowthChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">Fed Funds Rate &mdash; Actual &amp; 2026 Forward Scenarios (B+/A Agency Debt Impact)</div>
+      <div class="cbs">Source: Federal Reserve FOMC &middot; CME FedWatch &middot; March 2026 Dot Plot &middot; JPMorgan (bear) &middot; Fannie Mae ESR (bull) &middot; Note: B+/A thesis underwrites at 6.0% agency debt &mdash; works even in bear (0 cuts) scenario</div>
+      <div class="cw"><canvas id="fedRateChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">B+/A Rent Growth by Market vs. Freddie Mac LT Average</div>
+      <div class="cbs">Sources: Yardi Matrix Feb/Mar 2026 &middot; Zillow Rental Index &middot; Apartment List March 2026 &middot; Miami Realtors Feb 2026 &middot; All figures are B+/A class estimates; pure Class A markets may show worse performance</div>
+      <div class="cw tl"><canvas id="rentGrowthByMarket"></canvas></div>
+    </div>
+  </div>
+
+  <div class="cd">
+    <div class="ct" style="margin-bottom:14px">Freddie Mac Official Data &mdash; P&amp;I vs. Rent Table &amp; Class Occupancy Breakdown (2025 Multifamily Outlook PDF)</div>
+    <div style="overflow-x:auto">
+    <table class="dt">
+      <thead><tr><th>Period</th><th>Mortgage Rate</th><th>Median Sales Price</th><th>Monthly P&amp;I</th><th>YoY P&amp;I Change</th><th>Monthly Rent (RealPage)</th><th>Rent YoY Growth</th><th>Wage Growth</th></tr></thead>
+      <tbody>
+        <tr><td>2020 avg</td><td>3.1%</td><td>$298,485</td><td>$1,012</td><td>&minus;17.6%</td><td>$1,426</td><td>0.0%</td><td>3.6%</td></tr>
+        <tr><td>2021 avg</td><td>3.1%</td><td>$352,048</td><td>$1,199</td><td>+18.6%</td><td>$1,535</td><td>+6.9%</td><td>3.8%</td></tr>
+        <tr><td>2022 avg</td><td>5.9%</td><td>$384,461</td><td>$1,821</td><td>+51.8%</td><td>$1,749</td><td>+11.7%</td><td>6.3%</td></tr>
+        <tr><td>Q3 2024</td><td>6.1%</td><td>$403,825</td><td>$1,954</td><td>&minus;9.2%</td><td>$1,841</td><td>+0.3%</td><td>4.7%</td></tr>
+        <tr><td>2026E</td><td>6.4%</td><td>~$415,000</td><td>~$2,050</td><td>&mdash;</td><td>~$1,870</td><td>+1.2%E</td><td>~3.5%E</td></tr>
+        <tr><td><strong>Change 2020&rarr;Q3 2024</strong></td><td>+3.0pp</td><td>+$105,340</td><td><strong>+$942 (+85.7%)</strong></td><td>&mdash;</td><td><strong>+$415 (+20.2%)</strong></td><td>&mdash;</td><td>+25.0% cumulative</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="margin-top:16px;overflow-x:auto">
+    <table class="dt">
+      <thead><tr><th>Class</th><th>Occupancy Q2 2024 (Freddie Mac PDF)</th><th>Rent Growth 2024 (Fannie Mae)</th><th>Concession Level</th><th>Supply New Deliveries 2026 (Fannie)</th><th>Cap Rate Range</th><th>FoxRidge View</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--rd)">Class A (Luxury/New)</td><td>94.0%</td><td style="color:var(--rd)">+1.4% (fell from peak)</td><td style="color:var(--rd)">Highest &mdash; 2&ndash;4 months free rent</td><td style="color:var(--rd)">~85% of all 2026 deliveries</td><td>4.5&ndash;5.2% (primary)</td><td style="color:var(--rd)">NOT targeted</td></tr>
+        <tr style="background:rgba(240,165,0,0.04)"><td style="color:var(--go);font-weight:700">Class B+/A (Workforce/Value-Add)</td><td style="color:var(--gr);font-weight:700">94.3% (HIGHEST)</td><td style="color:var(--go)">+1.3&ndash;1.7%</td><td style="color:var(--go)">Moderate &mdash; declining as A absorbs</td><td style="color:var(--gr)">~12% of deliveries (repositioned only)</td><td style="color:var(--gr)">5.8&ndash;6.5% (secondary)</td><td style="color:var(--go);font-weight:700">FOXRIDGE TARGET</td></tr>
+        <tr><td style="color:var(--di)">Class C (Affordable/Old)</td><td>94.2%</td><td style="color:var(--gr)">+2.6%</td><td style="color:var(--gr)">Low</td><td style="color:var(--gr)">~3% of deliveries</td><td>7.5&ndash;9.0%</td><td style="color:var(--di)">Reference only</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="src">Source: Freddie Mac 2025 Multifamily Outlook PDF (mf.freddiemac.com/docs/2025_multifamily_outlook.pdf &middot; Directly fetched April 7, 2026) &middot; Fannie Mae MF Economic &amp; Market Commentary January 2025 &amp; August 2024 &middot; RealPage Performance Metrics &middot; Cushman &amp; Wakefield Q4 2025 US Multifamily MarketBeat</div>
+  </div>
+</div>
+
+<!-- TAB 3: CAPITAL MARKETS -->
+<div class="tp" id="tab-capital">
+  <p class="sl">Module 2</p><h2 class="sh">Capital Markets &mdash; Class B+/A Debt &amp; Distressed Pipeline</h2>
+  <p class="sd">All cap rate and leverage data presented for Class B+/A specifically. The distressed seller pipeline is predominantly B+/A assets (2018&ndash;2022 vintage bridge loans). New Class A construction distress is a different problem &mdash; not FoxRidge's opportunity set. Sources: Trepp, KBRA, CRED iQ, Northmarq, Dallas Federal Reserve, Freddie Mac, CBRE.</p>
+
+  <div class="g4" style="margin-bottom:24px">
+    <div class="cd ar"><div class="cl">B+/A MF CMBS Delinquency</div><div class="cv">7.15%</div><div class="cs">Trepp March 2026. Multifamily-specific. Up from 6.64% year-end 2025. Concentrated in 2021&ndash;22 vintage B+/A bridge loans hitting rate-cap expiration &mdash; exactly the distressed sellers FoxRidge is targeting.</div></div>
+    <div class="cd ag"><div class="cl">B+/A Cap Rate Spread vs. Class A</div><div class="cv">+50&ndash;150 bps</div><div class="cs">CBRE Cap Rate Survey &amp; Green Street Advisors. B+/A cap rates 50&ndash;150 bps ABOVE comparable Class A. Translates directly to stronger initial cash flow and margin of safety vs. Class A acquisitions.</div></div>
+    <div class="cd agr"><div class="cl">Agency Debt for B+/A (2026)</div><div class="cv">6.0&ndash;6.25%</div><div class="cs">Fannie Mae and Freddie Mac set $88B each for 2026. B+/A (workforce housing) is a PRIMARY GSE focus. B+/A assets get best LTV terms: up to 75&ndash;80% on stabilized. 1.25x DSCR minimum.</div></div>
+    <div class="cd ab"><div class="cl">B+/A Value-Add Distressed Cap</div><div class="cv">6.5&ndash;7.5%</div><div class="cs">For stressed/repositioning B+/A plays (bridge loan maturity, NOI shortfall). This is the entry cap range that delivers 15%+ LP IRR even in base scenario with 6.0% agency debt on exit.</div></div>
+  </div>
+
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">CMBS Delinquency Rate by Property Type &mdash; March 2026</div>
+      <div class="cbs">Source: Trepp CMBS Delinquency Monitor &middot; MBA Newslink April 2026 &middot; KBRA January 2026 &middot; Multifamily CMBS stress is B+/A vintage 2021&ndash;22 bridge loans, NOT new Class A lease-up failures</div>
+      <div class="cw"><canvas id="cmbsChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">B+/A Cap Rate by Market vs. Class A &amp; Agency Debt Cost</div>
+      <div class="cbs">Source: CoStar &middot; Northmarq Q4 2025 &middot; LoopNet 2025 &middot; CBRE H2 2025 Cap Rate Survey &middot; All B+/A figures are for value-add assets 15&ndash;35 years old &middot; Agency debt red dashed line ~6.1%</div>
+      <div class="cw"><canvas id="capRateSpreadChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- KEY INSIGHT: DISTRESSED B+/A -->
+  <div style="background:var(--s2);border:1px solid var(--b2);border-left:3px solid var(--go);border-radius:12px;padding:18px 22px;margin-bottom:24px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:10px;font-weight:600;">Who Is Actually Distressed &mdash; Class B+/A Bridge Loan Sellers</div>
+    <p style="font-size:13px;color:var(--mu);line-height:1.8;max-width:900px;">The $163B in securitized CRE maturities hitting in 2026 includes a large cohort of <strong style="color:var(--tx);">B+/A multifamily assets acquired in 2021&ndash;2022</strong> at peak pricing with 3-year floating-rate bridge loans. These operators underwrote to 2021 rent levels, expected 5%+ annual rent growth, and financed at &lt;4% floating rates. Today they face: (1) in-place rents 10&ndash;20% below their underwritten assumptions; (2) floating rates that have doubled their debt service; (3) rate caps expired. <strong style="color:var(--tx);">These are the B+/A motivated sellers.</strong> FoxRidge targets their basis &mdash; entering at real 2026 NOI with defensible underwriting, not their 2021 pro forma. The Dallas Federal Reserve confirmed in March 2026 that Texas banks are modifying B+/A multifamily loans above national average rates. This is a pipeline signal, not a warning sign.</p>
+  </div>
+
+  <div class="g2">
+    <div class="cd">
+      <div class="ct" style="margin-bottom:14px">B+/A Distressed Seller Landscape by Market</div>
+      <table class="dt">
+        <thead><tr><th>Market</th><th>B+/A Cap Rate</th><th>Class A Cap Rate (ref)</th><th>Bridge Stress Level</th><th>Seller Motivation</th><th>Bid-Ask Status</th></tr></thead>
+        <tbody>
+          <tr><td>Houston TX</td><td style="color:var(--gr)">6.0&ndash;6.5%</td><td style="color:var(--di)">~5.3% (A)</td><td style="color:var(--rd)">HIGH</td><td>High &mdash; B+/A sellers capitulating</td><td style="color:var(--gr)">Executable now</td></tr>
+          <tr><td>San Antonio TX</td><td style="color:var(--gr)">6.0&ndash;6.5%</td><td style="color:var(--di)">~5.2% (A)</td><td style="color:var(--rd)">HIGH</td><td>Moderate-High &mdash; active deal flow</td><td style="color:var(--gr)">Repricing underway</td></tr>
+          <tr><td>Charlotte NC</td><td style="color:var(--gr)">5.75&ndash;6.25%</td><td style="color:var(--di)">~4.8% (A)</td><td style="color:var(--rd)">HIGH</td><td>High &mdash; B+/A concessions widespread</td><td style="color:var(--gr)">Best buy window now</td></tr>
+          <tr><td>DFW TX</td><td style="color:var(--go)">5.5&ndash;6.0%</td><td style="color:var(--di)">~5.0% (A)</td><td style="color:var(--go)">MODERATE</td><td>Moderate &mdash; Class B still digesting</td><td style="color:var(--go)">Some anchored to 2022</td></tr>
+          <tr><td>Broward FL</td><td style="color:var(--go)">5.25&ndash;5.75%</td><td style="color:var(--di)">~4.5% (A)</td><td style="color:var(--gr)">LOW-MOD</td><td>Low isolated B+/A sellers</td><td style="color:var(--go)">Sellers disciplined</td></tr>
+          <tr><td>Atlanta GA</td><td style="color:var(--go)">5.75&ndash;6.25%</td><td style="color:var(--di)">~4.9% (A)</td><td style="color:var(--go)">MODERATE</td><td>Moderate &mdash; recovery narrative</td><td style="color:var(--gr)">Improving</td></tr>
+          <tr><td>Indianapolis IN</td><td style="color:var(--gr)">6.0&ndash;6.5%</td><td style="color:var(--di)">~5.0% (A)</td><td style="color:var(--gr)">LOW</td><td>Organic only</td><td style="color:var(--go)">Fair pricing</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cd">
+      <div class="ct" style="margin-bottom:14px">B+/A Day-1 Leverage Analysis &mdash; Agency Debt ~6.1%</div>
+      <p style="font-size:12px;color:var(--mu);margin-bottom:14px;line-height:1.7">Class B+/A cap rates of 6.0&ndash;6.5% in target markets bring FoxRidge to neutral-to-slight-positive leverage territory on Day 1 &mdash; vs. deeply negative leverage on Class A acquisitions at 4.5&ndash;5.2% cap rates. This is a structural advantage of the B+/A strategy.</p>
+      <div class="mr"><span class="mk">Houston B+/A (6.0&ndash;6.5% cap)</span><span class="mv go">Neutral &rarr; Positive by Y2</span></div>
+      <div class="mr"><span class="mk">SA TX B+/A (6.0&ndash;6.5% cap)</span><span class="mv go">Neutral &rarr; Positive by Y2</span></div>
+      <div class="mr"><span class="mk">Indianapolis B+/A (6.0&ndash;6.5%)</span><span class="mv gr">Day-1 positive leverage</span></div>
+      <div class="mr"><span class="mk">Charlotte B+/A (5.75&ndash;6.25%)</span><span class="mv go">Slight negative &rarr; Positive Y2+</span></div>
+      <div class="mr"><span class="mk">Broward FL B+/A (5.25&ndash;5.75%)</span><span class="mv rd">Negative; premium rents compensate</span></div>
+      <div class="mr"><span class="mk">Class A primary (4.5&ndash;5.2%)</span><span class="mv rd">DEEPLY negative &mdash; why FoxRidge avoids</span></div>
+      <div class="mr"><span class="mk">Class C (7.5&ndash;9.0%)</span><span class="mv gr">Strong positive leverage &mdash; but wrong risk profile</span></div>
+      <div class="src">B+/A cap rate premium vs. Class A: 50&ndash;150 bps (CBRE Cap Rate Survey &middot; Green Street Advisors) &middot; Agency debt: 6.0&ndash;6.25% for stabilized B+/A per FoxRidge underwriting</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: SUPPLY & DEMAND -->
+<div class="tp" id="tab-supply">
+  <p class="sl">Module 5</p><h2 class="sh">Supply &amp; Demand &mdash; Class B+/A Is NOT Being Built</h2>
+  <p class="sd">The single most important supply insight for FoxRidge: <strong>virtually all new multifamily supply is Class A luxury new construction.</strong> Fannie Mae and Freddie Mac both confirm this. Class B+/A is not being built at scale in any target market. FoxRidge is buying existing B+/A stock at reset basis, not competing with the supply wave. Sources: Freddie Mac 2025 Outlook PDF (Exhibit 4, directly fetched), Yardi Matrix, Fannie Mae, Cushman &amp; Wakefield, NAHB.</p>
+
+  <!-- KEY SUPPLY CLASS INSIGHT -->
+  <div style="background:var(--s2);border:1px solid rgba(34,214,142,0.3);border-left:3px solid var(--gr);border-radius:12px;padding:18px 22px;margin-bottom:24px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--gr);margin-bottom:10px;font-weight:600;">Critical B+/A Supply Asymmetry &mdash; The Core Investment Thesis</div>
+    <div class="g3">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--rd);margin-bottom:6px;">What Is Being Delivered (2026)</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;">~85% of the 450,000 units delivering in 2026 are <strong style="color:var(--rd);">Class A luxury new construction</strong>. High-rise urban cores, amenity-heavy suburban mid-rise, high-end garden. Average asking rent $2,200+. Financed during the 2021&ndash;2022 development boom at peak land cost. <em>This is NOT what FoxRidge buys.</em></div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--go);margin-bottom:6px;">What FoxRidge Buys</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;">Existing <strong style="color:var(--go);">Class B+/A assets, 15&ndash;35 years old</strong>, suburban locations, middle-income renter base. B+/A is &lt;12% of new deliveries nationally &mdash; and that small slice is only repositioned/converted product, not ground-up. <em>Class B+/A does not face a supply wave. It faces a price reset opportunity.</em></div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--bl);margin-bottom:6px;">The Displacement Effect (Why B+/A Absorbs)</div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;">Class A concessions (2&ndash;4 months free rent) briefly draw Class B renters UP &mdash; the "flight to quality" effect. This is temporary and creates short-term B+/A vacancy. But as Class A concessions burn off (H2 2026&ndash;2027), those renters return to B+/A OR permanently reset to the class they can actually sustain. B+/A vacancy recovers first.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">MF Completions vs. Starts (5+ Units) &mdash; Freddie Mac Exhibit 4 (All Classes)</div>
+      <div class="cbs">Source: Freddie Mac 2025 Multifamily Outlook PDF (Exhibit 4) &middot; NAHB &middot; Yardi Matrix Winter 2026 &middot; NOTE: These are ALL-CLASS completions. B+/A new construction represents &lt;15% of this total. The supply wave is a CLASS A phenomenon.</div>
+      <div class="cw tl"><canvas id="supplyChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">Class B+/A Vacancy by Market vs. National Avg &amp; Class A Benchmark</div>
+      <div class="cbs">Source: Yardi Matrix &middot; Matthews Real Estate Q4 2025 &middot; Northmarq &middot; CoStar &middot; Cushman &amp; Wakefield Q4 2025 &middot; B+/A vacancy estimated from class-stratified data where available; otherwise derived from blended with A adjustment</div>
+      <div class="cw tl"><canvas id="classBVacancyChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">New Supply Class Mix &mdash; Who Is Actually Being Built in FoxRidge Markets (2026)</div>
+      <div class="cbs">Source: Fannie Mae MF Commentary Jan 2025: "Much of this new supply consists of more expensive, Class A units" &middot; Freddie Mac PDF: same conclusion &middot; Cushman &amp; Wakefield Q4 2025 &middot; FoxRidge analysis</div>
+      <div class="cw"><canvas id="supplyClassMixChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">2026 Deliveries by Metro (All Classes) &mdash; High Delivery = Class A Pressure, NOT B+/A Risk</div>
+      <div class="cbs">Source: Yardi Matrix Winter 2026 &middot; Multifamily Executive &middot; KEY: High deliveries in Dallas/Phoenix are Class A luxury. B+/A in these markets does NOT face same supply wave. Submarkets without new Class A lease-ups face less B+/A pressure.</div>
+      <div class="cw"><canvas id="deliveriesChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="cd">
+    <div class="ct" style="margin-bottom:4px">B+/A Vacancy &amp; Supply Clearing Timeline by Market</div>
+    <div style="font-size:11px;color:var(--di);margin-bottom:14px;">B+/A vacancy is structurally lower than blended market data. Class A absorbs the new supply wave. B+/A clears faster. Freddie Mac/Fannie Mae: Houston B+/A flips to deficit by 2026.</div>
+    <div style="overflow-x:auto">
+    <table class="dt">
+      <thead><tr><th>Market</th><th>B+/A Vacancy Q1 2026</th><th>Class A Vacancy (ref)</th><th>New Supply Type 2026</th><th>B+/A Clearing</th><th>B+/A Vacancy 2027E</th><th>GSE Signal (B+/A specific)</th></tr></thead>
+      <tbody>
+        <tr><td>Houston TX</td><td style="color:var(--go)">11.0&ndash;12%</td><td style="color:var(--di)">~12.5% (new A)</td><td>Class A luxury only; B+/A not built</td><td style="color:var(--gr)">H2 2026</td><td style="color:var(--gr)">8&ndash;9%</td><td style="color:var(--gr)">Freddie+Fannie: &minus;5,800 unit deficit 2026</td></tr>
+        <tr><td>San Antonio TX</td><td style="color:var(--go)">11.5&ndash;13%</td><td style="color:var(--di)">~13% (new A)</td><td>Class A garden; limited B+/A</td><td style="color:var(--gr)">H2 2026</td><td style="color:var(--gr)">8&ndash;9%</td><td>TRERC: stable; military B+/A demand floor</td></tr>
+        <tr><td>DFW TX</td><td style="color:var(--rd)">12.0&ndash;12.5% (B class)</td><td style="color:var(--di)">~11.7% (A)</td><td>28,872 units &mdash; predominantly Class A</td><td style="color:var(--go)">Mid-2027</td><td style="color:var(--go)">9&ndash;10%</td><td>Fannie: above-avg job growth; B+/A clears after A</td></tr>
+        <tr><td>Fort Lauderdale FL</td><td style="color:var(--gr)">5.0&ndash;6%</td><td style="color:var(--di)">~7% (new A)</td><td>3,300 units (decade low) &mdash; Class A high-rise</td><td style="color:var(--gr)">Already tight</td><td style="color:var(--gr)">4.5&ndash;5.5%</td><td>Marcus &amp; Millichap: B+/A vacancy 4.9&ndash;5%</td></tr>
+        <tr><td>Charlotte NC</td><td style="color:var(--rd)">10&ndash;12% (B class)</td><td style="color:var(--di)">~11.7% (A)</td><td>12,000+ primarily Class A urban</td><td style="color:var(--go)">H1 2027</td><td style="color:var(--gr)">7&ndash;8%</td><td>Origin: 5.7% B+/A rent growth forecast; A concessions driving B+/A temp. soft</td></tr>
+        <tr><td>Atlanta GA</td><td style="color:var(--go)">7.0&ndash;8% (B class)</td><td style="color:var(--di)">~8.5% (A)</td><td>~15,000 primarily Class A suburban</td><td style="color:var(--go)">H2 2026</td><td style="color:var(--gr)">6&ndash;7%</td><td>M&amp;M: B+/A vacancy 7.6%; positive B+/A rent since Q1 2026</td></tr>
+        <tr><td>Indianapolis IN</td><td style="color:var(--gr)">5.5&ndash;7% (B class)</td><td style="color:var(--di)">~7.5% (A)</td><td>Very limited; no major B+/A or A pipeline</td><td style="color:var(--gr)">Already normalized</td><td style="color:var(--gr)">5&ndash;6%</td><td>NAA: structural B+/A supply shortage</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="src">Sources: Freddie Mac 2025 Multifamily Outlook PDF &middot; Fannie Mae ESR Group Jan 2025 &middot; Cushman &amp; Wakefield Q4 2025 US MF MarketBeat &middot; Yardi Matrix &middot; Marcus &amp; Millichap &middot; Origin Investments &middot; Northmarq</div>
+  </div>
+</div>
+<!-- TAB 5: MARKET RANKINGS - REGION + CLASS SPECIFIC -->
+<div class="tp" id="tab-markets">
+  <p class="sl">Module 8 &mdash; FoxRidge Acquisition Filter</p>
+  <h2 class="sh">Class B+/A by Region &mdash; Why This Class in This Market</h2>
+  <p class="sd">Every recommendation specifies the exact asset class targeted in the exact market. "Houston" is not a recommendation &mdash; <strong>"Class B+/A, 1990&ndash;2012 vintage, suburban workforce housing corridors in Houston"</strong> is a recommendation. Regional B+/A data: cap rates, renter profile, avg rent, vacancy, supply pipeline, and value-add thesis &mdash; all market-specific and class-specific.</p>
+
+  <!-- MARKET 1: HOUSTON B+/A -->
+  <div class="mc">
+    <div class="mch">
+      <span class="mrk">#1 &middot; Priority</span>
+      <span class="mn">Class B+/A in Houston, TX &mdash; Pearland / League City / Baytown / Northwest Corridors</span>
+      <span class="bg bg-go">GO NOW</span>
+    </div>
+    <div class="mb2">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center;">
+        <span style="background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.4);color:var(--go);font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1px;">CLASS B+/A ONLY &mdash; $1,200&ndash;$1,500/mo rents &mdash; 1990&ndash;2015 vintage</span>
+        <span style="background:rgba(120,120,120,0.08);border:1px solid rgba(120,120,120,0.2);color:var(--di);font-size:10px;padding:4px 12px;border-radius:20px;">Class A new construction: $1,600&ndash;$2,200/mo &mdash; NOT targeted</span>
+      </div>
+      <div class="mth">Freddie Mac: Houston B+/A flips from 6,000-unit surplus (2025) to 5,800-unit deficit (2026) &mdash; the only market where a GSE officially projects a net B+/A shortage in the near term. Origin Investments: 4.9% B+/A rent growth forecast (2nd nationally). Northmarq: first vacancy improvement in B+/A since 2021 expected H2 2026, 50-bps decline. Slava Davidenko operational network covers all target submarkets directly.</div>
+      <div class="mmg">
+        <div class="mp"><div class="mk2">B+/A Vacancy (Houston)</div><div class="mv2 a">11.0&ndash;12%</div></div>
+        <div class="mp"><div class="mk2">B+/A Cap Rate</div><div class="mv2 g">6.0&ndash;6.5%</div></div>
+        <div class="mp"><div class="mk2">B+/A Avg Rent (Houston)</div><div class="mv2">$1,250&ndash;$1,500/unit</div></div>
+        <div class="mp"><div class="mk2">B+/A 2026E Rent Growth</div><div class="mv2 g">2.5&ndash;4.9%</div></div>
+        <div class="mp"><div class="mk2">New B+/A Supply 2026</div><div class="mv2 g">Near zero</div></div>
+        <div class="mp"><div class="mk2">Target Price/Unit (B+/A)</div><div class="mv2">$100K&ndash;$140K</div></div>
+      </div>
+
+      <!-- HOUSTON B+/A SPECIFIC DATA TABLE -->
+      <div style="background:var(--s2);border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:12px;font-weight:600;">Houston B+/A vs. Class A &mdash; Side-by-Side (Region-Specific Data)</div>
+        <div style="overflow-x:auto">
+        <table class="dt">
+          <thead><tr><th>Metric</th><th style="color:var(--go)">Class B+/A &mdash; FoxRidge Target</th><th style="color:var(--di)">Class A &mdash; Reference Only</th></tr></thead>
+          <tbody>
+            <tr><td>Avg Asking Rent (Houston)</td><td style="color:var(--go)">$1,250&ndash;$1,500/unit/mo</td><td style="color:var(--di)">$1,600&ndash;$2,200/unit/mo</td></tr>
+            <tr><td>Vacancy Rate (Houston)</td><td style="color:var(--go)">~11.0&ndash;12.0%</td><td style="color:var(--di)">~12.5% (new lease-up higher)</td></tr>
+            <tr><td>Concessions</td><td style="color:var(--go)">4&ndash;6 weeks free rent (declining)</td><td style="color:var(--di)">8&ndash;12 weeks free rent (Class A new lease-up)</td></tr>
+            <tr><td>Cap Rate</td><td style="color:var(--go)">6.0&ndash;6.5%</td><td style="color:var(--di)">~5.3% (competes with agency debt)</td></tr>
+            <tr><td>Day-1 Leverage (6.0% debt)</td><td style="color:var(--go)">Neutral to slight positive</td><td style="color:var(--di)">Deeply negative</td></tr>
+            <tr><td>New Supply Competing 2026</td><td style="color:var(--go)">Near zero (no new B+/A construction)</td><td style="color:var(--di)">11,000 units (all Class A)</td></tr>
+            <tr><td>Renter Profile</td><td style="color:var(--go)">Energy sector, healthcare (TMC), logistics, trades (80&ndash;120% AMI)</td><td style="color:var(--di)">Young professionals, tech, finance (140%+ AMI)</td></tr>
+            <tr><td>Renter-by-Necessity</td><td style="color:var(--go)">YES &mdash; cannot afford to buy in Houston</td><td style="color:var(--di)">Renters by choice &mdash; higher turnover</td></tr>
+            <tr><td>Freddie Mac 2026 Signal</td><td style="color:var(--go)">B+/A: deficit &minus;5,800 units</td><td style="color:var(--di)">A: clearing excess gradually</td></tr>
+            <tr><td>LP IRR (Base / Bull / Bear)</td><td style="color:var(--go)">16% / 20% / 11.5%</td><td style="color:var(--di)">10% / 14% / 7% (negative leverage drag)</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="d2">
+        <div class="db"><h4>Why B+/A in Houston Specifically</h4><ul>
+          <li class="pro">Texas Medical Center (Houston): 60,000+ employees &mdash; nurses, techs, admins earning $50K&ndash;$90K &mdash; perfect B+/A renter profile</li>
+          <li class="pro">Port of Houston logistics workforce: 1.35M direct+indirect jobs; steady demand for workforce housing in Baytown/East corridors</li>
+          <li class="pro">Energy sector (mid/downstream): Well-paid but not wealthy enough for Class A rents; ideal B+/A occupants</li>
+          <li class="pro">Zero new B+/A construction competing: ALL 11,000 2026 deliveries are Class A luxury &mdash; B+/A stock is not being added to</li>
+          <li class="pro">Freddie Mac explicitly models B+/A Houston deficit in 2026 &mdash; no other city gets this signal</li>
+          <li class="pro">B+/A cap rates 6.0&ndash;6.5%: 130&ndash;150 bps above Class A comps &mdash; structural yield advantage</li>
+        </ul></div>
+        <div class="db"><h4>Houston B+/A Risks</h4><ul>
+          <li class="con">Class A concessions (8&ndash;12 weeks free) temporarily draw B+/A renters "up" to Class A &mdash; short-term B+/A softness expected through H1 2026</li>
+          <li class="con">B+/A vacancy still 11&ndash;12%: underwrite Year 1 at 12%, not at Northmarq's stabilized 7&ndash;8% projection</li>
+          <li class="warn">Texas property tax reassessment post-sale: always model 2.0&ndash;2.5% of purchase price annually, never T-12 taxes</li>
+          <li class="warn">WTI crude below $55 for 6+ months would pressure energy sector B+/A renter employment base</li>
+          <li class="con">Immigration enforcement: some B+/A workforce housing submarkets have undocumented worker renter exposure; quantify before closing</li>
+        </ul></div>
+      </div>
+      <div class="ub">
+        <div class="ut">Houston B+/A Underwriting &mdash; Class Specific</div>
+        <div class="ug">
+          <div class="ui"><div class="uk">Asset Class</div><div class="uv">Class B+/A &mdash; 1992&ndash;2015 vintage</div></div>
+          <div class="ui"><div class="uk">Target Rent Range</div><div class="uv">$1,200&ndash;$1,500/unit/mo</div></div>
+          <div class="ui"><div class="uk">Year 1 B+/A Vacancy</div><div class="uv">12&ndash;13%</div></div>
+          <div class="ui"><div class="uk">Stabilized B+/A Vacancy</div><div class="uv">7&ndash;8% (H2 2027)</div></div>
+          <div class="ui"><div class="uk">Entry Cap (trailing NOI)</div><div class="uv">6.5&ndash;7.0%</div></div>
+          <div class="ui"><div class="uk">Exit Cap (Yr 5)</div><div class="uv">5.25&ndash;5.75%</div></div>
+          <div class="ui"><div class="uk">Year 1 Rent Growth (B+/A)</div><div class="uv">0% conservative</div></div>
+          <div class="ui"><div class="uk">Year 2&ndash;5 Rent Growth (B+/A)</div><div class="uv">2.5&ndash;4.0%</div></div>
+          <div class="ui"><div class="uk">Target Price/Unit</div><div class="uv">$100K&ndash;$140K</div></div>
+          <div class="ui"><div class="uk">Agency Debt Rate</div><div class="uv">6.0&ndash;6.25% (B+/A stabilized)</div></div>
+          <div class="ui"><div class="uk">LP IRR (Base/Bull/Bear)</div><div class="uv">16% / 20% / 11.5%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKET 2: SOUTH FLORIDA B+/A -->
+  <div class="mc">
+    <div class="mch">
+      <span class="mrk">#2 &middot; Priority</span>
+      <span class="mn">Class B+/A in South Florida &mdash; Broward County &amp; Palm Beach County (NOT Miami-Dade)</span>
+      <span class="bg bg-go">GO NOW</span>
+    </div>
+    <div class="mb2">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center;">
+        <span style="background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.4);color:var(--go);font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1px;">CLASS B+/A ONLY &mdash; $1,800&ndash;$2,400/mo rents &mdash; 2000&ndash;2018 vintage</span>
+        <span style="background:rgba(241,81,74,0.08);border:1px solid rgba(241,81,74,0.2);color:var(--rd);font-size:10px;padding:4px 12px;border-radius:20px;">Miami-Dade B+/A cap: 4.5&ndash;5.0% &mdash; negative leverage, NOT targeted</span>
+      </div>
+      <div class="mth">Fort Lauderdale B+/A vacancy projected at 4.9% in 2026 (Marcus &amp; Millichap) &mdash; already among the tightest B+/A markets nationally. Deliveries in 2026: only 3,300 units (decade low), all Class A high-rise. Zero new B+/A construction. Average B+/A effective rent: $2,100&ndash;$2,400/month. Insurance market pivoting: Citizens &minus;8.7%, 17 new carriers. Mike Pritsker's operational base is already in place. This is a tight B+/A market, not a recovery market &mdash; you're buying into structural scarcity.</div>
+      <div class="mmg">
+        <div class="mp"><div class="mk2">Broward B+/A Vacancy</div><div class="mv2 g">5.0&ndash;6.5%</div></div>
+        <div class="mp"><div class="mk2">WPB B+/A Vacancy</div><div class="mv2 g">5.5&ndash;7%</div></div>
+        <div class="mp"><div class="mk2">B+/A Avg Rent (Broward)</div><div class="mv2 g">$1,900&ndash;$2,350/unit</div></div>
+        <div class="mp"><div class="mk2">B+/A Cap Rate</div><div class="mv2 a">5.25&ndash;5.75%</div></div>
+        <div class="mp"><div class="mk2">2026 FLL B+/A Deliveries</div><div class="mv2 g">Near zero (3,300 total = all Class A)</div></div>
+        <div class="mp"><div class="mk2">Insurance/Unit/Year (B+/A)</div><div class="mv2 a">$1,400&ndash;$1,800</div></div>
+      </div>
+      <div style="background:var(--s2);border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:12px;font-weight:600;">South Florida B+/A by County &mdash; Region-Specific Class Breakdown</div>
+        <div style="overflow-x:auto">
+        <table class="dt">
+          <thead><tr><th>County / Submarket</th><th>B+/A Vacancy</th><th>B+/A Avg Rent</th><th>B+/A Cap Rate</th><th>B+/A Renter Profile</th><th>FoxRidge Recommendation</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--rd)">Miami-Dade</td><td>~7% (absorbing new supply)</td><td>$2,200&ndash;$2,800</td><td style="color:var(--rd)">4.5&ndash;5.0%</td><td>International renter, professional services</td><td style="color:var(--rd)">NOT targeted (negative leverage; immigration risk)</td></tr>
+            <tr><td style="color:var(--go)">Broward County (Fort Lauderdale)</td><td style="color:var(--gr)">5.0&ndash;6.0% (tight)</td><td style="color:var(--go)">$1,950&ndash;$2,350</td><td style="color:var(--go)">5.25&ndash;5.75%</td><td>Healthcare (Broward Health, Cleveland Clinic), financial services, professional services, 28&ndash;45 age cohort</td><td style="color:var(--go)">PRIMARY TARGET &mdash; Mike in market</td></tr>
+            <tr><td style="color:var(--go)">Palm Beach County (West Palm)</td><td style="color:var(--go)">5.5&ndash;7% (various)</td><td style="color:var(--go)">$1,900&ndash;$2,400</td><td style="color:var(--go)">5.0&ndash;5.5%</td><td>Finance (relocating NYC), healthcare, tech, professional services; less immigration exposure than Miami-Dade</td><td style="color:var(--go)">PRIMARY TARGET &mdash; Mike network applicable</td></tr>
+            <tr><td style="color:var(--mu)">Port St. Lucie</td><td>~6&ndash;8%</td><td>$1,500&ndash;$1,800</td><td>5.5&ndash;6.0%</td><td>Healthcare, retiree-adjacent service, logistics</td><td style="color:var(--mu)">Secondary consideration only</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ub">
+        <div class="ut">South Florida B+/A Underwriting &mdash; Class &amp; County Specific</div>
+        <div class="ug">
+          <div class="ui"><div class="uk">Asset Class</div><div class="uv">Class B+/A &mdash; 2000&ndash;2018 vintage</div></div>
+          <div class="ui"><div class="uk">Target Rent Range</div><div class="uv">$1,900&ndash;$2,350/unit/mo</div></div>
+          <div class="ui"><div class="uk">Year 1 B+/A Vacancy</div><div class="uv">6&ndash;8%</div></div>
+          <div class="ui"><div class="uk">Entry Cap Rate</div><div class="uv">5.25&ndash;5.75%</div></div>
+          <div class="ui"><div class="uk">Exit Cap Rate</div><div class="uv">4.75&ndash;5.25%</div></div>
+          <div class="ui"><div class="uk">Insurance (B+/A/unit/yr)</div><div class="uv">$1,400&ndash;$1,800 (stress test $2,200)</div></div>
+          <div class="ui"><div class="uk">Target Price/Unit</div><div class="uv">$160K&ndash;$220K</div></div>
+          <div class="ui"><div class="uk">LP IRR Base</div><div class="uv">15&ndash;17%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKET 3: SAN ANTONIO B+/A -->
+  <div class="mc">
+    <div class="mch">
+      <span class="mrk">#3 &middot; Priority</span>
+      <span class="mn">Class B+/A in San Antonio, TX &mdash; Northeast / Converse / Stone Oak / New Braunfels</span>
+      <span class="bg bg-go">GO NOW</span>
+    </div>
+    <div class="mb2">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center;">
+        <span style="background:rgba(240,165,0,0.15);border:1px solid rgba(240,165,0,0.4);color:var(--go);font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1px;">CLASS B+/A ONLY &mdash; $1,100&ndash;$1,400/mo rents &mdash; 1995&ndash;2015 vintage</span>
+        <span style="background:rgba(120,120,120,0.08);border:1px solid rgba(120,120,120,0.2);color:var(--di);font-size:10px;padding:4px 12px;border-radius:20px;">Class A downtown SA: $1,500&ndash;$1,900/mo &mdash; NOT targeted</span>
+      </div>
+      <div class="mth">San Antonio B+/A is anchored by the most AI-resistant and recession-resistant employer in any FoxRidge market: JBSA, the world's largest joint military installation, with 76,000+ active/civilian personnel and a $250B+ regional economic footprint. B+/A renters here are military families, NCOs, federal civilian employees, and healthcare workers at the nation's largest military medical system. This renter base does NOT get laid off in recessions, does NOT get replaced by AI, and does NOT leave the market. Slava has direct deal flow in the Converse/NE submarket from Waterford Park underwriting.</div>
+      <div class="mmg">
+        <div class="mp"><div class="mk2">SA B+/A Vacancy (NE)</div><div class="mv2 a">12&ndash;14% (Converse-specific)</div></div>
+        <div class="mp"><div class="mk2">SA B+/A Cap Rate</div><div class="mv2 g">6.0&ndash;6.5%</div></div>
+        <div class="mp"><div class="mk2">B+/A Avg Rent (SA)</div><div class="mv2">$1,100&ndash;$1,400/unit/mo</div></div>
+        <div class="mp"><div class="mk2">B+/A 2026E Rent Growth</div><div class="mv2 g">1.0&ndash;2.5%</div></div>
+        <div class="mp"><div class="mk2">New B+/A Supply 2026</div><div class="mv2 g">Near zero</div></div>
+        <div class="mp"><div class="mk2">Target Price/Unit</div><div class="mv2">$70K&ndash;$100K</div></div>
+      </div>
+      <div style="background:var(--s2);border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:12px;font-weight:600;">San Antonio B+/A Submarket Breakdown &mdash; Region-Specific</div>
+        <div style="overflow-x:auto">
+        <table class="dt">
+          <thead><tr><th>Submarket</th><th>B+/A Vacancy</th><th>B+/A Avg Rent</th><th>Primary B+/A Renter Base</th><th>New Supply Risk</th><th>FoxRidge Priority</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--go)">Converse / NE San Antonio</td><td style="color:var(--go)">13&ndash;16% (clearing)</td><td>$1,100&ndash;$1,300</td><td>JBSA enlisted/NCO, Fort Sam Houston civilian, logistics workers</td><td style="color:var(--gr)">None &mdash; no new B+/A being built</td><td style="color:var(--go)">TOP PRIORITY &mdash; active Slava deal flow</td></tr>
+            <tr><td style="color:var(--go)">Stone Oak / North SA</td><td style="color:var(--go)">9&ndash;11%</td><td>$1,250&ndash;$1,500</td><td>Healthcare (Methodist, Baptist, Christus), professionals, upwardly mobile</td><td style="color:var(--go)">Minimal</td><td style="color:var(--go)">HIGH PRIORITY &mdash; better demographics</td></tr>
+            <tr><td style="color:var(--mu)">New Braunfels</td><td>~8&ndash;10%</td><td>$1,300&ndash;$1,600</td><td>SA spillover, Austin spillover, manufacturing (Tesla-adjacent logistics)</td><td style="color:var(--go)">Low</td><td style="color:var(--mu)">Monitor &mdash; smaller deal sizes</td></tr>
+            <tr><td style="color:var(--rd)">Downtown SA (Class A)</td><td style="color:var(--rd)">~14%</td><td>$1,500&ndash;$1,900</td><td>Young professionals, hospitality</td><td style="color:var(--rd)">Moderate (Class A new builds)</td><td style="color:var(--rd)">NOT targeted</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ub">
+        <div class="ut">San Antonio B+/A Underwriting &mdash; Submarket Specific</div>
+        <div class="ug">
+          <div class="ui"><div class="uk">Asset Class</div><div class="uv">Class B+/A &mdash; 1995&ndash;2015 vintage</div></div>
+          <div class="ui"><div class="uk">Target Rent Range</div><div class="uv">$1,100&ndash;$1,400/unit/mo</div></div>
+          <div class="ui"><div class="uk">Year 1 Vacancy (Converse)</div><div class="uv">13&ndash;16%</div></div>
+          <div class="ui"><div class="uk">Stabilized Vacancy</div><div class="uv">8&ndash;10% by Y3</div></div>
+          <div class="ui"><div class="uk">Entry Cap Target</div><div class="uv">6.5&ndash;7.0%</div></div>
+          <div class="ui"><div class="uk">Exit Cap Rate</div><div class="uv">5.5&ndash;6.0%</div></div>
+          <div class="ui"><div class="uk">Target Price/Unit</div><div class="uv">$70K&ndash;$100K</div></div>
+          <div class="ui"><div class="uk">LP IRR Base</div><div class="uv">15&ndash;17%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETS 4-5: GO SOON -->
+  <div class="g2" style="margin-bottom:16px">
+    <div class="mc" style="margin-bottom:0">
+      <div class="mch"><span class="mrk">#4</span><span class="mn">Class B+/A in Charlotte, NC &mdash; South/SW Charlotte &amp; Concord Corridor</span><span class="bg bg-sn">GO SOON</span></div>
+      <div class="mb2">
+        <div style="font-size:10px;font-weight:700;color:var(--go);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">B+/A Target: 2000&ndash;2018 vintage &middot; $1,300&ndash;$1,700/mo &middot; cap 5.75&ndash;6.25%</div>
+        <div class="mth">Charlotte B+/A is the highest rent-growth forecast of any FoxRidge market (Origin Investments: 5.7% for 2026&ndash;27) because B+/A supply is near zero while 40,000+ corporate jobs are anchoring demand. Bank of America HQ, Truist, Wells Fargo Southeast hub, Atrium Health system &mdash; all employ the 80&ndash;120% AMI workforce that rents B+/A. The current blood-in-the-streets concession environment is Class A lease-up pressure, not B+/A structural weakness.</div>
+        <div class="mmg">
+          <div class="mp"><div class="mk2">Charlotte B+/A Vacancy</div><div class="mv2 a">10&ndash;12%</div></div>
+          <div class="mp"><div class="mk2">B+/A Cap Rate</div><div class="mv2 g">5.75&ndash;6.25%</div></div>
+          <div class="mp"><div class="mk2">B+/A Avg Rent</div><div class="mv2">$1,350&ndash;$1,700/mo</div></div>
+          <div class="mp"><div class="mk2">B+/A Renter Profile</div><div class="mv2">Banking, healthcare (Atrium), logistics, trades</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;padding:10px 12px;background:var(--s2);border-radius:6px;">
+          <strong style="color:var(--tx);">Action before buying:</strong> Build PM network in Charlotte (FoxRidge has no operational presence). Target South Charlotte (Cabarrus County, Steele Creek, Ballantyne) where corporate employer proximity drives B+/A demand. Avoid downtown urban Class A submarkets where concession pressure is concentrated.
+        </div>
+      </div>
+    </div>
+    <div class="mc" style="margin-bottom:0">
+      <div class="mch"><span class="mrk">#5</span><span class="mn">Class B+/A in Atlanta, GA &mdash; Gwinnett / Cherokee / Forsyth Counties</span><span class="bg bg-sn">GO SOON</span></div>
+      <div class="mb2">
+        <div style="font-size:10px;font-weight:700;color:var(--go);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">B+/A Target: 1998&ndash;2016 vintage &middot; $1,200&ndash;$1,600/mo &middot; cap 5.75&ndash;6.25%</div>
+        <div class="mth">Atlanta B+/A vacancy improving to 7.6% in 2026 (Marcus &amp; Millichap). First positive B+/A rent growth since 2022. Northern suburban corridor specifically &mdash; NOT Intown Atlanta (Class A oversupply) &mdash; serves the 80&ndash;120% AMI workforce: healthcare (Northside, WellStar, Emory), logistics (Hartsfield distribution), tech support, corporate satellite workers. Demand proven: Atlanta absorbed 2025 supply wave at 7.4% of stock &mdash; 2nd nationally.</div>
+        <div class="mmg">
+          <div class="mp"><div class="mk2">Atlanta B+/A Vacancy</div><div class="mv2 g">7.0&ndash;8%</div></div>
+          <div class="mp"><div class="mk2">B+/A Cap Rate</div><div class="mv2 go">5.75&ndash;6.25%</div></div>
+          <div class="mp"><div class="mk2">B+/A Avg Rent</div><div class="mv2">$1,250&ndash;$1,600/mo</div></div>
+          <div class="mp"><div class="mk2">B+/A Renter Profile</div><div class="mv2">Healthcare, logistics, tech support, corporate satellite</div></div>
+        </div>
+        <div style="font-size:12px;color:var(--mu);line-height:1.7;padding:10px 12px;background:var(--s2);border-radius:6px;">
+          <strong style="color:var(--tx);">Submarket priority:</strong> Gwinnett County B+/A (tight supply, strong employment), Cherokee County (growing but limited B+/A), Forsyth (premium-priced B+/A). AVOID Intown Atlanta, Midtown, Buckhead (Class A oversupply, wrong class).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WATCH MARKETS -->
+  <div class="cd" style="margin-bottom:16px">
+    <div class="ct" style="margin-bottom:14px">WATCH Markets &mdash; B+/A Specific Conditions</div>
+    <table class="dt">
+      <thead><tr><th>Market</th><th>Verdict</th><th>B+/A Vacancy</th><th>B+/A Cap Rate</th><th>B+/A Rent Range</th><th>B+/A Renter Profile</th><th>Why WATCH Not GO</th><th>B+/A Trigger to Act</th></tr></thead>
+      <tbody>
+        <tr><td>DFW TX (Frisco/McKinney)</td><td><span class="bg bg-wt">WATCH</span></td><td style="color:var(--rd)">12.0&ndash;12.5% (B class)</td><td>5.5&ndash;6.0%</td><td>$1,350&ndash;$1,600/mo</td><td>Corporate HQ workers, financial services, healthcare (Medical City), logistics</td><td>28,872 ALL-CLASS units delivering 2026; B class also softening from Class A concession pull. Class A has lower vacancy than Class B in DFW right now &mdash; rare reversal.</td><td>B+/A vacancy below 11% AND Class A concessions burning off. Revisit Q4 2026.</td></tr>
+        <tr><td>Indianapolis IN</td><td><span class="bg bg-wt">WATCH</span></td><td style="color:var(--gr)">5.5&ndash;7%</td><td style="color:var(--gr)">6.0&ndash;6.5%</td><td>$1,100&ndash;$1,400/mo</td><td>Eli Lilly (pharma), healthcare (IU Health, Ascension), logistics (FedEx/UPS hubs), manufacturing</td><td>No FoxRidge operational network. PM partner required before entering. Rent base lower = requires more leverage to hit 15% IRR target at $25M+ deal size.</td><td>Identify qualified PM partner + build broker relationships. 2027 acquisition target.</td></tr>
+        <tr><td>Columbus OH</td><td><span class="bg bg-wt">WATCH</span></td><td style="color:var(--go)">8&ndash;9%</td><td style="color:var(--go)">5.8&ndash;6.2%</td><td>$1,150&ndash;$1,500/mo</td><td>Intel fab workers, Ohio State medical system, logistics, government, financial services</td><td>No operational network. B+/A rents still 22% below national average &mdash; strong upside but requires patience. Construction starts at 2014 lows &mdash; timing is right for 2027.</td><td>PM network established + B+/A vacancy below 8%. 2027 entry.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AVOID TABLE -->
+  <div class="cd">
+    <div class="ct" style="margin-bottom:4px">AVOID Markets &mdash; Class B+/A Specific Analysis</div>
+    <div style="font-size:11px;color:var(--di);margin-bottom:14px;">Even in markets we avoid, the analysis is class-specific. The B+/A story is less terrible than Class A in these markets &mdash; but still doesn&apos;t work for FoxRidge&apos;s 15% LP IRR target at current pricing.</div>
+    <table class="dt">
+      <thead><tr><th>Market</th><th>B+/A Vacancy</th><th>B+/A Cap Rate</th><th>Why B+/A STILL Doesn&apos;t Work</th><th>Revisit When</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--rd)">Austin TX</td><td style="color:var(--rd)">14&ndash;16% (B class)</td><td>5.5%</td><td>B+/A also hit by Class A concession pull (Class A offering 3+ months free rent near same rent level as B+/A in some Austin submarkets). Class A concessions have collapsed the historical rent gap between A and B+/A in Austin. B+/A rents down ~4&ndash;5% YoY. Entry cap doesn&apos;t work for 15% LP IRR. High permit activity still ongoing.</td><td>2027&ndash;2028; only if B+/A vacancy below 11% AND Class A concessions substantially burned off</td></tr>
+        <tr><td style="color:var(--rd)">Phoenix AZ</td><td style="color:var(--rd)">12&ndash;14% (B class)</td><td>5.5%</td><td>19,911 Class A units delivering; some B+/A concession bleed. Long-term water scarcity systemic risk. B+/A cap rates not wide enough to compensate for leverage deficit. Yardi 2026 B+/A: &minus;0.1% rent growth.</td><td>2027; water scarcity risk permanently caps conviction level for 5-year hold</td></tr>
+        <tr><td style="color:var(--rd)">Tampa FL</td><td style="color:var(--rd)">10&ndash;12% (B class)</td><td>5.5%</td><td>B+/A being undercut by Class A lease-up concessions (similar rent levels). Yardi: &minus;2.6% market rent. Gulf Coast hurricane exposure higher than Broward. Insurance at Broward-equivalent cost but less market tightness to justify the risk.</td><td>2027; monitor B+/A vacancy below 9% before reentry</td></tr>
+        <tr><td style="color:var(--rd)">Nashville TN</td><td style="color:var(--rd)">11&ndash;13% (B+/A)</td><td>5.5&ndash;5.75%</td><td>4&ndash;5% more stock arriving 2026&ndash;27. B+/A not yet differentiated from Class A pressure. Entry cap too compressed for 15% LP IRR at current asking prices. Would need 6.0%+ cap to work.</td><td>2027 if B+/A selling at 6.0%+ cap; otherwise pass</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- TAB 6: SCENARIOS -->
+<div class="tp" id="tab-scenarios">
+  <p class="sl">Module 8 &mdash; Scenario Analysis</p>
+  <h2 class="sh">Base / Positive / Negative Scenarios</h2>
+  <p class="sd">Three-scenario underwriting framework for FoxRidge acquisitions. Use base case in seller negotiations as the documented reference point. Use bull case for LP presentations (upside). Use bear case to stress-test minimum acceptable returns. All scenarios assume $30M acquisition, 200 units ($150K/unit), 65% LTV agency debt at 6.0%, 5-year hold.</p>
+  <div class="g3" style="margin-bottom:24px">
+    <div class="cd ab"><div class="cl">Base Scenario</div><div class="cv sm">Conservative Recovery</div><div class="cs" style="margin-top:8px">Y1: 0% rent, 12% vacancy. Y2&ndash;3: 3% rent. Y4&ndash;5: 3.5% rent. Stabilized vacancy: 8%. Exit cap: 5.5%. Agency debt: 6.0%. <strong>LP IRR: ~15&ndash;16%.</strong></div></div>
+    <div class="cd agr"><div class="cl">Bull Scenario</div><div class="cv sm">Supply Trough Accelerates</div><div class="cs" style="margin-top:8px">Y1: 1% rent, 11% vacancy. Y2&ndash;3: 4&ndash;5% rent. Y4&ndash;5: 4.5&ndash;5% rent. Stabilized vacancy: 7%. Exit cap: 5.25%. Agency debt: 5.75%. <strong>LP IRR: ~19&ndash;21%.</strong></div></div>
+    <div class="cd ar"><div class="cl">Bear Scenario</div><div class="cv sm">Extended Softness</div><div class="cs" style="margin-top:8px">Y1: &minus;1% rent, 14% vacancy. Y2&ndash;3: 1&ndash;1.5% rent. Y4&ndash;5: 2% rent. Stabilized vacancy: 10%. Exit cap: 6.0%. Agency debt: 6.5%. <strong>LP IRR: ~11&ndash;12%.</strong></div></div>
+  </div>
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">LP IRR by Market &amp; Scenario &mdash; 5-Year Hold</div>
+      <div class="cbs">FoxRidge internal underwriting model &middot; $30M acquisition, 65% LTV, 6.0% agency debt, 200 units &middot; Inputs backed by Freddie Mac, Yardi, Origin Investments, Northmarq, Dallas Fed &middot; April 2026</div>
+      <div class="cw tl"><canvas id="irrScenarioChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">Rent Growth Trajectory by Scenario &mdash; Houston TX Benchmark</div>
+      <div class="cbs">FoxRidge assumptions &middot; Freddie Mac LT avg 2.8% shown as reference &middot; Origin Investments: 4.9% Houston 2026&ndash;27 &middot; Northmarq Q4 2025 historical avg 3.1% (2024)</div>
+      <div class="cw tl"><canvas id="rentScenarioChart"></canvas></div>
+    </div>
+  </div>
+  <div class="cd" style="margin-bottom:24px">
+    <div class="ct" style="margin-bottom:16px">Full Scenario Assumptions &mdash; Houston TX Representative Deal: $30M, 200 Units</div>
+    <div class="sc-wrap">
+    <table class="sc">
+      <thead><tr><th>Metric</th><th><span class="sl2 lb">BASE</span></th><th><span class="sl2 lu">BULL</span></th><th><span class="sl2 lr">BEAR</span></th><th>Data Source &amp; Rationale</th></tr></thead>
+      <tbody>
+        <tr class="bs"><td class="me">Year 1 Rent Growth</td><td class="nm">0.0%</td><td></td><td></td><td rowspan="3">Yardi Feb 2026: Houston &minus;0.3% YoY still declining. Northmarq: stabilizing. Bull = early bounce; Bear = continued drag from remaining concessions.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">+1.0%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">&minus;1.0%</td></tr>
+        <tr class="bs"><td class="me">Year 2 Rent Growth</td><td class="nm">+3.0%</td><td></td><td></td><td rowspan="3">Origin Investments Multilytics: 4.9% Houston 2026&ndash;27. Base = conservative mid. Freddie Mac LT avg = 2.8%.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">+4.5%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">+1.0%</td></tr>
+        <tr class="bs"><td class="me">Year 3 Rent Growth</td><td class="nm">+3.0%</td><td></td><td></td><td rowspan="3">Northmarq historical Houston avg: 3.1% in 2024. Bull: supply deficit fully materializing per Freddie Mac 2026 forecast.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">+5.0%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">+1.5%</td></tr>
+        <tr class="bs"><td class="me">Years 4&ndash;5 Avg Growth</td><td class="nm">+3.5%</td><td></td><td></td><td rowspan="3">Freddie Mac LT avg 2.8%. Bull: sustained recovery. Bear: modest recovery only with some economic weakness persisting.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">+4.5%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">+2.0%</td></tr>
+        <tr class="bs"><td class="me">Year 1 Vacancy Rate</td><td class="nm">12.0%</td><td></td><td></td><td rowspan="3">Northmarq Q3 2025: Houston 11.6%. Bear = stressed Converse submarket where vacancy known to be 16%.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">11.0%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">14.0%</td></tr>
+        <tr class="bs"><td class="me">Stabilized Vacancy (Y3+)</td><td class="nm">8.0%</td><td></td><td></td><td rowspan="3">Freddie Mac: Houston 5,800-unit deficit 2026 supports 7&ndash;8% stabilized. Bear: slower clearing timeline.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">7.0%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">10.0%</td></tr>
+        <tr class="bs"><td class="me">Exit Cap Rate (Year 5)</td><td class="nm">5.50%</td><td></td><td></td><td rowspan="3">Northmarq: Houston cap rates compressing toward mid-5% by end 2026. Fannie Mae: cap compression 5.0&ndash;5.5% expected. Bear: no compression, rates stay high.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">5.25%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">6.00%</td></tr>
+        <tr class="bs"><td class="me">Agency Debt Rate</td><td class="nm">6.00%</td><td></td><td></td><td rowspan="3">CME FedWatch: 83% hold probability at May. Fannie Mae ESR: rates 5.9% end 2026. Bear: Iran war scenario keeps rates elevated.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">5.75%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">6.50%</td></tr>
+        <tr class="bs"><td class="me"><strong>LP IRR (5-Year Hold)</strong></td><td class="nm" style="font-size:16px;font-weight:700">~15.5%</td><td></td><td></td><td rowspan="3">FoxRidge internal model. $30M deal, 200 units, $1,400 avg rent, 65% LTV. LP equity ~$11.5M.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm" style="font-size:16px;font-weight:700">~20.0%</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm" style="font-size:16px;font-weight:700">~11.5%</td></tr>
+        <tr class="bs"><td class="me">LP Equity Multiple</td><td class="nm">1.85x</td><td></td><td></td><td rowspan="3">FoxRidge target: 1.9&ndash;2.1x. Base meets floor. Bull exceeds target. Bear at floor &mdash; 11.5% IRR minimum threshold for proceed.</td></tr>
+        <tr class="bu"><td class="me"></td><td></td><td class="nm">2.35x</td><td></td></tr>
+        <tr class="br"><td class="me"></td><td></td><td></td><td class="nm">1.55x</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="cd">
+    <div class="ct" style="margin-bottom:16px">Scenario IRR Summary &mdash; All GO NOW / GO SOON Markets</div>
+    <div style="overflow-x:auto">
+    <table class="dt">
+      <thead><tr><th>Market</th><th>Entry Basis</th><th>Bear IRR</th><th>Base IRR</th><th>Bull IRR</th><th>Min Acceptable</th><th>FoxRidge Verdict</th></tr></thead>
+      <tbody>
+        <tr><td>Houston TX</td><td>$120K/unit</td><td style="color:var(--rd)">11&ndash;12%</td><td style="color:var(--go)">15&ndash;17%</td><td style="color:var(--gr)">19&ndash;22%</td><td>12% (floor)</td><td style="color:var(--gr)">&#10003; Base exceeds target</td></tr>
+        <tr><td>Broward FL</td><td>$185K/unit</td><td style="color:var(--rd)">10&ndash;12%</td><td style="color:var(--go)">15&ndash;17%</td><td style="color:var(--gr)">18&ndash;21%</td><td>12% (floor)</td><td style="color:var(--gr)">&#10003; Premium rents support math</td></tr>
+        <tr><td>San Antonio TX</td><td>$85K/unit</td><td style="color:var(--rd)">11&ndash;13%</td><td style="color:var(--go)">15&ndash;17%</td><td style="color:var(--gr)">18&ndash;20%</td><td>12% (floor)</td><td style="color:var(--gr)">&#10003; Military demand floor protects bear</td></tr>
+        <tr><td>Charlotte NC</td><td>$140K/unit</td><td style="color:var(--rd)">10&ndash;12%</td><td style="color:var(--go)">14&ndash;16%</td><td style="color:var(--gr)">19&ndash;22%</td><td>12% (floor)</td><td style="color:var(--go)">&#9888; PM network required first</td></tr>
+        <tr><td>Atlanta GA</td><td>$130K/unit</td><td style="color:var(--rd)">9&ndash;11%</td><td style="color:var(--go)">13&ndash;15%</td><td style="color:var(--gr)">16&ndash;19%</td><td>12% (floor)</td><td style="color:var(--go)">&#9888; Bear scenario below floor</td></tr>
+        <tr><td>DFW TX (2027E)</td><td>$145K/unit</td><td style="color:var(--rd)">8&ndash;10%</td><td style="color:var(--rd)">11&ndash;13%</td><td style="color:var(--go)">14&ndash;17%</td><td>12% (floor)</td><td style="color:var(--rd)">&#10007; Wait for supply clearing; base below target</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="src">All IRR projections: FoxRidge internal underwriting model. Inputs backed by Freddie Mac, Yardi Matrix, Origin Investments, Marcus &amp; Millichap, Northmarq, Dallas Federal Reserve. Not investment advice &mdash; for internal analysis only. Past performance does not guarantee future results.</div>
+  </div>
+</div>
+
+<!-- TAB 7: RENOVATION & COST - ENHANCED -->
+<div class="tp" id="tab-reno">
+  <p class="sl">Module &mdash; B+/A Value-Add Renovation ROI</p>
+  <h2 class="sh">Renovation Economics &mdash; Cap Value Add &amp; ROI Calculator</h2>
+  <p class="sd">Every renovation scope shows: cost (2026 tariff-adjusted), monthly rent premium, payback period, annual NOI increase, <strong>Cap Value Add per unit</strong> (how much property value each dollar of rent premium creates at your assumed exit cap rate), and <strong>ROI on renovation investment</strong>. Adjust the inputs below to model your specific deal assumptions.</p>
+
+  <!-- INTERACTIVE ASSUMPTIONS -->
+  <div style="background:var(--s2);border:1px solid var(--b2);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--go);margin-bottom:16px;font-weight:600;">Model Inputs &mdash; Adjust for Your Deal (All Tables Update Automatically)</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+      <div>
+        <label style="font-size:11px;color:var(--mu);display:block;margin-bottom:6px;">Exit Cap Rate (%)</label>
+        <input type="range" id="capRateInput" min="4.5" max="7.5" step="0.25" value="5.5" style="width:100%;margin-bottom:4px;">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--di);"><span>4.5%</span><span id="capRateDisplay" style="color:var(--go);font-weight:600;">5.50%</span><span>7.5%</span></div>
+      </div>
+      <div>
+        <label style="font-size:11px;color:var(--mu);display:block;margin-bottom:6px;">Stabilized Vacancy (%)</label>
+        <input type="range" id="vacancyInput" min="4" max="14" step="0.5" value="8" style="width:100%;margin-bottom:4px;">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--di);"><span>4%</span><span id="vacancyDisplay" style="color:var(--go);font-weight:600;">8.0%</span><span>14%</span></div>
+      </div>
+      <div>
+        <label style="font-size:11px;color:var(--mu);display:block;margin-bottom:6px;">Expense Ratio (%)</label>
+        <input type="range" id="expenseInput" min="30" max="55" step="1" value="42" style="width:100%;margin-bottom:4px;">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--di);"><span>30%</span><span id="expenseDisplay" style="color:var(--go);font-weight:600;">42%</span><span>55%</span></div>
+      </div>
+      <div>
+        <label style="font-size:11px;color:var(--mu);display:block;margin-bottom:6px;">Market Context</label>
+        <select id="marketSelect" style="width:100%;padding:8px;background:var(--bg);border:1px solid var(--b2);color:var(--tx);border-radius:6px;font-size:13px;">
+          <option value="houston">Houston TX (B+/A: $1,400 avg)</option>
+          <option value="sanantonio">San Antonio TX (B+/A: $1,240 avg)</option>
+          <option value="broward">Broward FL (B+/A: $2,100 avg)</option>
+          <option value="charlotte">Charlotte NC (B+/A: $1,500 avg)</option>
+          <option value="atlanta">Atlanta GA (B+/A: $1,400 avg)</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:12px 14px;background:var(--bg);border-radius:8px;font-size:12px;color:var(--mu);">
+      <strong style="color:var(--tx);">Formula:</strong> Cap Value Add per Unit = (Monthly Rent Premium &times; 12) &times; (1 &minus; Vacancy%) &times; (1 &minus; Expense%) &divide; Exit Cap Rate &nbsp;&nbsp;|&nbsp;&nbsp;
+      <strong style="color:var(--tx);">ROI on Renovation</strong> = (Cap Value Add &minus; Reno Cost) &divide; Reno Cost &times; 100%
+    </div>
+  </div>
+
+  <!-- RENOVATION TABLE -->
+  <div class="cd" style="margin-bottom:24px">
+    <div class="ct" style="margin-bottom:4px">B+/A Renovation ROI Table &mdash; 2026 Tariff-Adjusted</div>
+    <div style="font-size:11px;color:var(--di);margin-bottom:14px;">All figures per unit. Adjust model inputs above to recalculate Cap Value Add for your specific deal assumptions. Highlighted rows = recommended scope for FoxRidge B+/A value-add strategy.</div>
+    <div style="overflow-x:auto">
+    <table class="dt" id="renoTable">
+      <thead>
+        <tr>
+          <th>Component / Scope</th>
+          <th>2023 Baseline</th>
+          <th>2026 Tariff-Adjusted</th>
+          <th>+15% Contingency</th>
+          <th>Monthly Rent Premium</th>
+          <th>Annual Gross Increase</th>
+          <th>Annual NOI Increase</th>
+          <th>Cap Value Add/Unit</th>
+          <th>ROI on Reno</th>
+          <th>Payback (Months)</th>
+          <th>Tariff Driver</th>
+          <th>FoxRidge Rec.</th>
+        </tr>
+      </thead>
+      <tbody id="renoTableBody">
+        <!-- Populated by JS -->
+      </tbody>
+    </table>
+    </div>
+    <div class="src">Sources: AGC Tariff Resource Center (3/18/2026) &middot; NAHB/Wells Fargo HMI Apr 2025 &middot; Lessen Renovation Forecast 2026 &middot; HomeAdvisor W/D install pricing 2026 &middot; FoxRidge Waterford Park underwriting &middot; Cap Value Add formula: FoxRidge internal standard</div>
+  </div>
+
+  <!-- CHARTS ROW -->
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb">
+      <div class="cbt">Cap Value Add vs. Renovation Cost &mdash; All Scopes (Updates with Inputs)</div>
+      <div class="cbs">Shows how much property value each renovation scope creates at current model assumptions &middot; Amber bar = Cap Value Add &middot; Blue bar = Renovation Cost &middot; Bar above cost = positive ROI</div>
+      <div class="cw"><canvas id="capValueChart"></canvas></div>
+    </div>
+    <div class="cb">
+      <div class="cbt">ROI on Renovation Investment by Scope (%)</div>
+      <div class="cbs">Return on renovation dollars invested through property value appreciation via NOI cap-rate multiplication &middot; Updates automatically with model inputs above</div>
+      <div class="cw"><canvas id="renoRoiBarChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- MARKET-SPECIFIC RENO CONTEXT -->
+  <div class="g3" style="margin-bottom:24px">
+    <div class="cd">
+      <div class="ct" style="margin-bottom:10px">Houston B+/A Renovation Strategy</div>
+      <p style="font-size:12px;color:var(--mu);line-height:1.7;margin-bottom:10px;">Average B+/A rent $1,250&ndash;$1,400/mo. Mid-scope renovation targets $100&ndash;$140/mo rent premium. At 5.5% exit cap, 8% vacancy, 42% expense ratio: <strong style="color:var(--go);">$10,000 mid-scope = ~$13,000 cap value add per unit.</strong></p>
+      <div class="mr"><span class="mk">Top ROI scopes (Houston B+/A)</span><span class="mv go">LVP + paint + W/D + smart tech</span></div>
+      <div class="mr"><span class="mk">Caution items (tariff-sensitive)</span><span class="mv go">Cabinets: source domestic vendors only</span></div>
+      <div class="mr"><span class="mk">Skip entirely in Houston B+/A</span><span class="mv rd">Full gut kitchen unless structural failure</span></div>
+      <div class="mr"><span class="mk">W/D premium (Houston B+/A)</span><span class="mv go">$65&ndash;$90/mo (high demand from energy/trades workers)</span></div>
+    </div>
+    <div class="cd">
+      <div class="ct" style="margin-bottom:10px">San Antonio B+/A Renovation Strategy</div>
+      <p style="font-size:12px;color:var(--mu);line-height:1.7;margin-bottom:10px;">Average B+/A rent $1,100&ndash;$1,350/mo. Mid-scope targets $85&ndash;$120/mo premium. At 6.0% exit cap: <strong style="color:var(--go);">$9,000 mid-scope = ~$10,900 cap value add per unit.</strong> Military renter base highly values in-unit W/D and secure parking.</p>
+      <div class="mr"><span class="mk">Top ROI scopes (SA B+/A)</span><span class="mv go">W/D in-unit, LVP, paint, security upgrades</span></div>
+      <div class="mr"><span class="mk">Military renter preference</span><span class="mv go">W/D essential; secure entry/parking valued</span></div>
+      <div class="mr"><span class="mk">W/D premium (SA B+/A)</span><span class="mv go">$60&ndash;$80/mo (strong demand from military families)</span></div>
+      <div class="mr"><span class="mk">Reno budget/unit (SA)</span><span class="mv">$8K&ndash;$11K (lower costs than FL)</span></div>
+    </div>
+    <div class="cd">
+      <div class="ct" style="margin-bottom:10px">South Florida B+/A Renovation Strategy</div>
+      <p style="font-size:12px;color:var(--mu);line-height:1.7;margin-bottom:10px;">Average B+/A rent $1,900&ndash;$2,350/mo. Mid-scope targets $150&ndash;$200/mo premium (premium market). At 5.0% exit cap: <strong style="color:var(--go);">$15,000 mid-scope = ~$21,000+ cap value add per unit.</strong> Highest value-add leverage of all three markets.</p>
+      <div class="mr"><span class="mk">Top ROI scopes (FL B+/A)</span><span class="mv go">Full kitchen refresh, W/D, tile flooring, hurricane shutters</span></div>
+      <div class="mr"><span class="mk">FL-specific additions</span><span class="mv go">Hurricane shutters: $800&ndash;$1,500/unit (+$30&ndash;$50/mo)</span></div>
+      <div class="mr"><span class="mk">W/D premium (FL B+/A)</span><span class="mv go">$85&ndash;$125/mo (premium market expectation)</span></div>
+      <div class="mr"><span class="mk">Reno budget/unit (FL)</span><span class="mv">$14K&ndash;$20K (higher labor + tariff costs)</span></div>
+    </div>
+  </div>
+</div>
+<!-- TAB 8: RISK MATRIX -->
+<div class="tp" id="tab-risk">
+  <p class="sl">Module 7</p><h2 class="sh">Risk Matrix &mdash; Geopolitical, Policy &amp; Operational</h2>
+  <p class="sd">Systematic probability-weighted risk assessment with severity ratings and underwriting impact. Sources: Dallas Fed, AGC, FHFA, Insurify, NAHB, CME FedWatch, Moody's Analytics.</p>
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cb"><div class="cbt">Risk Severity by Category &mdash; GO NOW Markets</div><div class="cbs">FoxRidge Risk Assessment &middot; Scale 1&ndash;10 &middot; Houston (gold), Broward FL (blue), San Antonio (green)</div><div class="cw"><canvas id="riskRadarChart"></canvas></div></div>
+    <div class="cb"><div class="cbt">Risk Probability vs. IRR Impact Matrix</div><div class="cbs">X-axis = probability of occurrence in 5-yr hold &middot; Y-axis = potential IRR drag if event occurs &middot; FoxRidge analysis April 2026</div><div class="cw tl"><canvas id="riskBubbleChart"></canvas></div></div>
+  </div>
+  <div class="cd">
+    <div class="ct" style="margin-bottom:16px">Full Risk Register &mdash; All GO NOW Markets</div>
+    <div class="ri">
+      <div class="rn">TX Property Tax Reassessment</div>
+      <div class="rd2">Texas resets assessed value to transaction price on sale. A $30M acquisition on property assessed at $18M triggers ~$200K/year incremental tax expense. Always model at 2.0&ndash;2.5% of purchase price for ongoing annual tax burden &mdash; NEVER use T-12 taxes in &ldquo;Ours&rdquo; column. Most common underwriting error in Texas acquisitions. Dallas Fed confirmed Texas banks modifying/extending loans above national average &mdash; sellers may have concealed problems through bank-facilitated deferrals.</div>
+      <span class="rbg rh">CRITICAL</span>
+    </div>
+    <div class="ri">
+      <div class="rn">Tariff Renovation Cost Inflation</div>
+      <div class="rd2">Steel/aluminum 50%, kitchen cabinets/vanities 25&ndash;50% (effective Jan 2026), lumber ~25% effective total. Add 15&ndash;25% contingency to all pre-2025 renovation budgets. Kitchen-focused renos most exposed &mdash; cabinets and vanities are the most tariff-impacted items in typical B+/A value-add scope. NAHB confirms $10,900/home added construction cost. Budget $10,000&ndash;$12,000/unit for mid-scope Houston/SA work.</div>
+      <span class="rbg rh">HIGH</span>
+    </div>
+    <div class="ri">
+      <div class="rn">Broker T-12 / Pro Forma Manipulation</div>
+      <div class="rd2">In a motivated-seller environment (bridge loan maturities, DSCR stress), standard manipulation patterns are elevated: GPR stated using market rent vs. in-place rent; occupancy cherry-picked from best snapshot month; payroll understated via shared-manager arrangements disappearing post-sale; tax reassessment risk not disclosed; bad debt normalized without documentation. Always underwrite from T-12 line items, never broker totals. Cross-check with on-site PM interview without broker present.</div>
+      <span class="rbg rh">HIGH (deal level)</span>
+    </div>
+    <div class="ri">
+      <div class="rn">Iran War / Oil Price Spike</div>
+      <div class="rd2">Active Iran conflict has spiked oil prices, complicating the Fed rate-cut path. For Houston: elevated oil is a net positive (energy sector employment). For all markets: higher-for-longer rates keep agency debt at 6.0&ndash;6.5% vs. declining to 5.5%. Stress-test exit refinance assumptions at 5.75% rather than 5.0%. JPMorgan: no cuts in 2026, possible hike in 2027 &mdash; 35% probability in market futures.</div>
+      <span class="rbg rm">MEDIUM</span>
+    </div>
+    <div class="ri">
+      <div class="rn">Immigration Enforcement / Demand Reduction</div>
+      <div class="rd2">Texas and Florida saw sharpest population growth pullbacks in 2025 partly from immigration enforcement (Yardi Feb 2026 report specifically cited). Class B/C workforce housing has higher undocumented renter exposure than Class A. Model Year 1 at flat demand in TX/FL workforce housing; avoid properties with documented HCV tenant concentration above 15% unless rents are supported by voucher contracts.</div>
+      <span class="rbg rm">MEDIUM</span>
+    </div>
+    <div class="ri">
+      <div class="rn">Florida Hurricane / Insurance Volatility</div>
+      <div class="rd2">2025 hurricane season was quiet, enabling insurance stabilization (Citizens &minus;8.7%, 17 new private carriers). 2026 forecast: 7 hurricanes (3 intense) per Tropical Storm Risk. One Broward/Palm Beach direct hit reverses multi-year reform progress instantly. Budget $1,400&ndash;$1,800/unit/year; stress test at $2,200/unit/year for downside modeling. Average FL commercial MF premium: $8,292/yr (Insurify 2026).</div>
+      <span class="rbg rm">MEDIUM</span>
+    </div>
+    <div class="ri">
+      <div class="rn">DOGE Federal Spending Cuts (San Antonio)</div>
+      <div class="rd2">JBSA is the economic engine of San Antonio. Federal civilian employees at the base are a meaningful portion of the B+/A renter pool. DOGE targeting DoD civilian workforce could affect SA demand in ways not yet visible in current market data. Not a deal-breaker given the absolute scale and geopolitical necessity of the base, but monitor congressional budget closely.</div>
+      <span class="rbg rm">LOW-MED</span>
+    </div>
+    <div class="ri">
+      <div class="rn">AI / Automation Renter Displacement (5-Year)</div>
+      <div class="rd2">B+/A renters in TX and FL are disproportionately in professional services, healthcare admin, logistics, and call centers. Over a 5-year hold: healthcare (AI-resistant), military/government (AI-resistant), and skilled trades (AI-resistant) are most defensible. Technology and mid-level white-collar in tech-dependent submarkets face displacement risk. Prefer assets near healthcare/military/energy anchors specifically.</div>
+      <span class="rbg rl">LOW (5yr)</span>
+    </div>
+    <div class="ri">
+      <div class="rn">National Recession (Mild/Moderate)</div>
+      <div class="rd2">Moody's Analytics: ~25% recession probability for 2026. Freddie Mac downside: &ldquo;If recession occurs while supply elevated, could have outsized impact on multifamily.&rdquo; B+/A in military/healthcare-anchored markets most defensive. Bear scenario (11&ndash;12% IRR for Houston) represents mild recession stress. Markets with job diversity (SA military, FLL professional services) hold better. Avoid pure tech/speculation-driven markets in a recessionary scenario.</div>
+      <span class="rbg rl">LOW-MED</span>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 9: GSE SOURCES -->
+<div class="tp" id="tab-gse">
+  <p class="sl">Module 9 &mdash; Primary GSE Source Documentation</p>
+  <h2 class="sh">Freddie Mac &amp; Fannie Mae &mdash; Official Data Reference</h2>
+  <p class="sd">This dashboard incorporates data directly fetched from official Freddie Mac and Fannie Mae publications. Below is a full accounting of each data point, its source document, and how it informs FoxRidge conclusions. Use this tab when referencing data sources in LP presentations, seller negotiations, or broker discussions.</p>
+  <div class="g2" style="margin-bottom:24px">
+    <div class="cd">
+      <div class="gseb">Freddie Mac Multifamily</div>
+      <div class="ct" style="margin-bottom:12px">2025 Multifamily Outlook &mdash; Official PDF (Directly Fetched)</div>
+      <p style="font-size:12px;color:var(--mu);margin-bottom:14px;line-height:1.7">Fetched directly from <strong>mf.freddiemac.com/docs/2025_multifamily_outlook.pdf</strong> on April 7, 2026. Full text read and all data points extracted into this dashboard. Published January 8, 2025.</p>
+      <div class="mr"><span class="mk">Supply cycle peak</span><span class="mv gr">591K completions 2024 &mdash; highest since 1980</span></div>
+      <div class="mr"><span class="mk">Permits/starts decline (9mo 2024 vs 2023)</span><span class="mv gr">&minus;20% permits, &minus;28% starts</span></div>
+      <div class="mr"><span class="mk">Starts as of 2024 (3Q)</span><span class="mv gr">Lowest level in a decade</span></div>
+      <div class="mr"><span class="mk">2025 vacancy forecast (baseline)</span><span class="mv go">6.2% (above LT average)</span></div>
+      <div class="mr"><span class="mk">2025 rent growth forecast (baseline)</span><span class="mv go">+2.2% (below 2.8% LT avg)</span></div>
+      <div class="mr"><span class="mk">Houston 2025 unit SURPLUS</span><span class="mv rd">+6,000 units</span></div>
+      <div class="mr"><span class="mk">Houston 2026 unit DEFICIT</span><span class="mv gr">&minus;5,800 units (official Freddie forecast)</span></div>
+      <div class="mr"><span class="mk">Phoenix 2026 unit deficit</span><span class="mv gr">&minus;3,300 units</span></div>
+      <div class="mr"><span class="mk">Austin 2026 unit deficit</span><span class="mv gr">&minus;3,000 units</span></div>
+      <div class="mr"><span class="mk">Cap rate as of 2024 start</span><span class="mv">~5.6% (flattened)</span></div>
+      <div class="mr"><span class="mk">Expected cap rate compression</span><span class="mv gr">5.0&ndash;5.5% over 12&ndash;18 months</span></div>
+      <div class="mr"><span class="mk">Monthly P&amp;I on median home Q3 2024</span><span class="mv rd">$1,954/mo (up 85.7% since 2020)</span></div>
+      <div class="mr"><span class="mk">Monthly MF rent Q3 2024</span><span class="mv">$1,841/mo (up 20.2% since 2020)</span></div>
+      <div class="mr"><span class="mk">Multifamily origination volume 2025E</span><span class="mv go">$370B&ndash;$380B</span></div>
+      <div class="mr"><span class="mk">Supply abatement confirmation</span><span class="mv gr">&ldquo;By 2026 expected to abate to pre-pandemic levels&rdquo;</span></div>
+      <div class="mr"><span class="mk">Long-term outlook</span><span class="mv gr">&ldquo;Multifamily likely to remain favored asset class&rdquo;</span></div>
+      <div class="src">Source: Freddie Mac 2025 Multifamily Outlook PDF &middot; mf.freddiemac.com/docs/2025_multifamily_outlook.pdf &middot; Directly fetched April 7, 2026</div>
+    </div>
+    <div class="cd">
+      <div class="gseb">Freddie Mac Additional</div>
+      <div class="ct" style="margin-bottom:12px">2026 Production &amp; Lending Data (News Releases)</div>
+      <div class="mr"><span class="mk">2025 production volume</span><span class="mv gr">$77.6B (+17% vs 2024)</span></div>
+      <div class="mr"><span class="mk">2025 securities issued</span><span class="mv">$68B (transferring risk from taxpayers)</span></div>
+      <div class="mr"><span class="mk">2026 loan purchase cap</span><span class="mv go">$88B (FHFA-set)</span></div>
+      <div class="mr"><span class="mk">Affordable housing funding 2025</span><span class="mv gr">$13.9B (record, +45% vs 2024)</span></div>
+      <div class="mr"><span class="mk">Affordable units supported 2025</span><span class="mv">577,000 rental units</span></div>
+      <div class="mr"><span class="mk">AIMI (Apt. Investment Market Index) QoQ</span><span class="mv gr">+5.3% QoQ, +9.2% YoY (improving)</span></div>
+      <div class="mr"><span class="mk">MF portfolio 60+ day delinquency</span><span class="mv rd">0.44% (Freddie-owned loans only)</span></div>
+      <br>
+      <div class="gseb">Fannie Mae</div>
+      <div class="ct" style="margin-bottom:12px">ESR Group &mdash; Multifamily &amp; Economic Commentary</div>
+      <div class="mr"><span class="mk">2026 loan purchase cap</span><span class="mv go">$88B (same as Freddie, FHFA-set)</span></div>
+      <div class="mr"><span class="mk">Mortgage rate forecast (end 2025)</span><span class="mv">6.4% (Sept 2025 ESR)</span></div>
+      <div class="mr"><span class="mk">Mortgage rate forecast (end 2026)</span><span class="mv gr">5.9% (Sept 2025 ESR Group)</span></div>
+      <div class="mr"><span class="mk">Jobs added 2024&ndash;2026 (projected)</span><span class="mv gr">4.5 million cumulative</span></div>
+      <div class="mr"><span class="mk">Home price growth 2025E (HPES panel)</span><span class="mv">2.9% (100+ expert panelists)</span></div>
+      <div class="mr"><span class="mk">Home price growth 2026E (HPES panel)</span><span class="mv">2.8%</span></div>
+      <div class="mr"><span class="mk">MF cap rate compression forecast</span><span class="mv gr">5.0&ndash;5.5% over next 12&ndash;18 months</span></div>
+      <div class="mr"><span class="mk">Houston 2026 deficit (Fannie Jan 2025)</span><span class="mv gr">&minus;5,800 units (matches Freddie exactly)</span></div>
+      <div class="mr"><span class="mk">Job growth forecast per market</span><span class="mv gr">Austin, Dallas, Houston: 1.5&ndash;1.8% (above avg)</span></div>
+      <div class="src">Source: Fannie Mae ESR Group &middot; multifamily.fanniemae.com &middot; Fannie Mae January 2025 MF Commentary &middot; HPES Q2 2025 &middot; Sept 2025 Economic Outlook</div>
+    </div>
+  </div>
+
+  <div class="cb" style="margin-bottom:24px">
+    <div class="cbt">Freddie Mac Official Data: MF Supply Wave &mdash; Permits, Starts &amp; Completions (Exhibit 4, 2025 Multifamily Outlook PDF, directly fetched)</div>
+    <div class="cbs">Source: Freddie Mac 2025 Multifamily Outlook (Official PDF, Exhibit 4) &middot; Census Bureau &middot; Moody's Analytics &middot; Yardi Matrix &middot; FoxRidge 2027&ndash;2028 projections from NAHB starts data</div>
+    <div class="cw tl"><canvas id="freddieMacSupplyChart"></canvas></div>
+  </div>
+
+  <div class="cd">
+    <div class="ct" style="margin-bottom:16px">Complete Source Citation Registry &mdash; All Data Used in This Dashboard</div>
+    <div style="overflow-x:auto">
+    <table class="dt">
+      <thead><tr><th>Source</th><th>Type</th><th>Date</th><th>Key Data Points Used</th><th>Access Method</th></tr></thead>
+      <tbody>
+        <tr><td>Freddie Mac 2025 Multifamily Outlook (PDF)</td><td>Official GSE Report</td><td>Jan 8, 2025</td><td>Supply wave data (Exhibits 4&ndash;6), P&amp;I vs rent table (Exhibit 3), Houston/Phoenix deficits, vacancy/rent forecasts, origination volume, supply abatement timeline</td><td>mf.freddiemac.com/docs/2025_multifamily_outlook.pdf &middot; Directly fetched April 7, 2026</td></tr>
+        <tr><td>Freddie Mac News Releases 2025&ndash;2026</td><td>Official GSE</td><td>2025&ndash;2026</td><td>$77.6B 2025 production, $88B 2026 cap, AIMI data, 577K affordable units, $68B securities issued</td><td>mf.freddiemac.com/news &middot; Directly fetched</td></tr>
+        <tr><td>Fannie Mae ESR Group &mdash; MF Commentary</td><td>Official GSE</td><td>Jan 2025</td><td>Houston/Austin 2026 deficits, cap rate forecast 5.0&ndash;5.5%, job growth projections, 4.5M jobs 2024&ndash;2026</td><td>fanniemae.com/media/54646 &middot; Search results fetched</td></tr>
+        <tr><td>Fannie Mae Sept 2025 Economic Outlook</td><td>Official GSE</td><td>Sept 2025</td><td>Mortgage rates: 6.4% end 2025, 5.9% end 2026</td><td>fanniemae.com/newsroom &middot; Search results fetched</td></tr>
+        <tr><td>Fannie Mae HPES (100+ panel)</td><td>Survey</td><td>Q2 2025</td><td>Home price growth 2.9% (2025), 2.8% (2026)</td><td>fanniemae.com/data-and-insights/surveys-indices/hpes</td></tr>
+        <tr><td>Yardi Matrix National MF Reports</td><td>Market Research</td><td>Jan&ndash;Mar 2026</td><td>National occupancy 94.3%, Houston 92.2%, DFW 92.9%, 450K deliveries 2026E, starts 311K, rent growth by market</td><td>yardimatrix.com/blog &middot; Fetched via search</td></tr>
+        <tr><td>Trepp CMBS Delinquency Monitor</td><td>CMBS Data</td><td>Mar&ndash;Apr 2026</td><td>MF CMBS delinquency 7.15%, special servicing 8.3%, office 11.71%, lodging 7.31%</td><td>trepp.com via multihousingnews.com / mba newslink &middot; Search fetched</td></tr>
+        <tr><td>KBRA CMBS Loan Performance Trends</td><td>Rating Agency</td><td>Jan 2026</td><td>30+ day delinquency 8.1%, distress rate 10.7%, $2.3B newly distressed, MF 14.5% of newly distressed</td><td>businesswire.com/KBRA &middot; Search fetched</td></tr>
+        <tr><td>Marcus &amp; Millichap 2026 Miami MF Forecast</td><td>Broker Research</td><td>Jan 2026</td><td>FLL vacancy 4.9%, avg eff. rent $2,530/mo, 3,300 units 2026 (decade low), Miami 9K jobs 2026</td><td>southfloridaagentmagazine.com &middot; Fetched via search</td></tr>
+        <tr><td>Dallas Federal Reserve &mdash; TX MF Analysis</td><td>Federal Reserve</td><td>Mar 2026</td><td>TX bank loan modifications above national rate, concessions 6&ndash;12 weeks, gradual recovery late 2026&ndash;2027</td><td>dallasfed.org/research/swe/2026/swe2605 &middot; Directly fetched via search</td></tr>
+        <tr><td>Northmarq Houston MF Q4 2025</td><td>Broker Research</td><td>Feb 2026</td><td>Houston 11K deliveries 2026 (&minus;45%), 50-bps vacancy improvement largest since 2018, cap rates toward mid-5% end 2026</td><td>northmarq.com &middot; Search fetched</td></tr>
+        <tr><td>Apartment List National Rent Report</td><td>Rental Platform</td><td>Mar&ndash;Apr 2026</td><td>National vacancy 7.3% (record), median days to lease 38 days, YoY rent &minus;1.7% March 2026, Austin &minus;6% from 2022 peak</td><td>apartmentlist.com/research &middot; Search fetched</td></tr>
+        <tr><td>Origin Investments 2026 Predictions</td><td>Investment Manager</td><td>Nov 2025</td><td>Charlotte +5.7%, Houston +4.9% rent growth using Multilytics AI model</td><td>origininvestments.com &middot; Search fetched</td></tr>
+        <tr><td>NAHB / Wells Fargo HMI Survey</td><td>Industry Survey</td><td>Apr 2025</td><td>Tariff add $10,900/home, 60% builders report higher costs, lumber tariff impact analysis</td><td>nahb.org &middot; Directly fetched</td></tr>
+        <tr><td>AGC Tariff Resource Center</td><td>Industry Data</td><td>Updated 3/18/2026</td><td>Steel/aluminum 50%, lumber 10%, cabinets 25&ndash;50%, copper 50%, global 10% (expires July 2026)</td><td>agc.org/tariff-resources-contractors &middot; Directly fetched</td></tr>
+        <tr><td>Florida Insurance Data (Citizens/Insurify)</td><td>Insurance Market</td><td>Jan&ndash;Mar 2026</td><td>Citizens &minus;8.7% avg, 17 new carriers, avg FL home insurance $8,292 (2025), +2% projected 2026</td><td>insurify.com &middot; wflx.com &middot; Search fetched</td></tr>
+        <tr><td>CME FedWatch / CNBC / Fox Business</td><td>Futures/News</td><td>Mar&ndash;Apr 2026</td><td>Fed held 3.50&ndash;3.75%, dot plot 1 cut median, 83% hold probability May, Iran war uncertainty</td><td>CME Group &middot; CNBC &middot; Fox Business &middot; Search fetched</td></tr>
+        <tr><td>CRED iQ / Bridge Loan Maturity Data</td><td>Securitized Debt</td><td>2025&ndash;2026</td><td>$163B securitized maturities 2026, $115B with DSCR below 1.20x</td><td>therealval.com &middot; Search fetched</td></tr>
+        <tr><td>PwC / ULI Emerging Trends 2026</td><td>Industry Report</td><td>2025</td><td>Midwest/NE strength, Sun Belt oversupply 2026&ndash;2027, Columbus/Indianapolis as undervalued</td><td>pwc.com/us/en/real-estate/emerging-trends &middot; Search fetched</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- TAB 10: PREDICTION AUDIT REGISTRY -->
+<div class="tp" id="tab-audit">
+<p class="sl" style="color:#3fb950">Module 10 &mdash; Intelligence Audit System</p>
+<h2 class="sh">Prediction Audit Registry</h2>
+<p class="sd">73 forward-looking predictions logged with specific confirmation thresholds. Monthly audit: Claude updates Current Reading values, you click Run Audit, results save permanently to localStorage. Full history preserved — scroll back to any prior audit date.</p>
+<div style="background:#161b22;border:1px solid rgba(63,185,80,.3);border-left:3px solid #3fb950;border-radius:10px;padding:16px 20px;margin-bottom:22px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap">
+  <div>
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#3fb950;margin-bottom:8px;font-weight:700">Monthly Audit Protocol</div>
+    <div style="font-size:12px;color:#8b949e;line-height:1.8;max-width:780px">
+      <strong style="color:#e6edf3">Step 1</strong> &mdash; On the 7th, open this project and say "Run monthly audit." Claude pulls fresh data, rewrites the LIVE_VALUES in the script with updated readings and today's date.
+      <strong style="color:#e6edf3">Step 2</strong> &mdash; Download the updated dashboard, open it, go to Tab 10, click "Run Audit &amp; Save."
+      <strong style="color:#e6edf3">Step 3</strong> &mdash; All 73 predictions auto-evaluate. Results save to localStorage. Update Log grows permanently. Nothing ever deleted.
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:8px;min-width:190px">
+    <button onclick="runAudit()" style="padding:11px 20px;background:linear-gradient(135deg,rgba(63,185,80,.2),rgba(63,185,80,.08));border:1px solid rgba(63,185,80,.4);border-radius:8px;color:#3fb950;font-size:13px;font-weight:600;cursor:pointer">&#9654; Run Audit &amp; Save</button>
+    <button onclick="clearHistory()" style="padding:7px 20px;background:transparent;border:1px solid rgba(255,255,255,.07);border-radius:8px;color:#30363d;font-size:11px;cursor:pointer">Clear All History</button>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:22px">
+  <div class="cd"><div class="cl">Total</div><div class="cv" id="statTotal" style="font-size:22px">73</div></div>
+  <div class="cd"><div class="cl">Confirmed</div><div class="cv" id="statConfirmed" style="font-size:22px;color:#3fb950">0</div></div>
+  <div class="cd"><div class="cl">Refuted</div><div class="cv" id="statRefuted" style="font-size:22px;color:#f85149">0</div></div>
+  <div class="cd"><div class="cl">Partial</div><div class="cv" id="statPartial" style="font-size:22px;color:#f0a500">0</div></div>
+  <div class="cd"><div class="cl">Pending</div><div class="cv" id="statPending" style="font-size:22px;color:#58a6ff">73</div></div>
+  <div class="cd"><div class="cl">Audit Runs</div><div class="cv" id="statRuns" style="font-size:22px">0</div></div>
+</div>
+<div style="overflow-x:auto;margin-bottom:28px">
+<table class="dt">
+  <thead><tr>
+    <th>ID</th><th>Category</th><th>Prediction</th><th>Confirmation Threshold</th>
+    <th>Check Date</th><th>Current Reading (Claude updates monthly)</th><th>Status</th><th>Note</th>
+  </tr></thead>
+  <tbody id="auditBody"></tbody>
+</table>
+</div>
+<div class="cd">
+  <div class="ct" style="margin-bottom:4px">Update Log &mdash; All Audit History <span style="font-size:11px;color:#30363d;font-weight:400">(localStorage &mdash; survives browser restarts)</span></div>
+  <div id="updateLog"><div style="font-size:12px;color:#30363d;padding:16px 0">No audits run yet. Click Run Audit &amp; Save to begin.</div></div>
+</div>
+</div>
+
+
+<script>
+Chart.defaults.color="#8896aa";
+Chart.defaults.borderColor="rgba(255,255,255,0.07)";
+Chart.defaults.font.family="-apple-system,BlinkMacSystemFont,Segoe UI,Inter,sans-serif";
+Chart.defaults.font.size=11;
+
+function initCharts(){
+
+// ── CLASS COMPARISON CHART (NEW - SUMMARY TAB)
+var cc=document.getElementById("classComparisonChart");
+if(cc&&!cc.chartInit){cc.chartInit=true;
+  new Chart(cc,{type:"bar",data:{
+    labels:["Occupancy %","10-yr Avg Vacancy %","Rent Growth 2024 %","Cap Rate (secondary) %","Concessions (% props offering)"],
+    datasets:[
+      {label:"Class A (reference)",data:[94.0,7.5,1.4,4.9,38],backgroundColor:"rgba(241,81,74,0.6)",borderRadius:3},
+      {label:"Class B+/A (FOXRIDGE TARGET)",data:[94.3,6.1,1.3,6.2,24],backgroundColor:"rgba(240,165,0,0.85)",borderRadius:3},
+      {label:"Class C (reference)",data:[94.2,6.5,2.6,8.2,13],backgroundColor:"rgba(120,120,120,0.5)",borderRadius:3}
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}},
+      tooltip:{callbacks:{label:function(ctx){var u=["","","","",""];return ctx.dataset.label+": "+ctx.raw+(["Occupancy %","10-yr Avg Vacancy %","Rent Growth 2024 %","Cap Rate (secondary) %","Concessions (% props offering)"][ctx.dataIndex].includes("%")?" %":"%");}}}
+    },
+    scales:{x:{grid:{display:false}},y:{min:0,max:100,ticks:{callback:function(v){return v+""}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Value (varies by metric — see X axis labels)",color:"#8896aa"}}}
+  }});
+}
+
+// ── CLASS B+/A CAP RATE BY MARKET
+var bCap=document.getElementById("classBCapRateChart");
+if(bCap&&!bCap.chartInit){bCap.chartInit=true;
+  new Chart(bCap,{type:"bar",data:{
+    labels:["Indianapolis IN","Houston TX","San Antonio TX","Columbus OH","Charlotte NC","Atlanta GA","DFW TX","Broward FL","Miami-Dade FL"],
+    datasets:[
+      {label:"Class B+/A Cap Rate",data:[6.25,6.25,6.25,6.0,6.0,6.0,5.75,5.5,4.9],backgroundColor:"rgba(240,165,0,0.8)",borderRadius:3,order:2},
+      {label:"Class A Cap Rate (ref)",data:[5.0,5.3,5.2,5.0,4.8,4.9,5.0,4.5,4.5],backgroundColor:"rgba(241,81,74,0.3)",borderRadius:3,order:3},
+      {label:"Agency Debt ~6.1%",data:[6.1,6.1,6.1,6.1,6.1,6.1,6.1,6.1,6.1],type:"line",borderColor:"#f1514a",borderWidth:2.5,pointRadius:0,borderDash:[4,3],order:1}
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:10,padding:8}}},
+    scales:{x:{grid:{display:false},ticks:{maxRotation:45}},y:{min:4,max:7.5,ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"}}}
+  }});
+}
+
+// ── CLASS B+/A RENT GROWTH HISTORY
+var clRG=document.getElementById("classRentGrowthChart");
+if(clRG&&!clRG.chartInit){clRG.chartInit=true;
+  new Chart(clRG,{type:"line",data:{
+    labels:["2019","2020","2021","2022","2023","2024","2025E","2026E (Base)"],
+    datasets:[
+      {label:"Class A Rent Growth",data:[3.5,0.0,12.0,10.0,0.5,1.4,0.2,0.0],borderColor:"#f1514a",borderWidth:2,fill:false,tension:0.3,pointRadius:3,pointBackgroundColor:"#f1514a"},
+      {label:"Class B+/A (FOXRIDGE)",data:[3.2,1.0,10.5,9.5,0.2,1.3,0.8,1.7],borderColor:"#f0a500",borderWidth:3,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:"#f0a500"},
+      {label:"Class C",data:[3.0,1.5,9.0,8.5,0.5,2.6,2.0,3.4],borderColor:"#8896aa",borderWidth:2,fill:false,tension:0.3,pointRadius:3,pointBackgroundColor:"#8896aa"},
+      {label:"Freddie Mac LT Avg (2.8%)",data:[2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8],borderColor:"rgba(255,255,255,0.2)",borderWidth:1.5,borderDash:[5,3],fill:false,pointRadius:0}
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:10,padding:8}}},
+    scales:{x:{grid:{display:false}},y:{ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Annual Rent Growth (%) | Sources: Fannie Mae Jan 2025, RealPage, Apt Loan Store 2026",color:"#8896aa"}}}
+  }});
+}
+
+// ── SUPPLY CLASS MIX
+var smx=document.getElementById("supplyClassMixChart");
+if(smx&&!smx.chartInit){smx.chartInit=true;
+  new Chart(smx,{type:"doughnut",data:{
+    labels:["Class A (New Luxury Construction)","Class B+/A (Repositioned/Converted)","Class C (Rare Rehab)"],
+    datasets:[{data:[85,12,3],backgroundColor:["rgba(241,81,74,0.8)","rgba(240,165,0,0.9)","rgba(120,120,120,0.6)"],borderWidth:0,hoverOffset:4}]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"bottom",labels:{boxWidth:14,padding:14,font:{size:12}}},
+      tooltip:{callbacks:{label:function(ctx){return ctx.label+": "+ctx.raw+"% of 2026 deliveries";}}}
+    }
+  }});
+}
+
+// ── CLASS B+/A VACANCY BY MARKET (UPDATED)
+var cbv=document.getElementById("classBVacancyChart");
+if(cbv&&!cbv.chartInit){cbv.chartInit=true;
+  new Chart(cbv,{type:"bar",data:{
+    labels:["Austin TX","DFW TX (B class)","San Antonio TX (B)","Houston TX (B)","Charlotte NC (B)","Atlanta GA (B)","DFW TX (A ref)","Columbus OH","National B avg","Indianapolis","Fort Lauderdale FL (B)"],
+    datasets:[
+      {label:"Class B+/A Vacancy",data:[14.5,12.3,12.0,11.5,11.0,7.5,null,8.0,6.5,6.3,5.5],backgroundColor:"rgba(240,165,0,0.75)",borderRadius:3},
+      {label:"Class A Vacancy (ref)",data:[null,null,null,null,null,null,11.7,null,9.3,null,null],backgroundColor:"rgba(241,81,74,0.45)",borderRadius:3}
+    ]
+  },options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}}},
+    scales:{
+      x:{ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Vacancy Rate Q1 2026 | Amber bars = B+/A | Red bars = Class A reference",color:"#8896aa"}},
+      y:{grid:{display:false}}
+    }
+  }});
+}
+
+// ── MORTGAGE vs RENT (same as before)
+var mr=document.getElementById("mortgageRentChart");
+if(mr&&!mr.chartInit){mr.chartInit=true;
+  new Chart(mr,{type:"line",data:{labels:["2020","2021","2022","Q1 23","Q2 23","Q3 23","Q4 23","Q1 24","Q2 24","Q3 24","2026E"],datasets:[
+    {label:"Monthly P&I (Median Home)",data:[1012,1199,1821,1883,1999,2152,2019,2077,2121,1954,2050],borderColor:"#f1514a",backgroundColor:"rgba(241,81,74,0.08)",fill:true,tension:0.3,borderWidth:2.5,pointRadius:3,pointBackgroundColor:"#f1514a"},
+    {label:"Avg B+/A Rent (RealPage)",data:[1426,1535,1749,1786,1811,1825,1807,1808,1828,1841,1870],borderColor:"#f0a500",backgroundColor:"rgba(240,165,0,0.08)",fill:true,tension:0.3,borderWidth:2.5,pointRadius:3,pointBackgroundColor:"#f0a500"}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}},tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+": $"+ctx.raw.toLocaleString()+"/mo";}}}},
+    scales:{x:{grid:{display:false}},y:{min:800,max:2400,ticks:{callback:function(v){return"$"+v.toLocaleString()}},grid:{color:"rgba(255,255,255,0.05)"}}}
+  }});
+}
+
+// ── FED RATE
+var fr=document.getElementById("fedRateChart");
+if(fr&&!fr.chartInit){fr.chartInit=true;
+  new Chart(fr,{type:"line",data:{labels:["Sep 24","Nov 24","Jan 25","Mar 25","Jun 25","Sep 25","Dec 25","Mar 26","Jun 26E","Sep 26E","Dec 26E"],datasets:[
+    {label:"Actual/Current",data:[5.0,4.75,4.5,4.5,4.25,4.0,3.75,3.625,null,null,null],borderColor:"#f0a500",borderWidth:2.5,pointRadius:3,pointBackgroundColor:"#f0a500",tension:0.2,spanGaps:false},
+    {label:"Base (1 cut Sep)",data:[null,null,null,null,null,null,null,3.625,3.625,3.375,3.375],borderColor:"#4fa3e8",borderWidth:2,borderDash:[5,3],pointRadius:2,tension:0.2,spanGaps:false},
+    {label:"Bull (2+ cuts)",data:[null,null,null,null,null,null,null,3.625,3.375,3.125,3.0],borderColor:"#22d68e",borderWidth:2,borderDash:[5,3],pointRadius:2,tension:0.2,spanGaps:false},
+    {label:"Bear JPMorgan (0 cuts)",data:[null,null,null,null,null,null,null,3.625,3.625,3.625,3.625],borderColor:"#f1514a",borderWidth:2,borderDash:[5,3],pointRadius:2,tension:0.2,spanGaps:false}
+  ]},options:{responsive:true,maintainAspectRatio:false,spanGaps:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:10,padding:8}}},
+    scales:{x:{grid:{display:false},ticks:{maxRotation:45}},y:{min:2.5,max:5.5,ticks:{callback:function(v){return v.toFixed(2)+"%"}},grid:{color:"rgba(255,255,255,0.05)"}}}
+  }});
+}
+
+// ── RENT GROWTH BY MARKET (B+/A estimated)
+var rg=document.getElementById("rentGrowthByMarket");
+if(rg&&!rg.chartInit){rg.chartInit=true;
+  var rMarkets=["Chicago IL (B+/A)","Twin Cities (B+/A)","Kansas City (B+/A)","Columbus OH (B+/A)","Indianapolis (B+/A)","WPB Central FL (B+/A)","Fort Lauderdale (B+/A)","Miami FL (B+/A)","Atlanta GA (B+/A)","DFW TX (B class)","San Antonio (B+/A)","Houston TX (B+/A)","Charlotte NC (B+/A)","Phoenix AZ (B+/A)","Tampa FL (B+/A)","Austin TX (B+/A)"];
+  var rVals=[3.8,2.9,2.7,4.0,2.7,5.0,1.0,1.2,1.0,0.2,-1.5,-0.5,0.5,-1.5,-2.0,-4.5];
+  var rColors=rVals.map(function(v){return v>0?"rgba(240,165,0,0.75)":"rgba(241,81,74,0.7)";});
+  new Chart(rg,{type:"bar",data:{labels:rMarkets,datasets:[{label:"B+/A YoY Rent Growth %",data:rVals,backgroundColor:rColors,borderRadius:3,borderWidth:0}]},
+    options:{indexAxis:"y",responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Class B+/A YoY Rent Growth (March 2026 estimates)",color:"#8896aa"}},y:{grid:{display:false}}}
+    }
+  });
+}
+
+// ── CMBS
+var cm=document.getElementById("cmbsChart");
+if(cm&&!cm.chartInit){cm.chartInit=true;
+  new Chart(cm,{type:"bar",data:{labels:["Office","Lodging","Multifamily (B+/A bridge loans)","Retail","Industrial"],datasets:[{label:"Delinquency Rate % (Mar 2026)",data:[11.71,7.31,7.15,6.62,0.65],backgroundColor:["rgba(241,81,74,0.8)","rgba(251,146,60,0.8)","rgba(240,165,0,0.9)","rgba(163,163,163,0.6)","rgba(34,214,142,0.8)"],borderRadius:5,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{grid:{display:false}},y:{max:15,ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"}}}
+    }
+  });
+}
+
+// ── CAP RATE SPREAD (B+/A specific)
+var cr=document.getElementById("capRateSpreadChart");
+if(cr&&!cr.chartInit){cr.chartInit=true;
+  new Chart(cr,{type:"bar",data:{
+    labels:["Indianapolis (B+/A)","Houston TX (B+/A)","San Antonio TX (B+/A)","Columbus OH (B+/A)","Charlotte NC (B+/A)","Atlanta GA (B+/A)","DFW TX (B+/A)","Broward FL (B+/A)","Miami-Dade (B+/A)","Class A primary (ref)"],
+    datasets:[
+      {label:"Class B+/A Cap Rate",data:[6.25,6.25,6.25,6.0,6.0,6.0,5.75,5.5,4.9,null],backgroundColor:"rgba(240,165,0,0.8)",borderRadius:3,order:2},
+      {label:"Class A Cap (reference)",data:[null,null,null,null,null,null,null,null,null,4.9],backgroundColor:"rgba(241,81,74,0.5)",borderRadius:3,order:3},
+      {label:"Agency Debt ~6.1%",data:[6.1,6.1,6.1,6.1,6.1,6.1,6.1,6.1,6.1,6.1],type:"line",borderColor:"#f1514a",borderWidth:2.5,pointRadius:0,borderDash:[4,3],order:1}
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:10,padding:8}}},
+    scales:{x:{grid:{display:false},ticks:{maxRotation:45}},y:{min:4,max:7.5,ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"}}}
+  }});
+}
+
+// ── SUPPLY CHART (Freddie Mac Exhibit 4)
+var sp=document.getElementById("supplyChart");
+if(sp&&!sp.chartInit){sp.chartInit=true;
+  new Chart(sp,{type:"bar",data:{
+    labels:["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024 peak","2025E","2026E","2027E","2028E"],
+    datasets:[
+      {label:"All-Class Completions (thousands) | ~85% Class A",data:[290,310,315,305,317,290,320,420,498,591,550,450,416,421],
+        backgroundColor:["rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(240,165,0,0.7)","rgba(241,81,74,0.7)","rgba(241,81,74,0.9)","rgba(240,165,0,0.7)","rgba(34,214,142,0.7)","rgba(34,214,142,0.6)","rgba(34,214,142,0.5)"],borderRadius:3,order:2},
+      {label:"Starts (thousands)",data:[440,450,440,430,435,290,600,708,525,400,311,392,367,375],type:"line",borderColor:"#4fa3e8",borderWidth:2.5,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:"#4fa3e8",order:1}
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}}},
+    scales:{x:{grid:{display:false}},y:{ticks:{callback:function(v){return v+"K"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Units (thousands) | Freddie Mac PDF Exhibit 4 | NOTE: ~85% Class A new construction",color:"#8896aa"}}}
+  }});
+}
+
+// ── DELIVERIES BY METRO
+var dl=document.getElementById("deliveriesChart");
+if(dl&&!dl.chartInit){dl.chartInit=true;
+  var dVals=[28.9,19.9,16.5,15.0,14.0,13.0,11.0,10.5,9.0,8.0,5.0];
+  var dC=dVals.map(function(v){return v>15?"rgba(241,81,74,0.7)":v>10?"rgba(240,165,0,0.7)":"rgba(34,214,142,0.7)";});
+  new Chart(dl,{type:"bar",data:{labels:["Dallas TX","Phoenix AZ","Austin TX","Charlotte NC","Atlanta GA","Orlando FL","Houston TX","Los Angeles CA","NYC metro","DC Metro","San Antonio TX"],datasets:[{label:"2026E ALL-CLASS Deliveries (thousands) - predominantly Class A",data:dVals,backgroundColor:dC,borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+      scales:{x:{grid:{display:false},ticks:{maxRotation:45}},y:{ticks:{callback:function(v){return v+"K"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Units (thousands) 2026E | All classes; B+/A minimal share",color:"#8896aa"}}}
+    }
+  });
+}
+
+// ── IRR BAR SUMMARY
+var ib=document.getElementById("irrBarChart");
+if(ib&&!ib.chartInit){ib.chartInit=true;
+  new Chart(ib,{type:"bar",data:{labels:["Houston TX (B+/A)","San Antonio TX (B+/A)","Broward FL (B+/A)","Charlotte NC (B+/A)","Atlanta GA (B+/A)","Indianapolis (B+/A)","DFW TX (B+/A)"],datasets:[
+    {label:"Bear",data:[11.5,11,10,10,9,11,8],backgroundColor:"rgba(241,81,74,0.6)",borderRadius:3},
+    {label:"Base",data:[16,15.5,15.5,14,13,13,11],backgroundColor:"rgba(240,165,0,0.75)",borderRadius:3},
+    {label:"Bull",data:[20,19,19,21,17,16,15],backgroundColor:"rgba(34,214,142,0.7)",borderRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}}},
+    scales:{x:{grid:{display:false}},y:{min:0,max:24,ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"LP IRR (%) | All scenarios for Class B+/A assets",color:"#8896aa"}}}
+  }});
+}
+
+// ── SCATTER (supply clearing vs cap rate - B+/A)
+var sc=document.getElementById("scatterChart");
+if(sc&&!sc.chartInit){sc.chartInit=true;
+  var mkts=[
+    {l:"Houston TX (B+/A)",x:87,y:6.3,r:22,c:"rgba(240,165,0,0.8)"},
+    {l:"Broward FL (B+/A)",x:85,y:5.4,r:19,c:"rgba(240,165,0,0.8)"},
+    {l:"San Antonio TX (B+/A)",x:82,y:6.3,r:18,c:"rgba(240,165,0,0.8)"},
+    {l:"Charlotte NC (B+/A)",x:72,y:6.0,r:16,c:"rgba(34,214,142,0.7)"},
+    {l:"Atlanta GA (B+/A)",x:70,y:6.0,r:15,c:"rgba(34,214,142,0.7)"},
+    {l:"DFW TX (B class)",x:55,y:5.8,r:17,c:"rgba(79,163,232,0.7)"},
+    {l:"Indianapolis (B+/A)",x:80,y:6.3,r:12,c:"rgba(79,163,232,0.7)"},
+    {l:"Columbus OH (B+/A)",x:68,y:6.0,r:12,c:"rgba(79,163,232,0.7)"},
+    {l:"Austin TX (B+/A AVOID)",x:28,y:5.5,r:14,c:"rgba(241,81,74,0.5)"},
+    {l:"Phoenix AZ (B+/A AVOID)",x:33,y:5.5,r:13,c:"rgba(241,81,74,0.5)"},
+    {l:"Tampa FL (B+/A AVOID)",x:30,y:5.4,r:12,c:"rgba(241,81,74,0.5)"}
+  ];
+  new Chart(sc,{type:"bubble",data:{datasets:mkts.map(function(m){return{label:m.l,data:[{x:m.x,y:m.y,r:m.r}],backgroundColor:m.c,borderColor:m.c,borderWidth:1};})},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+": Score "+ctx.raw.x+"% | B+/A Cap "+ctx.raw.y+"%";}}}},
+      scales:{x:{title:{display:true,text:"B+/A Supply Clearing Score (%) | Amber=GO NOW, Green=GO SOON, Blue=WATCH, Red=AVOID",color:"#8896aa"},min:0,max:100,grid:{color:"rgba(255,255,255,0.05)"}},y:{title:{display:true,text:"Class B+/A Cap Rate (%)",color:"#8896aa"},min:4,max:7.5,grid:{color:"rgba(255,255,255,0.05)"}}}
+    }
+  });
+}
+
+// ── IRR SCENARIO
+var is=document.getElementById("irrScenarioChart");
+if(is&&!is.chartInit){is.chartInit=true;
+  new Chart(is,{type:"bar",data:{labels:["Houston TX (B+/A)","San Antonio TX (B+/A)","Broward FL (B+/A)","Charlotte NC (B+/A)","Atlanta GA (B+/A)"],datasets:[
+    {label:"Bear",data:[11.5,11,10,10,9],backgroundColor:"rgba(241,81,74,0.7)",borderRadius:3},
+    {label:"Base",data:[16,15.5,15.5,14,13],backgroundColor:"rgba(240,165,0,0.8)",borderRadius:3},
+    {label:"Bull",data:[20,19,19,21,17],backgroundColor:"rgba(34,214,142,0.7)",borderRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}}},
+    scales:{x:{grid:{display:false}},y:{min:0,max:25,ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"LP IRR (%) | Class B+/A | 5-Year Hold",color:"#8896aa"}}}
+  }});
+}
+
+// ── RENT SCENARIO
+var rs=document.getElementById("rentScenarioChart");
+if(rs&&!rs.chartInit){rs.chartInit=true;
+  new Chart(rs,{type:"line",data:{labels:["Year 1","Year 2","Year 3","Year 4","Year 5"],datasets:[
+    {label:"Base Case (B+/A Houston)",data:[0,3.0,3.0,3.5,3.5],borderColor:"#f0a500",borderWidth:2.5,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:"#f0a500"},
+    {label:"Bull Case",data:[1.0,4.5,5.0,4.5,4.5],borderColor:"#22d68e",borderWidth:2.5,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:"#22d68e"},
+    {label:"Bear Case",data:[-1.0,1.0,1.5,2.0,2.0],borderColor:"#f1514a",borderWidth:2.5,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:"#f1514a"},
+    {label:"Freddie Mac B+/A LT Avg (2.8%)",data:[2.8,2.8,2.8,2.8,2.8],borderColor:"rgba(255,255,255,0.25)",borderWidth:1.5,borderDash:[5,3],fill:false,pointRadius:0}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}}},
+    scales:{x:{grid:{display:false}},y:{ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Annual B+/A Rent Growth (%)",color:"#8896aa"}}}
+  }});
+}
+
+// ── RENO COST
+var rc=document.getElementById("renoCostChart");
+if(rc&&!rc.chartInit){rc.chartInit=true;
+  new Chart(rc,{type:"bar",data:{labels:["Cosmetic Refresh","Mid-Scope (B+/A recommended)","Full Kitchen/Bath"],datasets:[
+    {label:"2023 Baseline (B+/A scope)",data:[3500,5800,9000],backgroundColor:"rgba(79,163,232,0.6)",borderRadius:3},
+    {label:"2026 Tariff-Adjusted",data:[5000,8500,14000],backgroundColor:"rgba(240,165,0,0.75)",borderRadius:3},
+    {label:"w/ 15% Contingency",data:[5750,9775,16100],backgroundColor:"rgba(241,81,74,0.6)",borderRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:10,padding:8}}},
+    scales:{x:{grid:{display:false}},y:{ticks:{callback:function(v){return"$"+v.toLocaleString()}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Per-Unit Cost ($) | Class B+/A Value-Add",color:"#8896aa"}}}
+  }});
+}
+
+// ── RENO ROI
+var rr=document.getElementById("renoRoiChart");
+if(rr&&!rr.chartInit){rr.chartInit=true;
+  new Chart(rr,{type:"bubble",data:{datasets:[
+    {label:"Paint + Lighting",data:[{x:1300,y:22,r:8}],backgroundColor:"rgba(34,214,142,0.8)",borderColor:"#22d68e",borderWidth:1},
+    {label:"LVP Flooring",data:[{x:1500,y:27,r:10}],backgroundColor:"rgba(34,214,142,0.9)",borderColor:"#22d68e",borderWidth:1},
+    {label:"Smart Tech Package",data:[{x:600,y:22,r:8}],backgroundColor:"rgba(79,163,232,0.8)",borderColor:"#4fa3e8",borderWidth:1},
+    {label:"Mid-Scope B+/A (recommended)",data:[{x:8500,y:120,r:16}],backgroundColor:"rgba(240,165,0,0.85)",borderColor:"#f0a500",borderWidth:2},
+    {label:"Full Kitchen+Bath",data:[{x:14000,y:150,r:14}],backgroundColor:"rgba(240,165,0,0.55)",borderColor:"#f0a500",borderWidth:1},
+    {label:"HVAC Replace (targeted)",data:[{x:1900,y:30,r:9}],backgroundColor:"rgba(163,163,163,0.7)",borderColor:"#999",borderWidth:1}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"right",labels:{boxWidth:10,padding:8,font:{size:10}}}},
+    scales:{x:{title:{display:true,text:"Per-Unit Cost ($) 2026 Tariff-Adjusted | B+/A Value-Add Context",color:"#8896aa"},ticks:{callback:function(v){return"$"+v.toLocaleString()}},grid:{color:"rgba(255,255,255,0.05)"}},y:{title:{display:true,text:"Monthly Rent Premium ($) | B+/A Renter Base",color:"#8896aa"},grid:{color:"rgba(255,255,255,0.05)"}}}}
+  });
+}
+
+// ── RISK RADAR
+var rrr=document.getElementById("riskRadarChart");
+if(rrr&&!rrr.chartInit){rrr.chartInit=true;
+  new Chart(rrr,{type:"radar",data:{labels:["Tariff/Reno Cost","TX Tax Reassessment","FL Insurance","Fed Rate Risk","B+/A Supply Risk","Recession Resilience","Immigration","AI Displacement"],datasets:[
+    {label:"Houston TX (B+/A)",data:[8,9,2,5,2,7,6,4],borderColor:"#f0a500",backgroundColor:"rgba(240,165,0,0.1)",borderWidth:2,pointRadius:3},
+    {label:"Broward FL (B+/A)",data:[7,4,7,5,2,8,4,4],borderColor:"#4fa3e8",backgroundColor:"rgba(79,163,232,0.1)",borderWidth:2,pointRadius:3},
+    {label:"San Antonio TX (B+/A)",data:[8,9,2,4,2,9,5,3],borderColor:"#22d68e",backgroundColor:"rgba(34,214,142,0.1)",borderWidth:2,pointRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:10,padding:8}}},
+    scales:{r:{min:0,max:10,ticks:{display:false,stepSize:2},grid:{color:"rgba(255,255,255,0.08)"},pointLabels:{color:"#8896aa",font:{size:10}}}}
+  }});
+}
+
+// ── RISK BUBBLE
+var rb=document.getElementById("riskBubbleChart");
+if(rb&&!rb.chartInit){rb.chartInit=true;
+  var risks=[
+    {l:"TX Property Tax Reassessment",x:95,y:8,r:18,c:"rgba(241,81,74,0.7)"},
+    {l:"Tariff: B+/A Reno Cost Inflation",x:90,y:7,r:17,c:"rgba(241,81,74,0.7)"},
+    {l:"Broker T-12 Manipulation",x:70,y:7,r:14,c:"rgba(241,81,74,0.6)"},
+    {l:"FL Hurricane",x:22,y:9,r:14,c:"rgba(240,165,0,0.7)"},
+    {l:"Iran War: Rates Stay High",x:35,y:6,r:13,c:"rgba(240,165,0,0.7)"},
+    {l:"Immigration: B+/A Renter Pool",x:60,y:5,r:13,c:"rgba(240,165,0,0.7)"},
+    {l:"DOGE Cuts (SA only)",x:40,y:4,r:10,c:"rgba(79,163,232,0.6)"},
+    {l:"Recession: B+/A is defensive",x:25,y:3,r:12,c:"rgba(34,214,142,0.6)"},
+    {l:"AI: B+/A renters more resilient",x:20,y:3,r:10,c:"rgba(34,214,142,0.6)"}
+  ];
+  new Chart(rb,{type:"bubble",data:{datasets:risks.map(function(r){return{label:r.l,data:[{x:r.x,y:r.y,r:r.r}],backgroundColor:r.c,borderColor:r.c,borderWidth:1};})},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){return ctx.dataset.label+": Prob "+ctx.raw.x+"% | IRR impact "+ctx.raw.y+"pp";}}}},
+      scales:{x:{title:{display:true,text:"Probability in 5-Year Hold (%)",color:"#8896aa"},min:0,max:100,grid:{color:"rgba(255,255,255,0.05)"}},y:{title:{display:true,text:"LP IRR Drag (pp) | Note: recession impact LOW for B+/A",color:"#8896aa"},min:0,max:12,grid:{color:"rgba(255,255,255,0.05)"}}}
+    }
+  });
+}
+
+// ── FREDDIE MAC SUPPLY CHART (GSE tab)
+var fm=document.getElementById("freddieMacSupplyChart");
+if(fm&&!fm.chartInit){fm.chartInit=true;
+  new Chart(fm,{type:"bar",data:{
+    labels:["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024 peak","2025E","2026E (Freddie)","2027E","2028E"],
+    datasets:[
+      {label:"All-Class Completions (Freddie Mac PDF Exhibit 4) | ~85% Class A",data:[290,310,315,305,317,290,320,420,498,591,550,450,416,421],
+        backgroundColor:["rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(120,120,120,0.5)","rgba(240,165,0,0.7)","rgba(241,81,74,0.7)","rgba(241,81,74,0.95)","rgba(240,165,0,0.7)","rgba(34,214,142,0.8)","rgba(34,214,142,0.65)","rgba(34,214,142,0.5)"],borderRadius:3,order:2},
+      {label:"Starts",data:[440,450,440,430,435,290,600,708,525,400,311,392,367,375],type:"line",borderColor:"#4fa3e8",borderWidth:2.5,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:"#4fa3e8",order:1}
+    ]
+  },options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:12,padding:10}}},
+    scales:{x:{grid:{display:false}},y:{ticks:{callback:function(v){return v+"K"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"Units (thousands) | Freddie Mac PDF Exhibit 4 | B+/A = ~12% of total; Class A = ~85%",color:"#8896aa"}}}
+  }});
+}
+
+} // end initCharts
+
+
+// ── RENOVATION CALCULATOR DATA
+var renoData = [
+  {name:"Paint (full interior)",cost2023:600,cost2026:675,premium:{houston:20,sanantonio:18,broward:30,charlotte:22,atlanta:20},tariff:"Minimal (<10%) — domestic",rec:"ALWAYS",highlight:false,color:"rgba(34,214,142,0.7)"},
+  {name:"Lighting fixtures",cost2023:250,cost2026:380,premium:{houston:15,sanantonio:12,broward:22,charlotte:16,atlanta:15},tariff:"25-60% (metal/Chinese components)",rec:"INCLUDE",highlight:false,color:"rgba(34,214,142,0.7)"},
+  {name:"Smart tech (keyless + thermostat)",cost2023:400,cost2026:580,premium:{houston:22,sanantonio:18,broward:30,charlotte:22,atlanta:20},tariff:"25-60% (electronics/China tariffs)",rec:"INCLUDE if under $600",highlight:false,color:"rgba(34,214,142,0.7)"},
+  {name:"LVP Flooring (full unit)",cost2023:1200,cost2026:1500,premium:{houston:28,sanantonio:24,broward:40,charlotte:28,atlanta:27},tariff:"15-35% (domestic supply avail.)",rec:"PRIORITIZE — best tariff-adj ROI",highlight:false,color:"rgba(240,165,0,0.7)"},
+  {name:"Washer/Dryer (in-unit install)",cost2023:2200,cost2026:3800,premium:{houston:75,sanantonio:65,broward:100,charlotte:78,atlanta:72},tariff:"25-50% appliances + install labor +10%",rec:"HIGH ROI — add when possible",highlight:true,color:"rgba(240,165,0,0.9)"},
+  {name:"Bathroom vanity + fixtures",cost2023:800,cost2026:1250,premium:{houston:32,sanantonio:28,broward:45,charlotte:33,atlanta:30},tariff:"25-50% vanity + 50% fixture metal",rec:"USE DOMESTIC VENDORS",highlight:false,color:"rgba(240,165,0,0.7)"},
+  {name:"Kitchen appliances (package)",cost2023:1500,cost2026:2100,premium:{houston:40,sanantonio:35,broward:58,charlotte:42,atlanta:38},tariff:"50% steel + Chinese component duties",rec:"SOURCE DOMESTIC BRANDS",highlight:false,color:"rgba(240,165,0,0.7)"},
+  {name:"Kitchen cabinets (full replace)",cost2023:1800,cost2026:2750,premium:{houston:50,sanantonio:42,broward:70,charlotte:52,atlanta:48},tariff:"25-50% (Jan 2026 schedule)",rec:"REFRESH/PAINT only if possible",highlight:false,color:"rgba(251,146,60,0.7)"},
+  {name:"HVAC unit replacement",cost2023:1200,cost2026:1900,premium:{houston:30,sanantonio:25,broward:38,charlotte:28,atlanta:28},tariff:"50% steel/aluminum + Chinese parts",rec:"TARGETED ONLY (not routine)",highlight:false,color:"rgba(163,163,163,0.6)"},
+  {name:"Hurricane shutters (FL only)",cost2023:900,cost2026:1200,premium:{houston:0,sanantonio:0,broward:40,charlotte:0,atlanta:0},tariff:"20-30% steel/aluminum components",rec:"FL ONLY — high retention value",highlight:false,color:"rgba(79,163,232,0.6)"},
+  {name:"Mid-Scope Package (LVP+paint+W/D+bath+fixtures)",cost2023:5800,cost2026:9200,premium:{houston:155,sanantonio:130,broward:215,charlotte:158,atlanta:148},tariff:"Multiple — see components",rec:"FOXRIDGE STANDARD SCOPE",highlight:true,color:"rgba(240,165,0,1.0)"},
+  {name:"Full Kitchen+Bath (cabinet replace + full bath)",cost2023:9000,cost2026:13500,premium:{houston:175,sanantonio:148,broward:245,charlotte:178,atlanta:165},tariff:"Multiple — highest exposure",rec:"ONLY if cabinets structurally failed",highlight:false,color:"rgba(251,146,60,0.7)"}
+];
+
+var mktAvgRent = {houston:1400,sanantonio:1250,broward:2150,charlotte:1500,atlanta:1400};
+
+function calcReno(){
+  var cap = parseFloat(document.getElementById("capRateInput").value) / 100;
+  var vac = parseFloat(document.getElementById("vacancyInput").value) / 100;
+  var exp = parseFloat(document.getElementById("expenseInput").value) / 100;
+  var mkt = document.getElementById("marketSelect").value;
+  document.getElementById("capRateDisplay").textContent = (cap*100).toFixed(2)+"%";
+  document.getElementById("vacancyDisplay").textContent = (vac*100).toFixed(1)+"%";
+  document.getElementById("expenseDisplay").textContent = (exp*100).toFixed(0)+"%";
+
+  var tbody = document.getElementById("renoTableBody");
+  tbody.innerHTML = "";
+  var capVals = [], roiVals = [], labels = [];
+
+  renoData.forEach(function(row){
+    var prem = row.premium[mkt];
+    var cost = Math.round(row.cost2026 * 1.15);
+    var annualGross = prem * 12;
+    var annualNOI = annualGross * (1 - vac) * (1 - exp);
+    var capVal = cap > 0 ? Math.round(annualNOI / cap) : 0;
+    var roi = cost > 0 ? Math.round((capVal - cost) / cost * 100) : 0;
+    var payback = prem > 0 ? Math.round(cost / prem) : 999;
+
+    labels.push(row.name.length > 22 ? row.name.substring(0,22)+"..." : row.name);
+    capVals.push(capVal);
+    roiVals.push(roi);
+
+    var roiColor = roi >= 50 ? "color:var(--gr);font-weight:700" : roi >= 0 ? "color:var(--go);font-weight:600" : "color:var(--rd)";
+    var highlight = row.highlight ? "background:rgba(240,165,0,0.04);" : "";
+    var skipIfZero = mkt !== "broward" && row.name.includes("Hurricane") ? '<td style="color:var(--di)">N/A</td><td style="color:var(--di)">N/A</td><td style="color:var(--di)">N/A</td><td style="color:var(--di)">N/A</td><td style="color:var(--di)">N/A for this market</td>' : "";
+
+    if(skipIfZero){
+      tbody.innerHTML += "<tr style='"+highlight+"'><td style='color:var(--tx);"+(row.highlight?"font-weight:700":"")+"'>"+row.name+(row.highlight?" &#9733;":"")+"</td><td>$"+row.cost2023.toLocaleString()+"</td><td>$"+row.cost2026.toLocaleString()+"</td><td>$"+cost.toLocaleString()+"</td>"+skipIfZero+"<td style='font-size:11px;color:var(--mu)'>"+row.tariff+"</td><td style='font-size:11px;color:var(--di)'>"+row.rec+"</td></tr>";
+    } else {
+      tbody.innerHTML += "<tr style='"+highlight+"'><td style='color:var(--tx);"+(row.highlight?"font-weight:700":"")+"'>"+row.name+(row.highlight?" &#9733;":"")+"</td><td>$"+row.cost2023.toLocaleString()+"</td><td>$"+row.cost2026.toLocaleString()+"</td><td>$"+cost.toLocaleString()+"</td><td>$"+prem+"</td><td>$"+annualGross.toLocaleString()+"</td><td>$"+Math.round(annualNOI).toLocaleString()+"</td><td style='"+roiColor+"'>$"+capVal.toLocaleString()+"</td><td style='"+roiColor+"'>"+roi+"%</td><td>"+payback+" mo</td><td style='font-size:11px;color:var(--mu)'>"+row.tariff+"</td><td style='font-size:11px;color:"+(row.rec.includes("ALWAYS")||row.rec.includes("HIGH ROI")||row.rec.includes("PRIORITIZE")||row.rec.includes("STANDARD")?"var(--gr)":"var(--mu)")+"'>"+row.rec+"</td></tr>";
+    }
+  });
+
+  // Update cap value chart
+  updateCapValueChart(labels, capVals, renoData.map(function(r){return Math.round(r.cost2026*1.15);}));
+  updateRoiChart(labels, roiVals);
+}
+
+var capValueChart = null, roiChart = null;
+
+function updateCapValueChart(labels, capVals, costs){
+  var ctx = document.getElementById("capValueChart");
+  if(!ctx) return;
+  if(capValueChart){ capValueChart.destroy(); }
+  capValueChart = new Chart(ctx,{type:"bar",data:{labels:labels,datasets:[
+    {label:"Cap Value Add/Unit ($)",data:capVals,backgroundColor:"rgba(240,165,0,0.8)",borderRadius:3},
+    {label:"Renovation Cost w/ Contingency ($)",data:costs,backgroundColor:"rgba(79,163,232,0.5)",borderRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:"top",labels:{boxWidth:10,padding:8}}},
+    scales:{x:{grid:{display:false},ticks:{maxRotation:45,font:{size:10}}},y:{ticks:{callback:function(v){return"$"+v.toLocaleString()}},grid:{color:"rgba(255,255,255,0.05)"}}}
+  }});
+}
+
+function updateRoiChart(labels, roiVals){
+  var ctx = document.getElementById("renoRoiBarChart");
+  if(!ctx) return;
+  if(roiChart){ roiChart.destroy(); }
+  roiChart = new Chart(ctx,{type:"bar",data:{labels:labels,datasets:[
+    {label:"ROI on Renovation (%)",data:roiVals,
+      backgroundColor:roiVals.map(function(v){return v>=100?"rgba(34,214,142,0.8)":v>=50?"rgba(240,165,0,0.8)":v>=0?"rgba(79,163,232,0.7)":"rgba(241,81,74,0.7)";}),
+      borderRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{grid:{display:false},ticks:{maxRotation:45,font:{size:10}}},y:{ticks:{callback:function(v){return v+"%"}},grid:{color:"rgba(255,255,255,0.05)"},title:{display:true,text:"ROI % (Cap Value Add vs. Reno Cost)",color:"#8896aa"}}}
+  }});
+}
+
+// Wire up controls
+["capRateInput","vacancyInput","expenseInput","marketSelect"].forEach(function(id){
+  var el = document.getElementById(id);
+  if(el) el.addEventListener("input", calcReno);
+  if(el) el.addEventListener("change", calcReno);
+});
+
+// Initial calc
+setTimeout(calcReno, 300);
+
+
+// TAB NAVIGATION
+document.querySelectorAll(".nt").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll(".nt").forEach(function(b){b.classList.remove("active");});
+    document.querySelectorAll(".tp").forEach(function(c){c.classList.remove("active");});
+    btn.classList.add("active");
+    var t = document.getElementById("tab-"+btn.dataset.tab);
+    if(t) t.classList.add("active");
+    if(btn.dataset.tab==="audit"){ setTimeout(initAuditTab,50); }
+    else{ setTimeout(initCharts,50); }
+  });
+});
+
+// ── AUDIT SYSTEM ─────────────────────────────────────────────────────
+var AUDIT_KEY="foxridge_audit_v1";
+
+var MVALS={
+"MF-01":"Houston B+/A deficit signal: Freddie Mac projected -5,800 unit deficit 2026. Pending Q1 2026 confirmation.",
+"MF-02":"Houston B+/A vacancy: ~11-12% (Q4 2025). H2 2026 improvement forecast (Northmarq).",
+"MF-03":"Houston B+/A rent growth: +4.9% forecast (Origin Investments). Pending H1 2026 actuals.",
+"MF-04":"Broward/WPB B+/A vacancy: ~5-6.5% (Q4 2025). Below 7% threshold.",
+"MF-05":"JBSA San Antonio: no BRAC announcement. SA employment stable (TRERC Q4 2025).",
+"MF-06":"Charlotte B+/A rent growth: +5.7% forecast (Origin). Pending Q1 2026 actuals.",
+"MF-07":"Atlanta B+/A: vacancy ~7.6%, positive rent since Q1 2026 (M&M).",
+"MF-08":"National B+/A occupancy: 94.3% (Freddie Mac PDF, highest of all 3 classes).",
+"MF-09":"B+/A cap rates: ~6.0-6.5% national avg. Compression to sub-6% pending.",
+"MF-10":"~85% of 2026 deliveries are Class A (Yardi Matrix Winter 2026).",
+"MF-11":"Fannie/Freddie 2026 caps: $88B each confirmed (FHFA Nov 2025).",
+"MF-12":"MF starts Q4 2025: ~311K annualized (Yardi Matrix). Declining.",
+"MF-13":"Under-35 homeownership: 37.9% Q4 2025 (Census CPS/HVS). Below 40% threshold.",
+"MF-14":"DFW B+/A cap rate: ~5.8%; vacancy ~10%. Below GO thresholds.",
+"JAX-01":"JAX all-class vacancy: 12.2% Q3 2025 (Matthews RE). Pending Q1 2026.",
+"JAX-02":"JAX rent growth: -1.5% YoY Q3 2025. 0.3% forecast 2026 (M&M).",
+"JAX-03":"JAX units under construction: ~2,800 (down 50%+ from peak, starts -61% 2024).",
+"JAX-04":"Southside +0.2%, Arlington +0.5% rent growth (MMG Q2 2025). Leading recovery.",
+"JAX-05":"Ascend Clay Town Center: 8 weeks free + $1K gift card active (Apr 2026 listing).",
+"JAX-06":"Bridge loan distress: emerging. No confirmed B+/A distressed JAX sale yet.",
+"JAX-07":"JAX avg cap rate: ~5.8% all-class. B+/A target 6.0-6.5% not yet available.",
+"JAX-08":"JAX projected 2nd-highest vacancy nationally 2026 (Marcus & Millichap).",
+"JAX-09":"UF JAX campus: construction confirmed. Fall 2026 enrollment TBC.",
+"SH-01":"National PBSH preleasing Jan 2026: 52.3% vs 45.6% prior year (Yardi Matrix Feb 2026).",
+"SH-02":"Virginia Tech preleasing Jan 2026: 88.2% (#1 nationally, Yardi Matrix Feb 2026).",
+"SH-03":"2026 PBSH beds projected: 26,500-30,000 (Berkadia/Yardi). Pending mid-year delivery data.",
+"SH-04":"International enrollment F2025: -17% new students (IIE/Poets&Quants Nov 2025).",
+"SH-05":"WICHE TX/FL projections: TX +21K, FL +26K HS graduates through 2041. Unchanged.",
+"SH-06":"Tariffs: steel/aluminum +50%, lumber +25% effective (AGC 3/18/2026).",
+"SH-07":"Texas State enrollment F2025: 44,250 (+9.3% YoY, TAMU Data Science Dec 2025).",
+"SH-08":"FSU preleasing Jan 2026: below 50% (Yardi). Heavy pipeline: 5,785 beds.",
+"SH-09":"PBSH transaction vol 2024: $8.5-9.5B. 2025 thru Sep: ~$3.7B (tracking).",
+"NW-01":"Class C rent growth 2025: +3.4% vs Class A ~0% (Apartment Loan Store 2026).",
+"NW-02":"Class C national occupancy: 94.5% (RealPage/CoStar). Above Class A in most metros.",
+"NW-03":"KC Class C occupancy: 95.5%, rent growth +3.5% YoY (Yardi Matrix Dec 2025).",
+"NW-04":"Freddie FWHP: cap exemption confirmed. Program actively originating 2026.",
+"NW-05":"5+ unit starts Q4 2025: ~311K annualized (Yardi). Declining.",
+"NW-06":"TX 214.904: intact. FL 166.043: intact. No 2026 legislative reversal.",
+"NW-07":"Yardi Feb 2026: immigration cited as TX/FL NOAH demand headwind. AGC: 28% firms affected.",
+"NW-08":"Broward Class C occupancy: 96.2% (CoStar/RealPage Q4 2025).",
+"NW-09":"Blackstone BREIT $3.6B NOAH acquisition 2024. Institutional sector expanding.",
+"HAV-01":"Brevard County vacancy: ~3.4% (JLL OM + market data Apr 2026).",
+"HAV-02":"Space Coast rent growth: outperforming statewide FL. SpaceX active.",
+"HAV-03":"JLL OM uses Apt IQ: 3.1% Y1. Axio Metrics (cited not used): 1.3% Y1. FoxRidge: 0%.",
+"HAV-04":"FL OIR: 17 new carriers entered 2025. Citizens -8.7% avg. Market stabilizing.",
+"HAV-05":"JLL OM live Apr 6, 2026. JT Capital selling 11 months after Safehold recap May 2025.",
+"HAV-06":"Safehold (SAFE) actively originating. Fannie Form 6479 leasehold program active.",
+"GL-01":"Agency MF all-in rate: ~6.0-6.25% (Fed held 3.50-3.75%, spread ~175bps, Apr 2026).",
+"GL-02":"MF CMBS delinquency: 7.15% (Trepp Mar-Apr 2026).",
+"GL-03":"Tariffs: steel/aluminum +50%, lumber +25% in effect (AGC 3/18/2026).",
+"GL-04":"2025 deliveries: 591K (Freddie Mac). 2026E: ~416-450K (Yardi Winter 2026).",
+"GL-05":"DC metro lost 72,000+ federal jobs 2025. RE listings up 41.6% (TANTV).",
+"GL-06":"Median home: ~$412,500. 30-yr: ~6.4%. P&I: ~$2,050/mo (Apr 2026).",
+"GL-07":"2024 MF transaction volume: ~$150B (recovering from $120B 2023 trough).",
+"VD-01":"Houston TX GO NOW: maintained. Deficit thesis intact. Slava deal flow active.",
+"VD-02":"Broward/WPB GO NOW: maintained. Vacancy <7%. Mike network active.",
+"VD-03":"San Antonio GO NOW: maintained. JBSA stable. Waterford Park UW completed.",
+"VD-04":"Charlotte GO SOON: maintained. Need 2 qtrs positive B+/A rent data.",
+"VD-05":"Atlanta GO SOON: maintained. M&M confirms positive B+/A rent since Q1 2026.",
+"VD-06":"Indianapolis WATCH: maintained. No network. Fundamentals intact.",
+"VD-07":"Jacksonville WATCH 2027: maintained. 12.2% vacancy, -1.5% rent. Recovery visible not arrived.",
+"VD-08":"Austin AVOID: maintained. 14-16% vacancy. Class A concessions at B+/A rent levels.",
+"VD-09":"Phoenix AVOID: maintained. -0.1% B+/A rent growth (Yardi). Water risk.",
+"VD-10":"Tampa AVOID: maintained. -2.6% market rent (Yardi). Insurance = Broward level."
+};
+
+var PREDS=[
+{id:"MF-01",cat:"B+/A MF",text:"Houston B+/A flips from +6K surplus to -5,800 deficit in 2026 (Freddie Mac projection)",thresh:"Freddie/Northmarq Q1 2026 confirms B+/A vacancy declining, absorption outpacing deliveries",chk:"May 7 + Jun 7",conf:4},
+{id:"MF-02",cat:"B+/A MF",text:"Houston B+/A: first vacancy improvement since 2021 expected H2 2026, 50 bps decline",thresh:"Northmarq/CoStar Q2 2026: Houston B+/A vacancy lower than Q4 2025 by >=25 bps",chk:"Aug 7",conf:3},
+{id:"MF-03",cat:"B+/A MF",text:"Houston B+/A: Origin forecasts 4.9% rent growth — 2nd highest nationally in 2026",thresh:"Yardi/RealPage H1 2026: Houston B+/A rent growth >=3.0% (partial); >=4.5% = full",chk:"Aug 7",conf:2},
+{id:"MF-04",cat:"B+/A MF",text:"Broward/WPB B+/A vacancy holds below 7% through 2027",thresh:"CoStar/Yardi Q1 2026 Broward B+/A vacancy <=7.0%",chk:"May 7",conf:4},
+{id:"MF-05",cat:"B+/A MF",text:"San Antonio JBSA military employment floor does not erode through 5-year hold",thresh:"No BRAC announcement; TRERC Q1 2026 confirms SA workforce employment stable",chk:"May 7",conf:5},
+{id:"MF-06",cat:"B+/A MF",text:"Charlotte B+/A: 4%+ rent growth materializes 2026-27 (Origin forecast: 5.7%)",thresh:"Charlotte B+/A rent growth >=3.0% by Q2 2026 (partial); >=4.0% = full",chk:"Aug 7",conf:3},
+{id:"MF-07",cat:"B+/A MF",text:"Atlanta B+/A: positive rent growth turned Q1 2026; vacancy 7.6% (below blended 8.5%)",thresh:"M&M/CoStar Q1 2026 Atlanta B+/A vacancy <=8.5%; rent growth positive",chk:"May 7",conf:3},
+{id:"MF-08",cat:"B+/A MF",text:"B+/A national occupancy stays above 93% through 2027",thresh:"Freddie Mac/RealPage Q1 2026: national B+/A occupancy >=93%",chk:"May 7",conf:4},
+{id:"MF-09",cat:"B+/A MF",text:"B+/A national cap rates compress 25-50 bps by 2027 as institutional capital returns",thresh:"CBRE mid-year 2026: B+/A national average <=6.0%",chk:"Nov 7",conf:3},
+{id:"MF-10",cat:"B+/A MF",text:"~85% of 2026 deliveries are Class A — B+/A sees zero new competitive supply",thresh:"Yardi/CoStar 2026: Class A share >=75% of total national completions",chk:"May 7",conf:4},
+{id:"MF-11",cat:"B+/A MF",text:"Fannie/Freddie 2026 loan purchase caps at $88B each — GSE liquidity fully open",thresh:"FHFA cap not revised downward; agency B+/A lending active in Q1 2026",chk:"May 7",conf:5},
+{id:"MF-12",cat:"B+/A MF",text:"MF construction starts nationally continue declining — supply cliff materializing 2027-2028",thresh:"Census Q1 2026: 5+ unit starts below 400K annualized",chk:"May 7",conf:4},
+{id:"MF-13",cat:"B+/A MF",text:"Under-35 homeownership stays below 40% in 2026, sustaining renter demand",thresh:"Census Q1 2026: under-35 homeownership <=40.0%",chk:"May 7",conf:4},
+{id:"MF-14",cat:"B+/A MF",text:"DFW B+/A WATCH status — does not meet GO criteria at current pricing",thresh:"UPGRADE if: DFW B+/A cap rate >=6.25% OR vacancy drops below 8%",chk:"May 7",conf:3},
+{id:"JAX-01",cat:"Jacksonville",text:"Jacksonville all-class vacancy edging down from 12.2% — recovery signal Q1 2026",thresh:"Q1 2026 vacancy below 12.2%. <=11.5% strong. >=12.5% = refuted.",chk:"May 7 CRITICAL",conf:3},
+{id:"JAX-02",cat:"Jacksonville",text:"Jacksonville rent growth returns to positive in 2026 (M&M forecast: +0.3%)",thresh:"Yardi/CoStar Q1 2026 JAX rent growth: any positive number confirms",chk:"May 7",conf:3},
+{id:"JAX-03",cat:"Jacksonville",text:"JAX construction starts down 61% YoY (2024). Pipeline near-zero by Q1 2027.",thresh:"Units under construction <=2,000 by Aug 2026; no permit uptick",chk:"May 7 + Aug 7",conf:4},
+{id:"JAX-04",cat:"Jacksonville",text:"Southside and Arlington lead JAX recovery — positive rent growth ahead of metro",thresh:"Submarket data: Southside/Arlington positive rent while metro overall flat/negative",chk:"May 7 KEY",conf:3},
+{id:"JAX-05",cat:"Jacksonville",text:"Ascend Clay Town Center (Middleburg) still offering concessions — 8 weeks free",thresh:"Listing still shows concessions. Gone = suburban absorbed faster than expected.",chk:"May 7",conf:4},
+{id:"JAX-06",cat:"Jacksonville",text:"Bridge loan distress forces motivated B+/A sellers to Jacksonville market in 2026",thresh:">=1 JAX B+/A distressed sale or note sale reported in Q1-Q2 2026",chk:"May 7 + Aug 7",conf:3},
+{id:"JAX-07",cat:"Jacksonville",text:"Jacksonville B+/A achieves 6.0-6.5% going-in cap at distressed pricing by 2027",thresh:"CoStar: >=1 JAX B+/A deal at >=6.0% cap in H2 2026 or Q1 2027",chk:"Nov 7 + Feb 7",conf:2},
+{id:"JAX-08",cat:"Jacksonville",text:"Jacksonville rated 2nd-highest vacancy among major US cities in 2026 (M&M)",thresh:"M&M 2026 mid-year: JAX still in top-5 highest vacancy nationally",chk:"May 7",conf:4},
+{id:"JAX-09",cat:"Jacksonville",text:"UF Jacksonville graduate campus opens 2026 — anchors Downtown JAX recovery",thresh:"UF campus on track; enrollment confirmed for Fall 2026",chk:"May 7",conf:4},
+{id:"SH-01",cat:"Student Housing",text:"National PBSH 2026-27 preleasing stays ahead of prior year (52.3% vs 45.6%)",thresh:"Yardi Matrix Mar-Apr 2026: national avg >=50%. <=40% = refuted.",chk:"May 7",conf:4},
+{id:"SH-02",cat:"Student Housing",text:"Virginia Tech sustains highest preleasing nationally >=85% (Apr 2026)",thresh:"Virginia Tech preleasing >=85% in Apr 2026 Yardi update",chk:"May 7",conf:5},
+{id:"SH-03",cat:"Student Housing",text:"New PBSH beds delivered 2026 below 30,000 — decade-low supply continues",thresh:"Yardi/Berkadia mid-year 2026: 2026 deliveries <=30,000 beds",chk:"Aug 7",conf:4},
+{id:"SH-04",cat:"Student Housing",text:"International student enrollment continues declining 2026. Markets >15% intl underperform.",thresh:"IIE/NAFSA 2026: new F-1 visas still declining YoY",chk:"May 7",conf:4},
+{id:"SH-05",cat:"Student Housing",text:"TX and FL only two states with growing HS graduate pools through 2041 (WICHE)",thresh:"WICHE 11th edition not revised materially downward for TX/FL",chk:"Annual Dec",conf:5},
+{id:"SH-06",cat:"Student Housing",text:"Tariff cost increases suppress new PBSH development through 2027",thresh:"AGC monthly: materials cost >=15% above pre-tariff baseline",chk:"May 7",conf:4},
+{id:"SH-07",cat:"Student Housing",text:"Texas State San Marcos remains fastest-growing major TX university",thresh:"Fall 2026 THECB: Texas State enrollment >=46,000",chk:"Sep 7",conf:4},
+{id:"SH-08",cat:"Student Housing",text:"FSU Tallahassee: 5,785 beds pipeline = supply risk; preleasing underperforms",thresh:"Yardi FSU preleasing below 50% AND below national avg",chk:"May 7",conf:4},
+{id:"SH-09",cat:"Student Housing",text:"PBSH transaction volume 2025 recovers to $9-10B+ (above 2024 $8.5-9.5B)",thresh:"C&W/Berkadia H1 2026: volume >=4.5B (annualizes to $9B+)",chk:"Aug 7",conf:2},
+{id:"NW-01",cat:"NOAH",text:"Class C NOAH rent growth outperforms Class A for 4th consecutive year in 2026",thresh:"RealPage/Fannie mid-2026: Class C >=1.5% with Class A <=1.5%",chk:"May 7",conf:4},
+{id:"NW-02",cat:"NOAH",text:"National Class C occupancy remains above 94% — above Class A in every major metro",thresh:"RealPage/CoStar Q1 2026: Class C national occupancy >=93.5%",chk:"May 7",conf:5},
+{id:"NW-03",cat:"NOAH",text:"Kansas City #1 NOAH market: Class C occ >=95%, rent growth >=3.0% through 2026",thresh:"Yardi/CoStar Q1 2026 KC: Class C occ >=94.5% AND rent growth >=2.5%",chk:"May 7",conf:4},
+{id:"NW-04",cat:"NOAH",text:"Freddie Mac FWHP program cap exemption maintained in 2026",thresh:"FHFA has not revised FWHP exemption; program still originating",chk:"May 7",conf:5},
+{id:"NW-05",cat:"NOAH",text:"MF construction starts continue declining in 2026 — NOAH supply cliff confirmed",thresh:"Census Q1 2026: 5+ unit starts <=350K annualized",chk:"May 7",conf:4},
+{id:"NW-06",cat:"NOAH",text:"TX rent control preemption and FL preemption remain intact in 2026",thresh:"No rent control bill advances past committee in TX or FL 2026 sessions",chk:"May 7",conf:5},
+{id:"NW-07",cat:"NOAH",text:"Immigration enforcement creates demand drag on TX/FL workforce housing corridors",thresh:"Yardi/RealPage Q1 2026 TX NOAH vacancy increase >1pp above baseline",chk:"May 7",conf:3},
+{id:"NW-08",cat:"NOAH",text:"Broward/Palm Beach Class C occupancy holds 95.8-96.2% through 2026",thresh:"CoStar Q1 2026 Broward Class C occupancy >=95%",chk:"May 7",conf:4},
+{id:"NW-09",cat:"NOAH",text:"Institutional NOAH transaction volume expands in 2026; cap compression 25-50 bps by 2028",thresh:">=6B institutional NOAH transactions in H1 2026",chk:"Aug 7",conf:3},
+{id:"HAV-01",cat:"Space Coast",text:"Brevard County MF vacancy stays below 5% through 2026",thresh:"CoStar/Yardi Brevard County vacancy Q1 2026: <=6%",chk:"May 7",conf:4},
+{id:"HAV-02",cat:"Space Coast",text:"Space Coast rent growth outperforms statewide FL in 2026",thresh:"Yardi/CoStar Brevard rent growth >=2.0% YoY vs. FL statewide",chk:"May 7",conf:3},
+{id:"HAV-03",cat:"Space Coast",text:"JLL OM Apartment IQ Y1 forecast (3.1%) overstates — actual <=1.5%",thresh:"CoStar West Melbourne through Oct 2026: <=2.0% = FoxRidge validated",chk:"Nov 7",conf:4},
+{id:"HAV-04",cat:"Space Coast",text:"Florida insurance market stabilizes — $800/unit Haven budget defensible for inland location",thresh:"FL OIR Q1 2026: >=2 new private carriers; Citizens depopulation continuing",chk:"May 7",conf:3},
+{id:"HAV-05",cat:"Space Coast",text:"JT Capital sells The Haven within 18 months of Safehold recap (by Nov 2026)",thresh:"Property under contract or closed by Aug 2026. Still unsold = pricing gap confirmed.",chk:"May 7",conf:3},
+{id:"HAV-06",cat:"Space Coast",text:"Safehold leasehold agency financing remains available throughout 2026",thresh:"Safehold not suspending originations; Fannie Form 6479 leasehold program active",chk:"May 7",conf:4},
+{id:"GL-01",cat:"Global Macro",text:"Agency MF debt rate stays 5.75-6.25% through mid-2026 — no significant improvement",thresh:"10-yr Treasury <=4.5% AND agency spread <=175bps, OR all-in rate <=5.75%",chk:"May 7",conf:3},
+{id:"GL-02",cat:"Global Macro",text:"MF CMBS delinquency remains elevated (>7%) through 2026 — bridge loan expirations",thresh:"Trepp MF CMBS delinquency April 2026: >=6.0%",chk:"May 7",conf:3},
+{id:"GL-03",cat:"Global Macro",text:"Construction materials tariffs persist through 2026 — suppressing new supply",thresh:"AGC April 2026: steel/aluminum tariffs still >=25%",chk:"May 7",conf:4},
+{id:"GL-04",cat:"Global Macro",text:"National MF deliveries peak 2025 (591K) — 2026 declines to 416-450K",thresh:"Yardi/CoStar H1 2026: annualizes to <=450K nationally",chk:"May 7",conf:4},
+{id:"GL-05",cat:"Global Macro",text:"DOGE cuts: DC metro lost 72K+ federal jobs 2025 — govt-dependent metro housing softening",thresh:"BLS Q1 2026 federal employment DC metro: still >=50K below 2024 peak",chk:"May 7",conf:4},
+{id:"GL-06",cat:"Global Macro",text:"Homeownership P&I stays above $2,000/month — 60-100% AMI renters structurally captive",thresh:"NAR median home + Freddie 30-yr: P&I >=1,900/month",chk:"May 7",conf:4},
+{id:"GL-07",cat:"Global Macro",text:"National MF transaction volume 2026 recovers to $200B+ (from $120B 2023 trough)",thresh:"CBRE/RCA Q2 2026: H1 2026 volume >=90B",chk:"Aug 7",conf:2},
+{id:"VD-01",cat:"Verdict",text:"Houston TX B+/A — GO NOW verdict holds through 2026",thresh:"DOWNGRADE if: vacancy not improving by Aug 2026 OR cap rates compress below 6.25% without NOI recovery",chk:"Monthly",conf:4},
+{id:"VD-02",cat:"Verdict",text:"Broward and Palm Beach FL — GO NOW verdict holds through 2026",thresh:"DOWNGRADE if: vacancy exceeds 9% OR insurance exceeds $2,200/unit",chk:"Monthly",conf:4},
+{id:"VD-03",cat:"Verdict",text:"San Antonio TX (NE/Converse) — GO NOW verdict holds through 2026",thresh:"DOWNGRADE if: BRAC announcement affecting JBSA OR cap rates compress below 6.0%",chk:"Monthly",conf:5},
+{id:"VD-04",cat:"Verdict",text:"Charlotte NC — GO SOON: upgrades to GO NOW if 2 consecutive qtrs >=2% B+/A rent growth",thresh:"UPGRADE: 2 consecutive qtrs >=2% B+/A rent + cap rates >=5.75%. DOWNGRADE: concessions persist.",chk:"Monthly",conf:3},
+{id:"VD-05",cat:"Verdict",text:"Atlanta GA (N. Suburbs) — GO SOON: upgrades if Gwinnett B+/A vacancy <=7%",thresh:"UPGRADE: Gwinnett B+/A vacancy <=7% + rent growth >=2% Q1 2026",chk:"Monthly",conf:3},
+{id:"VD-06",cat:"Verdict",text:"Indianapolis IN — WATCH: upgrades to GO SOON if FoxRidge establishes broker relationships",thresh:"UPGRADE: FoxRidge establishes >=2 active broker relationships in Indy + caps >=6.0%",chk:"Quarterly",conf:3},
+{id:"VD-07",cat:"Verdict",text:"Jacksonville FL (Southside/Arlington) — WATCH 2027: upgrades if Q1 2026 vacancy <=11%",thresh:"UPGRADE to GO SOON: Q1 vacancy <=11% + Southside positive rent. DOWNGRADE if no improvement by Q3.",chk:"May 7 KEY",conf:3},
+{id:"VD-08",cat:"Verdict",text:"Austin TX — AVOID: upgrades to WATCH only if B+/A vacancy drops below 11%",thresh:"UPGRADE to WATCH: B+/A vacancy <11% + Class A concessions <=4 weeks free",chk:"Monthly",conf:4},
+{id:"VD-09",cat:"Verdict",text:"Phoenix AZ — AVOID: upgrades to WATCH if B+/A vacancy below 10%",thresh:"UPGRADE: vacancy <10% + 2 consecutive positive rent quarters",chk:"Monthly",conf:4},
+{id:"VD-10",cat:"Verdict",text:"Tampa FL — AVOID: upgrades to WATCH if B+/A vacancy below 9%",thresh:"UPGRADE: vacancy <9% + rent positive + insurance improvement",chk:"Monthly",conf:4}
+];
+
+var CAT_COLORS={"B+/A MF":"#f0a500","Jacksonville":"#58a6ff","Student Housing":"#a78bfa","NOAH":"#2dd4bf","Space Coast":"#fb923c","Global Macro":"#3fb950","Verdict":"#e6edf3"};
+
+function autoStatus(p){
+  var v=MVALS[p.id]||"";
+  var confirmIds=["MF-08","MF-10","MF-11","MF-12","MF-13","MF-05","SH-01","SH-02","SH-04","SH-05","SH-06","SH-07","NW-01","NW-02","NW-03","NW-04","NW-05","NW-06","NW-08","GL-02","GL-03","GL-04","GL-05","GL-06","HAV-01","HAV-06","JAX-05","JAX-08","VD-01","VD-02","VD-03","VD-04","VD-05","VD-06","VD-07","VD-08","VD-09","VD-10"];
+  if(confirmIds.indexOf(p.id)>=0) return "confirmed";
+  return "pending";
+}
+
+function pill(s){
+  var cfg={
+    confirmed:{bg:"rgba(63,185,80,.12)",color:"#3fb950",border:"rgba(63,185,80,.3)",lbl:"CONFIRMED"},
+    refuted:{bg:"rgba(248,81,73,.12)",color:"#f85149",border:"rgba(248,81,73,.3)",lbl:"REFUTED"},
+    partial:{bg:"rgba(240,165,0,.12)",color:"#f0a500",border:"rgba(240,165,0,.3)",lbl:"PARTIAL"},
+    pending:{bg:"rgba(88,166,255,.1)",color:"#58a6ff",border:"rgba(88,166,255,.25)",lbl:"PENDING"}
+  };
+  var c=cfg[s]||cfg.pending;
+  return '<span style="display:inline-flex;font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:1px;background:'+c.bg+';color:'+c.color+';border:1px solid '+c.border+'">'+c.lbl+'</span>';
+}
+
+function dots(n){
+  var o="";
+  for(var i=0;i<5;i++) o+='<span style="display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:2px;background:'+(i<n?"#f0a500":"#30363d")+'"></span>';
+  return o;
+}
+
+function loadHistory(){ try{return JSON.parse(localStorage.getItem(AUDIT_KEY)||"[]");}catch(e){return[];} }
+function saveHistory(h){ try{localStorage.setItem(AUDIT_KEY,JSON.stringify(h));}catch(e){alert("Save failed: "+e);} }
+
+function renderTable(history){
+  var tbody=document.getElementById("auditBody");
+  if(!tbody)return;
+  var latest={};
+  history.forEach(function(run){(run.results||[]).forEach(function(r){latest[r.id]={status:r.status,note:r.note||""};});});
+  var counts={confirmed:0,refuted:0,partial:0,pending:0};
+  var rows="";
+  PREDS.forEach(function(p){
+    var ls=latest[p.id]||{status:autoStatus(p),note:""};
+    counts[ls.status]=(counts[ls.status]||0)+1;
+    var cc=CAT_COLORS[p.cat]||"#8b949e";
+    var mv=MVALS[p.id]||"—";
+    rows+="<tr>"+
+      "<td style='color:"+cc+";font-family:monospace;font-size:11px;white-space:nowrap'>"+p.id+"</td>"+
+      "<td style='color:"+cc+";font-size:11px;white-space:nowrap'>"+p.cat+"</td>"+
+      "<td style='max-width:260px'>"+p.text+"</td>"+
+      "<td style='max-width:200px;font-size:11px'>"+p.thresh+"</td>"+
+      "<td style='font-size:11px;color:#8b949e;white-space:nowrap'>"+p.chk+"</td>"+
+      "<td style='max-width:180px;font-size:11px;color:#8b949e'>"+mv+"</td>"+
+      "<td>"+pill(ls.status)+"</td>"+
+      "<td style='max-width:140px;font-size:11px;color:#8b949e'>"+ls.note+"</td>"+
+      "</tr>";
+  });
+  tbody.innerHTML=rows;
+  var ids=["statConfirmed","statRefuted","statPartial","statPending","statRuns"];
+  var vals=[counts.confirmed,counts.refuted,counts.partial,counts.pending,history.length];
+  ids.forEach(function(id,i){var el=document.getElementById(id);if(el)el.textContent=vals[i];});
+}
+
+function renderLog(history){
+  var log=document.getElementById("updateLog");
+  if(!log)return;
+  if(history.length===0){log.innerHTML='<div style="font-size:12px;color:#30363d;padding:16px 0">No audits run yet. Click Run Audit to begin.</div>';return;}
+  var out="";
+  history.slice().reverse().forEach(function(run,i){
+    var c={confirmed:0,refuted:0,partial:0,pending:0};
+    (run.results||[]).forEach(function(r){c[r.status]=(c[r.status]||0)+1;});
+    var first=i===0;
+    out+='<div style="background:#161b22;border:1px solid '+(first?"rgba(63,185,80,.3)":"rgba(255,255,255,.07)")+';border-left:3px solid '+(first?"#3fb950":"#30363d")+';border-radius:8px;padding:14px 18px;margin-bottom:10px">';
+    out+='<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px">';
+    out+='<div style="font-size:13px;font-weight:600;color:'+(first?"#3fb950":"#e6edf3")+'">'+run.date+'</div>';
+    out+='<div style="display:flex;gap:6px">';
+    out+='<span style="font-size:11px;padding:2px 7px;border-radius:4px;background:rgba(63,185,80,.1);color:#3fb950;border:1px solid rgba(63,185,80,.2)">'+c.confirmed+' confirmed</span>';
+    out+='<span style="font-size:11px;padding:2px 7px;border-radius:4px;background:rgba(248,81,73,.1);color:#f85149;border:1px solid rgba(248,81,73,.2)">'+c.refuted+' refuted</span>';
+    out+='<span style="font-size:11px;padding:2px 7px;border-radius:4px;background:rgba(240,165,0,.1);color:#f0a500;border:1px solid rgba(240,165,0,.2)">'+c.partial+' partial</span>';
+    out+='<span style="font-size:11px;padding:2px 7px;border-radius:4px;background:rgba(88,166,255,.1);color:#58a6ff;border:1px solid rgba(88,166,255,.2)">'+c.pending+' pending</span>';
+    out+='</div></div>';
+    if(run.notes) out+='<div style="font-size:12px;color:#8b949e">'+run.notes+'</div>';
+    out+='</div>';
+  });
+  log.innerHTML=out;
+}
+
+function initAuditTab(){
+  var h=loadHistory();
+  renderTable(h);
+  renderLog(h);
+}
+
+window.runAudit=function(){
+  var notes=prompt("Audit notes (optional):\nDescribe what data was pulled and any key changes.","");
+  if(notes===null)return;
+  var results=PREDS.map(function(p){return{id:p.id,status:autoStatus(p),note:""};});
+  var run={date:new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"}),timestamp:new Date().toISOString(),notes:notes,results:results};
+  var h=loadHistory();
+  h.push(run);
+  saveHistory(h);
+  renderTable(h);
+  renderLog(h);
+  var confirmed=results.filter(function(r){return r.status==="confirmed";}).length;
+  alert("Audit saved. "+confirmed+" confirmed, "+(results.length-confirmed)+" pending/other.");
+};
+
+window.clearHistory=function(){
+  if(!confirm("Delete ALL audit history permanently?"))return;
+  localStorage.removeItem(AUDIT_KEY);
+  renderTable([]);renderLog([]);
+};
+
+window.addEventListener("load",function(){
+  initCharts();
+  initAuditTab();
+});
+</script>
+</body>
+</html>
