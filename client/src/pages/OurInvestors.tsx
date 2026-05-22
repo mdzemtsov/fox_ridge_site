@@ -300,6 +300,26 @@ export default function OurInvestors() {
         </div>
       </section>
 
+      {/* Market Insights Banner */}
+      <section className="py-10 bg-stone-100 border-t border-stone-200">
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-1 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> New Research Published
+              </p>
+              <h3 className="text-primary font-display font-bold text-xl">Read the Data Behind Our Investment Thesis</h3>
+              <p className="text-stone-500 text-sm mt-1">Our Market Insights reports explain exactly why we're deploying capital into the Texas Triangle right now.</p>
+            </div>
+            <Link href="/market-insights" className="shrink-0">
+              <button className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
+                Read Our Research →
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-stone-950 text-white text-center">
         <div className="container">

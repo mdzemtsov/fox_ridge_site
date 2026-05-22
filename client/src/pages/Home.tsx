@@ -427,6 +427,80 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Market Insights Cross-Promotion */}
+      <section className="py-20 bg-stone-950 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop')", backgroundSize: "cover", backgroundPosition: "center" }} />
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/20 border border-secondary/40 text-secondary text-xs font-bold uppercase tracking-widest mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                New Research Published
+              </div>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4 leading-tight">
+                Market <span className="text-secondary">Insights</span>
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed mb-6">
+                Our investment team publishes institutional-grade research on multifamily markets, investment cycles, and emerging opportunities. Read the data behind every decision we make.
+              </p>
+              <div className="space-y-3 mb-8">
+                {[
+                  "Why the Texas Triangle is a once-in-a-decade opportunity",
+                  "Supply cliff + debt maturity wall = distressed pricing",
+                  "1,200 new residents per day — demand is structural",
+                ].map((point, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="w-5 h-5 rounded-full bg-secondary/20 border border-secondary/50 flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                    </span>
+                    <span className="text-white/80 text-sm">{point}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/market-insights">
+                <Button className="bg-secondary hover:bg-secondary/90 text-white rounded-none px-8 py-5 font-bold text-base group">
+                  Read Our Research <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+            >
+              <Link href="/market-insights/texas-triangle-advantage">
+                <div className="group bg-white/5 border border-white/10 hover:border-secondary/60 transition-all duration-300 p-8 cursor-pointer hover:bg-white/10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1">Featured Report</span>
+                    <span className="text-xs text-white/40">May 2026</span>
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white mb-2 group-hover:text-secondary transition-colors">
+                    The Texas Triangle Advantage
+                  </h3>
+                  <p className="text-white/60 text-sm mb-6 leading-relaxed">
+                    Why Texas Is the Most Compelling Multifamily Market Right Now — a deep-dive into the six converging forces creating a rare trough-cycle entry opportunity.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {["Texas Triangle", "Multifamily", "Value-Add", "Market Cycle"].map(tag => (
+                      <span key={tag} className="text-xs px-2 py-1 bg-white/10 text-white/50">{tag}</span>
+                    ))}
+                  </div>
+                  <span className="inline-flex items-center gap-2 text-secondary text-sm font-bold group-hover:gap-3 transition-all">
+                    Read Full Report <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-32 bg-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />

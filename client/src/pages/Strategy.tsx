@@ -299,6 +299,32 @@ export default function Strategy() {
         </div>
       </section>
 
+      {/* Market Insights Banner */}
+      <section className="py-12 bg-stone-950 text-white">
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-secondary/30 p-8">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-secondary/20 border border-secondary/40 flex items-center justify-center shrink-0">
+                <TrendingUp className="w-5 h-5 text-secondary" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                  <span className="text-secondary text-xs font-bold uppercase tracking-widest">New Research</span>
+                </div>
+                <h3 className="text-white font-display font-bold text-xl mb-1">The Texas Triangle Advantage</h3>
+                <p className="text-white/60 text-sm">Read the data behind our current acquisition focus — six converging forces creating a rare trough-cycle entry window.</p>
+              </div>
+            </div>
+            <Link href="/market-insights" className="shrink-0">
+              <button className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
+                View Market Insights →
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 bg-primary text-white text-center">
         <div className="container">

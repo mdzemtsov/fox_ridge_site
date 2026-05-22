@@ -201,6 +201,26 @@ export default function About() {
         </div>
       </section>
 
+      {/* Market Insights Banner */}
+      <section className="py-10 bg-stone-100 border-t border-stone-200">
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-1 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> New Research Published
+              </p>
+              <h3 className="text-primary font-display font-bold text-xl">Read Our Market Insights — The Texas Triangle Advantage</h3>
+              <p className="text-stone-500 text-sm mt-1">Institutional-grade analysis on why Texas multifamily is the most compelling opportunity of 2026.</p>
+            </div>
+            <Link href="/market-insights" className="shrink-0">
+              <button className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
+                View Research →
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA - Minimal */}
       <section className="py-24 bg-primary text-white">
         <div className="container">

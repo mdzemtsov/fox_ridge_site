@@ -15,6 +15,8 @@ import InternationalInvestors from "./pages/InternationalInvestors";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
+import MarketInsights from "./pages/MarketInsights";
+import ReportViewer from "./pages/ReportViewer";
 
 function Router() {
   return (
@@ -30,6 +32,8 @@ function Router() {
         <Route path="/international-investors" component={InternationalInvestors} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
+        <Route path="/market-insights" component={MarketInsights} />
+        <Route path="/market-insights/:slug" component={ReportViewer} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

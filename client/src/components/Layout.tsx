@@ -15,6 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: "Investment Strategy", path: "/strategy" },
     { name: "Our Investors", path: "/our-investors" },
     { name: "Track Record", path: "/track-record" },
+    { name: "Market Insights", path: "/market-insights", highlight: true },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -33,22 +34,38 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <Link 
-                key={item.path} 
-                href={item.path}
-                className={cn(
-                  "text-sm font-medium px-4 py-2 transition-all duration-300 relative group",
-                  location === item.path
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
-                )}
-              >
-                {item.name}
-                <span className={cn(
-                  "absolute bottom-0 left-0 w-full h-[1px] bg-secondary scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100",
-                  location === item.path && "scale-x-100 bg-primary"
-                )} />
-              </Link>
+              (item as any).highlight ? (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className={cn(
+                    "text-sm font-bold px-4 py-1.5 transition-all duration-300 relative group flex items-center gap-1.5",
+                    location === item.path
+                      ? "text-secondary border border-secondary"
+                      : "text-secondary border border-secondary/50 hover:border-secondary hover:bg-secondary/5"
+                  )}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                  {item.name}
+                </Link>
+              ) : (
+                <Link 
+                  key={item.path} 
+                  href={item.path}
+                  className={cn(
+                    "text-sm font-medium px-4 py-2 transition-all duration-300 relative group",
+                    location === item.path
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  )}
+                >
+                  {item.name}
+                  <span className={cn(
+                    "absolute bottom-0 left-0 w-full h-[1px] bg-secondary scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100",
+                    location === item.path && "scale-x-100 bg-primary"
+                  )} />
+                </Link>
+              )
             ))}
             <div className="w-[1px] h-6 bg-border mx-4" />
             <Link href="/contact">
@@ -137,6 +154,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <li>
                   <Link href="/international-investors" className="hover:text-white transition-colors">
                     International Investors
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/market-insights" className="hover:text-white transition-colors flex items-center gap-1.5 text-secondary font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                    Market Insights
                   </Link>
                 </li>
                 <li className="pt-3 border-t border-white/10">

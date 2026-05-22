@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoxRidge Equity Partners — Texas Triangle Multifamily 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1629;
+  --navy2: #112040;
+  --navy3: #1A2F55;
+  --gold: #C9A84C;
+  --gold2: #E8C87A;
+  --gold3: #8B6B2A;
+  --cream: #F5F0E8;
+  --cream2: #EDE5D4;
+  --white: #FFFFFF;
+  --gray1: #8A9AB8;
+  --gray2: #4A5A7A;
+  --green: #2ECC8A;
+  --red: #E05252;
+  --amber: #F0A020;
+  --text: #E8EEF8;
+  --textdim: #8A9AB8;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(11,22,41,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-logo {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--gold), var(--gold3));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+}
+.nav-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray1);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 80px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(11,22,41,0.60) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(11,22,41,0.70) 0%, rgba(10,21,32,0.88) 100%),
+    url('https://images.unsplash.com/photo-1663293761246-56a9b0693052?fm=jpg&q=80&w=1920&auto=format&fit=crop');
+  background-size: auto, auto, auto, cover;
+  background-position: 0 0, 0 0, 0 0, center 35%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, transparent 70%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 1200px; }
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+.hero-eyebrow-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero-eyebrow-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(60px, 8vw, 110px);
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-subtitle {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300;
+  color: var(--gray1);
+  margin-bottom: 56px;
+  max-width: 700px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+.hero-stats {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+.hero-stat {}
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray1);
+  margin-top: 6px;
+}
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.0s forwards;
+}
+.hero-scroll {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-scroll:hover { color: var(--gold); }
+.scroll-arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 100px 80px;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.section-full {
+  max-width: none;
+  padding: 100px 0;
+}
+.section-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.section-header {
+  margin-bottom: 64px;
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-lead {
+  font-size: 20px;
+  font-weight: 300;
+  color: #B0BDD4;
+  max-width: 700px;
+  line-height: 1.8;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+  margin: 0 80px;
+}
+
+/* ── VERDICT CARDS ── */
+.verdict-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 64px;
+}
+.verdict-card {
+  background: var(--navy2);
+  padding: 36px 32px;
+  transition: background 0.2s;
+  cursor: default;
+}
+.verdict-card:hover { background: var(--navy3); }
+.verdict-city {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.badge-go { background: rgba(46,204,138,0.15); color: var(--green); border: 1px solid rgba(46,204,138,0.3); }
+.badge-soon { background: rgba(240,160,32,0.15); color: var(--amber); border: 1px solid rgba(240,160,32,0.3); }
+.badge-watch { background: rgba(138,154,184,0.15); color: var(--gray1); border: 1px solid rgba(138,154,184,0.3); }
+.verdict-metric {
+  margin-bottom: 8px;
+}
+.verdict-metric-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray2);
+  margin-bottom: 2px;
+}
+.verdict-metric-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.verdict-metric-val.positive { color: var(--green); }
+.verdict-metric-val.amber { color: var(--amber); }
+.verdict-metric-val.red { color: var(--red); }
+.verdict-note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--gray1);
+  line-height: 1.6;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 14px;
+}
+
+/* ── BIG NUMBER CALLOUTS ── */
+.callout-strip {
+  background: linear-gradient(135deg, #162845, #1D3560);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 16px;
+  padding: 56px 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 64px;
+}
+.callout-item {}
+.callout-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -2px;
+}
+.callout-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cream2);
+  margin-bottom: 10px;
+}
+.callout-sub {
+  font-size: 13px;
+  color: var(--gray2);
+  line-height: 1.6;
+}
+
+/* ── CHARTS ── */
+.chart-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.chart-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.chart-card {
+  background: var(--navy2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+.chart-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.chart-subtitle {
+  font-size: 12px;
+  color: var(--gray1);
+  margin-bottom: 28px;
+}
+.chart-source {
+  font-size: 10px;
+  color: var(--gray2);
+  margin-top: 16px;
+  font-style: italic;
+}
+canvas { max-width: 100%; }
+
+/* ── MARKET DEEP DIVE ── */
+.market-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.market-card {
+  background: var(--navy2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.market-card-header {
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.market-card-city {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--white);
+}
+.market-card-state {
+  font-size: 13px;
+  color: var(--gray1);
+  margin-top: 2px;
+}
+.market-card-body {
+  padding: 24px 32px;
+}
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-key {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray1);
+  letter-spacing: 0.5px;
+}
+.metric-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  text-align: right;
+}
+.metric-val.g { color: var(--green); }
+.metric-val.a { color: var(--amber); }
+.metric-val.r { color: var(--red); }
+.market-card-footer {
+  background: rgba(201,168,76,0.04);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 16px 32px;
+  font-size: 12px;
+  color: var(--gray1);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ── TAILWIND SECTION ── */
+.tailwinds-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+}
+.tailwind-card {
+  background: var(--navy2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 28px 24px;
+  position: relative;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.tailwind-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201,168,76,0.3);
+}
+.tailwind-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: rgba(201,168,76,0.2);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.tailwind-icon { font-size: 28px; margin-bottom: 14px; }
+.tailwind-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.tailwind-text {
+  font-size: 12px;
+  color: var(--gray1);
+  line-height: 1.7;
+}
+
+/* ── RISK TABLE ── */
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 64px;
+}
+.risk-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.risk-table td {
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px;
+  vertical-align: top;
+}
+.risk-table tr:hover td { background: rgba(255,255,255,0.02); }
+.risk-name { color: var(--white); font-weight: 600; }
+.risk-impact {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.impact-high { background: rgba(224,82,82,0.15); color: var(--red); }
+.impact-med { background: rgba(240,160,32,0.15); color: var(--amber); }
+.impact-low { background: rgba(46,204,138,0.15); color: var(--green); }
+.risk-mitigation { color: var(--gray1); line-height: 1.6; }
+
+/* ── RETURNS TABLE ── */
+.returns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.returns-card {
+  background: linear-gradient(135deg, #162845, #1D3560);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 16px;
+  padding: 40px;
+}
+.returns-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.return-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.return-label {
+  font-size: 13px;
+  color: var(--gray1);
+}
+.return-values {
+  display: flex;
+  gap: 32px;
+}
+.return-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: right;
+  min-width: 80px;
+  letter-spacing: -0.5px;
+}
+.return-val.base { color: var(--amber); }
+.return-val.upside { color: var(--green); }
+.return-header {
+  display: flex;
+  gap: 32px;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+.return-header-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  min-width: 70px;
+  text-align: right;
+}
+.return-header-label.base { color: var(--amber); }
+.return-header-label.upside { color: var(--green); }
+
+/* ── TERMS ── */
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.term-item {
+  background: var(--navy2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 24px;
+}
+.term-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.term-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.term-note {
+  font-size: 11px;
+  color: var(--gray2);
+  margin-top: 4px;
+}
+
+/* ── PULLQUOTE ── */
+.pullquote {
+  border-left: 3px solid var(--gold);
+  padding: 24px 36px;
+  background: rgba(201,168,76,0.04);
+  border-radius: 0 12px 12px 0;
+  margin: 48px 0;
+}
+.pullquote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.6;
+  font-style: italic;
+}
+.pullquote cite {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 14px;
+}
+
+/* ── TEAM ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.team-card {
+  background: var(--navy2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 32px;
+}
+.team-initials {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold3), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+.team-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.team-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.team-bio {
+  font-size: 13px;
+  color: var(--gray1);
+  line-height: 1.7;
+}
+.team-stats {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.team-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.team-stat-label {
+  font-size: 10px;
+  color: var(--gray2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #070D18;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 60px 80px;
+}
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.footer-desc {
+  font-size: 13px;
+  color: var(--gray2);
+  line-height: 1.8;
+  max-width: 420px;
+}
+.footer-disclosure {
+  font-size: 11px;
+  color: rgba(138,154,184,0.5);
+  line-height: 1.8;
+}
+.footer-bottom {
+  max-width: 1400px;
+  margin: 40px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy {
+  font-size: 12px;
+  color: var(--gray2);
+}
+.footer-contact {
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ── PROGRESS BARS ── */
+.progress-item { margin-bottom: 16px; }
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.progress-label { font-size: 12px; color: var(--gray1); font-weight: 500; }
+.progress-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--white); }
+.progress-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── LABEL CHIPS ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.chip-gold { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+.chip-green { background: rgba(46,204,138,0.12); color: var(--green); border: 1px solid rgba(46,204,138,0.25); }
+
+/* ── SUPPLY COMPARISON ── */
+.supply-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.supply-market { width: 120px; font-size: 13px; color: var(--white); font-weight: 500; }
+.supply-bar-wrap { flex: 1; }
+.supply-pct { width: 60px; text-align: right; font-family: 'DM Mono', monospace; font-size: 14px; color: var(--green); font-weight: 600; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── OBSERVER ANIMATIONS ── */
+.observe {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.observe.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ── PHOTO ELEMENTS ── */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 14px;
+  margin: 48px 0 0;
+}
+.psi { position:relative; overflow:hidden; }
+.psi img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease, filter 0.4s ease; filter:brightness(0.78) saturate(0.85); }
+.psi:hover img { transform:scale(1.05); filter:brightness(0.9) saturate(1.05); }
+.psi-cap { position:absolute; bottom:0; left:0; right:0; padding:16px 16px 12px; background:linear-gradient(transparent,rgba(11,22,41,0.88)); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+
+.city-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:48px; }
+.city-card { border-radius:12px; overflow:hidden; position:relative; height:190px; }
+.city-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease, filter 0.4s ease; filter:brightness(0.72) saturate(0.8); }
+.city-card:hover img { transform:scale(1.06); filter:brightness(0.85) saturate(1.05); }
+.city-over { position:absolute; inset:0; background:linear-gradient(transparent 35%,rgba(11,22,41,0.92) 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:14px; }
+.city-name { font-family:'Playfair Display',serif; font-size:21px; font-weight:700; color:#fff; line-height:1; margin-bottom:5px; }
+
+.asset-banner { border-radius:16px; overflow:hidden; position:relative; height:260px; margin-bottom:56px; }
+.asset-banner img { width:100%; height:100%; object-fit:cover; filter:brightness(0.5) saturate(0.75); }
+.asset-banner-body { position:absolute; inset:0; display:flex; align-items:center; padding:44px 52px; background:linear-gradient(90deg,rgba(11,22,41,0.72) 45%,transparent 100%); }
+.abl { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.abt { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:#fff; line-height:1.2; margin-bottom:10px; }
+.abs { font-size:14px; color:rgba(255,255,255,0.6); max-width:460px; line-height:1.7; }
+
+.int-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:56px; }
+.ig-item { border-radius:10px; overflow:hidden; height:210px; }
+.ig-item img { width:100%; height:100%; object-fit:cover; filter:brightness(0.82) saturate(0.88); transition:transform 0.4s ease, filter 0.35s ease; }
+.ig-item:hover img { transform:scale(1.04); filter:brightness(0.93) saturate(1.05); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  section { padding: 80px 32px; }
+  .section-inner { padding: 0 32px; }
+  .hero { padding: 100px 32px 60px; }
+  .verdict-grid { grid-template-columns: 1fr 1fr; }
+  .callout-strip { grid-template-columns: 1fr 1fr; }
+  .market-cards { grid-template-columns: 1fr; }
+  .tailwinds-grid { grid-template-columns: 1fr 1fr; }
+  .chart-grid-2 { grid-template-columns: 1fr; }
+  .returns-grid { grid-template-columns: 1fr; }
+  .terms-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .hero-stats { gap: 32px; flex-wrap: wrap; }
+  .divider { margin: 0 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">FR</div>
+    <span class="nav-name">FoxRidge Equity Partners</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#supply">Supply</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#returns">Returns</a></li>
+    <li><a href="#risks">Risks</a></li>
+    <li><a href="#team">About</a></li>
+  </ul>
+  <span class="nav-badge">Q2 2026 · For Interested Investors</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Investment Thesis · May 2026</span>
+    </div>
+    <h1 class="hero-title">Texas Triangle<br><em>Multifamily</em> 2026</h1>
+    <p class="hero-subtitle">Why the entry window is open — and why now is the time to pay attention</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">−56%</div>
+        <div class="hero-stat-label">U.S. Starts from Peak</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">$162B</div>
+        <div class="hero-stat-label">Maturity Wall 2026</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">391K</div>
+        <div class="hero-stat-label">New Texas Residents 2025</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">15–18%</div>
+        <div class="hero-stat-label">Target LP IRR</div>
+      </div>
+    </div>
+  
+
+  <div class="hero-cta-row">
+      <a href="#thesis" class="hero-scroll">
+        <div class="scroll-arrow">↓</div>
+        Read the thesis
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: VERDICTS -->
+<section id="thesis">
+  <div class="section-header observe">
+    <div class="section-num">01 · Market Verdicts</div>
+    <h2 class="section-title">Where We Are<br><em>Deploying Capital</em></h2>
+    <p class="section-lead">FoxRidge synthesises Freddie Mac, Fannie Mae ESR Group, Yardi Matrix, RealPage, Newmark, Northmarq, and Lumicre research into actionable deployment positions across the four Texas Triangle metros as of Q2 2026.</p>
+  </div>
+
+  <div class="verdict-grid observe">
+    <div class="verdict-card">
+      <div class="verdict-city">Houston</div>
+      <div class="verdict-badge badge-go">● GO NOW</div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">Q1 2026 Vacancy</div>
+        <div class="verdict-metric-val">11.6%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">YE 2027 Target</div>
+        <div class="verdict-metric-val positive">8–9%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">2026E Rent Growth</div>
+        <div class="verdict-metric-val positive">+3.0–4.9%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">B+ Value-Add Cap</div>
+        <div class="verdict-metric-val">6.0–6.5%</div>
+      </div>
+      <div class="verdict-note">Freddie Mac & Fannie Mae both project Houston flips from a 6,000-unit surplus to a 5,800-unit <strong style="color:var(--green)">deficit</strong> in 2026 — the GSE institutional buy signal.</div>
+    </div>
+    <div class="verdict-card">
+      <div class="verdict-city">San Antonio</div>
+      <div class="verdict-badge badge-go">● GO NOW</div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">Q1 2026 Vacancy</div>
+        <div class="verdict-metric-val">~12.0%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">YE 2027 Target</div>
+        <div class="verdict-metric-val positive">8–9%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">2026E Rent Growth</div>
+        <div class="verdict-metric-val positive">+2.0–3.0%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">B+ Value-Add Cap</div>
+        <div class="verdict-metric-val">6.0–6.8%</div>
+      </div>
+      <div class="verdict-note">Pipeline down 76% from 2023 peak to just 4,800 units UC. Lowest entry pricing in the Texas Triangle. Class A vacancy already at 6.7% and improving.</div>
+    </div>
+    <div class="verdict-card">
+      <div class="verdict-city">DFW</div>
+      <div class="verdict-badge badge-soon">◐ GO SOON</div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">Q1 2026 Vacancy</div>
+        <div class="verdict-metric-val amber">12.5%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">YE 2027 Target</div>
+        <div class="verdict-metric-val amber">9–10%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">2026E Rent Growth</div>
+        <div class="verdict-metric-val amber">+1.5%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">B+ Value-Add Cap</div>
+        <div class="verdict-metric-val">5.7–6.5%</div>
+      </div>
+      <div class="verdict-note">AT&T $1.35B HQ relocation to Plano announced Jan 2026 — 10,000 jobs. Plano/Frisco corridor is highest-conviction suburban submarket in America. Best entry: H2 2026–mid 2027.</div>
+    </div>
+    <div class="verdict-card">
+      <div class="verdict-city">Austin</div>
+      <div class="verdict-badge badge-watch">○ WATCH</div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">Q1 2026 Vacancy</div>
+        <div class="verdict-metric-val red">14.5%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">YE 2027 Target</div>
+        <div class="verdict-metric-val amber">10–12%</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">2026E Rent Growth</div>
+        <div class="verdict-metric-val red">−0.7% to flat</div>
+      </div>
+      <div class="verdict-metric">
+        <div class="verdict-metric-label">Concessions</div>
+        <div class="verdict-metric-val red">8–12 wks free</div>
+      </div>
+      <div class="verdict-note">Strongest long-term tech and university fundamentals. But the heaviest concession environment in Texas keeps deployment on pause until H1 2027. Full recovery: 2028.</div>
+    </div>
+  </div>
+
+  <div class="pullquote observe">
+    <p>"The thesis is not 'buy Texas because Texas is great.' The thesis is: in a market where supply has collapsed, demand has held, capital is dislocated, and motivated sellers are emerging, the next 6–12 months represent the highest-probability entry window in the Texas Triangle since 2010."</p>
+    <cite>FoxRidge House View — Q2 2026</cite>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 2: SUPPLY CLIFF -->
+<section id="supply">
+  <div class="section-header observe">
+    <div class="section-num">02 · The Supply Cliff</div>
+    <h2 class="section-title">How Overbuilding<br><em>Becomes Opportunity</em></h2>
+    <p class="section-lead">From 2021–2024, developers responded to post-pandemic rent surges with the largest construction cycle in 44 years — 595,000 units delivered in 2024 alone. That wave is now collapsing. The mathematics of this reversal are locked in.</p>
+  </div>
+
+  <div class="callout-strip observe">
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">−56%</div>
+      <div class="callout-label">U.S. Starts Decline</div>
+      <div class="callout-sub">From 708K peak (2022) to 311K in 2025 — lowest since 2010. Census Bureau / Cushman & Wakefield.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">280K</div>
+      <div class="callout-label">2027E Deliveries</div>
+      <div class="callout-sub">Down 53% from 2024 peak. Well below the long-term average of 395K annually. Supply drought mathematically locked in.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">$10,900</div>
+      <div class="callout-label">Added per Home</div>
+      <div class="callout-sub">Steel/aluminium tariffs of 50% and cabinet tariffs of 25–50% (Jan 2026) added an estimated $10,900 per unit in construction cost. Source: NAHB.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">7%+</div>
+      <div class="callout-label">C&D Lending Rates</div>
+      <div class="callout-sub">Bank construction & development lending remains at 7%+ with 50–60% LTC — economically unworkable for most new ground-up multifamily projects.</div>
+    </div>
+  </div>
+
+  <div class="chart-grid-2 observe">
+    <div class="chart-card">
+      <div class="chart-title">U.S. Multifamily Deliveries — The Supply Cliff</div>
+      <div class="chart-subtitle">Thousands of units delivered annually, with 2026–2027 forecasts</div>
+      <canvas id="deliveriesChart" height="260"></canvas>
+      <div class="chart-source">Sources: Yardi Matrix Winter 2026 · Freddie Mac 2025 Multifamily Outlook · CBRE. 2026–2027 = forecast.</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Texas Triangle — Supply Collapse vs. U.S. Avg.</div>
+      <div class="chart-subtitle">% decline in units under construction from peak (as of Q1 2026)</div>
+      <canvas id="supplyDeclineChart" height="260"></canvas>
+      <div class="chart-source">Sources: IPA Research Services · RealPage Q1 2026 · Newmark · Cushman & Wakefield Jan 2026. Sunbelt metro comparison. Peak range from 1Q 2023 to 4Q 2023.</div>
+    </div>
+  </div>
+
+  <div class="chart-card observe">
+    <div class="chart-title">Texas Triangle Construction Pipeline at Start of 2026</div>
+    <div class="chart-subtitle">Units under construction (000s) vs. % of existing inventory — starts at multi-decade lows across all four metros</div>
+    <canvas id="pipelineChart" height="200"></canvas>
+    <div class="chart-source">Sources: RealPage Q1 2026 · Newmark Central Texas Multifamily Update · Matrix Residential · Cushman & Wakefield Jan 2026.</div>
+  </div>
+</section>
+
+
+<!-- PHOTO BAND 1: Garden-style community exterior -->
+<div style="
+  position:relative;
+  height:420px;
+  overflow:hidden;
+  margin:0;
+">
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1663293761188-eb1dde142bd8?fm=jpg&q=80&w=1920&auto=format&fit=crop');background-size:cover;background-position:center 45%;filter:brightness(0.52) saturate(0.82);"></div>
+  <div style="
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      180deg,
+      rgba(11,22,41,0.75) 0%,
+      rgba(11,22,41,0.25) 35%,
+      rgba(11,22,41,0.25) 65%,
+      rgba(11,22,41,0.78) 100%
+    );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  ">
+    <div style="text-align:center;max-width:800px;padding:0 40px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">The Asset Class</div>
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:16px;">Class A Garden-Style Multifamily<br><em style="color:var(--gold);font-style:italic;">Sun Belt · Value-Add · 200+ Units</em></div>
+      <div style="font-size:15px;font-weight:300;color:rgba(255,255,255,0.65);line-height:1.7;">Low-rise garden communities with premium finishes, resort-style amenities, and strong school-district positioning — acquired below replacement cost during the supply trough.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 3: DEMAND ENGINE -->
+<section>
+  <div class="section-header observe">
+    <div class="section-num">03 · The Demand Engine</div>
+    <h2 class="section-title">Texas Is <em>Still #1</em> —<br>and Growing</h2>
+    <p class="section-lead">Population growth in 2025 slowed nationally as net international migration fell 54% (Census Bureau Vintage 2025). Texas was not immune — growth decelerated to 1.2%, its slowest since 2021. But the absolute numbers remain unambiguous.</p>
+  </div>
+
+  <div class="callout-strip observe">
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">+391K</div>
+      <div class="callout-label">New Texas Residents 2025</div>
+      <div class="callout-sub">#1 state in the U.S. for net population gain. 31.7M total population as of January 2026. Source: Census Bureau Vintage 2025 (Jan 28, 2026).</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">+1.6%</div>
+      <div class="callout-label">Houston Metro Growth</div>
+      <div class="callout-sub">#1 fastest-growing metro among the top-20 U.S. metros. Source: Greater Houston Partnership, April 2026.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">$1,220</div>
+      <div class="callout-label">Own vs. Rent Gap / Month</div>
+      <div class="callout-sub">Texas SFH avg monthly ownership cost ~$3,000 vs. Class B/A rental ~$1,780 in 2026E. Gap was $300/month in 2020. Source: TRERC 2026 · Freddie Mac · MBA.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">$1.35B</div>
+      <div class="callout-label">AT&T Plano Campus</div>
+      <div class="callout-sub">AT&T relocating global HQ to Plano, TX. 10,000 employees over the next decade. Partial occupancy by late 2028. Announced Jan 5, 2026. Plano City Council: $20M incentives Feb 23, 2026.</div>
+    </div>
+  </div>
+
+  <div class="chart-grid-2 observe">
+    <div class="chart-card">
+      <div class="chart-title">Net Population Added in 2025 — Texas Led the Nation</div>
+      <div class="chart-subtitle">Thousands of net new residents by state (2024→2025)</div>
+      <canvas id="popChart" height="280"></canvas>
+      <div class="chart-source">Source: U.S. Census Bureau Vintage 2025 estimates (released January 28, 2026). Other state figures are FoxRidge approximations.</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Renter Lock-In — Texas Cost of Owning vs. Renting</div>
+      <div class="chart-subtitle">Monthly cost comparison: owning a Texas SFH vs. renting Class B/A multifamily</div>
+      <canvas id="ownRentChart" height="280"></canvas>
+      <div class="chart-source">Source: TRERC 2026 Texas Real Estate Forecast · Freddie Mac · Mortgage Bankers Association. FoxRidge calculations. 2026 = estimate.</div>
+    </div>
+  </div>
+
+  <div class="tailwinds-grid observe">
+    <div class="tailwind-card">
+      <div class="tailwind-icon">📉</div>
+      <div class="tailwind-title">Supply Cliff</div>
+      <div class="tailwind-text">U.S. starts down 56% from peak. Texas pipeline down 45–80% across the four major metros. With starts at multi-decade lows, the supply drought extending into 2028 is mathematically locked in.</div>
+    </div>
+    <div class="tailwind-card">
+      <div class="tailwind-icon">🏛</div>
+      <div class="tailwind-title">Agency Debt Open</div>
+      <div class="tailwind-text">Fannie Mae and Freddie Mac both set $88B multifamily purchase caps for 2026 — fully open to qualified sponsors. Multifamily CMBS delinquency rate remains just 0.5%, demonstrating asset-class stability.</div>
+    </div>
+    <div class="tailwind-card">
+      <div class="tailwind-icon">📈</div>
+      <div class="tailwind-title">Demand Engine</div>
+      <div class="tailwind-text">Texas #1 in population growth. Houston #1 metro at +1.6%. AT&T relocating HQ to Plano with 10,000 jobs by 2035. 3 of top 5 corporate HQ relocation destinations are Texas Triangle metros.</div>
+    </div>
+    <div class="tailwind-card">
+      <div class="tailwind-icon">🔒</div>
+      <div class="tailwind-title">Renter Lock-In</div>
+      <div class="tailwind-text">Mortgage rates at 6.5%+ keep the for-sale market closed. The own-vs-rent gap in Texas reaches $1,220/month in 2026E — up from $300/month in 2020. Renters are structurally captive.</div>
+    </div>
+    <div class="tailwind-card">
+      <div class="tailwind-icon">⏰</div>
+      <div class="tailwind-title">Maturity Wall</div>
+      <div class="tailwind-text">$162B in multifamily loans mature in 2026 — up 56% YoY from $104B in 2025. $168B in 2027. Sponsors who can't refinance must sell at market-clearing prices, creating motivated deal flow.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 4: MARKET DEEP DIVE -->
+<section id="markets">
+  <div class="section-header observe">
+    <div class="section-num">04 · Market Deep Dive</div>
+    <h2 class="section-title">Four Ecosystems,<br><em>Four Entry Points</em></h2>
+    <p class="section-lead">The Texas Triangle is not a single market. Each metro is at a distinct point in its recovery cycle, with different vacancy trajectories, pipeline profiles, and employment catalysts. Here is the data as of Q1 2026.</p>
+  </div>
+
+
+    <!-- Vacancy Recovery Chart -->
+  <div class="chart-grid-2 observe">
+    <div class="chart-card">
+      <div class="chart-title">Vacancy Recovery Path — Texas Triangle</div>
+      <div class="chart-subtitle">Current vs. 2026E vs. 2027E vacancy rates by metro (%)</div>
+      <canvas id="vacancyChart" height="280"></canvas>
+      <div class="chart-source">Sources: Yardi Matrix · Apartment List · Dallas Fed (March 2026). Forecasts: FoxRidge House View per Newmark / Lumicre / Northmarq projections.</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Year-over-Year Rent Growth Forecast</div>
+      <div class="chart-subtitle">Effective rent growth % by metro — 2026E, 2027E, 2028E</div>
+      <canvas id="rentGrowthChart" height="280"></canvas>
+      <div class="chart-source">Sources: Origin Investments Multilytics · Northmarq · RealPage · Lumicre. FoxRidge House View synthesis.</div>
+    </div>
+  </div>
+
+  <!-- San Antonio Class Data -->
+  <div class="chart-grid-2 observe">
+    <div class="chart-card">
+      <div class="chart-title">San Antonio Vacancy by Class</div>
+      <div class="chart-subtitle">Class A has compressed to 6.7% — tighter than Class B and Class C. Source: IPA Research Services / RealPage, through Q1 2026.</div>
+      <canvas id="saClassVacChart" height="240"></canvas>
+      <div class="chart-source">Source: IPA Research Services · RealPage. Through 1Q 2026. Class A = 6.7%, Class B = 7.5%, Class C = 8.3%.</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">San Antonio Same-Store Effective Rent Growth by Class</div>
+      <div class="chart-subtitle">Class A rebounds to +2.8% YoY while B and C remain under pressure. Source: IPA / RealPage Q1 2026.</div>
+      <canvas id="saRentClassChart" height="240"></canvas>
+      <div class="chart-source">Source: IPA Research Services · RealPage. Through 1Q 2026. Class A = +2.8%, Class B = −4.1%, Class C = −5.5%.</div>
+    </div>
+  </div>
+
+  <div class="market-cards observe">
+    <div class="market-card">
+      <div class="market-card-header">
+        <div>
+          <div class="market-card-city">Houston, TX</div>
+          <div class="market-card-state">Energy Corridor · Medical Center · Katy / Pearland</div>
+        </div>
+        <div class="verdict-badge badge-go">GO NOW</div>
+      </div>
+      <div class="market-card-body">
+        <div class="metric-row"><div class="metric-key">Q1 2026 Vacancy</div><div class="metric-val">11.6%</div></div>
+        <div class="metric-row"><div class="metric-key">YE 2026 FoxRidge View</div><div class="metric-val g">10.5–11.0%</div></div>
+        <div class="metric-row"><div class="metric-key">YE 2027 FoxRidge View</div><div class="metric-val g">8–9%</div></div>
+        <div class="metric-row"><div class="metric-key">2026 Deliveries</div><div class="metric-val">~11,000 units (−45% from peak)</div></div>
+        <div class="metric-row"><div class="metric-key">Construction % of Inventory</div><div class="metric-val g">2.1% — lowest since 2017</div></div>
+        <div class="metric-row"><div class="metric-key">B+ Value-Add Cap Rate</div><div class="metric-val">6.0–6.5%</div></div>
+        <div class="metric-row"><div class="metric-key">2026E Rent Growth</div><div class="metric-val g">+3.0–4.9% (Origin: #2 nationally)</div></div>
+        <div class="metric-row"><div class="metric-key">Population Growth 2025</div><div class="metric-val g">+1.6% (#1 top-20 metro)</div></div>
+        <div class="metric-row"><div class="metric-key">GSE Signal</div><div class="metric-val g">Freddie + Fannie both: 5,800-unit deficit 2026</div></div>
+      </div>
+      <div class="market-card-footer">Focus submarkets: Katy / Energy Corridor (school-district anchored Class B+), Pearland (active adult + family), League City (NASA/petrochemical), inner-loop Class A near Medical Center / Galleria.</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-header">
+        <div>
+          <div class="market-card-city">San Antonio, TX</div>
+          <div class="market-card-state">JBSA Military · Stone Oak · NE Loop 1604</div>
+        </div>
+        <div class="verdict-badge badge-go">GO NOW</div>
+      </div>
+      <div class="market-card-body">
+        <div class="metric-row"><div class="metric-key">Q1 2026 Vacancy (blended)</div><div class="metric-val">~12.0%</div></div>
+        <div class="metric-row"><div class="metric-key">Class A Vacancy Q1 2026</div><div class="metric-val g">6.7% (IPA / RealPage)</div></div>
+        <div class="metric-row"><div class="metric-key">Class A Rent Growth YoY</div><div class="metric-val g">+2.8% (IPA / RealPage Q1 2026)</div></div>
+        <div class="metric-row"><div class="metric-key">Units Under Construction</div><div class="metric-val g">~4,800 (−76% from 2023 peak)</div></div>
+        <div class="metric-row"><div class="metric-key">Construction Starts 2024</div><div class="metric-val g">−80% from peak (steepest Sunbelt)</div></div>
+        <div class="metric-row"><div class="metric-key">B+ Value-Add Cap Rate</div><div class="metric-val">6.0–6.8%</div></div>
+        <div class="metric-row"><div class="metric-key">Entry Pricing</div><div class="metric-val g">$150–170K/unit (lowest TX Triangle)</div></div>
+        <div class="metric-row"><div class="metric-key">Military Anchor</div><div class="metric-val g">38,000 active duty — JBSA Lackland + Fort Sam</div></div>
+        <div class="metric-row"><div class="metric-key">UTSA Enrollment (F2025)</div><div class="metric-val g">38,200+ (7% YoY, 3rd consecutive record)</div></div>
+      </div>
+      <div class="market-card-footer">Focus submarkets: Stone Oak (school-district anchored), NE SA along Loop 1604 corridor, military-adjacent Lackland corridor. Most undervalued risk-adjusted return profile in the Texas Triangle today.</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-header">
+        <div>
+          <div class="market-card-city">Dallas–Fort Worth</div>
+          <div class="market-card-state">Plano / Frisco · Garland · Arlington</div>
+        </div>
+        <div class="verdict-badge badge-soon">GO SOON</div>
+      </div>
+      <div class="market-card-body">
+        <div class="metric-row"><div class="metric-key">Q1 2026 Vacancy</div><div class="metric-val a">12.5%</div></div>
+        <div class="metric-row"><div class="metric-key">YE 2026 FoxRidge View</div><div class="metric-val a">11–12%</div></div>
+        <div class="metric-row"><div class="metric-key">YE 2027 FoxRidge View</div><div class="metric-val a">9–10%</div></div>
+        <div class="metric-row"><div class="metric-key">Units Under Construction</div><div class="metric-val a">48,859 (largest in U.S.)</div></div>
+        <div class="metric-row"><div class="metric-key">Construction % of Inventory</div><div class="metric-val g">4.3% — lowest since 2015</div></div>
+        <div class="metric-row"><div class="metric-key">B+ Value-Add Cap Rate</div><div class="metric-val">5.7–6.5%</div></div>
+        <div class="metric-row"><div class="metric-key">2026E Rent Growth</div><div class="metric-val a">+1.5%</div></div>
+        <div class="metric-row"><div class="metric-key">Major Catalyst</div><div class="metric-val g">AT&T HQ — $1.35B · 10K jobs · Plano</div></div>
+        <div class="metric-row"><div class="metric-key">Best Entry Window</div><div class="metric-val a">H2 2026 into mid-2027</div></div>
+      </div>
+      <div class="market-card-footer">Focus: Plano/Frisco/Allen (school district + corporate HQ corridor — Toyota, Liberty Mutual, JPMorgan, AT&T), Garland/Mesquite (workforce housing), Arlington (central location). Not the oversupplied Uptown core.</div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-header">
+        <div>
+          <div class="market-card-city">Austin, TX</div>
+          <div class="market-card-state">Tech + University — Recovery 2027–2028</div>
+        </div>
+        <div class="verdict-badge badge-watch">WATCH</div>
+      </div>
+      <div class="market-card-body">
+        <div class="metric-row"><div class="metric-key">Q1 2026 Vacancy</div><div class="metric-val r">14.5%</div></div>
+        <div class="metric-row"><div class="metric-key">YE 2026 FoxRidge View</div><div class="metric-val r">13–14%</div></div>
+        <div class="metric-row"><div class="metric-key">YE 2027 FoxRidge View</div><div class="metric-val a">10–12%</div></div>
+        <div class="metric-row"><div class="metric-key">Units Under Construction</div><div class="metric-val r">25,931 (−65% from Q1 2023 peak)</div></div>
+        <div class="metric-row"><div class="metric-key">Current Concessions</div><div class="metric-val r">8–12 weeks free rent (Dallas Fed)</div></div>
+        <div class="metric-row"><div class="metric-key">2026E Rent Growth</div><div class="metric-val r">−0.7% to flat</div></div>
+        <div class="metric-row"><div class="metric-key">2027E Rent Growth</div><div class="metric-val a">+2.5%</div></div>
+        <div class="metric-row"><div class="metric-key">FoxRidge Active Deployment</div><div class="metric-val r">PAUSED — monitor for H1 2027</div></div>
+        <div class="metric-row"><div class="metric-key">Class C Demand</div><div class="metric-val g">Strongest Q1 since 2022 (Northmarq)</div></div>
+      </div>
+      <div class="market-card-footer">Strongest long-term fundamentals in the Texas Triangle — tech employment, capital city, university anchor. But concession burn-off must complete before FoxRidge will deploy primary capital. Full recovery 2028–2030.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TWO-PHOTO GARDEN-STYLE STRIP -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;height:280px;overflow:hidden;border-radius:14px;margin:48px 80px 0;">
+  <div style="position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1663293761254-7496ad7fff21?fm=jpg&q=80&w=1920&auto=format&fit=crop');background-size:cover;background-position:center 40%;filter:brightness(0.70) saturate(0.88);transition:transform 0.5s ease;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(11,22,41,0.80) 100%);display:flex;align-items:flex-end;padding:20px 24px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Resort-Style Amenities</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.75);">Sun Belt Class A · Value-Add Upside</div>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1663293761222-1718d2d7e058?fm=jpg&q=80&w=1920&auto=format&fit=crop');background-size:cover;background-position:center 50%;filter:brightness(0.70) saturate(0.88);transition:transform 0.5s ease;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(11,22,41,0.80) 100%);display:flex;align-items:flex-end;padding:20px 24px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Community Outdoor Living</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.75);">Garden-Style · Low-Rise · Landscaped</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 5: RETURNS -->
+<section id="returns">
+  <div class="section-header observe">
+    <div class="section-num">05 · The Return Mechanics</div>
+    <h2 class="section-title">Why <em>Trough-Cycle Entry</em><br>Is a Mathematical Edge</h2>
+    <p class="section-lead">Three effects compound simultaneously for investors who deploy capital at the cycle trough. Each is independent — together they produce return profiles unavailable at any other point in the cycle.</p>
+  </div>
+
+
+
+  <div class="chart-grid-2 observe">
+    <div class="chart-card">
+      <div class="chart-title">Illustrative LP Returns — $30M Acquisition, 200 Units, 65% LTV</div>
+      <div class="chart-subtitle">Base case vs. upside case across key metrics. These are illustrative — every deal is underwritten independently.</div>
+      <canvas id="returnsChart" height="280"></canvas>
+      <div class="chart-source">Source: FoxRidge illustrative model. Actual returns vary by deal and execution. Past performance is not indicative of future results.</div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Where We Are in the Multifamily Cycle</div>
+      <div class="chart-subtitle">FoxRidge conceptual cycle view — positions reflect FoxRidge House View, not third-party data</div>
+      <canvas id="cycleChart" height="280"></canvas>
+      <div class="chart-source">Source: FoxRidge conceptual cycle view. Q2/Q3 2026 = identified entry window. Recovery phase: 2027–2028. Next peak: 2029–2030.</div>
+    </div>
+  </div>
+
+  <div class="returns-grid observe">
+    <div class="returns-card">
+      <h3>Illustrative Return Scenarios</h3>
+      <div class="return-header">
+        <span class="return-header-label base">Base</span>
+        <span class="return-header-label upside">Upside</span>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Going-In Cap Rate</span>
+        <div class="return-values">
+          <span class="return-val base">6.25%</span>
+          <span class="return-val upside">6.50%</span>
+        </div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Year 1 Rent Growth</span>
+        <div class="return-values">
+          <span class="return-val base">0.0%</span>
+          <span class="return-val upside">1.5%</span>
+        </div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Year 2–5 Avg. Rent Growth</span>
+        <div class="return-values">
+          <span class="return-val base">3.0%</span>
+          <span class="return-val upside">4.5%</span>
+        </div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Exit Cap Rate (Year 5)</span>
+        <div class="return-values">
+          <span class="return-val base">5.75%</span>
+          <span class="return-val upside">5.25%</span>
+        </div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">LP IRR (5-year)</span>
+        <div class="return-values">
+          <span class="return-val base" style="font-size:28px;font-weight:700;letter-spacing:-1px">15–17%</span>
+          <span class="return-val upside" style="font-size:28px;font-weight:700;letter-spacing:-1px">19–22%</span>
+        </div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">LP Equity Multiple</span>
+        <div class="return-values">
+          <span class="return-val base">1.9x</span>
+          <span class="return-val upside">2.2x</span>
+        </div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">LP Avg. Cash-on-Cash</span>
+        <div class="return-values">
+          <span class="return-val base">6.5%</span>
+          <span class="return-val upside">7.5%</span>
+        </div>
+      </div>
+    </div>
+    <div class="returns-card">
+      <h3>Standard Investment Terms</h3>
+      <div class="return-row">
+        <span class="return-label">Structure</span>
+        <div class="metric-val g" style="font-family:'DM Mono',monospace;font-size:13px">506(c) single-asset syndications</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Investor Type</span>
+        <div class="metric-val" style="font-family:'DM Mono',monospace;font-size:13px">Accredited only (SEC verified)</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Minimum Investment</span>
+        <div class="metric-val g" style="font-family:'DM Mono',monospace;font-size:13px">$50,000 (anchor: $1M+)</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Hold Period</span>
+        <div class="metric-val" style="font-family:'DM Mono',monospace;font-size:13px">5 years (flexible to refi / extend)</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Target LP IRR</span>
+        <div class="metric-val g" style="font-family:'DM Mono',monospace;font-size:26px;font-weight:700;letter-spacing:-1px;color:var(--green)">15–18%</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Target Equity Multiple</span>
+        <div class="metric-val g" style="font-family:'DM Mono',monospace;font-size:26px;font-weight:700;letter-spacing:-1px;color:var(--green)">1.9–2.1x</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Preferred Return</span>
+        <div class="metric-val" style="font-family:'DM Mono',monospace;font-size:13px">7–9% (deal-dependent)</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Profit Split</span>
+        <div class="metric-val" style="font-family:'DM Mono',monospace;font-size:13px">70% LP / 30% GP (typical)</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Distributions</span>
+        <div class="metric-val" style="font-family:'DM Mono',monospace;font-size:13px">Quarterly after stabilisation</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Tax Benefits</span>
+        <div class="metric-val g" style="font-family:'DM Mono',monospace;font-size:13px">Cost segregation + bonus depreciation</div>
+      </div>
+      <div class="return-row">
+        <span class="return-label">Reporting</span>
+        <div class="metric-val" style="font-family:'DM Mono',monospace;font-size:13px">Quarterly LP reports + K-1 March</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 6: RISKS -->
+<section id="risks">
+  <div class="section-header observe">
+    <div class="section-num">06 · Risks — Honestly Assessed</div>
+    <h2 class="section-title">What Could Go Wrong,<br><em>and How We Mitigate It</em></h2>
+    <p class="section-lead">Any sponsor who tells you there are no risks in Texas multifamily in 2026 is not worth your capital. These five risks are real, material, and built directly into FoxRidge's underwriting — not footnoted away.</p>
+  </div>
+
+  
+<!-- ACCENT PHOTO: Low-rise garden community exterior -->
+<div style="height:240px;overflow:hidden;margin:0 80px 48px;border-radius:12px;position:relative;">
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1614115863913-b04024ec4ed1?fm=jpg&q=80&w=1920&auto=format&fit=crop');background-size:cover;background-position:center 55%;filter:brightness(0.60) saturate(0.80);"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,22,41,0.78) 30%,transparent 70%);display:flex;align-items:center;padding:0 48px;">
+    <div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">The Asset Class</div>
+      <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:8px;">Class A Garden-Style<br>Sun Belt Multifamily</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.60);line-height:1.7;">Low-rise · 200+ units · 2000+ vintage · Acquired below replacement cost</div>
+    </div>
+  </div>
+</div>
+
+<table class="risk-table observe">
+    <thead>
+      <tr>
+        <th>Risk</th>
+        <th>Impact</th>
+        <th>Description</th>
+        <th>FoxRidge Mitigation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="risk-name">Texas Property Tax Reassessment on Sale</td>
+        <td><span class="risk-impact impact-high">High</span></td>
+        <td class="risk-mitigation">When a Texas multifamily property changes hands, the appraisal district resets assessed value to transaction basis. A $30M acquisition previously assessed at $18M can trigger ~$200K/year of incremental tax expense.</td>
+        <td class="risk-mitigation">FoxRidge underwrites property taxes at 2.0–2.5% of purchase price annually in Year 1 — never at T-12 actuals. The single most common underwriting error in Texas acquisitions.</td>
+      </tr>
+      <tr>
+        <td class="risk-name">Insurance Cost Escalation</td>
+        <td><span class="risk-impact impact-high">High</span></td>
+        <td class="risk-mitigation">Texas multifamily insurance has risen 60–120% since 2020, driven by Gulf hurricane exposure, hailstorm losses, and reinsurance dislocation. Annual premiums in coastal Houston now exceed $1,200/unit.</td>
+        <td class="risk-mitigation">FoxRidge maintains direct broker relationships and rebids insurance at acquisition. Deductible structures and roof/exterior upgrade capex programmes reduce loss frequency and premium exposure.</td>
+      </tr>
+      <tr>
+        <td class="risk-name">Concession Burn-Off Takes Time</td>
+        <td><span class="risk-impact impact-med">Medium</span></td>
+        <td class="risk-mitigation">Dallas Fed (March 2026) confirmed concessions of 6–8 weeks of free rent remain widespread across Texas markets, with Austin and Dallas leading at 10–12 weeks in some submarkets.</td>
+        <td class="risk-mitigation">FoxRidge models Year 1 effective rent at face rate minus 6–8 weeks of concessions regardless of broker pro forma. Year 1 free cash flow is realistic, not optimistic.</td>
+      </tr>
+      <tr>
+        <td class="risk-name">Immigration Enforcement Impact</td>
+        <td><span class="risk-impact impact-med">Medium</span></td>
+        <td class="risk-mitigation">Yardi cited federal immigration enforcement as reducing 2025 population growth in Texas and Florida, impacting Class B/C workforce housing renter demand and paradoxically reducing future supply via construction labour shortages.</td>
+        <td class="risk-mitigation">FoxRidge focuses on Class B+/A with employed, school-district-anchored renter cohorts — meaningfully less exposed than Class C workforce housing.</td>
+      </tr>
+      <tr>
+        <td class="risk-name">Interest Rate Path Uncertainty</td>
+        <td><span class="risk-impact impact-med">Medium</span></td>
+        <td class="risk-mitigation">Fed Funds at 3.50% as of April 2026. JPMorgan and others now project zero cuts in 2026. MBA forecasts potential 2027 rate hike. Agency debt at 6.0–6.5% may persist longer than expected.</td>
+        <td class="risk-mitigation">FoxRidge stress-tests every deal at exit refinance rates of 5.75% (not 5.0%) and underwrites positive leverage at acquisition. We do not depend on rate cuts to make a deal work.</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="pullquote observe">
+    <p>"A disciplined sponsor is identified by what they underwrite <em>out</em> of, not what they underwrite <em>in</em>. FoxRidge's view: every assumption in our model is either documented, conservative, or both. We do not buy on broker pro forma."</p>
+    <cite>FoxRidge Underwriting Philosophy</cite>
+  </div>
+</section>
+
+
+<!-- PHOTO BAND 2: Apartment community amenity / pool area -->
+<div style="
+  position:relative;
+  height:380px;
+  overflow:hidden;
+  margin:0;
+">
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1663293761270-8fafc94e2087?fm=jpg&q=80&w=1920&auto=format&fit=crop');background-size:cover;background-position:center 50%;filter:brightness(0.50) saturate(0.80);"></div>
+  <div style="
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+      180deg,
+      rgba(11,22,41,0.80) 0%,
+      rgba(11,22,41,0.20) 40%,
+      rgba(11,22,41,0.20) 60%,
+      rgba(11,22,41,0.80) 100%
+    );
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding:0 80px;
+  ">
+    <div style="text-align:right;max-width:580px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">The Investment Strategy</div>
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,42px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:14px;">Buy at Trough.<br>Hold Through Recovery.<br><em style="color:var(--gold);font-style:italic;">Exit at the Peak.</em></div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;">Entry at 6.25%+ going-in cap · 5-year hold · Exit at 5.75% base / 5.25% upside · 15–18% LP IRR target</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 7: TEAM -->
+<section id="team">
+  <div class="section-header observe">
+    <div class="section-num">07 · The Team</div>
+    <h2 class="section-title">Two Operators,<br><em>One Focused Platform</em></h2>
+    <p class="section-lead">FoxRidge Equity Partners is a multifamily syndication platform built on two principals with complementary backgrounds in Texas operations and capital markets. Single-asset deal structure — LPs see every deal and elect individually.</p>
+  </div>
+
+  <div class="team-grid observe">
+    <div class="team-card">
+      <div class="team-initials">SD</div>
+      <div class="team-name">Slava Davidenko</div>
+      <div class="team-title">Managing Partner · Austin, TX</div>
+      <div class="team-bio">MBA, Chicago Booth. Texas multifamily operator with a portfolio spanning 5,000+ units across acquisitions, asset management, and capital partnerships. Leads deal origination and operational execution across Houston, DFW, and San Antonio.</div>
+      <div class="team-stats">
+        <div><div class="team-stat-num">5,000+</div><div class="team-stat-label">MF Units</div></div>
+        <div><div class="team-stat-num">$1B+</div><div class="team-stat-label">Transaction Exp.</div></div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-initials">MP</div>
+      <div class="team-name">Mikhail Pritsker</div>
+      <div class="team-title">Managing Partner · Miami, FL</div>
+      <div class="team-bio">MBA, Chicago Booth. CCIM. Capital markets, investor relations, multifamily and mixed-use across multiple cycles. Leads LP relationships, debt placement via Newmark, and investor reporting. Based in South Florida with active Broward/WPB deal flow.</div>
+      <div class="team-stats">
+        <div><div class="team-stat-num">CCIM</div><div class="team-stat-label">Designation</div></div>
+        <div><div class="team-stat-num">Multi</div><div class="team-stat-label">Cycle Experience</div></div>
+      </div>
+    </div>
+</div>
+  </div>
+
+  <div class="callout-strip observe">
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">$1B+</div>
+      <div class="callout-label">Combined Transaction Experience</div>
+      <div class="callout-sub">Across multiple real estate cycles, asset classes, and capital structures. Both principals with Chicago Booth MBAs.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">8</div>
+      <div class="callout-label">Full-Cycle LP Exits</div>
+      <div class="callout-sub">Delivered to LP investors across the combined principal portfolios. Track record attributable to prior platforms and partnerships.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num" style="text-shadow: 0 0 40px rgba(201,168,76,0.4)">42%</div>
+      <div class="callout-label">Best Deal LP IRR</div>
+      <div class="callout-sub">Milagro Apartments full-cycle exit. Westcreek Townhomes and Copper Creek Apartments: 30%+ LP IRR. Leander Springs development exit: 25%.</div>
+    </div>
+    <div class="callout-item">
+      <div class="callout-num">Deal-by-Deal</div>
+      <div class="callout-label">Not a Blind Pool</div>
+      <div class="callout-sub">LPs see every deal and invest deal by deal — not into a blind fund. Full disclosure on every transaction before commitment. Principals co-invest personally on every deal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <div class="nav-logo">FR</div>
+        <span class="nav-name">FoxRidge Equity Partners</span>
+      </div>
+      <p class="footer-desc">A multifamily syndication platform focused on Class B+/A value-add assets across the Texas Triangle and Sun Belt. Single-asset 506(c) structures. Deal-by-deal LP election. Conservative underwriting. Institutional reporting.</p>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:13px;color:var(--gold);font-weight:500">partners@foxridgeequity.com</div>
+        <div style="font-size:13px;color:var(--gray1)">foxridgeequity.com</div>
+        <div style="font-size:13px;color:var(--gray1)">Austin, TX · Miami, FL</div>
+      </div>
+    </div>
+    <div>
+      <p class="footer-disclosure">This document is for informational and educational purposes only. It does not constitute an offer to sell or a solicitation of an offer to buy any security or investment product. FoxRidge Equity Partners offers securities only through Rule 506(c) private placements to verified accredited investors. All offerings are made exclusively through formal offering documents (Private Placement Memorandum, Operating Agreement, and Subscription Agreement).<br><br>Investments in real estate are speculative and involve substantial risk, including potential loss of principal. Past performance is not indicative of future results. Forward-looking statements are based on assumptions that may prove inaccurate; actual results may differ materially. Forecasts and projections are derived from third-party research providers as cited. FoxRidge does not warrant the accuracy of third-party data.<br><br>Prospective investors should consult with their own legal, tax, and financial advisors before making any investment decision.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 FoxRidge Equity Partners. All rights reserved.</span>
+    <span class="footer-contact">partners@foxridgeequity.com</span>
+  </div>
+</footer>
+
+<script>
+// ── CHART DEFAULTS ──
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size = 13;
+Chart.defaults.color = '#8A9AB8';
+
+const GOLD = '#C9A84C';
+const GOLD2 = '#E8C87A';
+const GREEN = '#2ECC8A';
+const RED = '#E05252';
+const AMBER = '#F0A020';
+const BLUE = '#4A8AF4';
+const NAVY2 = '#112040';
+const GRID = 'rgba(255,255,255,0.05)';
+
+// ── DELIVERIES CHART ──
+new Chart(document.getElementById('deliveriesChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2020','2021','2022','2023','2024','2025','2026E','2027E'],
+    datasets: [{
+      label: 'Units (000s)',
+      data: [320, 360, 420, 555, 595, 595, 450, 280],
+      backgroundColor: ['#1A3060','#1A3060','#1A3060','#1A3060','#1A3060',
+        'rgba(201,168,76,0.5)','rgba(201,168,76,0.7)','rgba(46,204,138,0.7)'],
+      borderColor: ['transparent','transparent','transparent','transparent','transparent',
+        GOLD, GOLD, GREEN],
+      borderWidth: [0,0,0,0,0,1,1,1],
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      annotation: {},
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}K units` } }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: {
+        grid: { color: GRID },
+        ticks: { color: '#8A9AB8', callback: v => v + 'K' },
+        suggestedMin: 0, suggestedMax: 700
+      }
+    }
+  }
+});
+
+// ── SUPPLY DECLINE CHART ──
+new Chart(document.getElementById('supplyDeclineChart'), {
+  type: 'bar',
+  data: {
+    labels: ['San Antonio','Austin','Houston','Atlanta','Phoenix','Denver','DFW','Tampa','Austin TX','Charlotte','U.S. Avg'],
+    datasets: [
+      { label: 'Peak', data: [22,45,46,43,56,32,76,19,45,38,null], backgroundColor: 'rgba(26,48,96,0.9)', borderRadius: 4 },
+      { label: 'Current', data: [4.8,15.7,24.8,18.5,28,13.8,43.5,16,15.7,19,null], backgroundColor: 'rgba(46,204,138,0.7)', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#8A9AB8', font: { size: 11 } } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}K units` } }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8', font: { size: 10 } } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + 'K' } }
+    }
+  }
+});
+
+// Simplified supply decline - use the correct data from IPA charts
+const supplyDeclineCanvas = document.getElementById('supplyDeclineChart');
+supplyDeclineCanvas.getContext('2d');
+// Re-render properly
+const sdc = Chart.getChart(supplyDeclineCanvas);
+if (sdc) sdc.destroy();
+new Chart(supplyDeclineCanvas, {
+  type: 'bar',
+  data: {
+    labels: ['San Antonio\n−80%','DFW\n−43%','Houston\n−46%','Atlanta\n−59%','Phoenix\n−50%','Denver\n−57%','Austin\n−69%','Miami\n−16%','Tampa\n−55%','Charlotte\n−50%'],
+    datasets: [
+      { label: 'Peak (000s)', data: [22,76,43,42,56,31,54,22,19,38], backgroundColor: 'rgba(42,67,120,0.9)', borderRadius: [4,4,4,4,4,4,4,4,4,4] },
+      { label: 'Current (000s)', data: [4.4,43.5,23.2,17.1,28,13.3,16.7,18.5,8.6,19], backgroundColor: [
+        'rgba(46,204,138,0.85)','rgba(201,168,76,0.75)','rgba(201,168,76,0.75)',
+        'rgba(201,168,76,0.75)','rgba(201,168,76,0.75)','rgba(201,168,76,0.75)',
+        'rgba(201,168,76,0.75)','rgba(224,82,82,0.7)','rgba(201,168,76,0.75)','rgba(201,168,76,0.75)'
+      ], borderRadius: [4,4,4,4,4,4,4,4,4,4] }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#8A9AB8', font: { size: 11 }, boxWidth: 12 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}K units (${ctx.dataset.label})` } }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8', font: { size: 10 } } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + 'K' }, suggestedMax: 85 }
+    }
+  }
+});
+
+// ── PIPELINE CHART ──
+new Chart(document.getElementById('pipelineChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Dallas–Fort Worth','Austin','Houston','San Antonio'],
+    datasets: [
+      {
+        label: 'Units Under Construction (000s)',
+        data: [48.9, 25.9, 27.0, 4.8],
+        backgroundColor: [AMBER+'cc', AMBER+'99', GREEN+'99', GREEN+'dd'],
+        borderColor: [AMBER, AMBER+'66', GREEN+'66', GREEN],
+        borderWidth: 1,
+        borderRadius: 4,
+        yAxisID: 'y',
+      },
+      {
+        label: '% of Existing Inventory',
+        data: [4.3, 7.9, 2.1, 2.6],
+        type: 'line',
+        borderColor: '#E8C87A',
+        backgroundColor: 'rgba(232,200,122,0.1)',
+        borderWidth: 2,
+        pointRadius: 6,
+        pointBackgroundColor: '#E8C87A',
+        fill: false,
+        yAxisID: 'y2',
+        tension: 0.3,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#8A9AB8', font: { size: 11 }, boxWidth: 12 } },
+      tooltip: { mode: 'index', intersect: false }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + 'K' }, suggestedMax: 60, position: 'left', title: { display: true, text: 'Units (000s)', color: '#8A9AB8', font: { size: 11 } } },
+      y2: { grid: { display: false }, ticks: { color: GOLD, callback: v => v + '%' }, position: 'right', suggestedMax: 12, title: { display: true, text: '% of Inventory', color: GOLD, font: { size: 11 } } }
+    }
+  }
+});
+
+// ── POPULATION CHART ──
+new Chart(document.getElementById('popChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Texas','Florida','North Carolina','Georgia','South Carolina','Tennessee','Arizona'],
+    datasets: [{
+      data: [391, 297, 167, 117, 86, 76, 70],
+      backgroundColor: ['rgba(201,168,76,0.85)','rgba(26,48,96,0.9)','rgba(26,48,96,0.9)','rgba(26,48,96,0.9)','rgba(26,48,96,0.9)','rgba(26,48,96,0.9)','rgba(26,48,96,0.9)'],
+      borderColor: [GOLD,'transparent','transparent','transparent','transparent','transparent','transparent'],
+      borderWidth: [1,0,0,0,0,0,0],
+      borderRadius: 4,
+      indexAxis: 'y',
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` +${ctx.parsed.x}K residents` } }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => '+' + v + 'K' } },
+      y: { grid: { color: GRID }, ticks: { color: '#E8EEF8' } }
+    }
+  }
+});
+
+// ── OWN VS RENT CHART ──
+new Chart(document.getElementById('ownRentChart'), {
+  type: 'line',
+  data: {
+    labels: ['2020','2021','2022','2023','2024','2025','2026E'],
+    datasets: [
+      {
+        label: 'Avg Monthly Own (TX SFH @ ~6.5% mortgage)',
+        data: [1750, 1890, 2200, 2600, 2820, 2980, 3000],
+        borderColor: RED,
+        backgroundColor: 'rgba(224,82,82,0.08)',
+        borderWidth: 2.5,
+        fill: false,
+        tension: 0.4,
+        pointRadius: 5,
+        pointBackgroundColor: RED,
+      },
+      {
+        label: 'Avg Monthly Rent (TX Class B/A)',
+        data: [1450, 1560, 1700, 1740, 1760, 1780, 1780],
+        borderColor: GREEN,
+        backgroundColor: 'rgba(46,204,138,0.08)',
+        borderWidth: 2.5,
+        fill: false,
+        tension: 0.4,
+        pointRadius: 5,
+        pointBackgroundColor: GREEN,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#8A9AB8', font: { size: 11 }, boxWidth: 12 } },
+      tooltip: { callbacks: { label: ctx => ` $${ctx.parsed.y.toLocaleString()}/mo — ${ctx.dataset.label.split(' ')[0]} ${ctx.dataset.label.split(' ')[1]}` } }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => '$' + v.toLocaleString() }, suggestedMin: 1200, suggestedMax: 3200 }
+    }
+  }
+});
+
+// ── VACANCY RECOVERY CHART ──
+new Chart(document.getElementById('vacancyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Houston','San Antonio','Dallas–Fort Worth','Austin'],
+    datasets: [
+      { label: 'Current Q1 2026', data: [11.6, 12.0, 12.5, 14.5], backgroundColor: 'rgba(224,82,82,0.7)', borderRadius: 4 },
+      { label: '2026E', data: [10.7, 10.5, 11.5, 13.5], backgroundColor: 'rgba(240,160,32,0.7)', borderRadius: 4 },
+      { label: '2027E', data: [8.5, 8.5, 9.5, 11.0], backgroundColor: 'rgba(46,204,138,0.7)', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#8A9AB8', font: { size: 11 }, boxWidth: 12 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}%` } },
+      annotation: {
+        annotations: {
+          healthyLine: {
+            type: 'line', yMin: 7, yMax: 7,
+            borderColor: 'rgba(201,168,76,0.5)', borderWidth: 1, borderDash: [5,5],
+            label: { content: 'Healthy ~7%', enabled: true, color: GOLD, font: { size: 10 } }
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + '%' }, suggestedMin: 0, suggestedMax: 16 }
+    }
+  }
+});
+
+// ── RENT GROWTH FORECAST CHART ──
+new Chart(document.getElementById('rentGrowthChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Houston','San Antonio','Dallas–Fort Worth','Austin'],
+    datasets: [
+      { label: '2026E', data: [3.7, 2.8, 1.5, -1.5], backgroundColor: [AMBER+'cc',AMBER+'99',AMBER+'77','rgba(224,82,82,0.7)'], borderRadius: 4 },
+      { label: '2027E', data: [4.2, 4.0, 3.5, 2.5], backgroundColor: 'rgba(46,204,138,0.75)', borderRadius: 4 },
+      { label: '2028E', data: [4.5, 4.3, 4.0, 4.0], backgroundColor: 'rgba(46,204,138,0.9)', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#8A9AB8', font: { size: 11 }, boxWidth: 12 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y}%` } }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + '%' }, suggestedMin: -3, suggestedMax: 6 }
+    }
+  }
+});
+
+// ── SA CLASS VACANCY CHART ──
+new Chart(document.getElementById('saClassVacChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Class A','Class B','Class C'],
+    datasets: [{
+      data: [6.7, 7.5, 8.3],
+      backgroundColor: [GREEN+'cc', AMBER+'cc', RED+'99'],
+      borderColor: [GREEN, AMBER, RED],
+      borderWidth: 1,
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}% vacancy` } },
+      datalabels: {}
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + '%' }, suggestedMin: 0, suggestedMax: 12 }
+    }
+  }
+});
+
+// ── SA RENT GROWTH BY CLASS ──
+new Chart(document.getElementById('saRentClassChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Class A','Class B','Class C'],
+    datasets: [{
+      data: [2.8, -4.1, -5.5],
+      backgroundColor: [GREEN+'cc', RED+'99', RED+'77'],
+      borderColor: [GREEN, RED, RED+'88'],
+      borderWidth: 1,
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y}% YoY` } }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + '%' }, suggestedMin: -7, suggestedMax: 5 }
+    }
+  }
+});
+
+// ── ILLUSTRATIVE RETURNS CHART ──
+new Chart(document.getElementById('returnsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['LP IRR', 'Equity Multiple', 'Avg Cash-on-Cash', 'Pref Return'],
+    datasets: [
+      {
+        label: 'Base Case',
+        data: [16, 1.9*10, 6.5, 8],
+        backgroundColor: AMBER+'cc',
+        borderColor: AMBER,
+        borderWidth: 1,
+        borderRadius: 4,
+      },
+      {
+        label: 'Upside Case',
+        data: [20.5, 2.2*10, 7.5, 9],
+        backgroundColor: GREEN+'cc',
+        borderColor: GREEN,
+        borderWidth: 1,
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#8A9AB8', font: { size: 11 }, boxWidth: 12 } },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const labels = ['LP IRR','Equity Multiple (×10)','Avg Cash-on-Cash','Pref Return'];
+            const vals = ctx.dataset.label === 'Base Case'
+              ? ['15–17%','1.9×','6.5%','7–9%']
+              : ['19–22%','2.2×','7.5%','up to 9%'];
+            return ` ${vals[ctx.dataIndex]}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8' } },
+      y: { grid: { color: GRID }, ticks: { color: '#8A9AB8', callback: v => v + '' }, suggestedMax: 30 }
+    }
+  }
+});
+
+// ── CYCLE CHART ──
+new Chart(document.getElementById('cycleChart'), {
+  type: 'line',
+  data: {
+    labels: ['2020–21\nExpansion','2022\nPeak','2023–25\nReset','2026\nTrough','2027–28\nRecovery','2029–30\nNext Peak'],
+    datasets: [{
+      data: [20, 75, 60, 35, 65, 88],
+      borderColor: GOLD,
+      backgroundColor: (ctx) => {
+        const chart = ctx.chart;
+        const { ctx: c, chartArea } = chart;
+        if (!chartArea) return 'transparent';
+        const gradient = c.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+        gradient.addColorStop(0, 'rgba(201,168,76,0.25)');
+        gradient.addColorStop(1, 'rgba(201,168,76,0.02)');
+        return gradient;
+      },
+      borderWidth: 2.5,
+      fill: true,
+      tension: 0.5,
+      pointRadius: [5,5,5,8,5,5],
+      pointBackgroundColor: [NAVY2,RED,AMBER,GREEN,BLUE,GOLD],
+      pointBorderColor: [GOLD,RED,AMBER,GREEN,BLUE,GOLD],
+      pointBorderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ctx.label.split('\n').join(': ') } },
+      annotation: {
+        annotations: {
+          entry: {
+            type: 'box',
+            xMin: 2.6, xMax: 3.5,
+            backgroundColor: 'rgba(46,204,138,0.07)',
+            borderColor: 'rgba(46,204,138,0.3)',
+            borderWidth: 1,
+            label: {
+              display: true,
+              content: 'ENTRY WINDOW\nQ2/Q3 2026',
+              color: GREEN,
+              font: { size: 10, weight: 'bold' }
+            }
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { color: GRID }, ticks: { color: '#8A9AB8', font: { size: 10 } } },
+      y: { display: false }
+    }
+  }
+});
+
+// ── INTERSECTION OBSERVER for animations ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.observe').forEach(el => observer.observe(el));
+
+</script>
+</body>
+</html>
