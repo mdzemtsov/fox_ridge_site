@@ -1,0 +1,51 @@
+Texas Triangle PDF v2 Review Notes
+====================================
+
+PAGE 1 (COVER): ✅ EXCELLENT
+- Full-bleed aerial Texas Triangle night photo — stunning
+- Large "TEXAS TRIANGLE" headline — perfect
+- 4-stat bar (47M+, $1.2T, 94%, 2026) — looks great
+- Quote and 6-fact grid — good
+- Issue: "No State Income Tax" text overlaps with "Structural resident magnet" label — needs fix
+- Issue: The 6-fact grid bottom row items overlap slightly
+
+PAGE 2 (WHY WINDOW IS OPEN): ⚠️ NEEDS FIX
+- 6 force cards layout good but cards have TOO MUCH empty space at the bottom
+- Cards are too tall with content only in top 1/3 — wasted space
+- Fix: Reduce card height or add more content
+
+PAGE 3 (SUPPLY CLIFF): ✅ GOOD
+- Bar chart looks excellent — orange peaks, gold trough bars
+- Table with metro data clear and readable
+- "THE WINDOW" callout box — great
+- Issue: Bottom half of page shows the construction bg photo but it's mostly empty below the callout box
+- Fix: Move content down or add more content to fill the page
+
+PAGE 4 (FOUR METROS): ⚠️ NEEDS FIX  
+- 4 metro cards good but same issue — too much empty space in bottom half of each card
+- Cards need more content or smaller height
+
+PAGE 5 (RETURNS): ✅ GOOD
+- 3 big return stats (18-22%, 1.7-2.1x, 7-9%) — excellent
+- Returns table — clean and professional
+- Investment terms section — good
+- Background finance chart shows through nicely
+- Issue: Large empty space in bottom third of page
+
+PAGE 6 (RISKS): ⚠️ NEEDS FIX
+- 5 risk cards look good but HUGE empty space at bottom (about 40% of page empty)
+- Fix: Make cards taller or add more content
+
+PAGE 7 (TEAM): ✅ GOOD
+- Team photos showing faces clearly — good
+- Track record bar — excellent
+- Contact + QR code — clean
+- Issue: Large empty space at bottom (about 35% of page empty)
+- Issue: "foxridgeequity.com" text overlapping with disclaimer text in QR section
+
+KEY FIXES NEEDED:
+1. Pages 2, 4, 6: Cards have too much empty space — need to expand card heights to fill page
+2. Page 3: Content doesn't fill bottom half
+3. Page 5: Large empty bottom section
+4. Page 7: Large empty bottom section + QR text overlap
+5. Cover: "No State Income Tax" text rendering issue

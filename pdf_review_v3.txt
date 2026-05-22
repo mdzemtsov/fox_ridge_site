@@ -1,0 +1,15 @@
+PDF Review v3 - Status:
+
+Page 1 (Cover): GOOD - Texas aerial photo, big stats, quote. Minor: bottom stats section slightly crowded but acceptable.
+Page 2 (Forces): STILL EMPTY - Cards are tall but content only fills top 40%. Need more content in each card.
+Page 3 (Supply): GOOD - Chart + table + callout + 3 mini stats. Still has some space at bottom but acceptable.
+Page 4 (Markets): MUCH BETTER - Rich cards with mini stats, submarkets, focus, sparkline charts. Still some empty space at bottom of top cards.
+Page 5 (Returns): STILL EMPTY - Large empty area at bottom below the playbook section.
+Page 6 (Risks): STILL EMPTY - Cards fill page but content only fills top 40% of each card.
+Page 7 (Team): STILL EMPTY - Large empty area at bottom below contact section.
+
+Priority fixes needed:
+1. Page 2: Add more content to each force card (key stat, implication)
+2. Page 5: Expand the investment terms section and playbook to fill bottom
+3. Page 6: Add more content to each risk card
+4. Page 7: Add a "next steps" section or expand contact area
