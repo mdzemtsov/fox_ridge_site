@@ -142,7 +142,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 />
               </div>
               <p className="text-white/60 max-w-md text-lg leading-relaxed font-light">
-                Institutional discipline meets entrepreneurial execution. We deliver consistent, risk-adjusted returns through strategic multifamily investing.
+                Institutional discipline meets entrepreneurial execution. We target risk-adjusted returns through strategic multifamily investing. Past performance is not indicative of future results.
               </p>
             </div>
             

@@ -152,7 +152,22 @@ export default function Contact() {
                 />
               </div>
 
-              <div className="pt-8">
+              <div className="space-y-2">
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    {...register("consent", { required: true })}
+                    className="mt-1 w-4 h-4 accent-secondary cursor-pointer shrink-0"
+                  />
+                  <span className="text-sm text-muted-foreground leading-relaxed">
+                    I agree to the{" "}
+                    <Link href="/privacy-policy" className="text-secondary underline hover:text-secondary/80" target="_blank">Privacy Policy</Link>
+                    {" "}and consent to being contacted by FoxRidge Equity Partners / Consulting Point LLC regarding investment opportunities. I understand this is not an offer to sell securities.
+                  </span>
+                </label>
+              </div>
+
+              <div className="pt-4">
                 <Button type="submit" disabled={isSubmitting} className="w-full md:w-auto bg-primary hover:bg-secondary text-white px-12 py-8 text-lg rounded-none transition-all duration-300 group">
                   {isSubmitting ? "Sending..." : "Send Message"}
                   <ArrowUpRight className="ml-2 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

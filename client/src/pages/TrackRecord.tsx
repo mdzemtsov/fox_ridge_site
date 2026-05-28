@@ -173,6 +173,11 @@ export default function TrackRecord() {
             ))}
           </div>
         </div>
+        <div className="container px-0 md:px-8">
+          <p className="text-xs text-stone-400 italic py-3 border-t border-stone-100">
+            * Past performance is not indicative of future results. All returns shown are gross of fees and represent the principals' prior experience. Actual results may differ materially.
+          </p>
+        </div>
       </section>
 
       {/* Realized Deals Table */}

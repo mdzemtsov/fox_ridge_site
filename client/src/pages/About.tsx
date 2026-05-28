@@ -152,7 +152,7 @@ export default function About() {
                 </div>
 
                 <p className="text-stone-500">
-                  His background includes serving as Managing Director at Renaissance Capital ($500M AUM) and successfully exiting 8 full-cycle deals as a General Partner, with his best-performing deal generating a <strong>42% IRR</strong>.
+                  His background includes serving as Managing Director at Renaissance Capital ($500M AUM) and successfully exiting 8 full-cycle deals as a General Partner across multiple market cycles.
                 </p>
               </div>
             </div>

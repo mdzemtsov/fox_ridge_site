@@ -530,7 +530,7 @@ export default function Home() {
               <div>
                 <p className="text-white font-bold text-base">Slava Davidenko</p>
                 <p className="text-white/60 text-sm">Co-Founder &amp; Managing Partner</p>
-                <p className="text-secondary text-xs mt-1">7,000+ Units Invested · 42% Best IRR</p>
+                <p className="text-secondary text-xs mt-1">7,000+ Units Invested · 36 Properties</p>
               </div>
             </div>
           </div>
