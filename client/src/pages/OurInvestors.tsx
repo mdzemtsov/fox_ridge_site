@@ -44,13 +44,13 @@ const pillars = [
     number: "07",
     icon: Shield,
     title: "Concentration Discipline as a Feature, Not a Bug",
-    body: "$3–10M into one deal with one operator creates real conviction. The investor knows the asset, walks the property, meets the property manager. It's a relationship, not a line item buried in a diversified fund allocation. For sophisticated investors, this is the appeal — they want concentrated bets with operators they trust, not diluted exposure across deals they will never see.",
+    body: "Meaningful capital into one deal with one operator creates real conviction. The investor knows the asset, walks the property, meets the property manager. It's a relationship, not a line item buried in a diversified fund allocation. For sophisticated investors, this is the appeal — they want concentrated bets with operators they trust, not diluted exposure across deals they will never see.",
   },
 ];
 
 const stats = [
   { value: "1", label: "Investor Per Deal" },
-  { value: "$3–10M", label: "Typical Check Size" },
+  { value: "UHNW", label: "Investor Profile" },
   { value: "100%", label: "Direct Governance" },
   { value: "Sun Belt", label: "Target Markets" },
 ];
@@ -163,8 +163,7 @@ export default function OurInvestors() {
               <p className="text-stone-600 text-lg leading-relaxed mb-6">
                 FoxRidge Equity Partners operates on a{" "}
                 <strong className="text-primary">single-investor-per-deal model</strong>. We partner with one
-                ultra-high-net-worth individual, family office, or principal per acquisition — typical check size{" "}
-                <strong className="text-primary">$3–10M per deal</strong> — and serve as their dedicated
+                ultra-high-net-worth individual, family office, or principal per acquisition, and serve as their dedicated
                 operational arm in Sun Belt multifamily.
               </p>
               <p className="text-stone-600 text-lg leading-relaxed">

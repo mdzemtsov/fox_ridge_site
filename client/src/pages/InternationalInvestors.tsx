@@ -277,6 +277,32 @@ export default function InternationalInvestors() {
         </div>
       </section>
 
+      {/* ── Regulation S / International Legal Disclaimer ── */}
+      <section className="py-12 bg-stone-100 border-t border-stone-200">
+        <div className="container max-w-4xl">
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 bg-secondary/20 border border-secondary/30 flex items-center justify-center shrink-0 mt-0.5">
+              <Shield className="w-4 h-4 text-secondary" />
+            </div>
+            <div className="space-y-3">
+              <p className="text-xs font-bold uppercase tracking-widest text-secondary">Important Notice to Non-U.S. Persons</p>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                <strong className="text-stone-800">Regulation S Notice:</strong> The information on this page is directed solely at persons who are not "U.S. persons" as defined in Rule 902(k) of Regulation S under the U.S. Securities Act of 1933, as amended. Any securities offered by FoxRidge Equity Partners / Consulting Point LLC have not been and will not be registered under the Securities Act and may not be offered or sold in the United States or to U.S. persons absent registration or an applicable exemption from registration.
+              </p>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                <strong className="text-stone-800">No Offer or Solicitation:</strong> Nothing on this page constitutes an offer to sell or a solicitation of an offer to buy any security in any jurisdiction where such offer or solicitation would be unlawful. Prospective non-U.S. investors are responsible for ensuring that any investment they make complies with all applicable laws and regulations in their home jurisdiction, including any foreign investment restrictions, currency controls, and securities regulations.
+              </p>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                <strong className="text-stone-800">Tax Considerations:</strong> Non-U.S. investors in U.S. real estate may be subject to FIRPTA withholding and other U.S. federal and state tax obligations. FoxRidge Equity Partners does not provide tax advice. Prospective investors are strongly encouraged to consult qualified legal and tax advisors in their home jurisdiction before making any investment decision.
+              </p>
+              <p className="text-stone-500 text-xs leading-relaxed">
+                By continuing to engage with this page and our team, non-U.S. persons confirm that they are doing so in compliance with the laws of their jurisdiction and that they are not relying on this website as the basis for any investment decision.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Section 7: CTA ── */}
       <section className="py-24 bg-primary text-white">
         <div className="container text-center max-w-2xl mx-auto">
