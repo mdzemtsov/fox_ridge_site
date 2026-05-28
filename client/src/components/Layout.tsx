@@ -201,15 +201,33 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
           
           {/* Legal Disclaimer */}
-          <div className="border-t border-white/10 pt-8 mb-6">
+          <div className="border-t border-white/10 pt-8 mb-6 space-y-4">
+            {/* DBA Notice */}
+            <p className="text-white/50 text-xs leading-relaxed">
+              <strong className="text-white/70 uppercase tracking-wider">Entity Disclosure:</strong>{" "}
+              FoxRidge Equity Partners is a registered trade name (DBA) of <strong className="text-white/70">Consulting Point LLC</strong>, a limited liability company organized under the laws of the State of Texas. All business activities, agreements, and legal obligations are conducted through Consulting Point LLC.
+            </p>
+            {/* Full Legal Disclaimer */}
             <p className="text-white/35 text-xs leading-relaxed max-w-5xl">
-              <strong className="text-white/50 uppercase tracking-wider">Important Disclosure:</strong>{" "}
-              This website is for informational and educational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any security or investment product. Nothing contained herein constitutes investment, legal, tax, or other advice. Past performance is not indicative of future results. Any investment involves significant risk, including the possible loss of principal. Prospective investors should consult with their own legal, tax, and financial advisors before making any investment decision. Fox Ridge Equity Partners does not make any representation or warranty as to the accuracy or completeness of the information contained on this website.
+              <strong className="text-white/50 uppercase tracking-wider">Important Legal Disclaimer:</strong>{" "}
+              This website and all content published herein — including but not limited to market analyses, research reports, financial projections, investment theses, and any other materials — are provided solely for informational and educational purposes. Nothing on this website constitutes, or should be construed as, an offer to sell, a solicitation of an offer to buy, or a recommendation of any security, investment product, or investment strategy. No content on this site constitutes investment, financial, legal, tax, or accounting advice of any kind.
+            </p>
+            <p className="text-white/35 text-xs leading-relaxed max-w-5xl">
+              <strong className="text-white/50 uppercase tracking-wider">No Guarantee of Returns:</strong>{" "}
+              Any projected returns, target yields, internal rates of return (IRR), equity multiples, or other forward-looking financial metrics referenced on this website are illustrative estimates only and are based on assumptions that may not materialize. Past performance of any investment, strategy, or market is not indicative of, and does not guarantee, future results. All real estate investments involve substantial risk, including the possible loss of some or all of the principal invested. Actual results may differ materially from any projections or estimates presented.
+            </p>
+            <p className="text-white/35 text-xs leading-relaxed max-w-5xl">
+              <strong className="text-white/50 uppercase tracking-wider">No Solicitation — Accredited Investors Only:</strong>{" "}
+              This website does not constitute a public offering of securities. Any private placement opportunities offered by FoxRidge Equity Partners / Consulting Point LLC are made exclusively to accredited investors as defined under Rule 501 of Regulation D of the Securities Act of 1933, as amended, pursuant to exemptions from registration under applicable federal and state securities laws. Participation in any offering requires completion of a formal subscription process and execution of definitive offering documents.
+            </p>
+            <p className="text-white/35 text-xs leading-relaxed max-w-5xl">
+              <strong className="text-white/50 uppercase tracking-wider">Independent Advice:</strong>{" "}
+              Prospective investors are strongly encouraged to conduct their own independent due diligence and to consult with qualified legal, tax, financial, and accounting advisors before making any investment decision. FoxRidge Equity Partners / Consulting Point LLC makes no representation or warranty, express or implied, as to the accuracy, completeness, timeliness, or suitability of any information contained on this website for any particular purpose.
             </p>
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 uppercase tracking-wider">
-            <p>&copy; {new Date().getFullYear()} FoxRidge Equity Partners. All Rights Reserved.</p>
+            <p>&copy; {new Date().getFullYear()} FoxRidge Equity Partners — a DBA of Consulting Point LLC. All Rights Reserved.</p>
             <div className="flex gap-8">
               <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
