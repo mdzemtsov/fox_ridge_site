@@ -205,7 +205,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* DBA Notice */}
             <p className="text-white/50 text-xs leading-relaxed">
               <strong className="text-white/70 uppercase tracking-wider">Entity Disclosure:</strong>{" "}
-              FoxRidge Equity Partners is a registered trade name (DBA) of <strong className="text-white/70">Consulting Point LLC</strong>, a limited liability company organized under the laws of the State of Texas. All business activities, agreements, and legal obligations are conducted through Consulting Point LLC.
+              FoxRidge Equity Partners is a registered trade name (DBA) of <strong className="text-white/70">Consulting Point LLC</strong>, a limited liability company organized under the laws of the State of Florida. All business activities, agreements, and legal obligations are conducted through Consulting Point LLC.
             </p>
             {/* Full Legal Disclaimer */}
             <p className="text-white/35 text-xs leading-relaxed max-w-5xl">
