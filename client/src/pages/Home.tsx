@@ -118,10 +118,9 @@ export default function Home() {
                 </div>
                 <div className="h-px bg-white/10" />
                 <div>
-                  <p className="text-stone-400 text-sm uppercase tracking-wider mb-1">Target IRR</p>
-                  <div className="text-5xl font-display font-bold text-secondary">
-                    <RotatingNumber value="18" suffix="%" />
-                  </div>
+                  <p className="text-stone-400 text-sm uppercase tracking-wider mb-1">Return Objective</p>
+                  <p className="text-2xl font-display font-bold text-secondary leading-tight mt-2">Risk-Adjusted<br />Outperformance</p>
+                  <p className="text-stone-500 text-xs mt-3 leading-relaxed">Targets vary by deal. Past performance is not indicative of future results.</p>
                 </div>
               </div>
             </motion.div>

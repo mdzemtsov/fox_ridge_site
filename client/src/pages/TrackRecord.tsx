@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, TrendingUp, Building2, MapPin, Calendar, DollarSign } from "lucide-react";
+import AccreditedGate from "@/components/AccreditedGate";
 
 export default function TrackRecord() {
 
@@ -123,6 +124,7 @@ export default function TrackRecord() {
   ];
 
   return (
+    <AccreditedGate>
     <div className="flex flex-col min-h-screen bg-stone-50">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-stone-950">
@@ -391,5 +393,6 @@ export default function TrackRecord() {
         </div>
       </section>
     </div>
+    </AccreditedGate>
   );
 }
