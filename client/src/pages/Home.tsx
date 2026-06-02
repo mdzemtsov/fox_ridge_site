@@ -74,12 +74,12 @@ export default function Home() {
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.9] tracking-tight mb-8">
                 Building <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-orange-300">
-                  Generational Wealth
+                  Long-Term Wealth
                 </span>
               </h1>
               
               <p className="text-xl text-stone-200 max-w-2xl leading-relaxed mb-10 font-light">
-                Fox Ridge Equity Partners is a private real estate investment firm specializing in 
+                FoxRidge Equity Partners is a private real estate investment firm specializing in 
                 value-add multifamily opportunities across high-growth markets in Texas and Florida.
               </p>
 

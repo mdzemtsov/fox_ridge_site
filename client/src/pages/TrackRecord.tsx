@@ -177,7 +177,7 @@ export default function TrackRecord() {
         </div>
         <div className="container px-0 md:px-8">
           <p className="text-xs text-stone-400 italic py-3 border-t border-stone-100">
-            * Past performance is not indicative of future results. All returns shown are gross of fees and represent the principals' prior experience. Actual results may differ materially.
+            * Past performance is not indicative of future results. All returns shown are gross of fees and represent the principals' prior experience under prior sponsoring entities. Actual results may differ materially. Averages shown are simple (unweighted) averages of deal-level figures; dollar-weighted pooled returns would differ. Net-of-fee returns are available upon request.
           </p>
         </div>
       </section>
@@ -188,9 +188,9 @@ export default function TrackRecord() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
               <h2 className="font-display text-3xl font-bold text-stone-900 mb-2">Some of Our Realized Projects</h2>
-              <p className="text-stone-500 text-base">All six full-cycle exits — verified XIRR from actual dated cash flows.</p>
+              <p className="text-stone-500 text-base">Six full-cycle exits — XIRR calculated from actual dated cash flows. Representative experience of the principals prior to FoxRidge Equity Partners.</p>
             </div>
-            <p className="text-sm text-stone-400 italic mt-4 md:mt-0">* Representative experience of principals.</p>
+            <p className="text-sm text-stone-400 italic mt-4 md:mt-0">* Returns are gross of fees and represent prior principal experience. Past performance is not indicative of future results.</p>
           </div>
 
           <div className="bg-white border border-stone-200 overflow-x-auto">

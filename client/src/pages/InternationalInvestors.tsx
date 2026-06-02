@@ -139,7 +139,7 @@ export default function InternationalInvestors() {
           >
             <h2 className="font-display text-4xl font-bold text-primary mb-8">Why U.S. Multifamily. Why Now.</h2>
             <p className="text-stone-600 text-lg leading-relaxed mb-8">
-              The U.S. economy is the largest, deepest, and most resilient capital market in the world — and U.S. multifamily real estate is the safe harbor within it. Through every cycle of the last forty years — recessions, financial crises, pandemics, rate shocks — multifamily has been the asset class that institutional capital returns to first. The reason is structural: people need housing.
+              The U.S. economy is the largest, deepest, and most resilient capital market in the world — and U.S. multifamily real estate has demonstrated consistent structural resilience within it. Through every cycle of the last forty years — recessions, financial crises, pandemics, rate shocks — multifamily has been among the asset classes that institutional capital returns to first. The reason is structural: people need housing. As with all real estate investments, past performance is not indicative of future results.
             </p>
 
             <div className="border-l-4 border-secondary pl-6 mb-8">

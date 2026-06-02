@@ -32,7 +32,7 @@ export default function About() {
               <span className="text-secondary">Leadership</span>
             </h1>
             <p className="text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
-              Led by Mikhail Pritsker and Slava Davidenko, Fox Ridge Equity Partners brings over $1 billion in combined transaction experience and a hands-on approach to every asset.
+              Led by Mikhail Pritsker and Slava Davidenko, FoxRidge Equity Partners brings over $1 billion in combined transaction experience and a hands-on approach to every asset.
             </p>
           </motion.div>
         </div>
@@ -103,7 +103,7 @@ export default function About() {
                 </div>
 
                 <p className="text-stone-500">
-                  He has designed quarterly reporting frameworks, validated monthly LP cash flow distributions, and improved LP satisfaction and retention by 30%+.
+                  He has designed quarterly reporting frameworks, validated monthly LP cash flow distributions, and built investor communication systems focused on transparency and long-term partnership.
                 </p>
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function About() {
                 </p>
                 
                 <p className="mb-6 text-stone-500">
-                  A serial entrepreneur and investor with over 25 years of experience, Slava has managed and invested more than <strong>$600 million across diversified projects</strong>. As a leading multifamily sponsor, he has built a portfolio exceeding <strong>7,000 units across 36 properties</strong>.
+                  A serial entrepreneur and investor with over 25 years of experience, Slava has managed and invested more than <strong>$600 million across diversified projects</strong>. Over his career, he has been involved in a portfolio exceeding <strong>7,000 units across 36 properties</strong>, including activity under prior sponsoring entities.
                 </p>
                 
                 <div className="bg-stone-50 p-8 border border-stone-200 my-10">
