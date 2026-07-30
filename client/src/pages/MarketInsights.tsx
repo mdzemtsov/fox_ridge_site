@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, FileText, TrendingUp, Calendar, Clock, BarChart2 } from "lucide-react";
+import { ArrowRight, BookOpen, FileText, TrendingUp, Calendar, Clock, BarChart2, Lock } from "lucide-react";
 
 interface Report {
   id: string;
@@ -205,6 +205,41 @@ export default function MarketInsights() {
               </button>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Investor Portal Cross-Promo */}
+      <section className="py-14 bg-gradient-to-r from-[#040C1D] via-[#0E2148] to-[#040C1D] border-y border-[#C9A846]/20">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row items-center justify-between gap-8"
+          >
+            <div className="flex items-start gap-5">
+              <div className="w-12 h-12 rounded-full bg-[#C9A846]/10 border border-[#C9A846]/30 flex items-center justify-center flex-shrink-0 mt-1">
+                <Lock className="w-6 h-6 text-[#C9A846]" />
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 bg-[#C9A846]/10 border border-[#C9A846]/30 text-[#C9A846] text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846] animate-pulse" />
+                  Investor Portal — Restricted Access
+                </div>
+                <h3 className="text-white text-2xl font-bold mb-2">Go Deeper — Full Investor Presentations</h3>
+                <p className="text-white/60 max-w-xl leading-relaxed">
+                  Beyond our public research, qualified investors can access complete deal presentations in English and Russian — including structure, program terms, and direct investment details.
+                </p>
+              </div>
+            </div>
+            <div className="flex-shrink-0">
+              <Link href="/investor-portal">
+                <button className="inline-flex items-center gap-2 bg-[#C9A846] hover:bg-[#B8973A] text-[#040C1D] font-bold px-8 py-3 text-sm tracking-widest uppercase rounded-lg transition-all whitespace-nowrap">
+                  Access Portal →
+                </button>
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 

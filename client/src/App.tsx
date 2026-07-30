@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import MarketInsights from "./pages/MarketInsights";
+import InvestorPortal from "./pages/InvestorPortal";
 
 function Router() {
   return (
@@ -32,6 +33,7 @@ function Router() {
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/market-insights" component={MarketInsights} />
+        <Route path="/investor-portal" component={InvestorPortal} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

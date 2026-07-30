@@ -17,6 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: "Our Investors", path: "/our-investors" },
     { name: "Track Record", path: "/track-record" },
     { name: "Market Insights", path: "/market-insights", highlight: true },
+    { name: "Investor Portal", path: "/investor-portal", highlight: true, portal: true },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -39,7 +40,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              (item as any).highlight ? (
+              (item as any).portal ? (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className={cn(
+                    "text-sm font-bold px-4 py-1.5 transition-all duration-300 relative group flex items-center gap-1.5 rounded-sm",
+                    location === item.path
+                      ? "text-amber-400 border border-amber-400 bg-amber-400/10"
+                      : "text-amber-400 border border-amber-400/60 hover:border-amber-400 hover:bg-amber-400/10"
+                  )}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                  {item.name}
+                </Link>
+              ) : (item as any).highlight ? (
                 <Link
                   key={item.path}
                   href={item.path}
@@ -165,6 +180,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <Link href="/market-insights" className="hover:text-white transition-colors flex items-center gap-1.5 text-secondary font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
                     Market Insights
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/investor-portal" className="hover:text-white transition-colors flex items-center gap-1.5 text-amber-400 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    Investor Portal
                   </Link>
                 </li>
                 <li className="pt-3 border-t border-white/10">
