@@ -121,7 +121,7 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-7 order-2 lg:order-1">
               <h2 className="font-display text-4xl font-bold text-stone-900 mb-2">Slava Davidenko</h2>
-              <p className="text-secondary font-mono uppercase tracking-widest text-sm mb-10">Co-Founder & Managing Partner</p>
+              <p className="text-secondary font-mono uppercase tracking-widest text-sm mb-10">Chairman, Advisory Board</p>
               
               <div className="prose prose-lg prose-stone max-w-none">
                 <p className="text-xl text-stone-700 font-light leading-relaxed mb-8">
