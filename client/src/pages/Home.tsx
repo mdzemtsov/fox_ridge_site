@@ -71,7 +71,7 @@ export default function Home() {
                 <span className="text-sm font-medium tracking-wide uppercase">Institutional Discipline. Entrepreneurial Execution.</span>
               </div>
               
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.9] tracking-tight mb-8">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.9] tracking-tight mb-8">
                 Building <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-orange-300">
                   Long-Term Wealth
@@ -105,14 +105,14 @@ export default function Home() {
               <div className="bg-stone-900/80 backdrop-blur-xl border border-white/10 p-8 space-y-8">
                 <div>
                   <p className="text-stone-400 text-sm uppercase tracking-wider mb-1">Total Transaction Volume</p>
-                  <div className="text-5xl font-display font-bold text-white">
+                  <div className="text-3xl sm:text-3xl md:text-5xl font-display font-bold text-white">
                     <RotatingNumber value="$1" suffix="B+" />
                   </div>
                 </div>
                 <div className="h-px bg-white/10" />
                 <div>
                   <p className="text-stone-400 text-sm uppercase tracking-wider mb-1">Units Invested</p>
-                  <div className="text-5xl font-display font-bold text-white">
+                  <div className="text-3xl sm:text-3xl md:text-5xl font-display font-bold text-white">
                     <RotatingNumber value="7,000" suffix="+" />
                   </div>
                 </div>
@@ -170,10 +170,10 @@ export default function Home() {
       </section>
 
       {/* How We Invest — Condensed Process Band */}
-      <section className="py-24 bg-stone-100" id="how-we-invest-home">
+      <section className="py-12 md:py-24 bg-stone-100" id="how-we-invest-home">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-primary mb-4">How We Invest</h2>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-primary mb-4">How We Invest</h2>
             <p className="text-stone-600 text-lg">A disciplined, six-step process — from sourcing to exit — applied to every asset.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -208,10 +208,10 @@ export default function Home() {
       </section>
 
       {/* Why Sun Belt — Condensed Band */}
-      <section className="py-24 bg-primary text-white" id="why-sunbelt-home">
+      <section className="py-12 md:py-24 bg-primary text-white" id="why-sunbelt-home">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Why Sun Belt. Why Now.</h2>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">Why Sun Belt. Why Now.</h2>
             <p className="text-white/75 text-lg leading-relaxed">
               The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country, while the supply pipeline that delivered a historic wave of new apartments in 2022–2025 has now collapsed to its lowest level in fifteen years. Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long.
             </p>
@@ -232,7 +232,7 @@ export default function Home() {
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="bg-white/10 border border-white/20 p-6 backdrop-blur-sm"
               >
-                <div className="text-4xl md:text-5xl font-display font-bold text-secondary mb-2">{tile.stat}</div>
+                <div className="text-3xl md:text-5xl font-display font-bold text-secondary mb-2">{tile.stat}</div>
                 <div className="text-white font-bold text-sm mb-3 uppercase tracking-wide">{tile.title}</div>
                 <div className="text-white/40 text-xs">Source: {tile.source}</div>
               </motion.div>
@@ -247,16 +247,16 @@ export default function Home() {
       </section>
 
       {/* Dynamic Process Section - Video Grid */}
-      <section className="py-32 bg-stone-950 text-white overflow-hidden">
+      <section className="py-16 md:py-32 bg-stone-950 text-white overflow-hidden">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
                 Hands-On <span className="text-secondary">Value Creation</span>
               </h2>
               <p className="text-stone-400 text-lg leading-relaxed mb-8">
@@ -336,10 +336,10 @@ export default function Home() {
       </section>
 
       {/* Investment Focus - Bento Grid */}
-      <section className="py-32 bg-stone-100">
+      <section className="py-16 md:py-32 bg-stone-100">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6">
               Strategic <span className="text-primary">Focus</span>
             </h2>
             <p className="text-stone-600 text-lg">
@@ -441,7 +441,7 @@ export default function Home() {
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
                 New Research Published
               </div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4 leading-tight">
                 Market <span className="text-secondary">Insights</span>
               </h2>
               <p className="text-white/70 text-lg leading-relaxed mb-6">
@@ -501,7 +501,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-primary text-white relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="container relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">
@@ -512,7 +512,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10 mb-12">
             <div className="flex flex-col items-center gap-4">
-              <div className="w-44 aspect-[3/4] overflow-hidden border-4 border-secondary shadow-xl">
+              <div className="w-32 sm:w-44 aspect-[3/4] overflow-hidden border-4 border-secondary shadow-xl">
                 <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="w-full h-full object-cover object-top" />
               </div>
               <div>
@@ -533,7 +533,7 @@ export default function Home() {
             </div>
             <div className="hidden sm:block w-px h-32 bg-white/20"></div>
             <div className="flex flex-col items-center gap-4">
-              <div className="w-44 aspect-[3/4] overflow-hidden border-4 border-secondary shadow-xl">
+              <div className="w-32 sm:w-44 aspect-[3/4] overflow-hidden border-4 border-secondary shadow-xl">
                 <img src="/images/slava_new.webp" alt="Slava Davidenko" className="w-full h-full object-cover object-top" />
               </div>
               <div>

@@ -147,7 +147,7 @@ export default function TrackRecord() {
               <span className="w-2 h-2 rounded-full bg-secondary" />
               <span className="text-sm font-medium tracking-wide uppercase">Portfolio</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
               Proven <br />
               <span className="text-secondary">Performance</span>
             </h1>
@@ -169,13 +169,13 @@ export default function TrackRecord() {
               { value: "26%", label: "Avg Project IRR" },
             ].map((stat, index) => (
               <div key={index} className="p-10 text-center hover:bg-stone-50 transition-colors group">
-                <p className="text-5xl font-display font-bold text-stone-900 mb-2 group-hover:scale-110 transition-transform duration-300">{stat.value}</p>
+                <p className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-2 group-hover:scale-110 transition-transform duration-300">{stat.value}</p>
                 <p className="text-sm text-stone-500 uppercase tracking-wider font-mono">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="container px-0 md:px-8">
+        <div className="container px-0 md:px-8 overflow-x-auto">
           <p className="text-xs text-stone-400 italic py-3 border-t border-stone-100">
             * Past performance is not indicative of future results. All returns shown are gross of fees and represent the principals' prior experience under prior sponsoring entities. Actual results may differ materially. Averages shown are simple (unweighted) averages of deal-level figures; dollar-weighted pooled returns would differ. Net-of-fee returns are available upon request.
           </p>
@@ -183,7 +183,7 @@ export default function TrackRecord() {
       </section>
 
       {/* Realized Deals Table */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-12 md:py-24 bg-stone-50">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
@@ -250,7 +250,7 @@ export default function TrackRecord() {
       </section>
 
       {/* Active Holdings */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container">
           <div className="mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-700 mb-6">

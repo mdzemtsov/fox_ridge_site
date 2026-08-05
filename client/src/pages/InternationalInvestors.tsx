@@ -129,7 +129,7 @@ export default function InternationalInvestors() {
       </section>
 
       {/* ── Section 2: Why U.S. Multifamily Now ── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -162,7 +162,7 @@ export default function InternationalInvestors() {
       </section>
 
       {/* ── Section 3: 6 Pillars ── */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-12 md:py-24 bg-stone-50">
         <div className="container">
           <div className="mb-14">
             <h2 className="font-display text-4xl font-bold text-primary mb-4">We Are Your Hands-On Partner. Not a Fund.</h2>
@@ -191,7 +191,7 @@ export default function InternationalInvestors() {
       </section>
 
       {/* ── Section 4: Capital from Anywhere ── */}
-      <section className="py-24 bg-primary text-white">
+      <section className="py-12 md:py-24 bg-primary text-white">
         <div className="container">
           <div className="mb-12">
             <h2 className="font-display text-4xl font-bold text-white mb-4">We Welcome Capital from Around the World.</h2>
@@ -227,7 +227,7 @@ export default function InternationalInvestors() {
       </section>
 
       {/* ── Section 5: How a Partnership Begins ── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container">
           <div className="mb-14">
             <h2 className="font-display text-4xl font-bold text-primary mb-3">A Conversation. Then a Deal. Then a Partnership.</h2>
@@ -254,7 +254,7 @@ export default function InternationalInvestors() {
       </section>
 
       {/* ── Section 6: Site Visits ── */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-12 md:py-24 bg-stone-50">
         <div className="container max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -304,7 +304,7 @@ export default function InternationalInvestors() {
       </section>
 
       {/* ── Section 7: CTA ── */}
-      <section className="py-24 bg-primary text-white">
+      <section className="py-12 md:py-24 bg-primary text-white">
         <div className="container text-center max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

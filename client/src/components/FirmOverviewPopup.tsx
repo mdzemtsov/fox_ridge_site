@@ -76,13 +76,13 @@ export default function FirmOverviewPopup() {
               ref={closeButtonRef}
               onClick={dismiss}
               aria-label="Close popup"
-              className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all focus:outline-none focus:ring-2 focus:ring-[#C9A846]/50"
+              className="absolute top-3 right-3 w-9 h-9 sm:top-4 sm:right-4 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all focus:outline-none focus:ring-2 focus:ring-[#C9A846]/50"
             >
               <X className="w-4 h-4" />
             </button>
 
             {/* Content */}
-            <div className="px-7 pt-7 pb-7">
+            <div className="px-5 pt-5 pb-5 sm:px-7 sm:pt-7 sm:pb-7">
               {/* Brand label */}
               <div className="inline-flex items-center gap-2 bg-[#C9A846]/10 border border-[#C9A846]/25 text-[#C9A846] text-[10px] font-bold tracking-[0.18em] uppercase px-3 py-1.5 rounded-full mb-5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846]" />

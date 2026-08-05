@@ -160,7 +160,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <main className={cn("flex-1 transition-all duration-300", scrolled ? "pt-16 md:pt-32" : "pt-32")}>{children}</main>
 
-      <footer className="bg-primary text-white pt-20 pb-10 border-t border-border">
+      <footer className="bg-primary text-white pt-12 md:pt-20 pb-8 md:pb-10 border-t border-border">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
             <div className="md:col-span-5">

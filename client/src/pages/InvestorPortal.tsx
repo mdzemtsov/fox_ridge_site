@@ -114,7 +114,7 @@ export default function InvestorPortal() {
               <Shield className="w-3.5 h-3.5" />
               Restricted Access — Accredited Investors Only
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
               Investor Portal
             </h1>
             <p className="text-lg text-[#8899AA] max-w-2xl mx-auto leading-relaxed">

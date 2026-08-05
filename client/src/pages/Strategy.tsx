@@ -27,7 +27,7 @@ export default function Strategy() {
               <span className="w-2 h-2 rounded-full bg-secondary" />
               <span className="text-sm font-medium tracking-wide uppercase">Investment Thesis</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
               Value Creation <br />
               <span className="text-secondary">Through Execution</span>
             </h1>
@@ -39,16 +39,16 @@ export default function Strategy() {
       </section>
 
       {/* Fast Forward Value-Add Section - Timelapse */}
-      <section className="py-32 bg-stone-900 text-white overflow-hidden">
+      <section className="py-16 md:py-32 bg-stone-900 text-white overflow-hidden">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
                 Accelerated <span className="text-secondary">Transformation</span>
               </h2>
               <p className="text-stone-400 text-lg leading-relaxed mb-8">
@@ -108,10 +108,10 @@ export default function Strategy() {
       </section>
 
       {/* Investment Criteria */}
-      <section className="py-32 bg-white">
+      <section className="py-16 md:py-32 bg-white">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6">
               Acquisition <span className="text-primary">Criteria</span>
             </h2>
             <p className="text-stone-600 text-lg">
@@ -172,7 +172,7 @@ export default function Strategy() {
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/30 text-secondary text-xs font-bold uppercase tracking-widest mb-8">
                 Market Thesis
               </div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
                 Why Sun Belt.<br /><span className="text-secondary">Why Now.</span>
               </h2>
               <p className="text-stone-400 text-lg leading-relaxed mb-6">
@@ -212,13 +212,13 @@ export default function Strategy() {
       </section>
 
       {/* How We Invest — Full 6-Step Process */}
-      <section className="py-32 bg-white" id="how-we-invest">
+      <section className="py-16 md:py-32 bg-white" id="how-we-invest">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
               Our Process
             </div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-stone-900 mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6">
               How We <span className="text-primary">Invest</span>
             </h2>
             <p className="text-stone-600 text-lg leading-relaxed">

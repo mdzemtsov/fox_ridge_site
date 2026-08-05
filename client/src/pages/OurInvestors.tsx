@@ -79,7 +79,7 @@ export default function OurInvestors() {
               <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
               <span className="text-sm font-medium tracking-wide uppercase">Capital Partnership</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
               Our <br />
               <span className="text-secondary">Investors</span>
             </h1>
@@ -190,7 +190,7 @@ export default function OurInvestors() {
       </section>
 
       {/* Seven Pillars */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-12 md:py-24 bg-stone-50">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -198,7 +198,7 @@ export default function OurInvestors() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4" style={{ color: "#1E3A6E" }}>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4" style={{ color: "#1E3A6E" }}>
               Why Partners{" "}
               <span style={{ color: "#B8942A" }}>Choose This Model</span>
             </h2>
@@ -355,7 +355,7 @@ export default function OurInvestors() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-stone-950 text-white text-center">
+      <section className="py-12 md:py-24 bg-stone-950 text-white text-center">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

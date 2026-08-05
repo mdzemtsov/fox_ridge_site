@@ -92,7 +92,7 @@ export default function MarketInsights() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846]" />
               Investor Resources
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-5 leading-tight tracking-tight">
               Research &amp; <span className="text-[#C9A846]">Investor Materials</span>
             </h1>
             <p className="text-lg text-[#8899AA] max-w-2xl leading-relaxed">
@@ -103,7 +103,7 @@ export default function MarketInsights() {
       </section>
 
       {/* ── Resource Library ─────────────────────────────────────────────── */}
-      <section className="py-16">
+      <section className="py-10 md:py-16">
         <div className="container">
 
           {/* Featured resource */}
@@ -211,7 +211,7 @@ export default function MarketInsights() {
       </section>
 
       {/* ── Investor Portal Cross-Promo ───────────────────────────────────── */}
-      <section className="py-14 bg-gradient-to-r from-[#040C1D] via-[#0E2148] to-[#040C1D] border-y border-[#C9A846]/20">
+      <section className="py-10 md:py-14 bg-gradient-to-r from-[#040C1D] via-[#0E2148] to-[#040C1D] border-y border-[#C9A846]/20">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -246,7 +246,7 @@ export default function MarketInsights() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-[#0E2148]">
+      <section className="py-12 md:py-20 bg-[#0E2148]">
         <div className="container text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to invest based on the data?

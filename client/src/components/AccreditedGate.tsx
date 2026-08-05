@@ -77,10 +77,10 @@ export default function AccreditedGate({ children }: AccreditedGateProps) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="bg-white max-w-xl w-full shadow-2xl border border-stone-200 overflow-hidden"
+              className="bg-white max-w-xl w-full mx-4 shadow-2xl border border-stone-200 overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-stone-950 px-8 py-7 flex items-start gap-4">
+              <div className="bg-stone-950 px-5 py-5 sm:px-8 sm:py-7 flex items-start gap-4">
                 <div className="w-10 h-10 bg-secondary/20 border border-secondary/30 flex items-center justify-center shrink-0 mt-0.5">
                   <Lock className="w-5 h-5 text-secondary" />
                 </div>
@@ -96,7 +96,7 @@ export default function AccreditedGate({ children }: AccreditedGateProps) {
               </div>
 
               {/* Body */}
-              <div className="px-8 py-7 space-y-5">
+              <div className="px-5 py-5 sm:px-8 sm:py-7 space-y-5">
                 <p className="text-stone-600 text-sm leading-relaxed">
                   To access this information, please confirm each of the following statements by checking the boxes below. This self-certification is required each session.
                 </p>

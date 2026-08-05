@@ -5,7 +5,7 @@ import { CheckCircle2, Award, Briefcase, GraduationCap, ArrowUpRight, Mail, Link
 
 // ─── Shared typography constants ────────────────────────────────────────────
 // Applied identically to both profile sections to guarantee visual consistency.
-const NAME_CLASS    = "font-display text-4xl md:text-5xl font-bold text-stone-900 mb-3 leading-tight";
+const NAME_CLASS    = "font-display text-3xl md:text-5xl font-bold text-stone-900 mb-3 leading-tight";
 const TITLE_CLASS   = "font-mono text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-10";
 const LEAD_CLASS    = "text-xl text-stone-700 font-light leading-[1.75] mb-8";
 const BODY_CLASS    = "text-base text-stone-500 leading-[1.85] mb-6";
@@ -38,7 +38,7 @@ export default function About() {
               <span className="w-2 h-2 rounded-full bg-secondary" />
               <span className="text-sm font-medium tracking-wide uppercase">Our Team</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
               Experienced <br />
               <span className="text-secondary">Leadership</span>
             </h1>
@@ -50,9 +50,9 @@ export default function About() {
       </section>
 
       {/* ── Mikhail Pritsker Profile ─────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
 
             {/* Photo column — left */}
             <div className="lg:col-span-5">
@@ -140,9 +140,9 @@ export default function About() {
       </div>
 
       {/* ── Slava Davidenko Profile ──────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
 
             {/* Bio column — left on desktop */}
             <div className="lg:col-span-7 order-2 lg:order-1">
