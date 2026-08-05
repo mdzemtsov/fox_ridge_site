@@ -519,6 +519,16 @@ export default function Home() {
                 <p className="text-white font-bold text-base">Mikhail Pritsker</p>
                 <p className="text-white/60 text-sm">Co-Founder &amp; Managing Partner</p>
                 <p className="text-secondary text-xs mt-1">MBA Chicago Booth · CCIM · 25+ yrs</p>
+                <a
+                  href="https://www.linkedin.com/in/mikhailpritsker/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Mikhail Pritsker on LinkedIn"
+                  className="inline-flex items-center gap-1.5 text-white/40 hover:text-[#0A66C2] transition-colors mt-2 text-xs"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </a>
               </div>
             </div>
             <div className="hidden sm:block w-px h-32 bg-white/20"></div>
@@ -530,6 +540,16 @@ export default function Home() {
                 <p className="text-white font-bold text-base">Slava Davidenko</p>
                 <p className="text-white/60 text-sm">Chairman, Advisory Board</p>
                 <p className="text-secondary text-xs mt-1">7,000+ Units Invested · 36 Properties</p>
+                <a
+                  href="https://www.linkedin.com/in/vdavidenko/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Slava Davidenko on LinkedIn"
+                  className="inline-flex items-center gap-1.5 text-white/40 hover:text-[#0A66C2] transition-colors mt-2 text-xs"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>

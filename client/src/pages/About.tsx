@@ -78,6 +78,18 @@ export default function About() {
                     <Briefcase className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>25+ Years Experience</span>
                   </div>
+                  <div className="pt-2">
+                    <a
+                      href="https://www.linkedin.com/in/mikhailpritsker/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Mikhail Pritsker on LinkedIn"
+                      className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-[#0A66C2] transition-colors group"
+                    >
+                      <Linkedin className="w-4 h-4 group-hover:text-[#0A66C2] transition-colors" />
+                      <span>LinkedIn Profile</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -192,6 +204,18 @@ export default function About() {
                   <div className={CRED_CLASS}>
                     <Briefcase className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>7,000+ Units Invested</span>
+                  </div>
+                  <div className="pt-2">
+                    <a
+                      href="https://www.linkedin.com/in/vdavidenko/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Slava Davidenko on LinkedIn"
+                      className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-[#0A66C2] transition-colors group"
+                    >
+                      <Linkedin className="w-4 h-4 group-hover:text-[#0A66C2] transition-colors" />
+                      <span>LinkedIn Profile</span>
+                    </a>
                   </div>
                 </div>
               </div>
