@@ -31,9 +31,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container flex h-32 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group py-2">
             <img 
-              src="/images/logo-white-new.jpeg" 
+              src="/images/logo-dark-bg.png" 
               alt="FoxRidge Equity Partners" 
-              className="h-28 w-auto object-contain"
+              className="h-24 w-auto object-contain"
+              style={{ maxWidth: '220px' }}
             />
           </Link>
 
@@ -151,9 +152,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="md:col-span-5">
               <div className="flex items-center gap-2 mb-6">
                 <img 
-                  src="/images/logo-black-new.jpeg" 
+                  src="/images/logo-dark-bg.png" 
                   alt="FoxRidge Equity Partners" 
-                  className="h-32 w-auto object-contain"
+                  className="h-28 w-auto object-contain"
+                  style={{ maxWidth: '240px' }}
                 />
               </div>
               <p className="text-white/60 max-w-md text-lg leading-relaxed font-light">
