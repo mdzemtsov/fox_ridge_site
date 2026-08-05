@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
+import FirmOverviewPopup from "@/components/FirmOverviewPopup";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -22,6 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-background text-foreground selection:bg-secondary selection:text-white">
+      <FirmOverviewPopup />
       <header className="fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md" style={{ top: '0' }}>
         <div className="container flex h-32 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group py-2">
