@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ArrowUpRight } from "lucide-react";
-import ResearchBanner from "@/components/ResearchBanner";
 import { useState } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -23,11 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-background text-foreground selection:bg-secondary selection:text-white">
-      {/* Rotating Research Banner - shown on all pages */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <ResearchBanner />
-      </div>
-      <header className="fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md" style={{ top: '64px' }}>
+      <header className="fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md" style={{ top: '0' }}>
         <div className="container flex h-32 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group py-2">
             <img 
@@ -144,7 +139,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      <main className="flex-1 pt-[calc(8rem+64px)]">{children}</main>
+      <main className="flex-1 pt-32">{children}</main>
 
       <footer className="bg-primary text-white pt-20 pb-10 border-t border-border">
         <div className="container">
