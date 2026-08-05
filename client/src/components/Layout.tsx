@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container flex h-full items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group py-1">
             <img 
-              src="/images/logo-dark-bg.png" 
+              src="/images/logo-header.png" 
               alt="FoxRidge Equity Partners" 
               className={cn(
                 "w-auto object-contain transition-all duration-300",
