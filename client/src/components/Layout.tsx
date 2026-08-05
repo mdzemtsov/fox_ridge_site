@@ -18,7 +18,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: "Track Record", path: "/track-record" },
     { name: "Investor Resources", path: "/investor-resources", highlight: true },
     { name: "Investor Portal", path: "/investor-portal", highlight: true, portal: true },
-    { name: "Contact", path: "/contact" },
   ];
 
   return (
