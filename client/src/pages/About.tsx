@@ -97,7 +97,19 @@ export default function About() {
             {/* Bio column — right */}
             <div className="lg:col-span-7">
               <h2 className={NAME_CLASS}>Mikhail Pritsker</h2>
-              <p className={TITLE_CLASS}>Co-Founder &amp; Managing Partner</p>
+              <div className="flex items-center gap-4 mb-6">
+                <p className={TITLE_CLASS} style={{marginBottom: 0}}>Co-Founder &amp; Managing Partner</p>
+                <a
+                  href="https://www.linkedin.com/in/mikhailpritsker/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Mikhail Pritsker on LinkedIn"
+                  className="inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-bold tracking-wide uppercase px-3 py-2 rounded-lg transition-all flex-shrink-0"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </a>
+              </div>
 
               <p className={LEAD_CLASS}>
                 Mikhail operates at the intersection of capital, operations, and trust. His career reflects a rare blend of hands-on asset management, strategic portfolio oversight, and institutional-grade investor communication.
@@ -147,7 +159,19 @@ export default function About() {
             {/* Bio column — left on desktop */}
             <div className="lg:col-span-7 order-2 lg:order-1">
               <h2 className={NAME_CLASS}>Slava Davidenko</h2>
-              <p className={TITLE_CLASS}>Chairman, Advisory Board</p>
+              <div className="flex items-center gap-4 mb-6">
+                <p className={TITLE_CLASS} style={{marginBottom: 0}}>Chairman, Advisory Board</p>
+                <a
+                  href="https://www.linkedin.com/in/vdavidenko/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Slava Davidenko on LinkedIn"
+                  className="inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-bold tracking-wide uppercase px-3 py-2 rounded-lg transition-all flex-shrink-0"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  LinkedIn
+                </a>
+              </div>
 
               <p className={LEAD_CLASS}>
                 Slava combines disciplined underwriting with an operator's mentality—understanding both the capital stack and the operational levers that drive NOI.
