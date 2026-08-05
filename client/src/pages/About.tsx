@@ -3,10 +3,21 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { CheckCircle2, Award, Briefcase, GraduationCap, ArrowUpRight, Mail, Linkedin } from "lucide-react";
 
+// ─── Shared typography constants ────────────────────────────────────────────
+// Applied identically to both profile sections to guarantee visual consistency.
+const NAME_CLASS    = "font-display text-4xl md:text-5xl font-bold text-stone-900 mb-3 leading-tight";
+const TITLE_CLASS   = "font-mono text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-10";
+const LEAD_CLASS    = "text-xl text-stone-700 font-light leading-[1.75] mb-8";
+const BODY_CLASS    = "text-base text-stone-500 leading-[1.85] mb-6";
+const BOX_CLASS     = "bg-stone-50 p-8 border border-stone-200 my-10";
+const BOX_HDR_CLASS = "font-display font-bold text-sm text-stone-900 mb-6 uppercase tracking-[0.12em]";
+const CRED_CLASS    = "flex items-center gap-4 text-sm text-stone-500";
+// ────────────────────────────────────────────────────────────────────────────
+
 export default function About() {
   return (
     <div className="flex flex-col min-h-screen bg-stone-50">
-      {/* Hero Section - Unified Style */}
+      {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-stone-950">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-stone-950/40 z-10" />
@@ -38,10 +49,12 @@ export default function About() {
         </div>
       </section>
 
-      {/* Mikhail Pritsker Profile */}
+      {/* ── Mikhail Pritsker Profile ─────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+            {/* Photo column — left */}
             <div className="lg:col-span-5">
               <div className="sticky top-32">
                 <div className="aspect-[3/4] bg-stone-100 mb-8 relative overflow-hidden group border border-stone-200">
@@ -50,113 +63,113 @@ export default function About() {
                     alt="Mikhail Pritsker" 
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
-                
                 <div className="flex flex-col gap-4 border-t border-stone-200 pt-6">
-                  <div className="flex items-center gap-4 text-sm text-stone-500">
-                    <GraduationCap className="w-5 h-5 text-primary" />
+                  <div className={CRED_CLASS}>
+                    <GraduationCap className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>MBA, University of Chicago Booth</span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-stone-500">
-                    <Award className="w-5 h-5 text-primary" />
+                  <div className={CRED_CLASS}>
+                    <Award className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>CCIM Designation</span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-stone-500">
-                    <Briefcase className="w-5 h-5 text-primary" />
+                  <div className={CRED_CLASS}>
+                    <Briefcase className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>25+ Years Experience</span>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <div className="lg:col-span-7">
-              <h2 className="font-display text-4xl font-bold text-stone-900 mb-2">Mikhail Pritsker</h2>
-              <p className="text-secondary font-mono uppercase tracking-widest text-sm mb-10">Co-Founder & Managing Partner</p>
-              
-              <div className="prose prose-lg prose-stone max-w-none">
-                <p className="text-xl text-stone-700 font-light leading-relaxed mb-8">
-                  Mikhail operates at the intersection of capital, operations, and trust. His career reflects a rare blend of hands-on asset management, strategic portfolio oversight, and institutional-grade investor communication.
-                </p>
-                
-                <p className="mb-6 text-stone-500">
-                  As a senior real estate investment executive with over 25 years of experience, Mikhail has overseen more than <strong>$1 billion in real estate transactions</strong> across multiple market cycles. He is particularly strong where many operators struggle: investor confidence and communication.
-                </p>
-                
-                <div className="bg-stone-50 p-8 border border-stone-200 my-10">
-                  <h4 className="font-display font-bold text-lg text-stone-900 mb-6 uppercase tracking-wide">Core Strengths</h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 list-none pl-0 m-0">
-                    {[
-                      "Asset & Portfolio Leadership",
-                      "NOI Optimization",
-                      "Investor Relations",
-                      "Capital Strategy",
-                      "AI & Analytics",
-                      "Complex Development"
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-stone-700 font-medium">
-                        <div className="w-1.5 h-1.5 bg-secondary rounded-full"></div>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
 
-                <p className="text-stone-500">
-                  He has designed quarterly reporting frameworks, validated monthly LP cash flow distributions, and built investor communication systems focused on transparency and long-term partnership.
-                </p>
+            {/* Bio column — right */}
+            <div className="lg:col-span-7">
+              <h2 className={NAME_CLASS}>Mikhail Pritsker</h2>
+              <p className={TITLE_CLASS}>Co-Founder &amp; Managing Partner</p>
+
+              <p className={LEAD_CLASS}>
+                Mikhail operates at the intersection of capital, operations, and trust. His career reflects a rare blend of hands-on asset management, strategic portfolio oversight, and institutional-grade investor communication.
+              </p>
+
+              <p className={BODY_CLASS}>
+                As a senior real estate investment executive with over 25 years of experience, Mikhail has overseen more than <strong>$1 billion in real estate transactions</strong> across multiple market cycles. He is particularly strong where many operators struggle: investor confidence and communication.
+              </p>
+
+              <div className={BOX_CLASS}>
+                <h4 className={BOX_HDR_CLASS}>Core Strengths</h4>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 list-none pl-0 m-0">
+                  {[
+                    "Asset & Portfolio Leadership",
+                    "NOI Optimization",
+                    "Investor Relations",
+                    "Capital Strategy",
+                    "AI & Analytics",
+                    "Complex Development"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-stone-700 font-medium text-sm">
+                      <div className="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+
+              <p className={BODY_CLASS}>
+                He has designed quarterly reporting frameworks, validated monthly LP cash flow distributions, and built investor communication systems focused on transparency and long-term partnership.
+              </p>
             </div>
+
           </div>
         </div>
       </section>
 
       <div className="container">
-        <div className="h-px w-full bg-stone-200"></div>
+        <div className="h-px w-full bg-stone-200" />
       </div>
 
-      {/* Slava Davidenko Profile */}
+      {/* ── Slava Davidenko Profile ──────────────────────────────────────── */}
       <section className="py-24 bg-white">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <h2 className="font-display text-4xl font-bold text-stone-900 mb-2">Slava Davidenko</h2>
-              <p className="text-secondary font-mono uppercase tracking-widest text-sm mb-10">Chairman, Advisory Board</p>
-              
-              <div className="prose prose-lg prose-stone max-w-none">
-                <p className="text-xl text-stone-700 font-light leading-relaxed mb-8">
-                  Slava combines disciplined underwriting with an operator's mentality—understanding both the capital stack and the operational levers that drive NOI.
-                </p>
-                
-                <p className="mb-6 text-stone-500">
-                  A serial entrepreneur and investor with over 25 years of experience, Slava has managed and invested more than <strong>$600 million across diversified projects</strong>. Over his career, he has been involved in a portfolio exceeding <strong>7,000 units across 36 properties</strong>, including activity under prior sponsoring entities.
-                </p>
-                
-                <div className="bg-stone-50 p-8 border border-stone-200 my-10">
-                  <h4 className="font-display font-bold text-lg text-stone-900 mb-6 uppercase tracking-wide">Core Strengths</h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 list-none pl-0 m-0">
-                    {[
-                      "Institutional Wealth Mgmt",
-                      "Real Estate at Scale",
-                      "Entrepreneurship",
-                      "AI & Modern Practices",
-                      "Capital Raising",
-                      "Cross-Industry Experience"
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-stone-700 font-medium">
-                        <div className="w-1.5 h-1.5 bg-secondary rounded-full"></div>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
 
-                <p className="text-stone-500">
-                  His background includes serving as Managing Director at Renaissance Capital ($500M AUM) and successfully exiting 8 full-cycle deals as a General Partner across multiple market cycles.
-                </p>
+            {/* Bio column — left on desktop */}
+            <div className="lg:col-span-7 order-2 lg:order-1">
+              <h2 className={NAME_CLASS}>Slava Davidenko</h2>
+              <p className={TITLE_CLASS}>Chairman, Advisory Board</p>
+
+              <p className={LEAD_CLASS}>
+                Slava combines disciplined underwriting with an operator's mentality—understanding both the capital stack and the operational levers that drive NOI.
+              </p>
+
+              <p className={BODY_CLASS}>
+                A serial entrepreneur and investor with over 25 years of experience, Slava has managed and invested more than <strong>$600 million across diversified projects</strong>. Over his career, he has been involved in a portfolio exceeding <strong>7,000 units across 36 properties</strong>, including activity under prior sponsoring entities.
+              </p>
+
+              <div className={BOX_CLASS}>
+                <h4 className={BOX_HDR_CLASS}>Core Strengths</h4>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 list-none pl-0 m-0">
+                  {[
+                    "Institutional Wealth Mgmt",
+                    "Real Estate at Scale",
+                    "Entrepreneurship",
+                    "AI & Modern Practices",
+                    "Capital Raising",
+                    "Cross-Industry Experience"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-stone-700 font-medium text-sm">
+                      <div className="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+
+              <p className={BODY_CLASS}>
+                His background includes serving as Managing Director at Renaissance Capital ($500M AUM) and successfully exiting 8 full-cycle deals as a General Partner across multiple market cycles.
+              </p>
             </div>
 
+            {/* Photo column — right on desktop */}
             <div className="lg:col-span-5 order-1 lg:order-2">
               <div className="sticky top-32">
                 <div className="aspect-[3/4] bg-stone-100 mb-8 relative overflow-hidden group border border-stone-200">
@@ -165,25 +178,25 @@ export default function About() {
                     alt="Slava Davidenko" 
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
-                
                 <div className="flex flex-col gap-4 border-t border-stone-200 pt-6">
-                  <div className="flex items-center gap-4 text-sm text-stone-500">
-                    <GraduationCap className="w-5 h-5 text-primary" />
+                  <div className={CRED_CLASS}>
+                    <GraduationCap className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>MBA, University of Chicago Booth</span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-stone-500">
-                    <GraduationCap className="w-5 h-5 text-primary" />
+                  <div className={CRED_CLASS}>
+                    <GraduationCap className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>Engineering Degree, MEPhI</span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-stone-500">
-                    <Briefcase className="w-5 h-5 text-primary" />
+                  <div className={CRED_CLASS}>
+                    <Briefcase className="w-5 h-5 text-primary flex-shrink-0" />
                     <span>7,000+ Units Invested</span>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -221,7 +234,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA - Minimal */}
+      {/* CTA */}
       <section className="py-24 bg-primary text-white">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
