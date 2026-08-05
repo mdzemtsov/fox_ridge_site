@@ -3,12 +3,19 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FirmOverviewPopup from "@/components/FirmOverviewPopup";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -23,14 +30,25 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col font-sans bg-background text-foreground selection:bg-secondary selection:text-white">
       <FirmOverviewPopup />
-      <header className="fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md" style={{ top: '0' }}>
-        <div className="container flex h-32 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group py-2">
+      <header
+        className={cn(
+          "fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md transition-all duration-300",
+          // Mobile: shrink when scrolled; desktop: always full height
+          scrolled ? "md:h-32 h-16" : "h-32"
+        )}
+        style={{ top: 0 }}
+      >
+        <div className="container flex h-full items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 group py-1">
             <img 
               src="/images/logo-dark-bg.png" 
               alt="FoxRidge Equity Partners" 
-              className="h-24 w-auto object-contain"
-              style={{ maxWidth: '220px' }}
+              className={cn(
+                "w-auto object-contain transition-all duration-300",
+                // Mobile: shrink logo when scrolled; desktop: always full size
+                scrolled ? "md:h-24 h-10" : "h-24"
+              )}
+              style={{ maxWidth: scrolled ? '140px' : '220px' }}
             />
           </Link>
 
@@ -140,7 +158,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      <main className="flex-1 pt-32">{children}</main>
+      <main className={cn("flex-1 transition-all duration-300", scrolled ? "pt-16 md:pt-32" : "pt-32")}>{children}</main>
 
       <footer className="bg-primary text-white pt-20 pb-10 border-t border-border">
         <div className="container">
