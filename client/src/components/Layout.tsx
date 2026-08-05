@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { name: "Investment Strategy", path: "/strategy" },
     { name: "Our Investors", path: "/our-investors" },
     { name: "Track Record", path: "/track-record" },
-    { name: "Market Insights", path: "/market-insights", highlight: true },
+    { name: "Investor Resources", path: "/investor-resources", highlight: true },
     { name: "Investor Portal", path: "/investor-portal", highlight: true, portal: true },
     { name: "Contact", path: "/contact" },
   ];
@@ -179,9 +179,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/market-insights" className="hover:text-white transition-colors flex items-center gap-1.5 text-secondary font-medium">
+                  <Link href="/investor-resources" className="hover:text-white transition-colors flex items-center gap-1.5 text-secondary font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                    Market Insights
+                    Investor Resources
                   </Link>
                 </li>
                 <li>

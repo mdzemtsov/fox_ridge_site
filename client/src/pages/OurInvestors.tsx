@@ -299,7 +299,7 @@ export default function OurInvestors() {
         </div>
       </section>
 
-      {/* Market Insights Banner */}
+      {/* Investor Resources Banner */}
       <section className="py-10 bg-stone-100 border-t border-stone-200">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -308,9 +308,9 @@ export default function OurInvestors() {
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> New Research Published
               </p>
               <h3 className="text-primary font-display font-bold text-xl">Read the Data Behind Our Investment Thesis</h3>
-              <p className="text-stone-500 text-sm mt-1">Our Market Insights reports explain exactly why we're deploying capital into the Texas Triangle right now.</p>
+              <p className="text-stone-500 text-sm mt-1">Our Investor Resources reports explain exactly why we're deploying capital into the Texas Triangle right now.</p>
             </div>
-            <Link href="/market-insights" className="shrink-0">
+            <Link href="/investor-resources" className="shrink-0">
               <button className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
                 Read Our Research →
               </button>

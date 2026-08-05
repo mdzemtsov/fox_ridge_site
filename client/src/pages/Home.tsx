@@ -426,7 +426,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Market Insights Cross-Promotion */}
+      {/* Investor Resources Cross-Promotion */}
       <section className="py-20 bg-stone-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop')", backgroundSize: "cover", backgroundPosition: "center" }} />
         <div className="container relative z-10">
@@ -461,7 +461,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link href="/market-insights">
+              <Link href="/investor-resources">
                 <Button className="bg-secondary hover:bg-secondary/90 text-white rounded-none px-8 py-5 font-bold text-base group">
                   Read Our Research <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>

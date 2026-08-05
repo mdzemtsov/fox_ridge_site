@@ -1,214 +1,216 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, FileText, TrendingUp, Calendar, Clock, BarChart2, Lock } from "lucide-react";
+import { ArrowRight, FileText, BarChart2, Download, ExternalLink, BookOpen, Lock } from "lucide-react";
 
-interface Report {
+interface Resource {
   id: string;
   title: string;
   subtitle: string;
-  date: string;
-  readTime: string;
-  category: string;
+  type: "Report" | "PDF" | "Interactive Dashboard";
+  typeIcon: React.ReactNode;
+  typeColor: string;
   description: string;
   tags: string[];
+  date: string;
+  readTime: string;
   file: string;
-  featured: boolean;
-  isPdf?: boolean;
-  badge?: string;
+  ctaLabel: string;
+  ctaIcon: React.ReactNode;
+  featured?: boolean;
 }
 
-const reports: Report[] = [
+const resources: Resource[] = [
   {
     id: "texas-triangle-advantage",
     title: "The Texas Triangle Advantage",
     subtitle: "Why Texas Is the Most Compelling Multifamily Market Right Now",
+    type: "Report",
+    typeIcon: <BookOpen className="w-3.5 h-3.5" />,
+    typeColor: "bg-blue-900/40 text-blue-300 border-blue-700/40",
+    description:
+      "A comprehensive investment thesis covering the Texas Triangle multifamily opportunity: supply cliff dynamics, demographic tailwinds, capital market dislocation, and market-by-market verdicts for Houston, San Antonio, DFW, and Austin. Includes macro data, submarket analysis, and FoxRidge's positioning rationale.",
+    tags: ["Texas Triangle", "Multifamily", "Value-Add", "Market Cycle"],
     date: "May 22, 2026",
     readTime: "12 min read",
-    category: "Market Analysis",
-    description:
-      "A deep-dive into the six converging forces creating a rare trough-cycle entry opportunity across Dallas–Fort Worth, Houston, San Antonio, and Austin. Supply cliff, debt maturity wall, demand engine — all analyzed with institutional rigor.",
-    tags: ["Texas Triangle", "Multifamily", "Value-Add", "Market Cycle"],
     file: "/research/texas-triangle-advantage.html",
+    ctaLabel: "View Report",
+    ctaIcon: <ExternalLink className="w-4 h-4" />,
     featured: true,
-    badge: "Featured Report",
   },
   {
     id: "texas-triangle-teaser",
     title: "Texas Triangle Multifamily 2026: Why the Window Is Open",
-    subtitle: "2-Page Investment Thesis — Five Tailwinds Converging Now",
-    date: "May 2026",
-    readTime: "2 min read",
-    category: "Investment Thesis",
+    subtitle: "2-Page Investment Thesis Summary",
+    type: "PDF",
+    typeIcon: <FileText className="w-3.5 h-3.5" />,
+    typeColor: "bg-amber-900/30 text-amber-300 border-amber-700/40",
     description:
       "A concise 2-page thesis summarizing the once-in-a-generation entry window: −56% U.S. multifamily starts from peak, +391K Texas net new residents, $162B in maturing loans, and market verdicts for Houston, San Antonio, DFW, and Austin. The institutional buy signal — when Freddie Mac and Fannie Mae converge on the same call.",
-    tags: ["Texas Triangle", "Teaser", "Houston", "San Antonio", "DFW", "PDF"],
+    tags: ["Texas Triangle", "Supply Cliff", "Entry Window"],
+    date: "May 2026",
+    readTime: "2 pages",
     file: "/research/texas-triangle-2026-teaser.pdf",
-    featured: false,
-    isPdf: true,
-    badge: "PDF — 2-Page Teaser",
+    ctaLabel: "Download PDF",
+    ctaIcon: <Download className="w-4 h-4" />,
   },
   {
-    id: "class-b-a-intelligence-dashboard",
+    id: "class-b-a-dashboard",
     title: "Class B+/A Multifamily Intelligence Dashboard",
     subtitle: "Acquisition Verdict: Deploy Now into Houston, South Florida & San Antonio",
-    date: "April 7, 2026",
-    readTime: "15 min read",
-    category: "Acquisition Intelligence",
+    type: "Interactive Dashboard",
+    typeIcon: <BarChart2 className="w-3.5 h-3.5" />,
+    typeColor: "bg-emerald-900/30 text-emerald-300 border-emerald-700/40",
     description:
       "A 10-module interactive dashboard covering the full Class B+/A investment thesis: macro framework, capital markets, supply & demand dynamics, market rankings, scenario analysis (base/bull/bear), renovation economics, risk matrix, and GSE data sources. Class B+/A outperforms on risk-adjusted returns across every cycle — and the window is open now.",
-    tags: ["Class B+/A", "Houston", "South Florida", "San Antonio", "Value-Add", "Interactive"],
+    tags: ["Class B+/A", "Houston", "South Florida", "San Antonio", "Acquisition"],
+    date: "May 22, 2026",
+    readTime: "10 modules",
     file: "/research/class-b-a-intelligence-dashboard.html",
-    featured: false,
-    badge: "Interactive Dashboard",
+    ctaLabel: "Open Dashboard",
+    ctaIcon: <ExternalLink className="w-4 h-4" />,
   },
 ];
 
-const categoryIcon = (cat: string) => {
-  if (cat === "Acquisition Intelligence") return BarChart2;
-  if (cat === "Investment Thesis") return FileText;
-  return TrendingUp;
+const TYPE_ICON_MAP: Record<Resource["type"], React.ReactNode> = {
+  "Report": <BookOpen className="w-4 h-4" />,
+  "PDF": <FileText className="w-4 h-4" />,
+  "Interactive Dashboard": <BarChart2 className="w-4 h-4" />,
 };
 
 export default function MarketInsights() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero */}
-      <section className="relative py-28 bg-primary text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,0.3) 80px, rgba(255,255,255,0.3) 81px), repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,0.3) 80px, rgba(255,255,255,0.3) 81px)"
-          }} />
-        </div>
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/20 text-white/90 mb-8">
-              <BookOpen className="w-4 h-4 text-secondary" />
-              <span className="text-sm font-medium tracking-wide uppercase">Proprietary Research</span>
+    <div className="flex flex-col min-h-screen bg-[#040C1D]">
+
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0E2148] via-[#081733] to-[#040C1D]" />
+        <div className="absolute inset-0 opacity-20"
+          style={{ backgroundImage: "radial-gradient(ellipse at 70% 50%, rgba(201,168,70,0.12) 0%, transparent 65%)" }} />
+        <div className="relative container py-20 pt-24">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <div className="inline-flex items-center gap-2 bg-[#C9A846]/10 border border-[#C9A846]/30 text-[#C9A846] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846]" />
+              Investor Resources
             </div>
-            <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight mb-6">
-              Market <span className="text-secondary">Insights</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight tracking-tight">
+              Research &amp; <span className="text-[#C9A846]">Investor Materials</span>
             </h1>
-            <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-              Institutional-grade research on multifamily real estate markets, investment cycles, and emerging opportunities — published by the FoxRidge investment team.
+            <p className="text-lg text-[#8899AA] max-w-2xl leading-relaxed">
+              Institutional-grade research, investment theses, and analytical tools published by the FoxRidge investment team. These materials are intended for qualified investors evaluating the Texas Triangle multifamily opportunity.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats bar */}
-      <section className="bg-secondary py-5">
+      {/* ── Resource Library ─────────────────────────────────────────────── */}
+      <section className="py-16">
         <div className="container">
-          <div className="flex flex-wrap gap-8 items-center justify-center md:justify-start text-white text-sm font-medium">
-            <span className="flex items-center gap-2"><TrendingUp className="w-4 h-4" /> Data-driven analysis</span>
-            <span className="w-px h-4 bg-white/30 hidden md:block" />
-            <span className="flex items-center gap-2"><FileText className="w-4 h-4" /> Institutional methodology</span>
-            <span className="w-px h-4 bg-white/30 hidden md:block" />
-            <span className="flex items-center gap-2"><BookOpen className="w-4 h-4" /> {reports.length} reports published</span>
-          </div>
-        </div>
-      </section>
 
-      {/* Reports Grid */}
-      <section className="py-20 bg-stone-50">
-        <div className="container">
-          <div className="mb-10">
-            <h2 className="text-3xl font-display font-bold text-primary mb-2">Latest Research</h2>
-            <div className="w-16 h-1 bg-secondary" />
-          </div>
+          {/* Featured resource */}
+          {resources.filter(r => r.featured).map(r => (
+            <motion.div
+              key={r.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-10 bg-[#0E2148]/60 border border-white/10 hover:border-[#C9A846]/40 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(201,168,70,0.07)]"
+            >
+              {/* Featured label */}
+              <div className="bg-[#C9A846]/10 border-b border-[#C9A846]/20 px-6 py-2.5 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846] animate-pulse" />
+                <span className="text-[#C9A846] text-xs font-bold tracking-widest uppercase">Featured Resource</span>
+              </div>
 
-          <div className="grid gap-6">
-            {reports.map((report, i) => {
-              const CatIcon = categoryIcon(report.category);
-              return (
-                <motion.div
-                  key={report.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
+              <div className="p-8 md:flex md:gap-10 md:items-start">
+                {/* Left: meta */}
+                <div className="md:w-56 flex-shrink-0 mb-6 md:mb-0">
+                  <span className={`inline-flex items-center gap-1.5 text-xs font-bold tracking-wide uppercase px-3 py-1.5 rounded-full border ${r.typeColor} mb-4`}>
+                    {r.typeIcon}
+                    {r.type}
+                  </span>
+                  <p className="text-[#8899AA] text-xs mb-1">{r.date}</p>
+                  <p className="text-[#8899AA] text-xs">{r.readTime}</p>
+                  <div className="flex flex-wrap gap-1.5 mt-4">
+                    {r.tags.map(t => (
+                      <span key={t} className="bg-white/5 border border-white/10 text-[#8899AA] text-xs px-2 py-0.5 rounded-full">{t}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right: content */}
+                <div className="flex-1">
+                  <h2 className="text-white text-2xl font-bold mb-1 leading-snug">{r.title}</h2>
+                  <p className="text-[#C9A846] text-sm font-medium mb-4">{r.subtitle}</p>
+                  <p className="text-[#8899AA] text-sm leading-relaxed mb-6">{r.description}</p>
                   <a
-                    href={report.file}
+                    href={r.file}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block"
+                    className="inline-flex items-center gap-2 bg-[#C9A846] hover:bg-[#B8973A] text-[#040C1D] font-bold text-sm tracking-wide uppercase px-6 py-3 rounded-lg transition-all"
                   >
-                    <div className={`group bg-white border-2 rounded-none overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
-                      report.featured ? "border-secondary" : "border-stone-200 hover:border-secondary"
-                    }`}>
-                      {/* Badge strip */}
-                      {report.badge && (
-                        <div className={`px-6 py-2 flex items-center gap-2 ${report.featured ? "bg-secondary" : report.isPdf ? "bg-primary" : "bg-stone-800"}`}>
-                          {report.isPdf && <FileText className="w-3 h-3 text-secondary" />}
-                          {!report.featured && !report.isPdf && <BarChart2 className="w-3 h-3 text-secondary" />}
-                          <span className={`text-xs font-bold uppercase tracking-widest ${report.featured ? "text-white" : "text-secondary"}`}>
-                            {report.badge}
-                          </span>
-                        </div>
-                      )}
-
-                      <div className="p-8 md:p-10">
-                        {/* Meta row */}
-                        <div className="flex flex-wrap items-center gap-4 mb-4">
-                          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1">
-                            <CatIcon className="w-3 h-3" />
-                            {report.category}
-                          </span>
-                          <span className="flex items-center gap-1.5 text-xs text-stone-400">
-                            <Calendar className="w-3 h-3" />
-                            {report.date}
-                          </span>
-                          <span className="flex items-center gap-1.5 text-xs text-stone-400">
-                            <Clock className="w-3 h-3" />
-                            {report.readTime}
-                          </span>
-                        </div>
-
-                        <h3 className="text-2xl md:text-3xl font-display font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
-                          {report.title}
-                        </h3>
-                        <p className="text-secondary font-medium mb-4">{report.subtitle}</p>
-                        <p className="text-stone-600 leading-relaxed mb-6 max-w-3xl">{report.description}</p>
-
-                        <div className="flex flex-wrap items-center justify-between gap-4">
-                          <div className="flex flex-wrap gap-2">
-                            {report.tags.map((tag) => (
-                              <span key={tag} className="text-xs px-3 py-1 bg-stone-100 text-stone-500 font-medium">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          <span className="inline-flex items-center gap-2 text-secondary font-bold text-sm group-hover:gap-3 transition-all">
-                            {report.isPdf ? "Download PDF" : "Read Full Report"} <ArrowRight className="w-4 h-4" />
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    {r.ctaIcon}
+                    {r.ctaLabel}
                   </a>
-                </motion.div>
-              );
-            })}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Resource grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {resources.filter(r => !r.featured).map((r, idx) => (
+              <motion.div
+                key={r.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08 }}
+                className="bg-[#0E2148]/60 border border-white/10 hover:border-[#C9A846]/40 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,70,0.06)] flex flex-col"
+              >
+                {/* Card header */}
+                <div className="bg-[#081733] px-6 py-5 border-b border-white/10">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`inline-flex items-center gap-1.5 text-xs font-bold tracking-wide uppercase px-3 py-1.5 rounded-full border ${r.typeColor}`}>
+                      {r.typeIcon}
+                      {r.type}
+                    </span>
+                    <span className="text-[#8899AA] text-xs">{r.readTime}</span>
+                  </div>
+                  <h3 className="text-white font-bold text-lg leading-snug mb-1">{r.title}</h3>
+                  <p className="text-[#C9A846] text-sm font-medium">{r.subtitle}</p>
+                </div>
+
+                {/* Card body */}
+                <div className="px-6 py-5 flex flex-col flex-1">
+                  <p className="text-[#8899AA] text-sm leading-relaxed mb-5 flex-1">{r.description}</p>
+
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {r.tags.map(t => (
+                      <span key={t} className="bg-white/5 border border-white/10 text-[#8899AA] text-xs px-2 py-0.5 rounded-full">{t}</span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                    <span className="text-[#8899AA] text-xs">{r.date}</span>
+                    <a
+                      href={r.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-[#C9A846] hover:bg-[#B8973A] text-[#040C1D] font-bold text-xs tracking-wide uppercase px-4 py-2.5 rounded-lg transition-all"
+                    >
+                      {r.ctaIcon}
+                      {r.ctaLabel}
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* More coming */}
-          <div className="mt-8 p-8 border-2 border-dashed border-stone-300 text-center">
-            <BookOpen className="w-8 h-8 text-stone-300 mx-auto mb-3" />
-            <p className="text-stone-400 font-medium">More research reports publishing regularly</p>
-            <p className="text-stone-300 text-sm mt-1">Contact us to be notified when new reports are released</p>
-            <Link href="/contact">
-              <button className="mt-4 px-6 py-2 bg-primary text-white text-sm font-medium hover:bg-secondary transition-colors">
-                Get Notified
-              </button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Investor Portal Cross-Promo */}
+      {/* ── Investor Portal Cross-Promo ───────────────────────────────────── */}
       <section className="py-14 bg-gradient-to-r from-[#040C1D] via-[#0E2148] to-[#040C1D] border-y border-[#C9A846]/20">
         <div className="container">
           <motion.div
@@ -227,7 +229,7 @@ export default function MarketInsights() {
                   Investor Portal — Restricted Access
                 </div>
                 <h3 className="text-white text-2xl font-bold mb-2">Go Deeper — Full Investor Presentations</h3>
-                <p className="text-white/60 max-w-xl leading-relaxed">
+                <p className="text-[#8899AA] max-w-xl leading-relaxed text-sm">
                   Beyond our public research, qualified investors can access complete deal presentations in English and Russian — including structure, program terms, and direct investment details.
                 </p>
               </div>
@@ -243,22 +245,23 @@ export default function MarketInsights() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary text-white">
+      {/* ── CTA ──────────────────────────────────────────────────────────── */}
+      <section className="py-20 bg-[#0E2148]">
         <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to invest based on the data?
           </h2>
-          <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">
+          <p className="text-[#8899AA] text-lg mb-8 max-w-xl mx-auto">
             Our research informs every acquisition decision. Let's discuss how you can participate.
           </p>
           <Link href="/contact">
-            <button className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-8 py-4 transition-all group">
-              Schedule a Call <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <button className="inline-flex items-center gap-2 bg-[#C9A846] hover:bg-[#B8973A] text-[#040C1D] font-bold px-8 py-4 text-sm tracking-widest uppercase rounded-lg transition-all">
+              Schedule a Call <ArrowRight className="w-4 h-4" />
             </button>
           </Link>
         </div>
       </section>
+
     </div>
   );
 }

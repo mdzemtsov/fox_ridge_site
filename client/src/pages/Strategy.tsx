@@ -299,7 +299,7 @@ export default function Strategy() {
         </div>
       </section>
 
-      {/* Market Insights Banner */}
+      {/* Investor Resources Banner */}
       <section className="py-12 bg-stone-950 text-white">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-secondary/30 p-8">
@@ -316,9 +316,9 @@ export default function Strategy() {
                 <p className="text-white/60 text-sm">Read the data behind our current acquisition focus — six converging forces creating a rare trough-cycle entry window.</p>
               </div>
             </div>
-            <Link href="/market-insights" className="shrink-0">
+            <Link href="/investor-resources" className="shrink-0">
               <button className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                View Market Insights →
+                View Investor Resources →
               </button>
             </Link>
           </div>

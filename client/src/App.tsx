@@ -32,7 +32,7 @@ function Router() {
         <Route path="/international-investors" component={InternationalInvestors} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
-        <Route path="/market-insights" component={MarketInsights} />
+        <Route path="/investor-resources" component={MarketInsights} />
         <Route path="/investor-portal" component={InvestorPortal} />
         <Route component={NotFound} />
       </Switch>

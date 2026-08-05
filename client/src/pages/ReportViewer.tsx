@@ -30,9 +30,9 @@ export default function ReportViewer() {
       <div className="min-h-screen flex items-center justify-center bg-stone-50">
         <div className="text-center">
           <h1 className="text-3xl font-display font-bold text-primary mb-4">Report Not Found</h1>
-          <Link href="/market-insights">
+          <Link href="/investor-resources">
             <button className="inline-flex items-center gap-2 text-secondary font-medium hover:underline">
-              <ArrowLeft className="w-4 h-4" /> Back to Market Insights
+              <ArrowLeft className="w-4 h-4" /> Back to Investor Resources
             </button>
           </Link>
         </div>
@@ -45,10 +45,10 @@ export default function ReportViewer() {
       {/* Top bar */}
       <div className="bg-primary text-white py-4 border-b border-white/10">
         <div className="container flex items-center justify-between gap-4 flex-wrap">
-          <Link href="/market-insights">
+          <Link href="/investor-resources">
             <button className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm font-medium group">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Market Insights
+              Back to Investor Resources
             </button>
           </Link>
           <div className="flex items-center gap-4 text-sm text-white/60">
@@ -111,10 +111,10 @@ export default function ReportViewer() {
       {/* Bottom nav */}
       <div className="bg-white border-t border-stone-200 py-6">
         <div className="container flex items-center justify-between flex-wrap gap-4">
-          <Link href="/market-insights">
+          <Link href="/investor-resources">
             <button className="inline-flex items-center gap-2 text-primary font-medium hover:text-secondary transition-colors group">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Market Insights
+              Back to Investor Resources
             </button>
           </Link>
           <Link href="/contact">
