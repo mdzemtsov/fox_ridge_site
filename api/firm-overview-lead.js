@@ -19,9 +19,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed." });
   }
 
+  const rawOidcToken = req.headers["x-vercel-oidc-token"];
+  const runtimeOidcToken = Array.isArray(rawOidcToken) ? rawOidcToken[0] : rawOidcToken;
   const hasBlobAuth = Boolean(
     process.env.BLOB_READ_WRITE_TOKEN ||
-    (process.env.BLOB_STORE_ID && process.env.VERCEL_OIDC_TOKEN),
+    (process.env.BLOB_STORE_ID && runtimeOidcToken),
   );
 
   if (!hasBlobAuth) {
@@ -72,6 +74,9 @@ export default async function handler(req, res) {
         access: "private",
         contentType: "application/json",
         addRandomSuffix: false,
+        ...(runtimeOidcToken && process.env.BLOB_STORE_ID
+          ? { oidcToken: runtimeOidcToken, storeId: process.env.BLOB_STORE_ID }
+          : {}),
       },
     );
 
