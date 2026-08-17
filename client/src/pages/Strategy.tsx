@@ -299,7 +299,7 @@ export default function Strategy() {
         </div>
       </section>
 
-      {/* Investor Resources Banner */}
+      {/* Research & Insights Banner */}
       <section className="py-12 bg-stone-950 text-white">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-secondary/30 p-8">
@@ -318,7 +318,7 @@ export default function Strategy() {
             </div>
             <Link href="/investor-resources" className="shrink-0">
               <button className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                View Investor Resources →
+                View Research & Insights →
               </button>
             </Link>
           </div>

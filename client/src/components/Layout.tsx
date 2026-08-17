@@ -19,11 +19,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
+    { name: "Our Team", path: "/about" },
     { name: "Investment Strategy", path: "/strategy" },
-    { name: "Our Investors", path: "/our-investors" },
+    { name: "Capital Partners", path: "/our-investors" },
     { name: "Track Record", path: "/track-record" },
-    { name: "Investor Resources", path: "/investor-resources", highlight: true },
+    { name: "Research & Insights", path: "/investor-resources", highlight: true },
     { name: "Investor Portal", path: "/investor-portal", highlight: true, portal: true },
   ];
 
@@ -53,7 +53,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => (
               (item as any).portal ? (
                 <Link
@@ -113,7 +113,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="xl:hidden">
               <Button variant="ghost" size="icon" className="rounded-none">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
@@ -195,7 +195,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <li>
                   <Link href="/investor-resources" className="hover:text-white transition-colors flex items-center gap-1.5 text-secondary font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                    Investor Resources
+                    Research &amp; Insights
                   </Link>
                 </li>
                 <li>

@@ -71,16 +71,16 @@ export default function Home() {
                 <span className="text-sm font-medium tracking-wide uppercase">Institutional Discipline. Entrepreneurial Execution.</span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.9] tracking-tight mb-8">
-                Building <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-orange-300">
-                  Long-Term Wealth
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[0.95] tracking-tight mb-8">
+                <span className="block">Direct Multifamily <span className="hidden sm:inline">Investing</span></span>
+                <span className="block sm:hidden">Investing</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary to-orange-300">
+                  for Family Offices &amp; Private Capital
                 </span>
               </h1>
               
               <p className="text-xl text-stone-200 max-w-2xl leading-relaxed mb-10 font-light">
-                FoxRidge Equity Partners is a private real estate investment firm specializing in 
-                value-add multifamily opportunities across high-growth markets in Texas and Florida.
+                FoxRidge acquires and operates Class A/B multifamily assets in Texas and South Florida, partnering with one capital partner per deal.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -426,7 +426,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Investor Resources Cross-Promotion */}
+      {/* Research & Insights Cross-Promotion */}
       <section className="py-20 bg-stone-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop')", backgroundSize: "cover", backgroundPosition: "center" }} />
         <div className="container relative z-10">

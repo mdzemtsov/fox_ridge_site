@@ -80,8 +80,8 @@ export default function OurInvestors() {
               <span className="text-sm font-medium tracking-wide uppercase">Capital Partnership</span>
             </div>
             <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              Our <br />
-              <span className="text-secondary">Investors</span>
+              Capital <br />
+              <span className="text-secondary">Partners</span>
             </h1>
             <p className="text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
               One partner. One deal. Institutional execution without the institutional overhead.
@@ -170,19 +170,23 @@ export default function OurInvestors() {
                 We are not in a fundraising process. We deploy alongside committed capital partners who want
                 institutional-quality execution without building an in-house team.
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <div className="flex items-center gap-3 text-sm text-stone-500">
-                  <span className="w-2 h-2 rounded-full bg-secondary shrink-0" />
-                  UHNW Individuals
+              <div className="mt-10">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-stone-400 mb-4">Who We Partner With</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {[
+                    "Family Offices",
+                    "Private Investors",
+                    "International Principals",
+                  ].map((partner) => (
+                    <div key={partner} className="flex items-center gap-3 border border-stone-200 bg-stone-50 px-4 py-3 text-sm font-medium text-primary">
+                      <span className="w-2 h-2 rounded-full bg-secondary shrink-0" />
+                      {partner}
+                    </div>
+                  ))}
                 </div>
-                <div className="flex items-center gap-3 text-sm text-stone-500">
-                  <span className="w-2 h-2 rounded-full bg-secondary shrink-0" />
-                  Family Offices
-                </div>
-                <div className="flex items-center gap-3 text-sm text-stone-500">
-                  <span className="w-2 h-2 rounded-full bg-secondary shrink-0" />
-                  Post-Exit Founders
-                </div>
+                <Link href="/international-investors" className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-primary hover:text-secondary transition-colors">
+                  Investing from outside the U.S.? Learn more <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -299,7 +303,7 @@ export default function OurInvestors() {
         </div>
       </section>
 
-      {/* Investor Resources Banner */}
+      {/* Research & Insights Banner */}
       <section className="py-10 bg-stone-100 border-t border-stone-200">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -308,7 +312,7 @@ export default function OurInvestors() {
                 <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> New Research Published
               </p>
               <h3 className="text-primary font-display font-bold text-xl">Read the Data Behind Our Investment Thesis</h3>
-              <p className="text-stone-500 text-sm mt-1">Our Investor Resources reports explain exactly why we're deploying capital into the Texas Triangle right now.</p>
+              <p className="text-stone-500 text-sm mt-1">Our Research & Insights reports explain exactly why we're deploying capital into the Texas Triangle right now.</p>
             </div>
             <Link href="/investor-resources" className="shrink-0">
               <button className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">

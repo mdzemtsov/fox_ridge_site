@@ -373,7 +373,7 @@ export default function TrackRecord() {
         </div>
       </section>
 
-      {/* Investor Resources Banner */}
+      {/* Research & Insights Banner */}
       <section className="py-10 bg-stone-50 border-t border-stone-200">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -386,7 +386,7 @@ export default function TrackRecord() {
             </div>
             <Link href="/investor-resources" className="shrink-0">
               <button className="inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                View Investor Resources →
+                View Research & Insights →
               </button>
             </Link>
           </div>

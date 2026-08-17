@@ -90,10 +90,10 @@ export default function MarketInsights() {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="inline-flex items-center gap-2 bg-[#C9A846]/10 border border-[#C9A846]/30 text-[#C9A846] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846]" />
-              Investor Resources
+              Research &amp; Insights
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-5 leading-tight tracking-tight">
-              Research &amp; <span className="text-[#C9A846]">Investor Materials</span>
+              Research &amp; <span className="text-[#C9A846]">Insights</span>
             </h1>
             <p className="text-lg text-[#8899AA] max-w-2xl leading-relaxed">
               Institutional-grade research, investment theses, and analytical tools published by the FoxRidge investment team. These materials are intended for qualified investors evaluating the Texas Triangle multifamily opportunity.

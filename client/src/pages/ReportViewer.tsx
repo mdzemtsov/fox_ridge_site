@@ -32,7 +32,7 @@ export default function ReportViewer() {
           <h1 className="text-3xl font-display font-bold text-primary mb-4">Report Not Found</h1>
           <Link href="/investor-resources">
             <button className="inline-flex items-center gap-2 text-secondary font-medium hover:underline">
-              <ArrowLeft className="w-4 h-4" /> Back to Investor Resources
+              <ArrowLeft className="w-4 h-4" /> Back to Research & Insights
             </button>
           </Link>
         </div>
@@ -48,7 +48,7 @@ export default function ReportViewer() {
           <Link href="/investor-resources">
             <button className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm font-medium group">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Investor Resources
+              Back to Research & Insights
             </button>
           </Link>
           <div className="flex items-center gap-4 text-sm text-white/60">
@@ -114,7 +114,7 @@ export default function ReportViewer() {
           <Link href="/investor-resources">
             <button className="inline-flex items-center gap-2 text-primary font-medium hover:text-secondary transition-colors group">
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Investor Resources
+              Back to Research & Insights
             </button>
           </Link>
           <Link href="/contact">
