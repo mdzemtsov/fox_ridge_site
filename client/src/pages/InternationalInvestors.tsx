@@ -311,11 +311,11 @@ export default function InternationalInvestors() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Let's Start the Conversation.</h2>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Explore International Investing.</h2>
             <p className="text-white/70 text-lg mb-10">Direct access to the General Partners. No intake forms. No gatekeepers. No analysts.</p>
             <Link href="/contact">
               <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-10 py-6 text-lg font-bold">
-                Contact the General Partners <ArrowUpRight className="ml-2 w-5 h-5" />
+                Request Information <ArrowUpRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </motion.div>

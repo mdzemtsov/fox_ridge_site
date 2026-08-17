@@ -314,7 +314,7 @@ export default function TrackRecord() {
             </div>
             <Link href="/contact">
               <Button className="bg-primary text-white hover:bg-primary/90 rounded-none px-8 py-5 font-bold shrink-0">
-                Discuss a Co-Investment <ArrowUpRight className="ml-2 w-4 h-4" />
+                Explore Partnership Opportunities <ArrowUpRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>
@@ -366,7 +366,7 @@ export default function TrackRecord() {
 
             <Link href="/contact">
               <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary w-fit px-8 py-6 text-lg rounded-none transition-all duration-300 font-bold">
-                Request Full Case Studies
+                Request Information
               </Button>
             </Link>
           </div>

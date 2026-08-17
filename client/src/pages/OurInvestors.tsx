@@ -296,7 +296,7 @@ export default function OurInvestors() {
             </div>
             <Link href="/international-investors">
               <Button className="bg-primary text-white hover:bg-primary/90 rounded-none px-8 py-5 font-bold shrink-0 whitespace-nowrap">
-                Learn More
+                Learn About International Investing
               </Button>
             </Link>
           </motion.div>
@@ -378,7 +378,7 @@ export default function OurInvestors() {
               className="bg-secondary hover:bg-secondary/90 text-white border-none h-14 px-10 text-lg rounded-none"
             >
               <Link href="/contact">
-                Start the Conversation <ArrowRight className="ml-2 h-5 w-5" />
+                Explore Partnership Opportunities <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </motion.div>

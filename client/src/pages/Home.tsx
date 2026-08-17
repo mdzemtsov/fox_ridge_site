@@ -140,7 +140,7 @@ export default function Home() {
               FoxRidge is actively underwriting acquisitions across DFW, Houston, and South Florida. We close on the deals where the underwriting holds — and walk away from the ones that don't. Qualified partners interested in seeing live opportunities are welcome to reach the General Partners directly.
             </p>
             <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-none px-10 py-5 font-bold text-base">
-              <Link href="/contact">Contact the General Partners</Link>
+              <Link href="/contact">Request Information</Link>
             </Button>
             <div className="w-12 h-0.5 bg-secondary mx-auto mt-8" />
           </div>
@@ -162,7 +162,7 @@ export default function Home() {
             </div>
             <Link href="/international-investors">
               <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-8 py-5 font-bold shrink-0 whitespace-nowrap">
-                Learn More
+                Learn About International Investing
               </Button>
             </Link>
           </div>
@@ -555,7 +555,7 @@ export default function Home() {
           </div>
           <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-white border-none h-16 px-10 text-xl rounded-none">
             <Link href="/contact">
-              Get in Touch <ArrowRight className="ml-2 h-6 w-6" />
+              Explore Partnership Opportunities <ArrowRight className="ml-2 h-6 w-6" />
             </Link>
           </Button>
         </div>

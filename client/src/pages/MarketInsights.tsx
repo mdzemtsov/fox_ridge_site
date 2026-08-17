@@ -86,9 +86,9 @@ export default function MarketInsights() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0E2148] via-[#081733] to-[#040C1D]" />
         <div className="absolute inset-0 opacity-20"
           style={{ backgroundImage: "radial-gradient(ellipse at 70% 50%, rgba(201,168,70,0.12) 0%, transparent 65%)" }} />
-        <div className="relative container py-20 pt-24">
+        <div className="relative container py-12 md:py-16">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="inline-flex items-center gap-2 bg-[#C9A846]/10 border border-[#C9A846]/30 text-[#C9A846] text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#C9A846]/10 border border-[#C9A846]/30 text-[#C9A846] text-xs font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846]" />
               Research &amp; Insights
             </div>
@@ -103,7 +103,7 @@ export default function MarketInsights() {
       </section>
 
       {/* ── Resource Library ─────────────────────────────────────────────── */}
-      <section className="py-10 md:py-16">
+      <section className="py-8 md:py-12">
         <div className="container">
 
           {/* Featured resource */}
@@ -113,17 +113,17 @@ export default function MarketInsights() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-10 bg-[#0E2148]/60 border border-white/10 hover:border-[#C9A846]/40 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(201,168,70,0.07)]"
+              className="mb-6 md:mb-8 bg-[#0E2148]/60 border border-white/10 hover:border-[#C9A846]/40 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_32px_rgba(201,168,70,0.07)]"
             >
               {/* Featured label */}
-              <div className="bg-[#C9A846]/10 border-b border-[#C9A846]/20 px-6 py-2.5 flex items-center gap-2">
+              <div className="bg-[#C9A846]/10 border-b border-[#C9A846]/20 px-5 py-2 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C9A846] animate-pulse" />
                 <span className="text-[#C9A846] text-xs font-bold tracking-widest uppercase">Featured Resource</span>
               </div>
 
-              <div className="p-8 md:flex md:gap-10 md:items-start">
+              <div className="p-5 md:p-6 md:flex md:gap-8 md:items-start">
                 {/* Left: meta */}
-                <div className="md:w-56 flex-shrink-0 mb-6 md:mb-0">
+                <div className="md:w-48 flex-shrink-0 mb-5 md:mb-0">
                   <span className={`inline-flex items-center gap-1.5 text-xs font-bold tracking-wide uppercase px-3 py-1.5 rounded-full border ${r.typeColor} mb-4`}>
                     {r.typeIcon}
                     {r.type}
@@ -157,7 +157,7 @@ export default function MarketInsights() {
           ))}
 
           {/* Resource grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5">
             {resources.filter(r => !r.featured).map((r, idx) => (
               <motion.div
                 key={r.id}
@@ -165,10 +165,10 @@ export default function MarketInsights() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.08 }}
-                className="bg-[#0E2148]/60 border border-white/10 hover:border-[#C9A846]/40 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,70,0.06)] flex flex-col"
+                className="bg-[#0E2148]/60 border border-white/10 hover:border-[#C9A846]/40 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_28px_rgba(201,168,70,0.06)] flex flex-col"
               >
                 {/* Card header */}
-                <div className="bg-[#081733] px-6 py-5 border-b border-white/10">
+                <div className="bg-[#081733] px-5 py-4 border-b border-white/10">
                   <div className="flex items-center justify-between mb-3">
                     <span className={`inline-flex items-center gap-1.5 text-xs font-bold tracking-wide uppercase px-3 py-1.5 rounded-full border ${r.typeColor}`}>
                       {r.typeIcon}
@@ -181,7 +181,7 @@ export default function MarketInsights() {
                 </div>
 
                 {/* Card body */}
-                <div className="px-6 py-5 flex flex-col flex-1">
+                <div className="px-5 py-4 flex flex-col flex-1">
                   <p className="text-[#8899AA] text-sm leading-relaxed mb-5 flex-1">{r.description}</p>
 
                   <div className="flex flex-wrap gap-1.5 mb-5">
