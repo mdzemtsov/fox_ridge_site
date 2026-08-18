@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import FirmOverviewPopup from "@/components/FirmOverviewPopup";
+import InvestorListPopup from "@/components/InvestorListPopup";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-background text-foreground selection:bg-secondary selection:text-white">
-      <FirmOverviewPopup />
+      <InvestorListPopup />
       <header
         className={cn(
           "fixed z-40 w-full border-b border-border bg-background/80 backdrop-blur-md transition-all duration-300",
