@@ -105,7 +105,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="w-[1px] h-6 bg-border mx-4" />
             <Link href="/contact">
               <Button variant="default" className="bg-secondary hover:bg-primary text-white font-medium px-6 rounded-none transition-all duration-300 group">
-                Explore Opportunities
+                Invest With Us
                 <ArrowUpRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Button>
             </Link>
@@ -148,7 +148,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       className="w-full bg-secondary hover:bg-primary text-white rounded-none py-6 text-lg font-display"
                       onClick={() => setIsOpen(false)}
                     >
-                      Explore Opportunities
+                      Invest With Us
                     </Button>
                   </Link>
                 </div>
