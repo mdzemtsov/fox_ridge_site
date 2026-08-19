@@ -256,7 +256,7 @@ export default function MarketInsights() {
           </p>
           <Link href="/contact">
             <button className="inline-flex items-center gap-2 bg-[#C9A846] hover:bg-[#B8973A] text-[#040C1D] font-bold px-8 py-4 text-sm tracking-widest uppercase rounded-lg transition-all">
-              Schedule a Call <ArrowRight className="w-4 h-4" />
+              Invest With Us <ArrowRight className="w-4 h-4" />
             </button>
           </Link>
         </div>

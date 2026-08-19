@@ -315,7 +315,7 @@ export default function InternationalInvestors() {
             <p className="text-white/70 text-lg mb-10">Direct access to the General Partners. No intake forms. No gatekeepers. No analysts.</p>
             <Link href="/contact">
               <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-10 py-6 text-lg font-bold">
-                Request Information <ArrowUpRight className="ml-2 w-5 h-5" />
+                Invest With Us <ArrowUpRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </motion.div>

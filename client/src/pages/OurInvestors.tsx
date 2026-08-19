@@ -378,7 +378,7 @@ export default function OurInvestors() {
               className="bg-secondary hover:bg-secondary/90 text-white border-none h-14 px-10 text-lg rounded-none"
             >
               <Link href="/contact">
-                Explore Partnership Opportunities <ArrowRight className="ml-2 h-5 w-5" />
+                Invest With Us <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </motion.div>

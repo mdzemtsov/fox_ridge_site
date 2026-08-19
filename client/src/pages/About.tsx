@@ -293,7 +293,7 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <Link href="/contact">
                 <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 px-8 py-6 text-lg rounded-none transition-colors duration-300 font-bold">
-                  Explore Partnership Opportunities <ArrowUpRight className="ml-2 w-5 h-5" />
+                  Invest With Us <ArrowUpRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
             </div>

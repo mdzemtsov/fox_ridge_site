@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Building2, TrendingUp, Users, Wrench, Settings2, BrainCircuit } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Building2, TrendingUp, Users, Wrench, Settings2, BrainCircuit } from "lucide-react";
 import { Link } from "wouter";
 import { motion, useScroll, useTransform, useInView, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
@@ -140,7 +140,7 @@ export default function Home() {
               FoxRidge is actively underwriting acquisitions across DFW, Houston, and South Florida. We close on the deals where the underwriting holds — and walk away from the ones that don't. Qualified partners interested in seeing live opportunities are welcome to reach the General Partners directly.
             </p>
             <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-none px-10 py-5 font-bold text-base">
-              <Link href="/contact">Request Information</Link>
+              <Link href="/contact">Invest With Us</Link>
             </Button>
             <div className="w-12 h-0.5 bg-secondary mx-auto mt-8" />
           </div>
@@ -555,7 +555,7 @@ export default function Home() {
           </div>
           <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-white border-none h-16 px-10 text-xl rounded-none">
             <Link href="/contact">
-              Explore Partnership Opportunities <ArrowRight className="ml-2 h-6 w-6" />
+              Invest With Us <ArrowUpRight className="ml-2 w-5 h-5" />
             </Link>
           </Button>
         </div>
