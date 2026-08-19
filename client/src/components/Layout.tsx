@@ -162,7 +162,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <footer className="bg-primary text-white border-t border-border pt-10 md:pt-12 pb-7 md:pb-8">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-10 lg:gap-16 pb-10 md:pb-12">
+          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] gap-10 xl:gap-16 pb-10 md:pb-12">
             <div>
               <img
                 src="/images/logo-dark-bg.png"
@@ -175,23 +175,29 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_auto] gap-8 sm:gap-10 lg:pt-2">
-              <div>
-                <h3 className="font-display text-[11px] font-bold uppercase tracking-[0.16em] mb-4 text-secondary">Navigation</h3>
-                <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-white/65">
-                  <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 lg:gap-10 xl:pt-2">
+              <nav aria-label="Company links">
+                <h3 className="font-display text-[11px] font-bold uppercase tracking-[0.16em] mb-4 text-secondary">Company</h3>
+                <div className="flex flex-col items-start gap-2.5 text-sm text-white/65">
+                  <Link href="/about" className="hover:text-white transition-colors">Our Team</Link>
                   <Link href="/strategy" className="hover:text-white transition-colors">Investment Strategy</Link>
-                  <Link href="/our-investors" className="hover:text-white transition-colors">Capital Partners</Link>
                   <Link href="/track-record" className="hover:text-white transition-colors">Track Record</Link>
-                  <Link href="/investor-resources" className="hover:text-white transition-colors">Research &amp; Insights</Link>
-                </nav>
-              </div>
+                </div>
+              </nav>
 
-              <div className="sm:min-w-56">
+              <nav aria-label="Investor links">
+                <h3 className="font-display text-[11px] font-bold uppercase tracking-[0.16em] mb-4 text-secondary">Investors</h3>
+                <div className="flex flex-col items-start gap-2.5 text-sm text-white/65">
+                  <Link href="/our-investors" className="hover:text-white transition-colors">Capital Partners</Link>
+                  <Link href="/investor-resources" className="hover:text-white transition-colors">Research &amp; Insights</Link>
+                  <Link href="/investor-portal" className="hover:text-white transition-colors">Investor Portal</Link>
+                </div>
+              </nav>
+
+              <div>
                 <h3 className="font-display text-[11px] font-bold uppercase tracking-[0.16em] mb-4 text-secondary">Contact</h3>
-                <div className="space-y-2.5 text-sm text-white/65">
-                  <p>Austin, Texas &middot; Miami, Florida</p>
-                  <a href="mailto:partners@foxridgeequity.com" className="inline-block hover:text-white transition-colors border-b border-white/20 pb-0.5">
+                <div className="flex flex-col items-start gap-2.5 text-sm text-white/65">
+                  <a href="mailto:partners@foxridgeequity.com" className="hover:text-white transition-colors border-b border-white/20 pb-0.5">
                     partners@foxridgeequity.com
                   </a>
                   <a
@@ -199,23 +205,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="FoxRidge Equity Partners on LinkedIn"
-                    className="flex w-fit items-center gap-2 text-white/65 hover:text-[#0A66C2] transition-colors"
+                    className="flex w-fit items-center gap-2 hover:text-[#0A66C2] transition-colors"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    <span>Follow on LinkedIn</span>
+                    <span>LinkedIn</span>
                   </a>
+                  <Link href="/contact" className="inline-flex items-center gap-1.5 pt-1 text-secondary font-semibold hover:text-white transition-colors">
+                    Invest With Us <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="border-t border-white/[0.08] pt-4 md:pt-5">
-            <p className="max-w-5xl text-[10px] leading-[1.55] text-white/30">
-              <span className="text-white/45 font-semibold uppercase tracking-[0.08em]">Entity Disclosure:</span>{" "}
-              FoxRidge Equity Partners is a registered trade name (DBA) of <span className="text-white/45 font-semibold">Consulting Point LLC</span>, a limited liability company organized under the laws of the State of Florida. All business activities, agreements, and legal obligations are conducted through Consulting Point LLC. <span className="text-white/45 font-semibold uppercase tracking-[0.08em]">Legal Disclaimer:</span>{" "}
-              This website and all content herein are provided solely for informational and educational purposes. Nothing on this website constitutes an offer to sell, a solicitation of an offer to buy, or a recommendation of any security, investment product, or investment strategy. No content on this site constitutes investment, financial, legal, tax, or accounting advice of any kind. <span className="text-white/45 font-semibold uppercase tracking-[0.08em]">No Guarantee of Returns:</span>{" "}
-              Any projected returns, target yields, IRR, equity multiples, or other forward-looking metrics are illustrative estimates only based on assumptions that may not materialize. Past performance is not indicative of future results. All real estate investments involve substantial risk, including possible loss of some or all principal invested. Actual results may differ materially from any projections presented. <span className="text-white/45 font-semibold uppercase tracking-[0.08em]">Accredited Investors Only — General Advertising Notice:</span>{" "}
-              This website may constitute general advertising or general solicitation within the meaning of Rule 502(c) of Regulation D. Any securities offerings are conducted exclusively pursuant to exemptions from registration under the Securities Act of 1933, as amended, including Rule 506(c) of Regulation D, and are available only to verified accredited investors as defined under Rule 501. No offer to sell or solicitation to buy any security is made through this website; any such offer is made only through definitive offering documents. Prior to accepting any investment, FoxRidge Equity Partners / Consulting Point LLC will take reasonable steps to verify accredited investor status as required by Rule 506(c). Participation requires completion of a formal subscription process and execution of definitive offering documents. <span className="text-white/45 font-semibold uppercase tracking-[0.08em]">Independent Advice:</span>{" "}
+            <p className="max-w-5xl text-[11px] md:text-[10px] leading-[1.6] text-white/40">
+              <span className="text-white/60 font-semibold uppercase tracking-[0.08em]">Entity Disclosure:</span>{" "}
+              FoxRidge Equity Partners is a registered trade name (DBA) of <span className="text-white/60 font-semibold">Consulting Point LLC</span>, a limited liability company organized under the laws of the State of Florida. All business activities, agreements, and legal obligations are conducted through Consulting Point LLC. <span className="text-white/60 font-semibold uppercase tracking-[0.08em]">Legal Disclaimer:</span>{" "}
+              This website and all content herein are provided solely for informational and educational purposes. Nothing on this website constitutes an offer to sell, a solicitation of an offer to buy, or a recommendation of any security, investment product, or investment strategy. No content on this site constitutes investment, financial, legal, tax, or accounting advice of any kind. <span className="text-white/60 font-semibold uppercase tracking-[0.08em]">No Guarantee of Returns:</span>{" "}
+              Any projected returns, target yields, IRR, equity multiples, or other forward-looking metrics are illustrative estimates only based on assumptions that may not materialize. Past performance is not indicative of future results. All real estate investments involve substantial risk, including possible loss of some or all principal invested. Actual results may differ materially from any projections presented. <span className="text-white/60 font-semibold uppercase tracking-[0.08em]">Accredited Investors Only — General Advertising Notice:</span>{" "}
+              This website may constitute general advertising or general solicitation within the meaning of Rule 502(c) of Regulation D. Any securities offerings are conducted exclusively pursuant to exemptions from registration under the Securities Act of 1933, as amended, including Rule 506(c) of Regulation D, and are available only to verified accredited investors as defined under Rule 501. No offer to sell or solicitation to buy any security is made through this website; any such offer is made only through definitive offering documents. Prior to accepting any investment, FoxRidge Equity Partners / Consulting Point LLC will take reasonable steps to verify accredited investor status as required by Rule 506(c). Participation requires completion of a formal subscription process and execution of definitive offering documents. <span className="text-white/60 font-semibold uppercase tracking-[0.08em]">Independent Advice:</span>{" "}
               Prospective investors are strongly encouraged to conduct independent due diligence and consult qualified legal, tax, financial, and accounting advisors before making any investment decision. FoxRidge Equity Partners / Consulting Point LLC makes no representation or warranty, express or implied, as to the accuracy, completeness, timeliness, or suitability of any information on this website for any particular purpose.
             </p>
           </div>
