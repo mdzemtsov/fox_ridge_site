@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FoxRidge Equity Partners — Texas Triangle Multifamily 2026</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=frmark-20260817">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=frmark-20260817">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=frmark-20260817">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=frmark-20260817">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E2148">
+<script src="/research/vendor/chart.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -566,7 +572,13 @@ canvas { max-width: 100%; }
 /* ── RISK TABLE ── */
 .risk-table {
   width: 100%;
+  min-width: 680px;
   border-collapse: collapse;
+  margin-bottom: 0;
+}
+.risk-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: 64px;
 }
 .risk-table th {
@@ -967,23 +979,40 @@ footer {
   .hero-stats { gap: 32px; flex-wrap: wrap; }
   .divider { margin: 0 32px; }
 }
+@media (max-width: 640px) {
+  nav { padding: 0 16px; }
+  .nav-badge { display: none; }
+  section { padding: 64px 20px; }
+  .section-inner { padding: 0 20px; }
+  .hero { min-height: auto; padding: 108px 20px 56px; }
+  .hero-stats { gap: 24px; margin-bottom: 40px; }
+  .callout-strip, .verdict-grid, .tailwinds-grid, .terms-grid, .team-grid, .city-grid, .int-gallery { grid-template-columns: 1fr; }
+  .callout-strip { padding: 32px 24px; gap: 28px; }
+  .callout-num { font-size: 56px; }
+  .chart-card { padding: 22px 18px; }
+  .photo-strip { grid-template-columns: 1fr; height: auto; }
+  .photo-strip .psi { height: 180px; }
+  .asset-class-band { margin: 0 20px 40px !important; height: auto !important; min-height: 250px; }
+  .asset-class-band > div:last-child { padding: 28px 24px !important; }
+  .divider { margin: 0 20px; }
+}
 </style>
 </head>
 <body>
 
 <!-- BACK TO INSIGHTS BAR -->
 <div id="back-to-insights-bar" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:rgba(11,22,41,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.3);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-family:'DM Sans',sans-serif;">
-  <a href="/market-insights" style="display:inline-flex;align-items:center;gap:8px;color:#C9A84C;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
+  <a href="/investor-resources" style="display:inline-flex;align-items:center;gap:8px;color:#C9A84C;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-    Back to Market Insights
+    Back to Research &amp; Insights
   </a>
-  <span style="color:rgba(232,238,248,0.4);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;">FoxRidge Equity · Market Research</span>
-  <a href="/market-insights" style="display:inline-flex;align-items:center;gap:6px;background:#C9A84C;color:#0B1629;font-size:12px;font-weight:700;text-decoration:none;padding:6px 14px;letter-spacing:0.04em;text-transform:uppercase;transition:background 0.2s;" onmouseover="this.style.background='#E8C87A'" onmouseout="this.style.background='#C9A84C'">
+  <span class="fr-research-context" style="color:rgba(232,238,248,0.4);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;">FoxRidge Equity · Research &amp; Insights</span>
+  <a href="/investor-resources" style="display:inline-flex;align-items:center;gap:6px;background:#C9A84C;color:#0B1629;font-size:12px;font-weight:700;text-decoration:none;padding:6px 14px;letter-spacing:0.04em;text-transform:uppercase;transition:background 0.2s;" onmouseover="this.style.background='#E8C87A'" onmouseout="this.style.background='#C9A84C'">
     All Reports
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
   </a>
 </div>
-<style>#back-to-insights-bar + nav { margin-top: 44px; } body { padding-top: 0 !important; }</style>
+<style>#back-to-insights-bar + nav { margin-top: 44px; } body { padding-top: 0 !important; } @media(max-width:640px){#back-to-insights-bar{padding:10px 14px !important;} .fr-research-context{display:none;} #back-to-insights-bar a{font-size:11px !important;} #back-to-insights-bar a:last-child{padding:6px 10px !important;}}</style>
 
 <!-- NAVIGATION -->
 <nav>
@@ -1607,7 +1636,7 @@ footer {
 
   
 <!-- ACCENT PHOTO: Low-rise garden community exterior -->
-<div style="height:240px;overflow:hidden;margin:0 80px 48px;border-radius:12px;position:relative;">
+<div class="asset-class-band" style="height:240px;overflow:hidden;margin:0 80px 48px;border-radius:12px;position:relative;">
   <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1614115863913-b04024ec4ed1?fm=jpg&q=80&w=1920&auto=format&fit=crop');background-size:cover;background-position:center 55%;filter:brightness(0.60) saturate(0.80);"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,22,41,0.78) 30%,transparent 70%);display:flex;align-items:center;padding:0 48px;">
     <div>
@@ -1618,7 +1647,7 @@ footer {
   </div>
 </div>
 
-<table class="risk-table observe">
+<div class="risk-table-scroll observe"><table class="risk-table">
     <thead>
       <tr>
         <th>Risk</th>
@@ -1659,7 +1688,7 @@ footer {
         <td class="risk-mitigation">FoxRidge stress-tests every deal at exit refinance rates of 5.75% (not 5.0%) and underwrites positive leverage at acquisition. We do not depend on rate cuts to make a deal work.</td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
 
   <div class="pullquote observe">

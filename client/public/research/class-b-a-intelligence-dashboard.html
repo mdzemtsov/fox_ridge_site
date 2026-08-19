@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FoxRidge Equity Partners - Multifamily Intelligence Dashboard 2026</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=frmark-20260817">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=frmark-20260817">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=frmark-20260817">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=frmark-20260817">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0E2148">
+<script src="/research/vendor/chart.umd.min.js"></script>
 <style>
 :root{--bg:#0a0e18;--s1:#111827;--s2:#1a2332;--b1:rgba(255,255,255,0.07);--b2:rgba(255,255,255,0.13);--tx:#e8edf5;--mu:#8896aa;--di:#506070;--go:#f0a500;--gr:#22d68e;--rd:#f1514a;--bl:#4fa3e8;--or:#fb923c;--te:#2dd4bf;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -31,7 +37,7 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.cd{background:var(--s1);border:1px solid var(--b1);border-radius:12px;padding:20px;}
+.cd{background:var(--s1);border:1px solid var(--b1);border-radius:12px;padding:20px;min-width:0;overflow-x:auto;}
 .cd.ag{border-left:3px solid var(--go);}
 .cd.ar{border-left:3px solid var(--rd);}
 .cd.ab{border-left:3px solid var(--bl);}
@@ -59,7 +65,7 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .cw{position:relative;height:260px;}
 .cw.tl{height:340px;}
 .cw.sh{height:200px;}
-.dt{width:100%;border-collapse:collapse;font-size:12px;}
+.dt{width:100%;min-width:720px;border-collapse:collapse;font-size:12px;}
 .dt th{text-align:left;padding:8px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--di);border-bottom:1px solid var(--b2);white-space:nowrap;}
 .dt td{padding:10px 12px;border-bottom:1px solid var(--b1);color:var(--mu);vertical-align:top;}
 .dt td:first-child{color:var(--tx);font-weight:500;}
@@ -136,17 +142,17 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 
 <!-- BACK TO INSIGHTS BAR -->
 <div id="back-to-insights-bar" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:rgba(10,14,24,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(240,165,0,0.3);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,sans-serif;">
-  <a href="/market-insights" style="display:inline-flex;align-items:center;gap:8px;color:#f0a500;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
+  <a href="/investor-resources" style="display:inline-flex;align-items:center;gap:8px;color:#f0a500;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-    Back to Market Insights
+    Back to Research &amp; Insights
   </a>
-  <span style="color:rgba(136,150,170,0.6);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;">FoxRidge Equity &middot; Market Research</span>
-  <a href="/market-insights" style="display:inline-flex;align-items:center;gap:6px;background:#f0a500;color:#0a0e18;font-size:12px;font-weight:700;text-decoration:none;padding:6px 14px;letter-spacing:0.04em;text-transform:uppercase;" onmouseover="this.style.background='#fbbf24'" onmouseout="this.style.background='#f0a500'">
+  <span class="fr-research-context" style="color:rgba(136,150,170,0.6);font-size:12px;letter-spacing:0.05em;text-transform:uppercase;">FoxRidge Equity &middot; Research &amp; Insights</span>
+  <a href="/investor-resources" style="display:inline-flex;align-items:center;gap:6px;background:#f0a500;color:#0a0e18;font-size:12px;font-weight:700;text-decoration:none;padding:6px 14px;letter-spacing:0.04em;text-transform:uppercase;" onmouseover="this.style.background='#fbbf24'" onmouseout="this.style.background='#f0a500'">
     All Reports
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
   </a>
 </div>
-<style>body { padding-top: 44px; } .hdr { top: 44px !important; }</style>
+<style>body { padding-top: 44px; } .hdr { top: 44px !important; } @media(max-width:640px){#back-to-insights-bar{padding:10px 14px !important;} .fr-research-context{display:none;} #back-to-insights-bar a{font-size:11px !important;} #back-to-insights-bar a:last-child{padding:6px 10px !important;}}</style>
 
 <header class="hdr">
   <div style="display:flex;align-items:center;gap:14px;">
