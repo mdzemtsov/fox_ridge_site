@@ -80,7 +80,7 @@ export default function Home() {
               </h1>
               
               <p className="text-xl text-stone-200 max-w-2xl leading-relaxed mb-10 font-light">
-                FoxRidge acquires and operates Class A/B multifamily assets in Texas and South Florida, partnering with one capital partner per deal.
+                FoxRidge focuses on Class B+/A multifamily assets built in 2000 or later across the Texas Triangle — Houston, Dallas–Fort Worth, and San Antonio — partnering with one capital partner per deal.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -137,7 +137,7 @@ export default function Home() {
               Active in the Market
             </h2>
             <p className="text-stone-600 text-lg leading-relaxed mb-10">
-              FoxRidge is actively underwriting acquisitions across DFW, Houston, and South Florida. We close on the deals where the underwriting holds — and walk away from the ones that don't. Qualified partners interested in seeing live opportunities are welcome to reach the General Partners directly.
+              FoxRidge is actively underwriting acquisitions across Dallas–Fort Worth, Houston, and San Antonio. We pursue opportunities where our underwriting, diligence, and investment criteria are met. Qualified partners are welcome to begin a conversation with the General Partners.
             </p>
             <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-none px-10 py-5 font-bold text-base">
               <Link href="/contact">Invest With Us</Link>
@@ -183,7 +183,7 @@ export default function Home() {
               { num: "03", name: "Diligence", desc: "Full institutional review before closing." },
               { num: "04", name: "Structure", desc: "Capital stacks built deliberately for each deal." },
               { num: "05", name: "Operate", desc: "Hands-on management from day one." },
-              { num: "06", name: "Exit / Hold / Refinance", desc: "Timing-driven, multi-path, return-maximizing." },
+              { num: "06", name: "Exit / Hold / Refinance", desc: "Timing-driven, multi-path, and disciplined." },
             ].map((step, i) => (
               <motion.div
                 key={step.num}
@@ -260,7 +260,7 @@ export default function Home() {
                 Hands-On <span className="text-secondary">Value Creation</span>
               </h2>
               <p className="text-stone-400 text-lg leading-relaxed mb-8">
-                We don't just acquire assets — we actively manage them. Our hands-on approach combines targeted capital improvements, institutional-grade property management, and AI-driven operational tools to maximize NOI and protect investor capital.
+                FoxRidge leads asset management from acquisition through exit. Our hands-on approach combines targeted capital improvements, capital-plan oversight, oversight of third-party property management, and AI-enabled operational tools.
               </p>
               
               <div className="space-y-6">
@@ -279,7 +279,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Operational Repositioning</h3>
-                    <p className="text-stone-400">In-house property management control with institutional discipline — optimizing lease-up velocity, reducing vacancy, and tightening expense ratios to grow NOI from day one.</p>
+                    <p className="text-stone-400">Asset management and oversight of third-party property management, with a focus on disciplined operating plans, leasing performance, expenses, and reporting.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -287,8 +287,8 @@ export default function Home() {
                     <BrainCircuit className="w-6 h-6 text-secondary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">AI-Driven Property Management</h3>
-                    <p className="text-stone-400">Deploying AI-powered tools for tenant communication, predictive maintenance, dynamic pricing, and on-site operational efficiency — delivering institutional-grade management at every asset.</p>
+                    <h3 className="text-xl font-bold mb-2">AI-Enabled Property Operations</h3>
+                    <p className="text-stone-400">Using AI-enabled tools to support tenant communication, predictive maintenance, pricing analysis, and operational efficiency in coordination with third-party property management.</p>
                   </div>
                 </div>
               </div>
@@ -360,11 +360,11 @@ export default function Home() {
               <ul className="space-y-3 text-base text-stone-500">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                  Class A & B Assets
+                  Class B+/A Assets
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                  2000s and Up
+                  2000 Vintage and Later
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
@@ -380,7 +380,7 @@ export default function Home() {
               <TrendingUp className="w-10 h-10 text-primary mb-6" />
               <h3 className="text-2xl font-display font-bold text-stone-900 mb-4">Risk-Adjusted Returns</h3>
               <p className="text-stone-600 mb-6 text-base md:text-lg">
-                Prioritizing capital preservation while delivering strong cash-on-cash returns and long-term appreciation.
+                Prioritizing capital preservation through disciplined underwriting and risk-aware value creation.
               </p>
               <ul className="space-y-3 text-base text-stone-500">
                 <li className="flex items-center gap-2">
@@ -410,7 +410,7 @@ export default function Home() {
               <ul className="space-y-3 text-base text-stone-500">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                  In-House Property Management Control
+                  Third-Party Property Management Oversight
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
@@ -438,20 +438,20 @@ export default function Home() {
               transition={{ duration: 0.7 }}
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/20 border border-secondary/40 text-secondary text-xs font-bold uppercase tracking-widest mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                New Research Published
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                Research &amp; Insights
               </div>
               <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4 leading-tight">
-                Market <span className="text-secondary">Insights</span>
+                Research &amp; <span className="text-secondary">Insights</span>
               </h2>
               <p className="text-white/70 text-lg leading-relaxed mb-6">
-                Our investment team publishes institutional-grade research on multifamily markets, investment cycles, and emerging opportunities. Read the data behind every decision we make.
+                Our investment team publishes research on Texas Triangle multifamily markets, investment cycles, and the considerations that inform our acquisition process.
               </p>
               <div className="space-y-3 mb-8">
                 {[
-                  "Why the Texas Triangle is a once-in-a-decade opportunity",
-                  "Supply cliff + debt maturity wall = distressed pricing",
-                  "1,200 new residents per day — demand is structural",
+                  "Texas Triangle market conditions and multifamily trends",
+                  "Supply, demand, and capital-market research",
+                  "Asset-level diligence and investment considerations",
                 ].map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <span className="w-5 h-5 rounded-full bg-secondary/20 border border-secondary/50 flex items-center justify-center shrink-0 mt-0.5">
@@ -463,7 +463,7 @@ export default function Home() {
               </div>
               <Link href="/investor-resources">
                 <Button className="bg-secondary hover:bg-secondary/90 text-white rounded-none px-8 py-5 font-bold text-base group">
-                  Read Our Research <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  Explore Research &amp; Insights <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </motion.div>
@@ -473,28 +473,28 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15 }}
             >
-              <a href="/research/texas-triangle-advantage.html" target="_blank" rel="noopener noreferrer">
+              <Link href="/investor-resources">
                 <div className="group bg-white/5 border border-white/10 hover:border-secondary/60 transition-all duration-300 p-8 cursor-pointer hover:bg-white/10">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1">Featured Report</span>
-                    <span className="text-xs text-white/40">May 2026</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1">Research Library</span>
+                    <span className="text-xs text-white/40">Information Update</span>
                   </div>
                   <h3 className="text-2xl font-display font-bold text-white mb-2 group-hover:text-secondary transition-colors">
-                    The Texas Triangle Advantage
+                    Research &amp; Insights
                   </h3>
                   <p className="text-white/60 text-sm mb-6 leading-relaxed">
-                    Why Texas Is the Most Compelling Multifamily Market Right Now — a deep-dive into the six converging forces creating a rare trough-cycle entry opportunity.
+                    Public research materials are currently being reviewed to ensure their market focus, supporting data, and public availability remain aligned with FoxRidge’s approved messaging.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {["Texas Triangle", "Multifamily", "Value-Add", "Market Cycle"].map(tag => (
+                    {["Texas Triangle", "Multifamily", "Research", "Due Diligence"].map(tag => (
                       <span key={tag} className="text-xs px-2 py-1 bg-white/10 text-white/50">{tag}</span>
                     ))}
                   </div>
                   <span className="inline-flex items-center gap-2 text-secondary text-sm font-bold group-hover:gap-3 transition-all">
-                    Read Full Report <ArrowRight className="w-4 h-4" />
+                    View Research &amp; Insights <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
-              </a>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -505,10 +505,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay" />
         <div className="container relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-8">
-            Partner With Us
+            Invest With Us
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10 font-light">
-            Join our network of investors and gain access to exclusive off-market multifamily opportunities.
+            Discuss whether a direct multifamily partnership is a fit for your investment objectives.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-10 mb-12">
             <div className="flex flex-col items-center gap-4">

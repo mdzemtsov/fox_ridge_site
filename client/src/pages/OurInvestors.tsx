@@ -7,26 +7,26 @@ const pillars = [
   {
     number: "01",
     icon: Users,
-    title: "Decision-Making Control Without Operational Burden",
-    body: "The investor retains meaningful governance rights — major decisions, refinance timing, disposition windows, capex approvals — without having to build an asset management team. FoxRidge becomes their operational extension. In a traditional syndication, an LP with $0.5M is one of forty voices and effectively has no say. As the sole LP, they have a seat at the table on every material decision.",
+    title: "Acquisition Approval Without Operational Burden",
+    body: "The investor reviews and approves each acquisition before the parties proceed through diligence and definitive documentation. After closing, FoxRidge leads day-to-day execution, asset management, capital-plan oversight, and oversight of third-party property management.",
   },
   {
     number: "02",
     icon: Target,
-    title: "Bespoke Deal Structuring Around the Investor's Profile",
-    body: "Hold periods, distribution cadence, refinance vs. supplemental loan strategy, exit timing — all of it gets engineered around one balance sheet, not the lowest common denominator of forty LPs with conflicting timelines. A principal nearing a liquidity event and a 40-year-old founder reinvesting exit proceeds need fundamentally different outcomes from the same building. Single-LP structures let us deliver that.",
+    title: "A Direct, Deal-by-Deal Partnership",
+    body: "Each acquisition is evaluated separately with one capital partner. The parties discuss investment fit and proceed only after diligence, approval, and definitive documentation; FoxRidge does not require a pooled fund format to evaluate an opportunity.",
   },
   {
     number: "03",
     icon: Zap,
-    title: "Capital Certainty and Execution Speed",
-    body: "With one committed investor per deal, FoxRidge moves from LOI to hard money in days, not weeks. No drip fundraising, no soft commitments falling through at week four, no \"we're 70% subscribed\" conversations with brokers. Brokers know who they are dealing with — committed equity, decisive sponsor — which materially improves our deal flow at the top of the funnel.",
+    title: "Focused Coordination",
+    body: "A one-investor-per-deal structure allows for direct coordination among the capital partner, FoxRidge, advisers, and counterparties. Any acquisition remains subject to diligence, financing, approval, and definitive documentation.",
   },
   {
     number: "04",
     icon: TrendingUp,
-    title: "Alignment Without Syndication Overhead",
-    body: "No PPM circulation to forty parties, no investor relations headcount, no quarterly webinars to a fragmented base, no preferred return tier conflicts among LPs. The reporting is direct, the relationship is direct, and the economics are cleaner — which often means the single investor captures more of the deal's upside than they would as one of many in a syndicated stack.",
+    title: "Direct Communication and Reporting",
+    body: "The relationship and reporting are direct. FoxRidge works with one capital partner per acquisition and maintains a focused line of communication throughout the asset’s lifecycle, subject to the governing documents for that acquisition.",
   },
   {
     number: "05",
@@ -37,22 +37,22 @@ const pillars = [
   {
     number: "06",
     icon: Building2,
-    title: "We Are the Family Office They Don't Need to Build",
-    body: "Building an in-house multifamily team — acquisitions, underwriting, asset management, construction oversight, lender relationships, broker network — costs $2–3M annually and takes years to do well. FoxRidge is that team, deal-by-deal, without the fixed cost. The investor gets institutional-quality execution on Sun Belt multifamily without hiring a single person. We are their extension arm into a sector they want exposure to but don't want to operationalize.",
+    title: "An Experienced Operating Partner",
+    body: "FoxRidge brings acquisition, underwriting, asset-management, capital-plan, and market experience to each separate acquisition. The capital partner can evaluate a direct multifamily partnership without building a dedicated operating platform internally.",
   },
   {
     number: "07",
     icon: Shield,
-    title: "Concentration Discipline as a Feature, Not a Bug",
-    body: "Meaningful capital into one deal with one operator creates real conviction. The investor knows the asset, walks the property, meets the property manager. It's a relationship, not a line item buried in a diversified fund allocation. For sophisticated investors, this is the appeal — they want concentrated bets with operators they trust, not diluted exposure across deals they will never see.",
+    title: "Direct Asset Visibility",
+    body: "A direct partnership gives the capital partner the opportunity to review the specific asset and acquisition case before approving it. Every investment involves risk and should be evaluated through independent diligence and qualified advice.",
   },
 ];
 
 const stats = [
   { value: "1", label: "Investor Per Deal" },
-  { value: "UHNW", label: "Investor Profile" },
-  { value: "100%", label: "Direct Governance" },
-  { value: "Sun Belt", label: "Target Markets" },
+  { value: "1", label: "Acquisition at a Time" },
+  { value: "Direct", label: "Partnership Model" },
+  { value: "Texas", label: "Current Focus" },
 ];
 
 export default function OurInvestors() {
@@ -84,7 +84,7 @@ export default function OurInvestors() {
               <span className="text-secondary">Partners</span>
             </h1>
             <p className="text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
-              One partner. One deal. Institutional execution without the institutional overhead.
+              One Investor. One Deal. Full Alignment.
             </p>
           </motion.div>
         </div>
@@ -143,7 +143,7 @@ export default function OurInvestors() {
               {/* Floating badge */}
               <div className="absolute bottom-8 left-8 bg-primary/90 backdrop-blur-sm border border-white/10 p-6 max-w-xs">
                 <p className="text-secondary text-xs font-bold uppercase tracking-widest mb-2">Our Model</p>
-                <p className="text-white text-lg font-display font-bold leading-snug">Single Investor. Single Deal. Full Alignment.</p>
+                <p className="text-white text-lg font-display font-bold leading-snug">One Investor. One Deal. Full Alignment.</p>
               </div>
             </motion.div>
 
@@ -162,9 +162,9 @@ export default function OurInvestors() {
               </h2>
               <p className="text-stone-600 text-lg leading-relaxed mb-6">
                 FoxRidge Equity Partners operates on a{" "}
-                <strong className="text-primary">single-investor-per-deal model</strong>. We partner with one
-                ultra-high-net-worth individual, family office, or principal per acquisition, and serve as their dedicated
-                operational arm in Sun Belt multifamily.
+                <strong className="text-primary">one-investor-per-deal model</strong>. We partner with one
+                family office, qualified private investor, or principal per acquisition, and serve as their dedicated
+                operating partner across the Texas Triangle.
               </p>
               <p className="text-stone-600 text-lg leading-relaxed">
                 We are not in a fundraising process. We deploy alongside committed capital partners who want
@@ -207,7 +207,7 @@ export default function OurInvestors() {
               <span style={{ color: "#B8942A" }}>Choose This Model</span>
             </h2>
             <p className="text-stone-600 text-lg">
-              Seven reasons sophisticated capital chooses a single-LP structure over traditional syndication.
+              Seven reasons capital partners may prefer a one-investor-per-deal structure.
             </p>
           </motion.div>
 
@@ -309,14 +309,14 @@ export default function OurInvestors() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-1 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> New Research Published
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> Research &amp; Insights
               </p>
-              <h3 className="text-primary font-display font-bold text-xl">Read the Data Behind Our Investment Thesis</h3>
-              <p className="text-stone-500 text-sm mt-1">Our Research & Insights reports explain exactly why we're deploying capital into the Texas Triangle right now.</p>
+              <h3 className="text-primary font-display font-bold text-xl">Explore Research &amp; Insights</h3>
+              <p className="text-stone-500 text-sm mt-1">Public research materials are being reviewed to ensure alignment with FoxRidge’s approved messaging and current focus.</p>
             </div>
             <Link href="/investor-resources" className="shrink-0">
               <button className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                Read Our Research →
+                View Research &amp; Insights →
               </button>
             </Link>
           </div>
@@ -343,7 +343,7 @@ export default function OurInvestors() {
                 </div>
                 <h3 className="text-white text-2xl font-bold mb-2">Full Investor Presentations Available</h3>
                 <p className="text-white/60 max-w-xl leading-relaxed">
-                  Family offices and qualified investors can access our complete investor presentations in English and Russian — covering deal structure, program terms, market thesis, and the FoxRidge team.
+                  Qualified investors can request access to additional firm and market materials in English and Russian, subject to the applicable access process and review.
                 </p>
               </div>
             </div>
@@ -367,10 +367,10 @@ export default function OurInvestors() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Ready to Deploy Capital?
+              Explore a Direct Partnership
             </h2>
             <p className="text-white/60 text-lg max-w-xl mx-auto mb-10 font-light">
-              If you are a principal, family office, or UHNW investor looking for direct Sun Belt multifamily exposure, let's talk.
+              If you are a principal, family office, qualified private investor, or international capital partner, let’s discuss whether the model is a fit.
             </p>
             <Button
               asChild

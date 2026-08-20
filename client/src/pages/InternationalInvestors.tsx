@@ -21,13 +21,13 @@ const pillars = [
     number: "01",
     icon: Users,
     title: "We choose the deal together. We do not pool you with strangers.",
-    body: "You are not being placed into a vehicle alongside one hundred and fifty other investors. You are not waiting for the next vintage of a fund to open. You are looking at specific deals, with specific underwriting, in specific submarkets — and you decide which one is yours. Your $3M, $5M, or $10M does not get diluted into someone else's strategy. It goes into the asset you approved.",
+    body: "FoxRidge evaluates one acquisition with one capital partner at a time. You review the specific asset, underwriting, and relevant diligence materials before deciding whether to approve that acquisition. Each opportunity is separate and subject to definitive documentation.",
   },
   {
     number: "02",
     icon: Building2,
     title: "We have built the operating infrastructure. You do not need to.",
-    body: "Acquisitions, underwriting, financing, asset management, construction oversight, property management, broker relationships, lender relationships, legal counsel, market intelligence — all of it is in place, sharpened on every deal we have run. Building this from scratch costs millions and takes years. You get full access to it on day one of our partnership.",
+    body: "FoxRidge brings acquisition, underwriting, asset-management, capital-plan, and market experience to each separate opportunity. After closing, FoxRidge leads day-to-day execution and oversees third-party property management as part of the asset-management process.",
   },
   {
     number: "03",
@@ -45,13 +45,13 @@ const pillars = [
     number: "05",
     icon: Briefcase,
     title: "We build customized portfolios — not products.",
-    body: "Some investors want one stabilized asset. Others want a portfolio of three to five assets across DFW, Houston, and South Florida built over 18–24 months. Some want value-add. Others want pure income. We build the portfolio strategy around you — not the other way around.",
+    body: "Some partners evaluate a single acquisition; others may consider future opportunities separately. FoxRidge’s current acquisition focus is the Texas Triangle — Dallas–Fort Worth, Houston, and San Antonio — with each acquisition reviewed on its own merits.",
   },
   {
     number: "06",
     icon: Phone,
-    title: "The relationship is direct, and it is always open.",
-    body: "Partnership in our model means the General Partners are reachable when you need us — not when our calendar opens. Time zones, weekends, holidays — our investors do not wait. This is not a customer service promise. It is a structural reality of working with two principals on a single deal at a time, rather than with a fund's investor relations function. When you call, you reach Mike or Slava. That is the relationship.",
+    title: "The relationship is direct.",
+    body: "FoxRidge maintains direct communication with the capital partner throughout the acquisition and asset-management process. Specific communication and reporting practices are established for each acquisition in the applicable governing documents.",
   },
 ];
 
@@ -70,22 +70,22 @@ const steps = [
   {
     number: "1",
     title: "We talk.",
-    body: "A direct call between you and the General Partners. Not a sales call. We learn what you are looking for, what you have done before, what your timeline looks like. You ask us anything. There is no presentation deck.",
+    body: "An introductory conversation to understand your objectives, experience, and whether a direct multifamily partnership may be a fit. This discussion is informational only and is not an offer or solicitation.",
   },
   {
     number: "2",
     title: "We share the pipeline.",
-    body: "You see live deals — the underwriting, the assumptions, the risk factors, the path. Full transparency. You see exactly what we see.",
+    body: "We discuss FoxRidge’s current focus, investment process, and relevant market considerations. Opportunity-specific materials are shared only when appropriate and subject to the applicable process, review, and legal requirements.",
   },
   {
     number: "3",
     title: "We structure the partnership.",
-    body: "We work with your counsel to set up the investment vehicle correctly for your jurisdiction. Typical timeline from conviction to closing: 30–45 days.",
+    body: "Prospective partners should work with their own qualified legal, tax, and financial advisers. Any acquisition remains subject to diligence, financing, approval, and definitive documentation; no timing is guaranteed.",
   },
   {
     number: "4",
     title: "We operate. You hold the asset.",
-    body: "Quarterly reporting, direct GP access, site visits hosted by us in Texas or Florida, ongoing dialogue. The relationship continues for the life of the asset — and typically for the next deal after that.",
+    body: "After closing, FoxRidge leads day-to-day execution, asset management, capital-plan oversight, and oversight of third-party property management. Reporting and any site-visit discussions are handled as appropriate for the acquisition and its governing documents.",
   },
 ];
 
@@ -122,7 +122,7 @@ export default function InternationalInvestors() {
               FoxRidge Equity Partners welcomes capital from the Middle East, Japan, Australia, India, Canada, Europe, Latin America, Southeast Asia — and from anywhere serious investors are looking for a real partnership in U.S. multifamily real estate.
             </p>
             <p className="text-base text-stone-400 max-w-2xl leading-relaxed">
-              You are not looking for another investment vehicle. You are not looking to be one of two hundred names on a fund prospectus where your capital is diluted, your voice is absent, and your relationship is with a quarterly PDF. You are looking for a partner who knows the U.S. multifamily market, who has built the operating muscle to execute, and who will work alongside you on a single asset at a time — your asset, your decision, your terms. That is what FoxRidge is. We are a spin-off of a family office mindset, built deal-by-deal, with you. We choose the deal together. We underwrite it together. We close it together. We hold it together. And we exit it together.
+              FoxRidge works with one capital partner on one acquisition at a time. The investor reviews and approves each acquisition; after closing, FoxRidge leads day-to-day execution through asset management, capital-plan oversight, and oversight of third-party property management. Each acquisition is separate and subject to diligence, financing, approval, and definitive documentation.
             </p>
           </motion.div>
         </div>
@@ -143,19 +143,19 @@ export default function InternationalInvestors() {
             </p>
 
             <div className="border-l-4 border-secondary pl-6 mb-8">
-              <p className="text-xl font-display font-bold text-stone-900">The current market window is exceptional.</p>
+              <p className="text-xl font-display font-bold text-stone-900">Current market conditions require careful underwriting.</p>
             </div>
 
             <p className="text-stone-600 text-lg leading-relaxed mb-8">
-              The Sun Belt absorbed a historic wave of new apartment supply between 2022 and 2024 — the largest delivery cycle since the 1980s. That supply is now being absorbed at record pace, while new construction starts have collapsed to fifteen-year lows. The result is a clear setup: demand is steady and growing, supply is contracting sharply, and rent growth is set to re-accelerate over the next 24–36 months. Investors who acquire well-located Class B+/A multifamily assets <em>now</em>, while pricing reflects the recent supply pressure, are positioned to ride the next demand cycle on the right side of the curve.
+              The multifamily market has experienced a large recent supply cycle, changing capital costs, and divergent conditions across metros and submarkets. FoxRidge evaluates Class B+/A multifamily opportunities in the Texas Triangle using asset-level underwriting, market research, and diligence. Market conditions and investment outcomes can change, and no result is assured.
             </p>
 
             <div className="border-l-4 border-secondary pl-6 mb-8">
-              <p className="text-xl font-display font-bold text-stone-900">This is the buying window. It does not stay open long.</p>
+              <p className="text-xl font-display font-bold text-stone-900">Each acquisition is evaluated separately.</p>
             </div>
 
             <p className="text-stone-600 text-lg leading-relaxed">
-              We are seeing acquisition opportunities at basis levels we have not seen in seven years — institutional-quality assets, $25M–$60M, in the strongest Sun Belt submarkets, with sellers who are motivated by their own capital structures rather than by the asset's fundamentals. This is the moment to deploy capital with a hands-on operator who knows these markets street by street.
+              FoxRidge evaluates acquisition opportunities individually, with attention to asset quality, basis, submarket conditions, financing, and the proposed business plan. Any transaction is subject to investor approval, diligence, financing, and definitive documentation.
             </p>
           </motion.div>
         </div>
@@ -217,10 +217,10 @@ export default function InternationalInvestors() {
           </div>
           <div className="max-w-3xl">
             <p className="text-xl text-white font-display font-semibold mb-4">
-              If your capital is serious and your intent is to partner — not to allocate into a vehicle — we welcome the conversation, regardless of where you are based.
+              FoxRidge welcomes a conversation with family offices, principals, and qualified private investors interested in a direct multifamily partnership, including those based outside the United States.
             </p>
             <p className="text-white/60 leading-relaxed">
-              We work with your legal and financial counsel in your home jurisdiction to structure each investment in a way that aligns with your existing wealth architecture. We are experienced with cross-border structuring, offshore feeder vehicles where appropriate, and the practical realities of moving capital into U.S. real estate.
+              FoxRidge does not provide legal, tax, financial, or cross-border structuring advice. Prospective partners should consult their own qualified advisers regarding their circumstances and any applicable laws, taxes, regulations, or capital-movement requirements.
             </p>
           </div>
         </div>
@@ -270,7 +270,7 @@ export default function InternationalInvestors() {
             </div>
             <div className="lg:w-2/3">
               <p className="text-stone-600 text-lg leading-relaxed">
-                When you are ready to see an asset in person, we handle everything. Flights coordinated, hotel arranged, ground transportation set, property tour led by the GPs, market briefing on the submarket, and dinner with us in the evening. Our portfolio is concentrated in Dallas-Fort Worth, Houston, and South Florida, with expanding presence in Charlotte and Atlanta. We expect international partners to walk the assets they are investing in. We make it effortless.
+                Where appropriate, prospective partners may discuss an in-person property or market visit with FoxRidge. FoxRidge’s current acquisition focus is Dallas–Fort Worth, Houston, and San Antonio; any visit arrangements, if available, are considered case by case.
               </p>
             </div>
           </motion.div>
@@ -312,7 +312,7 @@ export default function InternationalInvestors() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Explore International Investing.</h2>
-            <p className="text-white/70 text-lg mb-10">Direct access to the General Partners. No intake forms. No gatekeepers. No analysts.</p>
+            <p className="text-white/70 text-lg mb-10">Discuss whether a direct multifamily partnership may be a fit for your objectives and circumstances.</p>
             <Link href="/contact">
               <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-10 py-6 text-lg font-bold">
                 Invest With Us <ArrowUpRight className="ml-2 w-5 h-5" />

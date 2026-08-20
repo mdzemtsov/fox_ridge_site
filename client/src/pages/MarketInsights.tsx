@@ -19,57 +19,7 @@ interface Resource {
   featured?: boolean;
 }
 
-const resources: Resource[] = [
-  {
-    id: "texas-triangle-advantage",
-    title: "The Texas Triangle Advantage",
-    subtitle: "Why Texas Is the Most Compelling Multifamily Market Right Now",
-    type: "Report",
-    typeIcon: <BookOpen className="w-3.5 h-3.5" />,
-    typeColor: "bg-blue-900/40 text-blue-300 border-blue-700/40",
-    description:
-      "A comprehensive investment thesis covering the Texas Triangle multifamily opportunity: supply cliff dynamics, demographic tailwinds, capital market dislocation, and market-by-market verdicts for Houston, San Antonio, DFW, and Austin. Includes macro data, submarket analysis, and FoxRidge's positioning rationale.",
-    tags: ["Texas Triangle", "Multifamily", "Value-Add", "Market Cycle"],
-    date: "May 22, 2026",
-    readTime: "12 min read",
-    file: "/research/texas-triangle-advantage.html",
-    ctaLabel: "View Report",
-    ctaIcon: <ExternalLink className="w-4 h-4" />,
-    featured: true,
-  },
-  {
-    id: "texas-triangle-teaser",
-    title: "Texas Triangle Multifamily 2026: Why the Window Is Open",
-    subtitle: "2-Page Investment Thesis Summary",
-    type: "PDF",
-    typeIcon: <FileText className="w-3.5 h-3.5" />,
-    typeColor: "bg-amber-900/30 text-amber-300 border-amber-700/40",
-    description:
-      "A concise 2-page thesis summarizing the once-in-a-generation entry window: −56% U.S. multifamily starts from peak, +391K Texas net new residents, $162B in maturing loans, and market verdicts for Houston, San Antonio, DFW, and Austin. The institutional buy signal — when Freddie Mac and Fannie Mae converge on the same call.",
-    tags: ["Texas Triangle", "Supply Cliff", "Entry Window"],
-    date: "May 2026",
-    readTime: "2 pages",
-    file: "/research/texas-triangle-2026-teaser.pdf",
-    ctaLabel: "Download PDF",
-    ctaIcon: <Download className="w-4 h-4" />,
-  },
-  {
-    id: "class-b-a-dashboard",
-    title: "Class B+/A Multifamily Intelligence Dashboard",
-    subtitle: "Acquisition Verdict: Deploy Now into Houston, South Florida & San Antonio",
-    type: "Interactive Dashboard",
-    typeIcon: <BarChart2 className="w-3.5 h-3.5" />,
-    typeColor: "bg-emerald-900/30 text-emerald-300 border-emerald-700/40",
-    description:
-      "A 10-module interactive dashboard covering the full Class B+/A investment thesis: macro framework, capital markets, supply & demand dynamics, market rankings, scenario analysis (base/bull/bear), renovation economics, risk matrix, and GSE data sources. Class B+/A outperforms on risk-adjusted returns across every cycle — and the window is open now.",
-    tags: ["Class B+/A", "Houston", "South Florida", "San Antonio", "Acquisition"],
-    date: "May 22, 2026",
-    readTime: "10 modules",
-    file: "/research/class-b-a-intelligence-dashboard.html",
-    ctaLabel: "Open Dashboard",
-    ctaIcon: <ExternalLink className="w-4 h-4" />,
-  },
-];
+const resources: Resource[] = [];
 
 const TYPE_ICON_MAP: Record<Resource["type"], React.ReactNode> = {
   "Report": <BookOpen className="w-4 h-4" />,
@@ -96,7 +46,7 @@ export default function MarketInsights() {
               Research &amp; <span className="text-[#C9A846]">Insights</span>
             </h1>
             <p className="text-lg text-[#8899AA] max-w-2xl leading-relaxed">
-              Institutional-grade research, investment theses, and analytical tools published by the FoxRidge investment team. These materials are intended for qualified investors evaluating the Texas Triangle multifamily opportunity.
+              Research and analytical materials published by the FoxRidge investment team. These materials are provided for informational purposes only and do not constitute an offer, solicitation, recommendation, or investment advice.
             </p>
           </motion.div>
         </div>
@@ -105,6 +55,23 @@ export default function MarketInsights() {
       {/* ── Resource Library ─────────────────────────────────────────────── */}
       <section className="py-8 md:py-12">
         <div className="container">
+
+          {resources.length === 0 && (
+            <div className="max-w-3xl bg-[#0E2148]/60 border border-white/10 rounded-xl p-6 md:p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-full bg-[#C9A846]/10 border border-[#C9A846]/30 flex items-center justify-center shrink-0">
+                  <FileText className="w-5 h-5 text-[#C9A846]" />
+                </div>
+                <div>
+                  <p className="text-[#C9A846] text-xs font-bold tracking-widest uppercase mb-2">Research Library Update</p>
+                  <h2 className="text-white text-2xl font-bold mb-3">Materials Under Review</h2>
+                  <p className="text-[#8899AA] text-sm leading-relaxed">
+                    FoxRidge is reviewing public research materials to ensure their market focus, supporting data, and public availability remain aligned with its approved messaging. For additional information, please contact FoxRidge directly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Featured resource */}
           {resources.filter(r => r.featured).map(r => (
@@ -157,7 +124,7 @@ export default function MarketInsights() {
           ))}
 
           {/* Resource grid */}
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid max-w-3xl gap-5">
             {resources.filter(r => !r.featured).map((r, idx) => (
               <motion.div
                 key={r.id}
@@ -230,7 +197,7 @@ export default function MarketInsights() {
                 </div>
                 <h3 className="text-white text-2xl font-bold mb-2">Go Deeper — Full Investor Presentations</h3>
                 <p className="text-[#8899AA] max-w-xl leading-relaxed text-sm">
-                  Beyond our public research, qualified investors can access complete deal presentations in English and Russian — including structure, program terms, and direct investment details.
+                  Beyond our public research, qualified investors can request access to additional firm and market materials in English and Russian, subject to the applicable access process and review.
                 </p>
               </div>
             </div>
@@ -249,10 +216,10 @@ export default function MarketInsights() {
       <section className="py-12 md:py-20 bg-[#0E2148]">
         <div className="container text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to invest based on the data?
+            Explore a Direct Partnership
           </h2>
           <p className="text-[#8899AA] text-lg mb-8 max-w-xl mx-auto">
-            Our research informs every acquisition decision. Let's discuss how you can participate.
+            Our research informs our acquisition process. Let’s discuss whether a direct multifamily partnership may be a fit for your objectives.
           </p>
           <Link href="/contact">
             <button className="inline-flex items-center gap-2 bg-[#C9A846] hover:bg-[#B8973A] text-[#040C1D] font-bold px-8 py-4 text-sm tracking-widest uppercase rounded-lg transition-all">

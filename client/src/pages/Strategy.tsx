@@ -32,7 +32,7 @@ export default function Strategy() {
               <span className="text-secondary">Through Execution</span>
             </h1>
             <p className="text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
-              We identify underperforming assets in high-growth markets and unlock their potential through strategic renovation and operational excellence.
+              We identify Class B+/A multifamily opportunities across the Texas Triangle and pursue value creation through strategic renovation and disciplined operations.
             </p>
           </motion.div>
         </div>
@@ -52,7 +52,7 @@ export default function Strategy() {
                 Accelerated <span className="text-secondary">Transformation</span>
               </h2>
               <p className="text-stone-400 text-lg leading-relaxed mb-8">
-                Time is money. Our vertically integrated construction management allows us to execute complex renovations rapidly, minimizing downtime and maximizing immediate value creation.
+                Our capital-plan oversight supports the disciplined execution of targeted renovations, with attention to scope, timing, and operational continuity.
               </p>
               
               <div className="space-y-8">
@@ -71,7 +71,7 @@ export default function Strategy() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Forced Appreciation</h3>
-                    <p className="text-stone-400">Driving NOI growth through proven value-add strategies, not just market appreciation.</p>
+                    <p className="text-stone-400">Pursuing value creation through targeted improvements and disciplined operations, not reliance on market appreciation alone.</p>
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function Strategy() {
               Acquisition <span className="text-primary">Criteria</span>
             </h2>
             <p className="text-stone-600 text-lg">
-              We are disciplined buyers, focusing on assets where we can control the outcome.
+              We are disciplined buyers, focusing on assets where our underwriting and value-creation plan support a clear investment case.
             </p>
           </div>
 
@@ -124,17 +124,17 @@ export default function Strategy() {
               {
                 icon: Building2,
                 title: "Asset Class",
-                desc: "Class A & B Multifamily, 2000 vintage and up."
+                desc: "Class B+/A multifamily assets, 2000 vintage and later."
               },
               {
                 icon: Search,
                 title: "Size",
-                desc: "100+ units, $10M - $50M deal size."
+                desc: "100+ units; transaction scale is evaluated separately for each acquisition."
               },
               {
                 icon: TrendingUp,
                 title: "Markets",
-                desc: "High-growth MSAs in Texas and Florida — landlord-friendly states with no state income tax and pro-business regulatory frameworks."
+                desc: "Texas Triangle — Houston, Dallas–Fort Worth, and San Antonio."
               },
               {
                 icon: DollarSign,
@@ -179,7 +179,7 @@ export default function Strategy() {
                 The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country by a significant margin.
               </p>
               <p className="text-stone-400 text-lg leading-relaxed mb-6">
-                The supply pipeline that delivered a historic wave of new apartments in 2022–2025 has now collapsed to its lowest level in fifteen years. Starts are down over 50% from the 2022 peak (Source: RealPage, Q2 2025). The units being delivered today were financed at a different cost of capital, in a different rate environment, and by developers who no longer have access to the same debt markets. Texas and Florida remain landlord-friendly states with no state income tax, pro-business regulatory environments, and streamlined processes that protect asset performance.
+                The supply pipeline that delivered a historic wave of new apartments in 2022–2025 has now collapsed to its lowest level in fifteen years. Starts are down over 50% from the 2022 peak (Source: RealPage, Q2 2025). The units being delivered today were financed at a different cost of capital, in a different rate environment, and by developers who no longer have access to the same debt markets. Texas remains a focus for its population growth, job base, and diverse multifamily submarkets.
               </p>
               <p className="text-stone-400 text-lg leading-relaxed">
                 Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long. FoxRidge is positioned to move when others cannot.
@@ -231,7 +231,7 @@ export default function Strategy() {
                 num: "01",
                 icon: <Search className="w-6 h-6 text-secondary" />,
                 name: "Source",
-                desc: "We source exclusively through direct broker relationships across DFW, Houston, San Antonio, Austin, and South Florida. We do not rely on listed deal flow. Our pipeline is built on years of consistent market presence and repeat transaction history."
+                desc: "We source through direct broker relationships across Dallas–Fort Worth, Houston, and San Antonio. We evaluate opportunities using our acquisition criteria and market-level diligence."
               },
               {
                 num: "02",
@@ -249,19 +249,19 @@ export default function Strategy() {
                 num: "04",
                 icon: <DollarSign className="w-6 h-6 text-secondary" />,
                 name: "Structure",
-                desc: "We structure each deal around the specific capital partner — their return profile, governance preferences, hold period, and jurisdiction. No two deals are structured identically. We do not force investors into a pre-built fund box."
+                desc: "Each acquisition is evaluated separately with the capital partner. The investor reviews and approves the acquisition before the parties proceed through diligence and definitive documentation."
               },
               {
                 num: "05",
                 icon: <Hammer className="w-6 h-6 text-secondary" />,
                 name: "Operate",
-                desc: "Hands-on management from day one. In-house property management control, AI-driven operational tools, direct oversight of all capital improvements, and weekly KPI reporting to the capital partner. We run the asset like it is our own."
+                desc: "FoxRidge leads asset management from day one, including capital-plan oversight, oversight of third-party property management, and transparent reporting to the capital partner."
               },
               {
                 num: "06",
                 icon: <TrendingUp className="w-6 h-6 text-secondary" />,
                 name: "Exit",
-                desc: "We evaluate exit timing continuously against market conditions. We do not hold to an arbitrary fund timeline. When the market is right and the business plan is complete, we execute the exit that maximizes return for the capital partner."
+                desc: "We evaluate hold, refinance, and exit alternatives against market conditions, the business plan, and the asset’s circumstances. No outcome or timing is guaranteed."
               },
             ].map((step, i) => (
               <motion.div
@@ -292,7 +292,7 @@ export default function Strategy() {
           <div className="border-l-4 border-secondary bg-stone-50 px-8 py-6">
             <p className="text-stone-600 text-sm">
               <span className="font-bold text-stone-900">International capital partners are welcome.</span>{" "}
-              We structure each partnership to align with your jurisdiction and wealth architecture — whether you are based in the Middle East, Asia-Pacific, Europe, or Latin America.{" "}
+              Prospective partners should consult their own qualified legal, tax, and financial advisers regarding their circumstances.{" "}
               <Link href="/international-investors" className="text-secondary font-semibold hover:underline">Learn about our international investor program →</Link>
             </p>
           </div>
@@ -309,11 +309,11 @@ export default function Strategy() {
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                  <span className="text-secondary text-xs font-bold uppercase tracking-widest">New Research</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                  <span className="text-secondary text-xs font-bold uppercase tracking-widest">Research &amp; Insights</span>
                 </div>
-                <h3 className="text-white font-display font-bold text-xl mb-1">The Texas Triangle Advantage</h3>
-                <p className="text-white/60 text-sm">Read the data behind our current acquisition focus — six converging forces creating a rare trough-cycle entry window.</p>
+                <h3 className="text-white font-display font-bold text-xl mb-1">Research &amp; Insights</h3>
+                <p className="text-white/60 text-sm">Public research materials are being reviewed to ensure alignment with FoxRidge’s approved messaging and current focus.</p>
               </div>
             </div>
             <Link href="/investor-resources" className="shrink-0">

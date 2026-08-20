@@ -268,14 +268,14 @@ export default function About() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-1 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> New Research Published
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> Research &amp; Insights
               </p>
-              <h3 className="text-primary font-display font-bold text-xl">Read Our Research & Insights — The Texas Triangle Advantage</h3>
-              <p className="text-stone-500 text-sm mt-1">Institutional-grade analysis on why Texas multifamily is the most compelling opportunity of 2026.</p>
+              <h3 className="text-primary font-display font-bold text-xl">Explore Research &amp; Insights</h3>
+              <p className="text-stone-500 text-sm mt-1">Public research materials are being reviewed to ensure alignment with FoxRidge’s approved messaging and current focus.</p>
             </div>
             <Link href="/investor-resources" className="shrink-0">
               <button className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                View Research →
+                View Research &amp; Insights →
               </button>
             </Link>
           </div>
