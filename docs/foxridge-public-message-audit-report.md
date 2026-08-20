@@ -87,9 +87,19 @@ The public `/investor-resources` route remains active. It no longer links to any
 | Local route check | All active application routes returned the built site locally: `/`, `/about`, `/strategy`, `/our-investors`, `/track-record`, `/contact`, `/international-investors`, `/privacy-policy`, `/terms-of-service`, `/investor-resources`, and `/investor-portal`. |
 | Restricted-material local behavior | The removed research files are absent from the build. The local Express fallback serves the SPA shell for unknown static-like paths; production Vercel behavior must be checked after deployment to confirm no legacy content remains available. |
 
-## F. Production Verification Pending Deployment
+## F. Production Verification Completed
 
-After the commit is pushed to `main`, verify that Vercel has deployed the revised build, that all active routes remain available, and that legacy research URLs no longer serve their former HTML/PDF content. This section will be updated with the production result once deployment verification is complete.
+Commit `f623ab71` (`Align public messaging with approved source of truth`) was pushed to `main` and verified on `https://www.foxridgeequity.com/` after Vercel deployment. The deployed homepage shows the approved Class B+/A Texas Triangle copy and the replacement Research & Insights information update. The deployed `/investor-resources` route shows the visible Materials Under Review notice and does not link to a public report, PDF, or dashboard.
+
+The three former public research URLs were checked directly in production. Each returns HTTP `404` and does not serve its former content:
+
+| Legacy URL | Production result |
+|---|---|
+| `/research/class-b-a-intelligence-dashboard.html` | `404`; legacy dashboard content unavailable. |
+| `/research/texas-triangle-advantage.html` | `404`; legacy report content unavailable. |
+| `/research/texas-triangle-2026-teaser.pdf` | `404`; legacy PDF content unavailable. |
+
+The full deployment record is available in [`docs/foxridge-production-verification.md`](./foxridge-production-verification.md).
 
 ## Implementation Note
 
