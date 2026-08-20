@@ -315,7 +315,7 @@ export default function InternationalInvestors() {
             <p className="text-white/70 text-lg mb-10">Discuss whether a direct multifamily partnership may be a fit for your objectives and circumstances.</p>
             <Link href="/contact">
               <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-10 py-6 text-lg font-bold">
-                Invest With Us <ArrowUpRight className="ml-2 w-5 h-5" />
+                Request a confidential introduction <ArrowUpRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </motion.div>
