@@ -1,336 +1,239 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
-import { Building2, TrendingUp, Search, Hammer, DollarSign, BarChart3 } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BarChart3,
+  Building2,
+  CheckCircle2,
+  ClipboardCheck,
+  FileText,
+  Hammer,
+  Landmark,
+  MapPin,
+  Search,
+  TrendingUp,
+} from "lucide-react";
+
+const acquisitionCriteria = [
+  {
+    icon: MapPin,
+    title: "Markets",
+    description: "Texas Triangle: Houston, Dallas–Fort Worth, and San Antonio.",
+  },
+  {
+    icon: Building2,
+    title: "Asset type",
+    description: "Class B+/A multifamily assets.",
+  },
+  {
+    icon: Landmark,
+    title: "Vintage",
+    description: "Built in 2000 or later.",
+  },
+  {
+    icon: FileText,
+    title: "Indicative scale",
+    description: "Approximately $25–35 million purchase price and $8–10 million equity per acquisition, where appropriate and subject to deal-specific evaluation and documentation.",
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Source",
+    description: "FoxRidge evaluates potential multifamily acquisitions in Houston, Dallas–Fort Worth, and San Antonio against its current acquisition criteria.",
+    icon: Search,
+  },
+  {
+    number: "02",
+    title: "Underwrite",
+    description: "Each opportunity is evaluated from its property operations, market context, and acquisition case using disciplined, deal-specific assumptions.",
+    icon: BarChart3,
+  },
+  {
+    number: "03",
+    title: "Diligence",
+    description: "FoxRidge conducts physical, financial, and legal diligence designed to identify the material facts and risks relevant to the specific acquisition.",
+    icon: ClipboardCheck,
+  },
+  {
+    number: "04",
+    title: "Structure",
+    description: "Every acquisition is reviewed with the capital partner and approved by the investor before commitment. Final terms are documented in definitive agreements for that transaction.",
+    icon: FileText,
+  },
+  {
+    number: "05",
+    title: "Operate",
+    description: "FoxRidge leads asset management, capital-plan oversight, and oversight of third-party property management after closing.",
+    icon: Hammer,
+  },
+  {
+    number: "06",
+    title: "Exit / Hold / Refinance",
+    description: "FoxRidge evaluates hold, refinance, and exit alternatives against the asset’s circumstances, market conditions, and definitive deal documentation. No outcome or timing is guaranteed.",
+    icon: TrendingUp,
+  },
+];
 
 export default function Strategy() {
   return (
-    <div className="flex flex-col min-h-screen bg-stone-50">
-      {/* Hero Section - Unified Style */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-stone-950">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-stone-950/40 z-10" />
-          <img 
-            src="/images/hero-strategy-garden.jpg" 
-            alt="Garden Style Multifamily" 
-            className="w-full h-full object-cover opacity-80"
+    <div className="flex min-h-screen flex-col bg-stone-50">
+      {/* Hero */}
+      <section className="relative isolate flex min-h-[620px] items-center overflow-hidden bg-stone-950 md:min-h-[700px]">
+        <div className="absolute inset-0 -z-20">
+          <img
+            src="/images/hero-strategy-garden.jpg"
+            alt="Garden-style multifamily community"
+            className="h-full w-full object-cover"
           />
         </div>
-        <div className="container relative z-20 pt-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-8">
-              <span className="w-2 h-2 rounded-full bg-secondary" />
-              <span className="text-sm font-medium tracking-wide uppercase">Investment Thesis</span>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#040C1D]/95 via-[#040C1D]/78 to-[#040C1D]/35" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-[#040C1D]/70 to-transparent" />
+
+        <div className="container py-20 lg:py-28">
+          <div className="max-w-4xl">
+            <div className="mb-7 inline-flex items-center gap-2 border border-white/20 bg-[#0E2148]/55 px-3 py-2 text-[10px] font-bold tracking-[0.16em] text-white/90 backdrop-blur-sm sm:text-xs">
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+              STRATEGY &amp; MARKETS
             </div>
-            <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              Value Creation <br />
-              <span className="text-secondary">Through Execution</span>
+            <h1 className="max-w-4xl font-display text-4xl font-bold leading-[0.98] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              A disciplined acquisition <span className="text-secondary">framework.</span>
             </h1>
-            <p className="text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
-              We identify Class B+/A multifamily opportunities across the Texas Triangle and pursue value creation through strategic renovation and disciplined operations.
+            <p className="mt-7 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl md:text-2xl">
+              FoxRidge evaluates Class B+/A multifamily assets built in 2000 or later across the Texas Triangle: Houston, Dallas–Fort Worth, and San Antonio. Each acquisition is separately evaluated, approved by the investor, and documented in definitive agreements.
             </p>
-          </motion.div>
+            <Button asChild size="lg" className="mt-9 h-14 bg-secondary px-7 text-base font-bold text-white hover:bg-[#b8942a] sm:px-8">
+              <Link href="/contact">
+                Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Fast Forward Value-Add Section - Timelapse */}
-      <section className="py-16 md:py-32 bg-stone-900 text-white overflow-hidden">
+      {/* Current acquisition program */}
+      <section className="bg-white py-16 md:py-24">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-                Accelerated <span className="text-secondary">Transformation</span>
-              </h2>
-              <p className="text-stone-400 text-lg leading-relaxed mb-8">
-                Our capital-plan oversight supports the disciplined execution of targeted renovations, with attention to scope, timing, and operational continuity.
-              </p>
-              
-              <div className="space-y-8">
-                <div className="flex gap-6">
-                  <div className="w-14 h-14 bg-secondary/10 flex items-center justify-center border border-secondary/30 shrink-0 rounded-lg">
-                    <Hammer className="w-7 h-7 text-secondary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Rapid Deployment</h3>
-                    <p className="text-stone-400">Mobilizing crews immediately upon acquisition to begin exterior and amenity upgrades.</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <div className="w-14 h-14 bg-secondary/10 flex items-center justify-center border border-secondary/30 shrink-0 rounded-lg">
-                    <BarChart3 className="w-7 h-7 text-secondary" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Forced Appreciation</h3>
-                    <p className="text-stone-400">Pursuing value creation through targeted improvements and disciplined operations, not reliance on market appreciation alone.</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Current acquisition program</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">Focused criteria. Deal-specific decisions.</h2>
+            <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">
+              The current program is intentionally narrow. Each potential acquisition is evaluated on its own facts, with investor approval and definitive documentation required for that transaction.
+            </p>
+          </div>
 
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="absolute -inset-4 bg-secondary/20 blur-2xl rounded-full opacity-50" />
-              <div className="relative aspect-video rounded-xl overflow-hidden border border-stone-700 shadow-2xl">
-                <video 
-                  autoPlay 
-                  muted 
-                  loop 
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/images/timelapse.mp4" type="video/mp4" />
-                </video>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+          <div className="mt-11 grid gap-4 md:grid-cols-2 lg:grid-cols-4 md:gap-5">
+            {acquisitionCriteria.map((criterion) => {
+              const Icon = criterion.icon;
+              return (
+                <article key={criterion.title} className="border border-stone-200 bg-stone-50 p-6">
+                  <Icon className="h-7 w-7 text-secondary" aria-hidden="true" />
+                  <h3 className="mt-7 font-display text-xl font-bold text-primary">{criterion.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-stone-600">{criterion.description}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Market context */}
+      <section className="border-y border-stone-200 bg-stone-50 py-16 md:py-20">
+        <div className="container">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:gap-16">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Market context</p>
+              <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-primary md:text-4xl">Research informs the decision. It does not replace it.</h2>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-stone-600 md:text-lg">
+                FoxRidge evaluates market conditions, supply, demand, financing, and property-level operating context as part of each separate acquisition review. Market observations are assessed alongside the specific asset and are not a promise of future results.
+              </p>
+              <Link href="/investor-resources" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary">
+                Explore current market research <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="border-l-2 border-secondary bg-white p-6 shadow-sm md:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-stone-400">Decision framework</p>
+              <ul className="mt-5 space-y-4">
+                {[
+                  "Texas Triangle market context",
+                  "Asset-level operating and capital needs",
+                  "Independent diligence and definitive documentation",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-stone-700">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Six-step process */}
+      <section id="how-we-invest" className="scroll-mt-24 bg-primary py-16 text-white md:py-24">
+        <div className="container">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Six-step process</p>
+            <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">How each acquisition is evaluated.</h2>
+            <p className="mt-5 text-base leading-relaxed text-white/75 md:text-lg">
+              The process is designed to give the capital partner a clear decision point before commitment and to define FoxRidge’s execution role after closing.
+            </p>
+          </div>
+
+          <div className="mt-11 grid gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-5">
+            {processSteps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <article key={step.number} className="border border-white/15 bg-white/[0.06] p-6 backdrop-blur-sm md:p-7">
                   <div className="flex items-center justify-between">
-                    <span className="text-white font-bold uppercase tracking-wider text-sm">Renovation Timeline</span>
-                    <span className="text-secondary font-mono text-sm">6-18 Months</span>
+                    <span className="font-mono text-xs font-bold tracking-[0.12em] text-secondary">{step.number}</span>
+                    <Icon className="h-6 w-6 text-secondary" aria-hidden="true" />
                   </div>
-                </div>
-              </div>
-            </motion.div>
+                  <h3 className="mt-8 font-display text-2xl font-bold text-white">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">{step.description}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Investment Criteria */}
-      <section className="py-16 md:py-32 bg-white">
+      {/* International context */}
+      <section className="bg-white py-12 md:py-14">
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6">
-              Acquisition <span className="text-primary">Criteria</span>
-            </h2>
-            <p className="text-stone-600 text-lg">
-              We are disciplined buyers, focusing on assets where our underwriting and value-creation plan support a clear investment case.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Building2,
-                title: "Asset Class",
-                desc: "Class B+/A multifamily assets, 2000 vintage and later."
-              },
-              {
-                icon: Search,
-                title: "Size",
-                desc: "100+ units; transaction scale is evaluated separately for each acquisition."
-              },
-              {
-                icon: TrendingUp,
-                title: "Markets",
-                desc: "Texas Triangle — Houston, Dallas–Fort Worth, and San Antonio."
-              },
-              {
-                icon: DollarSign,
-                title: "Light Value-Add",
-                desc: "Reasonable investments to achieve modest rent growth."
-              }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 bg-stone-50 border border-stone-200 hover:border-secondary/50 transition-colors group"
-              >
-                <item.icon className="w-10 h-10 text-stone-400 group-hover:text-secondary transition-colors mb-6" />
-                <h3 className="text-2xl font-bold text-stone-900 mb-4">{item.title}</h3>
-                <p className="text-stone-600 leading-relaxed text-base md:text-lg">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Sun Belt — Full Section */}
-      <section className="py-32 bg-stone-950 text-white" id="why-sunbelt">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-20 items-start">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/30 text-secondary text-xs font-bold uppercase tracking-widest mb-8">
-                Market Thesis
-              </div>
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
-                Why Sun Belt.<br /><span className="text-secondary">Why Now.</span>
-              </h2>
-              <p className="text-stone-400 text-lg leading-relaxed mb-6">
-                The Sun Belt is the most structurally advantaged real estate market in the United States. Population growth, job growth, and household formation continue to outpace the rest of the country by a significant margin.
+          <div className="flex flex-col items-start justify-between gap-6 border-l-2 border-secondary bg-stone-50 p-6 md:flex-row md:items-center md:p-8">
+            <div>
+              <h2 className="font-display text-xl font-bold text-primary">Investing from outside the United States?</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-stone-600">
+                FoxRidge works with qualified international capital partners and encourages prospective partners to obtain independent legal, tax, and financial advice relevant to their circumstances.
               </p>
-              <p className="text-stone-400 text-lg leading-relaxed mb-6">
-                The supply pipeline that delivered a historic wave of new apartments in 2022–2025 has now collapsed to its lowest level in fifteen years. Starts are down over 50% from the 2022 peak (Source: RealPage, Q2 2025). The units being delivered today were financed at a different cost of capital, in a different rate environment, and by developers who no longer have access to the same debt markets. Texas remains a focus for its population growth, job base, and diverse multifamily submarkets.
-              </p>
-              <p className="text-stone-400 text-lg leading-relaxed">
-                Demand is accelerating. Supply is contracting. The window to acquire institutional-quality multifamily at attractive basis is open right now — and it does not stay open long. FoxRidge is positioned to move when others cannot.
-              </p>
-            </motion.div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { stat: "+8.8%", title: "Population Growth", desc: "Texas 2020–2025 vs. ~3.1% national average", source: "U.S. Census Bureau, 2025" },
-                { stat: "2.9%", title: "Job Growth", desc: "DFW job growth rate, tied 3rd among top 30 metros", source: "BLS / WSJ, 2025" },
-                { stat: "−50%", title: "Supply Contraction", desc: "Multifamily starts from 2022 peak; decade-low pipeline", source: "RealPage, Q2 2025" },
-                { stat: "+1.5%", title: "Rent Re-Acceleration", desc: "Forecast national rent growth in 2027 as supply clears", source: "Yardi Matrix, 2026" },
-              ].map((tile, i) => (
-                <motion.div
-                  key={tile.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition-colors"
-                >
-                  <div className="text-4xl font-display font-bold text-secondary mb-2">{tile.stat}</div>
-                  <div className="text-white font-bold text-sm mb-2 uppercase tracking-wide">{tile.title}</div>
-                  <p className="text-stone-500 text-xs leading-relaxed mb-3">{tile.desc}</p>
-                  <div className="text-stone-600 text-xs">Source: {tile.source}</div>
-                </motion.div>
-              ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How We Invest — Full 6-Step Process */}
-      <section className="py-16 md:py-32 bg-white" id="how-we-invest">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
-              Our Process
-            </div>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-6">
-              How We <span className="text-primary">Invest</span>
-            </h2>
-            <p className="text-stone-600 text-lg leading-relaxed">
-              Every acquisition follows the same disciplined framework. No shortcuts. No exceptions.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                num: "01",
-                icon: <Search className="w-6 h-6 text-secondary" />,
-                name: "Source",
-                desc: "We source through direct broker relationships across Dallas–Fort Worth, Houston, and San Antonio. We evaluate opportunities using our acquisition criteria and market-level diligence."
-              },
-              {
-                num: "02",
-                icon: <BarChart3 className="w-6 h-6 text-secondary" />,
-                name: "Underwrite",
-                desc: "Every deal is underwritten from scratch using actual T-12 operating data, current market rents, and our own assumptions — never the broker's pro forma. We stress-test every scenario before submitting an LOI."
-              },
-              {
-                num: "03",
-                icon: <Building2 className="w-6 h-6 text-secondary" />,
-                name: "Diligence",
-                desc: "Full physical, financial, and legal diligence on every asset. We walk every unit. We review every lease. We verify every number. Our diligence process is designed to surface risk before it becomes our investor's problem."
-              },
-              {
-                num: "04",
-                icon: <DollarSign className="w-6 h-6 text-secondary" />,
-                name: "Structure",
-                desc: "Each acquisition is evaluated separately with the capital partner. The investor reviews and approves the acquisition before the parties proceed through diligence and definitive documentation."
-              },
-              {
-                num: "05",
-                icon: <Hammer className="w-6 h-6 text-secondary" />,
-                name: "Operate",
-                desc: "FoxRidge leads asset management from day one, including capital-plan oversight, oversight of third-party property management, and transparent reporting to the capital partner."
-              },
-              {
-                num: "06",
-                icon: <TrendingUp className="w-6 h-6 text-secondary" />,
-                name: "Exit",
-                desc: "We evaluate hold, refinance, and exit alternatives against market conditions, the business plan, and the asset’s circumstances. No outcome or timing is guaranteed."
-              },
-            ].map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-stone-50 border border-stone-200 p-8 hover:shadow-lg transition-shadow group"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-4xl font-display font-bold text-primary/20 group-hover:text-primary/40 transition-colors">{step.num}</span>
-                  <div className="w-10 h-10 bg-secondary/10 border border-secondary/30 flex items-center justify-center">
-                    {step.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-display font-bold text-stone-900 mb-4">{step.name}</h3>
-                <p className="text-stone-600 leading-relaxed">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* International Investors Cross-Reference */}
-      <section className="bg-white">
-        <div className="container">
-          <div className="border-l-4 border-secondary bg-stone-50 px-8 py-6">
-            <p className="text-stone-600 text-sm">
-              <span className="font-bold text-stone-900">International capital partners are welcome.</span>{" "}
-              Prospective partners should consult their own qualified legal, tax, and financial advisers regarding their circumstances.{" "}
-              <Link href="/international-investors" className="text-secondary font-semibold hover:underline">Learn about our international investor program →</Link>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Research & Insights Banner */}
-      <section className="py-12 bg-stone-950 text-white">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border border-secondary/30 p-8">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 bg-secondary/20 border border-secondary/40 flex items-center justify-center shrink-0">
-                <TrendingUp className="w-5 h-5 text-secondary" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                  <span className="text-secondary text-xs font-bold uppercase tracking-widest">Research &amp; Insights</span>
-                </div>
-                <h3 className="text-white font-display font-bold text-xl mb-1">Research &amp; Insights</h3>
-                <p className="text-white/60 text-sm">Public research materials are being reviewed to ensure alignment with FoxRidge’s approved messaging and current focus.</p>
-              </div>
-            </div>
-            <Link href="/investor-resources" className="shrink-0">
-              <button className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                View Research & Insights →
-              </button>
+            <Link href="/international-investors" className="shrink-0">
+              <Button variant="outline" className="border-primary px-6 font-bold text-primary hover:bg-primary hover:text-white">
+                International Investors <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-primary text-white text-center">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">Have a Deal for Us?</h2>
-          <Button asChild size="lg" className="bg-secondary text-white hover:bg-secondary/90 h-14 px-8 text-lg font-bold rounded-none">
-            <Link href="/contact">Submit an Opportunity</Link>
+      {/* Final CTA */}
+      <section className="relative overflow-hidden bg-stone-950 py-16 text-white md:py-24">
+        <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(201,168,70,0.20),transparent_65%)] lg:block" />
+        <div className="container relative z-10 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a direct conversation</p>
+          <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">Request a confidential introduction.</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+            Discuss whether FoxRidge’s current acquisition program may be a fit for your objectives and circumstances.
+          </p>
+          <Button asChild size="lg" className="mt-8 h-14 bg-secondary px-8 text-base font-bold text-white hover:bg-[#b8942a]">
+            <Link href="/contact">
+              Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            </Link>
           </Button>
         </div>
       </section>
