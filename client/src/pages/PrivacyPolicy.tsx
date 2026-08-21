@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4">Privacy Policy</h1>
           <p className="text-stone-500 mb-2">Effective Date: May 28, 2026</p>
-          <p className="text-stone-500 mb-12">Last Updated: May 28, 2026</p>
+          <p className="text-stone-500 mb-12">Last Updated: August 21, 2026</p>
 
           <div className="prose prose-stone max-w-none space-y-2">
 
@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
             <h3 className="text-lg font-bold text-stone-800 mt-6 mb-2">a. Information You Provide Directly</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
               <li><strong>Contact Form Submissions:</strong> Name, email address, phone number, country of residence, and any message content you submit through our contact form.</li>
-              <li><strong>Consent Records:</strong> When you check the accredited investor self-certification or consent checkbox, we record that consent locally in your browser (via localStorage). We do not transmit this data to our servers.</li>
+              <li><strong>Consent Notices:</strong> Relevant forms may ask you to acknowledge applicable notices before submitting your information.</li>
             </ul>
             <h3 className="text-lg font-bold text-stone-800 mt-6 mb-2">b. Information Collected Automatically</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
@@ -40,12 +40,12 @@ export default function PrivacyPolicy() {
               Our Website uses the following types of cookies and browser storage:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
-              <li><strong>Strictly Necessary (localStorage):</strong> We use browser localStorage to store your accredited investor gate confirmation (expires after 24 hours) and your research banner dismissal preference (session only). These are essential to the functionality of the site and cannot be disabled.</li>
+              <li><strong>Preferences and session controls:</strong> We use browser localStorage for theme preferences and the Investor Portal’s browser-session record, and sessionStorage to avoid repeatedly displaying the Investor List popup during the same browser session. These controls do not independently verify investor eligibility.</li>
               <li><strong>Analytics Cookies:</strong> We do not currently use third-party analytics services (e.g., Google Analytics). If we add analytics in the future, this policy will be updated and a cookie consent banner will be displayed.</li>
               <li><strong>No Advertising Cookies:</strong> We do not use advertising, retargeting, or tracking cookies of any kind.</li>
             </ul>
             <p className="text-stone-600">
-              You may control cookies through your browser settings. Disabling localStorage may affect certain site features such as the accredited investor gate.
+              You may control cookies and browser storage through your browser settings. Disabling storage may affect selected site preferences or session behavior.
             </p>
 
             <h2 className="text-2xl font-bold text-stone-900 mt-10 mb-4">2. How We Use Your Information</h2>
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
               <li><strong>Contact form submissions:</strong> Retained for up to <strong>3 years</strong> from the date of submission, or until you request deletion, whichever comes first.</li>
               <li><strong>Server log data:</strong> Retained for up to <strong>90 days</strong> for security and operational purposes.</li>
-              <li><strong>Browser localStorage data</strong> (accredited investor confirmation, banner preferences): Stored locally in your browser only; automatically expires within 24 hours or upon clearing your browser data.</li>
+              <li><strong>Browser storage data</strong> (theme preferences, Investor Portal browser-session record, and popup session preference): Stored locally in your browser only; retained according to the relevant feature’s session or expiry setting, or until you clear your browser data.</li>
             </ul>
             <p className="text-stone-600">
               After the applicable retention period, personal data is securely deleted or anonymized.

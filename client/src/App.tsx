@@ -17,6 +17,7 @@ import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import MarketInsights from "./pages/MarketInsights";
 import InvestorPortal from "./pages/InvestorPortal";
+import ResearchCurrentProgram from "./pages/ResearchCurrentProgram";
 
 function Router() {
   return (
@@ -33,6 +34,7 @@ function Router() {
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/investor-resources" component={MarketInsights} />
+        <Route path="/research/current-acquisition-framework" component={ResearchCurrentProgram} />
         <Route path="/investor-portal" component={InvestorPortal} />
         <Route component={NotFound} />
       </Switch>

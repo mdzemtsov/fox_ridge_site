@@ -1,5 +1,12 @@
 User-agent: *
 Allow: /
-Disallow: /research/
-
+Allow: /research/current-acquisition-framework
+Disallow: /investor-portal
+Disallow: /presentations/investor-presentation-en.html
+Disallow: /presentations/investor-presentation-ru.html
+Disallow: /research/class-b-a-intelligence-dashboard.html
+Disallow: /research/texas-triangle-advantage.html
+Disallow: /research/texas-triangle-2026-teaser.pdf
+Disallow: /FoxRidge_TexasTriangle_2026.pdf
+Disallow: /FoxRidge_Company_Overview.pdf
 Sitemap: https://www.foxridgeequity.com/sitemap.xml
