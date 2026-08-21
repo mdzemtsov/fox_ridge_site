@@ -1,303 +1,173 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { CheckCircle2, Award, Briefcase, GraduationCap, ArrowUpRight, Mail, Linkedin } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Award, Briefcase, GraduationCap, Linkedin, Users } from "lucide-react";
 
-// ─── Shared typography constants ────────────────────────────────────────────
-// Applied identically to both profile sections to guarantee visual consistency.
-const NAME_CLASS    = "font-display text-3xl md:text-5xl font-bold text-stone-900 mb-3 leading-tight";
-const TITLE_CLASS   = "font-mono text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-10";
-const LEAD_CLASS    = "text-xl text-stone-700 font-light leading-[1.75] mb-8";
-const BODY_CLASS    = "text-base text-stone-500 leading-[1.85] mb-6";
-const BOX_CLASS     = "bg-stone-50 p-8 border border-stone-200 my-10";
-const BOX_HDR_CLASS = "font-display font-bold text-sm text-stone-900 mb-6 uppercase tracking-[0.12em]";
-const CRED_CLASS    = "flex items-center gap-4 text-sm text-stone-500";
-// ────────────────────────────────────────────────────────────────────────────
+const NAME_CLASS = "font-display text-3xl font-bold leading-tight text-stone-900 md:text-5xl";
+const TITLE_CLASS = "mt-3 font-mono text-xs font-bold uppercase tracking-[0.18em] text-secondary";
+const BODY_CLASS = "text-base leading-[1.8] text-stone-600 md:text-lg";
+const CREDENTIAL_CLASS = "flex items-center gap-3 text-sm text-stone-500";
+
+const experienceMetrics = [
+  { value: "$1B+", label: "Combined transaction experience" },
+  { value: "7,000+", label: "Units" },
+  { value: "36", label: "Properties" },
+];
 
 export default function About() {
   return (
-    <div className="flex flex-col min-h-screen bg-stone-50">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-stone-950">
+    <div className="flex min-h-screen flex-col bg-stone-50">
+      {/* Hero */}
+      <section className="relative flex min-h-[560px] items-center overflow-hidden bg-stone-950">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-stone-950/40 z-10" />
-          <img 
-            src="/images/hero-modern-interior.jpg" 
-            alt="Modern Interior" 
-            className="w-full h-full object-cover opacity-80"
-          />
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-stone-950/85 via-stone-950/60 to-stone-950/35" />
+          <img src="/images/hero-modern-interior.jpg" alt="FoxRidge Equity Partners leadership" className="h-full w-full object-cover opacity-85" />
         </div>
-        <div className="container relative z-20 pt-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-8">
-              <span className="w-2 h-2 rounded-full bg-secondary" />
-              <span className="text-sm font-medium tracking-wide uppercase">Our Team</span>
-            </div>
-            <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              Our <br />
-              <span className="text-secondary">Team</span>
-            </h1>
-            <p className="text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
-              Led by Mikhail Pritsker and Slava Davidenko, FoxRidge Equity Partners brings over $1 billion in combined transaction experience and a hands-on approach to every asset.
+        <div className="container relative z-20 py-24">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
+            <p className="inline-flex items-center gap-2 border border-white/20 bg-primary/50 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm">
+              <Users className="h-3.5 w-3.5 text-secondary" aria-hidden="true" /> Our Team
+            </p>
+            <h1 className="mt-7 font-display text-5xl font-bold leading-[0.95] text-white md:text-7xl">Principal-led.<br /><span className="text-secondary">Directly accountable.</span></h1>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-stone-200 md:text-xl">
+              Mikhail Pritsker and Slava Davidenko bring disciplined principal experience to FoxRidge’s direct, deal-by-deal multifamily partnership model.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Mikhail Pritsker Profile ─────────────────────────────────────── */}
-      <section className="py-12 md:py-24 bg-white">
+      {/* Principal experience methodology */}
+      <section className="border-b border-stone-200 bg-white py-10 md:py-14">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
-
-            {/* Photo column — left */}
-            <div className="lg:col-span-5">
-              <div className="sticky top-32">
-                <div className="aspect-[3/4] bg-stone-100 mb-8 relative overflow-hidden group border border-stone-200">
-                  <img 
-                    src="/images/mikhail.jpg" 
-                    alt="Mikhail Pritsker" 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                </div>
-                <div className="flex flex-col gap-4 border-t border-stone-200 pt-6">
-                  <div className={CRED_CLASS}>
-                    <GraduationCap className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>MBA, University of Chicago Booth</span>
-                  </div>
-                  <div className={CRED_CLASS}>
-                    <Award className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>CCIM Designation</span>
-                  </div>
-                  <div className={CRED_CLASS}>
-                    <Briefcase className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>25+ Years Experience</span>
-                  </div>
-                  <div className="pt-2">
-                    <a
-                      href="https://www.linkedin.com/in/mikhailpritsker/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Mikhail Pritsker on LinkedIn"
-                      className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-[#0A66C2] transition-colors group"
-                    >
-                      <Linkedin className="w-4 h-4 group-hover:text-[#0A66C2] transition-colors" />
-                      <span>LinkedIn Profile</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bio column — right */}
-            <div className="lg:col-span-7">
-              <h2 className={NAME_CLASS}>Mikhail Pritsker</h2>
-              <div className="flex items-center gap-4 mb-6">
-                <p className={TITLE_CLASS} style={{marginBottom: 0}}>Co-Founder &amp; Managing Partner</p>
-                <a
-                  href="https://www.linkedin.com/in/mikhailpritsker/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Mikhail Pritsker on LinkedIn"
-                  className="inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-bold tracking-wide uppercase px-3 py-2 rounded-lg transition-all flex-shrink-0"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  LinkedIn
-                </a>
-              </div>
-
-              <p className={LEAD_CLASS}>
-                Mikhail operates at the intersection of capital, operations, and trust. His career reflects a rare blend of hands-on asset management, strategic portfolio oversight, and institutional-grade investor communication.
-              </p>
-
-              <p className={BODY_CLASS}>
-                As a senior real estate investment executive with over 25 years of experience, Mikhail has overseen more than <strong>$1 billion in real estate transactions</strong> across multiple market cycles. He is particularly strong where many operators struggle: investor confidence and communication.
-              </p>
-
-              <div className={BOX_CLASS}>
-                <h4 className={BOX_HDR_CLASS}>Core Strengths</h4>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 list-none pl-0 m-0">
-                  {[
-                    "Asset & Portfolio Leadership",
-                    "NOI Optimization",
-                    "Investor Relations",
-                    "Capital Strategy",
-                    "AI & Analytics",
-                    "Complex Development"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-stone-700 font-medium text-sm">
-                      <div className="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className={BODY_CLASS}>
-                He has designed quarterly reporting frameworks, validated monthly LP cash flow distributions, and built investor communication systems focused on transparency and long-term partnership.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <div className="container">
-        <div className="h-px w-full bg-stone-200" />
-      </div>
-
-      {/* ── Slava Davidenko Profile ──────────────────────────────────────── */}
-      <section className="py-12 md:py-24 bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
-
-            {/* Bio column — left on desktop */}
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <h2 className={NAME_CLASS}>Slava Davidenko</h2>
-              <div className="flex items-center gap-4 mb-6">
-                <p className={TITLE_CLASS} style={{marginBottom: 0}}>Chairman, Advisory Board</p>
-                <a
-                  href="https://www.linkedin.com/in/vdavidenko/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Slava Davidenko on LinkedIn"
-                  className="inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#004182] text-white text-xs font-bold tracking-wide uppercase px-3 py-2 rounded-lg transition-all flex-shrink-0"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  LinkedIn
-                </a>
-              </div>
-
-              <p className={LEAD_CLASS}>
-                Slava combines disciplined underwriting with an operator's mentality—understanding both the capital stack and the operational levers that drive NOI.
-              </p>
-
-              <p className={BODY_CLASS}>
-                A serial entrepreneur and investor with over 25 years of experience, Slava has managed and invested more than <strong>$600 million across diversified projects</strong>. Over his career, he has been involved in a portfolio exceeding <strong>7,000 units across 36 properties</strong>, including activity under prior sponsoring entities.
-              </p>
-
-              <div className={BOX_CLASS}>
-                <h4 className={BOX_HDR_CLASS}>Core Strengths</h4>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 list-none pl-0 m-0">
-                  {[
-                    "Institutional Wealth Mgmt",
-                    "Real Estate at Scale",
-                    "Entrepreneurship",
-                    "AI & Modern Practices",
-                    "Capital Raising",
-                    "Cross-Industry Experience"
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-stone-700 font-medium text-sm">
-                      <div className="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className={BODY_CLASS}>
-                His background includes serving as Managing Director at Renaissance Capital ($500M AUM) and successfully exiting 8 full-cycle deals as a General Partner across multiple market cycles.
-              </p>
-            </div>
-
-            {/* Photo column — right on desktop */}
-            <div className="lg:col-span-5 order-1 lg:order-2">
-              <div className="sticky top-32">
-                <div className="aspect-[3/4] bg-stone-100 mb-8 relative overflow-hidden group border border-stone-200">
-                  <img 
-                    src="/images/slava_new.webp" 
-                    alt="Slava Davidenko" 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                </div>
-                <div className="flex flex-col gap-4 border-t border-stone-200 pt-6">
-                  <div className={CRED_CLASS}>
-                    <GraduationCap className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>MBA, University of Chicago Booth</span>
-                  </div>
-                  <div className={CRED_CLASS}>
-                    <GraduationCap className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>Engineering Degree, MEPhI</span>
-                  </div>
-                  <div className={CRED_CLASS}>
-                    <Briefcase className="w-5 h-5 text-primary flex-shrink-0" />
-                    <span>7,000+ Units Invested</span>
-                  </div>
-                  <div className="pt-2">
-                    <a
-                      href="https://www.linkedin.com/in/vdavidenko/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Slava Davidenko on LinkedIn"
-                      className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-[#0A66C2] transition-colors group"
-                    >
-                      <Linkedin className="w-4 h-4 group-hover:text-[#0A66C2] transition-colors" />
-                      <span>LinkedIn Profile</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* International Investors Cross-Reference */}
-      <section className="bg-white">
-        <div className="container">
-          <div className="border-l-4 border-secondary bg-stone-50 px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <p className="text-stone-600 text-sm">
-              <span className="font-bold text-stone-900">Based outside the United States?</span>{" "}
-              We work with international family offices and principals across the Middle East, Asia-Pacific, Europe, and Latin America.{" "}
-              <Link href="/international-investors" className="text-secondary font-semibold hover:underline">See our international investor program →</Link>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Research & Insights Banner */}
-      <section className="py-10 bg-stone-100 border-t border-stone-200">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-end">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-1 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> Research &amp; Insights
-              </p>
-              <h3 className="text-primary font-display font-bold text-xl">Explore Research &amp; Insights</h3>
-              <p className="text-stone-500 text-sm mt-1">Public research materials are being reviewed to ensure alignment with FoxRidge’s approved messaging and current focus.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Combined principal experience</p>
+              <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-primary md:text-4xl">Historical experience. Clear attribution.</h2>
             </div>
-            <Link href="/investor-resources" className="shrink-0">
-              <button className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                View Research &amp; Insights →
-              </button>
-            </Link>
+            <div className="grid grid-cols-3 gap-3">
+              {experienceMetrics.map((metric) => (
+                <div key={metric.label} className="border border-stone-200 bg-stone-50 p-4 text-center md:p-5">
+                  <p className="font-display text-2xl font-bold text-primary md:text-3xl">{metric.value}</p>
+                  <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.09em] text-stone-500 md:text-xs">{metric.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="mt-6 border-l-2 border-secondary pl-4 text-xs leading-relaxed text-stone-500 md:text-sm">
+            Combined transaction experience, units, and properties reflect the principals’ prior activities under prior sponsoring entities where applicable. These figures are historical experience metrics, not a representation of FoxRidge’s own track record. Past performance is not indicative of future results.
+          </p>
+        </div>
+      </section>
+
+      {/* Mikhail */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <div className="overflow-hidden border border-stone-200 bg-stone-100">
+                <img src="/images/mikhail.jpg" alt="Mikhail Pritsker" className="aspect-[3/4] h-full w-full object-cover object-top" />
+              </div>
+              <div className="mt-6 space-y-3 border-t border-stone-200 pt-6">
+                <div className={CREDENTIAL_CLASS}><GraduationCap className="h-4 w-4 text-secondary" aria-hidden="true" /><span>MBA, University of Chicago Booth</span></div>
+                <div className={CREDENTIAL_CLASS}><Award className="h-4 w-4 text-secondary" aria-hidden="true" /><span>CCIM Designation</span></div>
+                <div className={CREDENTIAL_CLASS}><Briefcase className="h-4 w-4 text-secondary" aria-hidden="true" /><span>25+ years of real estate experience</span></div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 lg:pt-4">
+              <h2 className={NAME_CLASS}>Mikhail Pritsker</h2>
+              <p className={TITLE_CLASS}>Co-Founder &amp; Managing Partner</p>
+              <p className="mt-8 font-display text-2xl leading-relaxed text-stone-800 md:text-3xl">Capital-partner communication, reporting discipline, and portfolio-level execution.</p>
+              <div className="mt-7 space-y-5">
+                <p className={BODY_CLASS}>
+                  Mikhail leads FoxRidge’s work with capital partners and helps connect acquisition review, reporting, asset-management priorities, and transaction execution. His approach is centered on giving a partner clear information before a decision and maintaining direct communication after closing.
+                </p>
+                <p className={BODY_CLASS}>
+                  His prior experience includes more than 25 years in real estate investment leadership across multiple market cycles, including transaction, asset-management, and portfolio-oversight responsibilities under prior sponsoring entities.
+                </p>
+              </div>
+              <a href="https://www.linkedin.com/in/mikhailpritsker/" target="_blank" rel="noopener noreferrer" aria-label="Mikhail Pritsker on LinkedIn" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#0A66C2] transition-colors hover:text-primary">
+                <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn Profile
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container"><div className="h-px bg-stone-200" /></div>
+
+      {/* Slava */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="order-2 lg:order-1 lg:col-span-7 lg:pt-4">
+              <h2 className={NAME_CLASS}>Slava Davidenko</h2>
+              <p className={TITLE_CLASS}>Chairman, Advisory Board</p>
+              <p className="mt-8 font-display text-2xl leading-relaxed text-stone-800 md:text-3xl">Strategic perspective on sourcing, underwriting, operations, and principal accountability.</p>
+              <div className="mt-7 space-y-5">
+                <p className={BODY_CLASS}>
+                  As Chairman of the Advisory Board, Slava contributes strategic and operating perspective to FoxRidge’s deal-by-deal model, including the assessment of acquisition opportunities, business-plan assumptions, and execution priorities.
+                </p>
+                <p className={BODY_CLASS}>
+                  His prior experience spans more than 25 years of entrepreneurship and investment activity, including involvement in multifamily and diversified real estate projects under prior sponsoring entities.
+                </p>
+              </div>
+              <a href="https://www.linkedin.com/in/vdavidenko/" target="_blank" rel="noopener noreferrer" aria-label="Slava Davidenko on LinkedIn" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#0A66C2] transition-colors hover:text-primary">
+                <Linkedin className="h-4 w-4" aria-hidden="true" /> LinkedIn Profile
+              </a>
+            </div>
+
+            <div className="order-1 lg:order-2 lg:col-span-5">
+              <div className="overflow-hidden border border-stone-200 bg-stone-100">
+                <img src="/images/slava_new.webp" alt="Slava Davidenko" className="aspect-[3/4] h-full w-full object-cover object-top" />
+              </div>
+              <div className="mt-6 space-y-3 border-t border-stone-200 pt-6">
+                <div className={CREDENTIAL_CLASS}><GraduationCap className="h-4 w-4 text-secondary" aria-hidden="true" /><span>MBA, University of Chicago Booth</span></div>
+                <div className={CREDENTIAL_CLASS}><GraduationCap className="h-4 w-4 text-secondary" aria-hidden="true" /><span>Engineering Degree, MEPhI</span></div>
+                <div className={CREDENTIAL_CLASS}><Briefcase className="h-4 w-4 text-secondary" aria-hidden="true" /><span>25+ years of entrepreneurial and investment experience</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust and international link */}
+      <section className="bg-stone-50 py-12 md:py-16">
+        <div className="container">
+          <div className="grid gap-6 border border-stone-200 bg-white p-6 md:grid-cols-[1.15fr_.85fr] md:p-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Historical proof</p>
+              <h2 className="mt-2 font-display text-2xl font-bold text-primary">Selected prior principal experience.</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">
+                Review FoxRidge’s high-level public proof block, which distinguishes the current platform from prior activities of the principals.
+              </p>
+              <Link href="/track-record" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary">
+                View Track Record <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="border-t border-stone-200 pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">International capital</p>
+              <p className="mt-3 text-sm leading-relaxed text-stone-600">
+                FoxRidge works with family offices, principals, and qualified private investors worldwide, subject to applicable requirements, internal compliance, and deal-specific documentation.
+              </p>
+              <Link href="/international-investors" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary">
+                International Investors <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-primary text-white">
-        <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div>
-              <h2 className="font-display text-3xl font-bold mb-2">Partner with Experienced Operators</h2>
-              <p className="text-emerald-100">Institutional discipline. Entrepreneurial execution.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <Link href="/contact">
-                <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 px-8 py-6 text-lg rounded-none transition-colors duration-300 font-bold">
-                  Request a confidential introduction <ArrowUpRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
+      <section className="bg-primary py-16 text-white md:py-20">
+        <div className="container flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a direct conversation</p>
+            <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Request a confidential introduction.</h2>
           </div>
+          <Button asChild size="lg" className="bg-secondary px-7 py-6 text-white hover:bg-secondary/90">
+            <Link href="/contact">Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link>
+          </Button>
         </div>
       </section>
     </div>

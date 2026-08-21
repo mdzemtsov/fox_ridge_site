@@ -1,398 +1,142 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, TrendingUp, Building2, MapPin, Calendar, DollarSign } from "lucide-react";
-import AccreditedGate from "@/components/AccreditedGate";
+import { ArrowRight, ArrowUpRight, Building2, CalendarDays, MapPin, ShieldCheck } from "lucide-react";
+
+const selectedProjects = [
+  { property: "El Ranchito / Milagro", location: "Fort Worth, TX", units: 68, acquired: "Sep 2017", disposed: "Sep 2018" },
+  { property: "Westcreek Townhomes", location: "Fort Worth, TX", units: 50, acquired: "Apr 2019", disposed: "Dec 2021" },
+  { property: "Antigua Village", location: "Fort Worth, TX", units: 152, acquired: "Sep 2019", disposed: "May 2022" },
+  { property: "Copper Creek Apartments", location: "Fort Worth, TX", units: 274, acquired: "Mar 2020", disposed: "Jun 2022" },
+  { property: "Crescent Village & Plaza", location: "Wichita Falls, TX", units: 88, acquired: "Feb 2018", disposed: "Oct 2021" },
+  { property: "Village on West Irving", location: "Irving, TX", units: 91, acquired: "Oct 2018", disposed: "Jan 2022" },
+];
+
+const proofMetrics = [
+  { value: "6", label: "Selected realized projects" },
+  { value: "723", label: "Units across selected projects" },
+  { value: "$56.1M", label: "Aggregate acquisition price" },
+  { value: "$81.1M", label: "Aggregate exit value" },
+];
 
 export default function TrackRecord() {
-
-  const realizedDeals = [
-    {
-      property: "El Ranchito / Milagro",
-      location: "Fort Worth, TX",
-      units: 68,
-      acquired: "Sep 2017",
-      disposed: "Sep 2018",
-      holdYrs: "1.0",
-      buyPrice: "$2.5M",
-      salePrice: "$3.8M",
-      valueIncrease: "+52%",
-      equityMultiple: "1.42x",
-      projectIRR: "42%",
-    },
-    {
-      property: "Westcreek Townhomes",
-      location: "Fort Worth, TX",
-      units: 50,
-      acquired: "Apr 2019",
-      disposed: "Dec 2021",
-      holdYrs: "2.7",
-      buyPrice: "$6.7M",
-      salePrice: "$10.0M",
-      valueIncrease: "+49%",
-      equityMultiple: "1.79x",
-      projectIRR: "26%",
-    },
-    {
-      property: "Antigua Village",
-      location: "Fort Worth, TX",
-      units: 152,
-      acquired: "Sep 2019",
-      disposed: "May 2022",
-      holdYrs: "2.7",
-      buyPrice: "$8.8M",
-      salePrice: "$13.7M",
-      valueIncrease: "+55%",
-      equityMultiple: "2.27x",
-      projectIRR: "23%",
-    },
-    {
-      property: "Copper Creek Apartments",
-      location: "Fort Worth, TX",
-      units: 274,
-      acquired: "Mar 2020",
-      disposed: "Jun 2022",
-      holdYrs: "2.3",
-      buyPrice: "$23.6M",
-      salePrice: "$32.7M",
-      valueIncrease: "+39%",
-      equityMultiple: "1.66x",
-      projectIRR: "25%",
-    },
-    {
-      property: "Crescent Village & Plaza",
-      location: "Wichita Falls, TX",
-      units: 88,
-      acquired: "Feb 2018",
-      disposed: "Oct 2021",
-      holdYrs: "3.7",
-      buyPrice: "$6.6M",
-      salePrice: "$9.9M",
-      valueIncrease: "+50%",
-      equityMultiple: "1.87x",
-      projectIRR: "26%",
-    },
-    {
-      property: "Village on West Irving",
-      location: "Irving, TX",
-      units: 91,
-      acquired: "Oct 2018",
-      disposed: "Jan 2022",
-      holdYrs: "3.3",
-      buyPrice: "$7.9M",
-      salePrice: "$11.0M",
-      valueIncrease: "+40%",
-      equityMultiple: "1.59x",
-      projectIRR: "16%",
-    },
-  ];
-
-  const activeHoldings = [
-    {
-      property: "Royal Spring",
-      location: "Spring, TX",
-      units: 351,
-      built: 2020,
-      assetClass: "Class A",
-      description: "Institutional-quality garden-style community in the Houston MSA. Modern 3-story buildings, resort amenities, and strong lease-up performance.",
-    },
-    {
-      property: "Royal Sienna",
-      location: "Missouri City, TX",
-      units: 330,
-      built: 2020,
-      assetClass: "Class A",
-      description: "Newly built community in the award-winning, supply-constrained Sienna master-planned corridor southwest of Houston.",
-    },
-    {
-      property: "The Sarah at Lake Houston",
-      location: "Humble, TX",
-      units: 350,
-      built: 2020,
-      assetClass: "Class A+",
-      description: "Premier garden-style community with stunning lake views in the fastest-growing submarket within the Houston MSA. 2020 construction.",
-    },
-    {
-      property: "The Gallery at Katy",
-      location: "Katy, TX",
-      units: 316,
-      built: 1983,
-      assetClass: "Class B",
-      description: "Light value-add garden-style community in the high-demand Katy/Houston submarket. Targeted cosmetic upgrades and operational repositioning underway.",
-    },
-  ];
-
   return (
-    <AccreditedGate>
-    <div className="flex flex-col min-h-screen bg-stone-50">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden bg-stone-950">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-stone-950/40 z-10" />
-          <img
-            src="/images/hero-trackrecord-garden.png"
-            alt="Multifamily Portfolio"
-            className="w-full h-full object-cover opacity-80"
-          />
+    <div className="flex min-h-screen flex-col bg-stone-50">
+      {/* Hero */}
+      <section className="relative isolate flex min-h-[560px] items-center overflow-hidden bg-stone-950 md:min-h-[620px]">
+        <div className="absolute inset-0 -z-20">
+          <img src="/images/hero-trackrecord-garden.png" alt="Multifamily community" className="h-full w-full object-cover opacity-85" />
         </div>
-        <div className="container relative z-20 pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-8">
-              <span className="w-2 h-2 rounded-full bg-secondary" />
-              <span className="text-sm font-medium tracking-wide uppercase">Portfolio</span>
-            </div>
-            <h1 className="text-4xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-              Proven <br />
-              <span className="text-secondary">Performance</span>
-            </h1>
-            <p className="text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
-              Six full-cycle realizations across 723 units. Verified returns from actual dated cash flows.
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#040C1D]/92 via-[#040C1D]/72 to-[#040C1D]/35" />
+        <div className="container py-24">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl">
+            <p className="inline-flex items-center gap-2 border border-white/20 bg-primary/50 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm">
+              <ShieldCheck className="h-3.5 w-3.5 text-secondary" aria-hidden="true" /> Principal experience
+            </p>
+            <h1 className="mt-7 font-display text-5xl font-bold leading-[0.95] text-white md:text-7xl">Historical proof.<br /><span className="text-secondary">Clearly attributed.</span></h1>
+            <p className="mt-7 max-w-3xl text-lg leading-relaxed text-stone-200 md:text-xl">
+              Selected high-level historical experience of the principals before FoxRidge Equity Partners. FoxRidge is a newer platform; the proof below is not presented as its own operating history.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Portfolio Summary Stats */}
-      <section className="border-b border-stone-200 bg-white">
-        <div className="container py-0 px-0 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-stone-200 border-x border-stone-200">
-            {[
-              { value: "$81M+", label: "Total Exit Value" },
-              { value: "723", label: "Units Exited" },
-              { value: "1.77x", label: "Avg Equity Multiple" },
-              { value: "26%", label: "Avg Project IRR" },
-            ].map((stat, index) => (
-              <div key={index} className="p-10 text-center hover:bg-stone-50 transition-colors group">
-                <p className="text-3xl md:text-5xl font-display font-bold text-stone-900 mb-2 group-hover:scale-110 transition-transform duration-300">{stat.value}</p>
-                <p className="text-sm text-stone-500 uppercase tracking-wider font-mono">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="container px-0 md:px-8 overflow-x-auto">
-          <p className="text-xs text-stone-400 italic py-3 border-t border-stone-100">
-            * Past performance is not indicative of future results. All returns shown are gross of fees and represent the principals' prior experience under prior sponsoring entities. Actual results may differ materially. Averages shown are simple (unweighted) averages of deal-level figures; dollar-weighted pooled returns would differ. Net-of-fee returns are available upon request.
+      {/* Methodology */}
+      <section className="border-b border-stone-200 bg-white py-8 md:py-10">
+        <div className="container">
+          <p className="border-l-2 border-secondary pl-4 text-xs leading-relaxed text-stone-500 md:text-sm">
+            The selected projects below reflect prior activities of the principals under prior sponsoring entities where applicable. The public proof block is a selected historical subset, not a fund-level composite or a representation of FoxRidge’s own track record. Past performance is not indicative of future results.
           </p>
         </div>
       </section>
 
-      {/* Realized Deals Table */}
-      <section className="py-12 md:py-24 bg-stone-50">
+      {/* Public proof block */}
+      <section className="bg-white py-16 md:py-24">
         <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+          <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
             <div>
-              <h2 className="font-display text-3xl font-bold text-stone-900 mb-2">Some of Our Realized Projects</h2>
-              <p className="text-stone-500 text-base">Six full-cycle exits — XIRR calculated from actual dated cash flows. Representative experience of the principals prior to FoxRidge Equity Partners.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Selected historical proof</p>
+              <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">A public view of selected realized projects.</h2>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-stone-600 md:text-lg">
+                Six selected realized projects are shown at a high level to provide context for the principals’ prior operating experience. Current FoxRidge opportunities are evaluated separately and are not inferred from these historical activities.
+              </p>
             </div>
-            <p className="text-sm text-stone-400 italic mt-4 md:mt-0">* Returns are gross of fees and represent prior principal experience. Past performance is not indicative of future results.</p>
-          </div>
-
-          <div className="bg-white border border-stone-200 overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead className="bg-stone-100 border-b border-stone-200">
-                <tr>
-                  {["Deal Name", "Location", "Units", "Acquired", "Disposed", "Hold", "Buy Price", "Sale Price", "Value ↑", "Equity Multiple", "Project IRR"].map((h) => (
-                    <th key={h} className="text-left font-bold text-stone-900 uppercase tracking-wider py-5 px-4 text-xs whitespace-nowrap">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {realizedDeals.map((deal, i) => (
-                  <motion.tr
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.07 }}
-                    className="border-b border-stone-100 hover:bg-stone-50 transition-colors"
-                  >
-                    <td className="py-5 px-4 font-semibold text-stone-900 font-display whitespace-nowrap">{deal.property}</td>
-                    <td className="py-5 px-4 text-stone-600 whitespace-nowrap">{deal.location}</td>
-                    <td className="py-5 px-4 text-stone-700 font-medium">{deal.units}</td>
-                    <td className="py-5 px-4 text-stone-500 whitespace-nowrap">{deal.acquired}</td>
-                    <td className="py-5 px-4 text-stone-500 whitespace-nowrap">{deal.disposed}</td>
-                    <td className="py-5 px-4 text-stone-600">{deal.holdYrs} yrs</td>
-                    <td className="py-5 px-4 text-stone-600 whitespace-nowrap">{deal.buyPrice}</td>
-                    <td className="py-5 px-4 text-stone-600 whitespace-nowrap">{deal.salePrice}</td>
-                    <td className="py-5 px-4 font-semibold text-emerald-700">{deal.valueIncrease}</td>
-                    <td className="py-5 px-4">
-                      <span className="font-bold text-primary text-base">{deal.equityMultiple}</span>
-                    </td>
-                    <td className="py-5 px-4">
-                      <span className="inline-block bg-secondary/10 text-secondary border border-secondary/30 font-bold px-3 py-1 text-sm rounded-none">{deal.projectIRR}</span>
-                    </td>
-                  </motion.tr>
-                ))}
-                {/* Totals row */}
-                <tr className="bg-primary/5 border-t-2 border-primary/20">
-                  <td className="py-5 px-4 font-bold text-stone-900 uppercase tracking-wide text-xs">Portfolio Totals</td>
-                  <td className="py-5 px-4 text-stone-500 text-xs">TX Markets</td>
-                  <td className="py-5 px-4 font-bold text-stone-900">723</td>
-                  <td colSpan={3} className="py-5 px-4 text-stone-400 text-xs">Avg hold: 2.6 yrs</td>
-                  <td className="py-5 px-4 font-bold text-stone-900">$56.0M</td>
-                  <td className="py-5 px-4 font-bold text-stone-900">$81.1M</td>
-                  <td className="py-5 px-4 font-bold text-emerald-700">+45%</td>
-                  <td className="py-5 px-4 font-bold text-primary text-base">1.77x avg</td>
-                  <td className="py-5 px-4">
-                    <span className="inline-block bg-secondary/20 text-secondary border border-secondary/40 font-bold px-3 py-1 text-sm rounded-none">26% avg</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+              {proofMetrics.map((metric) => (
+                <div key={metric.label} className="border border-stone-200 bg-stone-50 p-5 text-center md:p-6">
+                  <p className="font-display text-3xl font-bold text-primary md:text-4xl">{metric.value}</p>
+                  <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.09em] text-stone-500">{metric.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Active Holdings */}
-      <section className="py-12 md:py-24 bg-white">
+      {/* Responsive project cards */}
+      <section className="bg-stone-50 py-16 md:py-24">
         <div className="container">
-          <div className="mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-700 mb-6">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-sm font-semibold uppercase tracking-wider">Currently Held</span>
+          <div className="flex flex-col justify-between gap-5 border-b border-stone-200 pb-8 md:flex-row md:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Selected projects</p>
+              <h2 className="mt-2 font-display text-3xl font-bold text-primary md:text-4xl">Project context, without performance promotion.</h2>
             </div>
-            <h2 className="font-display text-3xl font-bold text-stone-900 mb-3">Active Portfolio</h2>
-            <p className="text-stone-500 text-base max-w-2xl">Four Class A and B garden-style communities currently under active management across the Houston MSA.</p>
+            <p className="max-w-md text-sm leading-relaxed text-stone-500 md:text-right">The cards retain the verified project identity, location, units, and historical acquisition and disposition dates. Detailed historical performance is not published through the public website.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {activeHoldings.map((prop, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {selectedProjects.map((project, index) => (
+              <motion.article
+                key={project.property}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-stone-50 border border-stone-200 hover:border-secondary/40 transition-colors group p-8"
+                transition={{ delay: index * 0.04 }}
+                className="border border-stone-200 bg-white p-6"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <h3 className="font-display text-xl font-bold text-stone-900 mb-1 group-hover:text-primary transition-colors">{prop.property}</h3>
-                    <div className="flex items-center gap-2 text-stone-500 text-sm">
-                      <MapPin className="w-3.5 h-3.5" />
-                      <span>{prop.location}</span>
-                    </div>
-                  </div>
-                  <Badge className="bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-none px-3 py-1 font-semibold text-xs uppercase tracking-wide">
-                    Active
-                  </Badge>
+                <p className="font-mono text-xs font-bold tracking-[0.14em] text-secondary">PROJECT {String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 font-display text-2xl font-bold leading-tight text-stone-900">{project.property}</h3>
+                <div className="mt-6 space-y-3 text-sm text-stone-600">
+                  <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-secondary" aria-hidden="true" />{project.location}</p>
+                  <p className="flex items-center gap-2"><Building2 className="h-4 w-4 text-secondary" aria-hidden="true" />{project.units} units</p>
+                  <p className="flex items-center gap-2"><CalendarDays className="h-4 w-4 text-secondary" aria-hidden="true" />Acquired {project.acquired} · Disposed {project.disposed}</p>
                 </div>
-
-                <div className="grid grid-cols-3 gap-4 mb-6 py-5 border-y border-stone-200">
-                  <div className="text-center">
-                    <p className="text-2xl font-display font-bold text-stone-900">{prop.units}</p>
-                    <p className="text-xs text-stone-500 uppercase tracking-wider mt-1">Units</p>
-                  </div>
-                  <div className="text-center border-x border-stone-200">
-                    <p className="text-2xl font-display font-bold text-stone-900">{prop.built}</p>
-                    <p className="text-xs text-stone-500 uppercase tracking-wider mt-1">Year Built</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-lg font-display font-bold text-secondary">{prop.assetClass}</p>
-                    <p className="text-xs text-stone-500 uppercase tracking-wider mt-1">Asset Class</p>
-                  </div>
-                </div>
-
-                <p className="text-stone-600 leading-relaxed text-sm">{prop.description}</p>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
-
-          <div className="mt-10 p-6 bg-stone-50 border border-stone-200 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <Building2 className="w-8 h-8 text-secondary shrink-0" />
-              <div>
-                <p className="font-bold text-stone-900 text-lg">1,347 Units Currently Under Management</p>
-                <p className="text-stone-500 text-sm">All Class A &amp; B garden-style communities · Houston MSA · Texas</p>
-              </div>
-            </div>
-            <Link href="/contact">
-              <Button className="bg-primary text-white hover:bg-primary/90 rounded-none px-8 py-5 font-bold shrink-0">
-                Explore Partnership Opportunities <ArrowUpRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* International Investors Cross-Reference */}
-      <section className="bg-white">
+      {/* Platform distinction */}
+      <section className="bg-white py-16 md:py-20">
         <div className="container">
-          <div className="border-l-4 border-secondary bg-stone-50 px-8 py-6">
-            <p className="text-stone-600 text-sm">
-              <span className="font-bold text-stone-900">Interested in co-investing from outside the United States?</span>{" "}
-              We welcome international family offices and principals looking for direct exposure to U.S. Sun Belt multifamily assets.{" "}
-              <Link href="/international-investors" className="text-secondary font-semibold hover:underline">See our international investor program →</Link>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study */}
-      <section className="py-0 bg-primary text-white">
-        <div className="flex flex-col lg:flex-row">
-          <div className="lg:w-1/2 relative min-h-[500px]">
-            <img src="/images/hero-luxury-apartment.jpg" alt="Case Study" className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-            <div className="absolute inset-0 bg-primary/20 mix-blend-multiply pointer-events-none"></div>
-          </div>
-
-          <div className="lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center">
-            <span className="text-secondary font-mono text-sm uppercase tracking-widest mb-4 block">Case Study: El Ranchito / Milagro</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-8">Rapid Turnaround Execution</h2>
-            <p className="text-xl text-white/70 font-light leading-relaxed mb-10">
-              Acquired a distressed 68-unit asset in Fort Worth, executed a focused operational and cosmetic turnaround, and exited in just 12 months — delivering the portfolio's best single-deal return.
-            </p>
-
-            <div className="space-y-6 mb-12">
-              <div className="flex items-center gap-4 border-b border-white/10 pb-4">
-                <span className="font-display text-2xl font-bold text-secondary">42%</span>
-                <span className="text-lg">Project IRR</span>
-              </div>
-              <div className="flex items-center gap-4 border-b border-white/10 pb-4">
-                <span className="font-display text-2xl font-bold text-secondary">1.42x</span>
-                <span className="text-lg">Equity Multiple in 12 Months</span>
-              </div>
-              <div className="flex items-center gap-4 border-b border-white/10 pb-4">
-                <span className="font-display text-2xl font-bold text-secondary">$2.5M → $3.8M</span>
-                <span className="text-lg">Buy → Sale Price (+52%)</span>
-              </div>
-            </div>
-
-            <Link href="/contact">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-primary w-fit px-8 py-6 text-lg rounded-none transition-all duration-300 font-bold">
-                Request Information
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Research & Insights Banner */}
-      <section className="py-10 bg-stone-50 border-t border-stone-200">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="grid gap-8 border border-stone-200 bg-stone-50 p-7 md:grid-cols-[.9fr_1.1fr] md:p-10">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-1 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" /> New Research Published
-              </p>
-              <h3 className="text-primary font-display font-bold text-xl">The Texas Triangle Advantage — Read Our Latest Market Research</h3>
-              <p className="text-stone-500 text-sm mt-1">Understand the market forces behind our current acquisition strategy in DFW, Houston, San Antonio, and Austin.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">FoxRidge today</p>
+              <h2 className="mt-2 font-display text-3xl font-bold leading-tight text-primary">A current platform with a defined acquisition program.</h2>
             </div>
-            <Link href="/investor-resources" className="shrink-0">
-              <button className="inline-flex items-center gap-2 bg-secondary hover:bg-primary text-white font-bold px-6 py-3 text-sm whitespace-nowrap transition-colors">
-                View Research & Insights →
-              </button>
-            </Link>
+            <div className="space-y-4 text-sm leading-relaxed text-stone-600 md:text-base">
+              <p>FoxRidge’s current focus is the Texas Triangle: Houston, Dallas–Fort Worth, and San Antonio; Class B+/A multifamily assets; and properties built in 2000 or later.</p>
+              <p>Every current opportunity is separately evaluated, approved by the investor, and documented in definitive agreements. Historical principal experience provides context; it is not a representation, forecast, or promise regarding any future FoxRidge acquisition.</p>
+              <Link href="/strategy" className="inline-flex items-center gap-2 font-bold text-secondary transition-colors hover:text-primary">Explore Strategy &amp; Markets <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Information path */}
+      <section className="bg-primary py-16 text-white md:py-20">
+        <div className="container grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Further conversation</p>
+            <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Request a confidential introduction.</h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/75 md:text-base">After a confidential introduction, FoxRidge may determine whether further historical information is appropriate to share based on internal review, applicable requirements, and the specific discussion. This public page does not provide automated or self-certified access to detailed performance material.</p>
+          </div>
+          <Button asChild size="lg" className="bg-secondary px-7 py-6 text-white hover:bg-secondary/90">
+            <Link href="/contact">Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link>
+          </Button>
         </div>
       </section>
     </div>
-    </AccreditedGate>
   );
 }
