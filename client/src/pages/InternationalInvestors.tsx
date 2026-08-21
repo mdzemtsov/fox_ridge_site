@@ -1,327 +1,265 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
-import { motion } from "framer-motion";
 import {
-  Globe,
-  Users,
-  Building2,
-  Briefcase,
-  Phone,
-  Eye,
-  Handshake,
-  Shield,
-  TrendingUp,
-  MapPin,
+  ArrowRight,
   ArrowUpRight,
   CheckCircle2,
+  ClipboardCheck,
+  FileText,
+  Globe2,
+  Handshake,
+  Landmark,
+  ShieldCheck,
+  Users,
 } from "lucide-react";
+import { Link } from "wouter";
 
-const pillars = [
+const partnershipPrinciples = [
+  "One investor, one approved acquisition.",
+  "Investor approval before commitment.",
+  "FoxRidge invests alongside the capital partner.",
+  "FoxRidge leads day-to-day execution after closing.",
+  "Current focus: Texas Triangle, Class B+/A multifamily, 2000+ vintage.",
+];
+
+const processSteps = [
   {
     number: "01",
-    icon: Users,
-    title: "We choose the deal together. We do not pool you with strangers.",
-    body: "FoxRidge evaluates one acquisition with one capital partner at a time. You review the specific asset, underwriting, and relevant diligence materials before deciding whether to approve that acquisition. Each opportunity is separate and subject to definitive documentation.",
+    title: "Confidential introduction",
+    description: "Begin with a private conversation about objectives, experience, and whether a direct multifamily partnership may be a fit.",
+    icon: Handshake,
   },
   {
     number: "02",
-    icon: Building2,
-    title: "We have built the operating infrastructure. You do not need to.",
-    body: "FoxRidge brings acquisition, underwriting, asset-management, capital-plan, and market experience to each separate opportunity. After closing, FoxRidge leads day-to-day execution and oversees third-party property management as part of the asset-management process.",
+    title: "Mutual fit and preliminary eligibility",
+    description: "FoxRidge and the prospective partner assess whether a conversation may proceed, subject to applicable requirements and internal review.",
+    icon: ShieldCheck,
   },
   {
     number: "03",
-    icon: Shield,
-    title: "We are a spin-off of a family office mindset. We treat your capital like our own.",
-    body: "FoxRidge was built on the principle that capital deserves the same level of care and discipline that a principal would apply to their own balance sheet. We do not chase deals. We do not deploy to hit fundraising targets. We underwrite to ground truth — actual rents, actual expenses, actual market conditions — and we walk away from deals that do not meet our standard. Most do not.",
+    title: "Current opportunity and underwriting",
+    description: "Where appropriate, FoxRidge discusses a current opportunity, the underwriting, the asset, and the material considerations for that transaction.",
+    icon: Landmark,
   },
   {
     number: "04",
-    icon: Eye,
-    title: "We are hands-on, every single day.",
-    body: "The General Partners are personally engaged on every asset — every week, often every day. We are at the property. We are on the calls with the property manager. We are in the deal room with the lenders. Your asset is not delegated to a junior associate three layers down. It is run by the principals you partnered with.",
+    title: "Documentation with each party’s advisers",
+    description: "Each party works with its own qualified advisers. Final terms, eligibility, and rights are addressed in definitive deal documentation.",
+    icon: FileText,
   },
   {
     number: "05",
-    icon: Briefcase,
-    title: "We build customized portfolios — not products.",
-    body: "Some partners evaluate a single acquisition; others may consider future opportunities separately. FoxRidge’s current acquisition focus is the Texas Triangle — Dallas–Fort Worth, Houston, and San Antonio — with each acquisition reviewed on its own merits.",
-  },
-  {
-    number: "06",
-    icon: Phone,
-    title: "The relationship is direct.",
-    body: "FoxRidge maintains direct communication with the capital partner throughout the acquisition and asset-management process. Specific communication and reporting practices are established for each acquisition in the applicable governing documents.",
+    title: "Closing and reporting",
+    description: "Following closing, FoxRidge leads day-to-day execution and provides reporting as established for the acquisition in its governing documents.",
+    icon: ClipboardCheck,
   },
 ];
 
-const regions = [
-  { region: "The Middle East", desc: "GCC family offices, principals, and private capital seeking long-duration, dollar-denominated U.S. real estate exposure" },
-  { region: "Japan", desc: "Institutional and private capital looking for Sun Belt diversification beyond traditional gateway market exposure" },
-  { region: "Australia", desc: "Family offices and self-directed investors building U.S. real estate allocations" },
-  { region: "India", desc: "UHNW principals and family offices accessing U.S. multifamily directly, outside fund structures" },
-  { region: "Canada", desc: "Private investors and family offices seeking direct U.S. exposure beyond domestic real estate" },
-  { region: "Europe", desc: "UK, German, Swiss, and broader EU principals seeking direct ownership in U.S. assets" },
-  { region: "Latin America", desc: "Mexican, Brazilian, Colombian, and Argentine capital seeking dollar income and capital preservation" },
-  { region: "Southeast Asia", desc: "Singapore and Hong Kong-based family offices and private investors" },
-];
-
-const steps = [
+const faqs = [
   {
-    number: "1",
-    title: "We talk.",
-    body: "An introductory conversation to understand your objectives, experience, and whether a direct multifamily partnership may be a fit. This discussion is informational only and is not an offer or solicitation.",
+    question: "Who may start a conversation?",
+    answer: "Family offices, principals, and qualified private investors may request a confidential introduction. Any discussion remains subject to applicable law, internal compliance, and the facts of the specific relationship and transaction.",
   },
   {
-    number: "2",
-    title: "We share the pipeline.",
-    body: "We discuss FoxRidge’s current focus, investment process, and relevant market considerations. Opportunity-specific materials are shared only when appropriate and subject to the applicable process, review, and legal requirements.",
+    question: "How are U.S. person and non-U.S. person considerations handled?",
+    answer: "Eligibility and any offering process depend on the investor’s circumstances, residence or status, applicable law, and the specific transaction. The page does not create automatic eligibility for any person or jurisdiction.",
   },
   {
-    number: "3",
-    title: "We structure the partnership.",
-    body: "Prospective partners should work with their own qualified legal, tax, and financial advisers. Any acquisition remains subject to diligence, financing, approval, and definitive documentation; no timing is guaranteed.",
+    question: "Are KYC/AML and sanctions checks required?",
+    answer: "Yes. FoxRidge may conduct internal compliance, KYC/AML, sanctions, and other screening appropriate to the relationship and transaction before proceeding.",
   },
   {
-    number: "4",
-    title: "We operate. You hold the asset.",
-    body: "After closing, FoxRidge leads day-to-day execution, asset management, capital-plan oversight, and oversight of third-party property management. Reporting and any site-visit discussions are handled as appropriate for the acquisition and its governing documents.",
+    question: "Does FoxRidge provide legal or tax advice?",
+    answer: "No. Prospective partners should consult independent legal, tax, financial, and other qualified advisers regarding their own circumstances and any proposed transaction.",
+  },
+  {
+    question: "How are reporting and asset visits handled?",
+    answer: "Reporting practices are established in the governing documents for the acquisition. Asset or market visits may be discussed when appropriate for the transaction and are not a promised service or travel arrangement.",
   },
 ];
 
 export default function InternationalInvestors() {
   return (
-    <div className="flex flex-col min-h-screen bg-stone-50">
-
-      {/* ── Section 1: Hero ── */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-stone-950">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/75 to-stone-950/40 z-10" />
+    <div className="flex min-h-screen flex-col bg-stone-50">
+      {/* Hero */}
+      <section className="relative isolate flex min-h-[720px] items-center overflow-hidden bg-stone-950 md:min-h-[780px]">
+        <div className="absolute inset-0 -z-20">
           <img
             src="/images/hero-strategy-garden.jpg"
-            alt="International investment partnership"
-            className="w-full h-full object-cover opacity-70"
+            alt="U.S. multifamily community"
+            className="h-full w-full object-cover"
           />
         </div>
-        <div className="container relative z-20 pt-24 pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-8">
-              <Globe className="w-4 h-4 text-secondary" />
-              <span className="text-sm font-medium tracking-wide uppercase">International Capital Partners</span>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#040C1D]/95 via-[#040C1D]/80 to-[#040C1D]/35" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-[#040C1D]/70 to-transparent" />
+
+        <div className="container py-20 lg:py-28">
+          <div className="max-w-5xl">
+            <div className="mb-7 inline-flex items-center gap-2 border border-white/20 bg-[#0E2148]/55 px-3 py-2 text-[10px] font-bold tracking-[0.16em] text-white/90 backdrop-blur-sm sm:text-xs">
+              <Globe2 className="h-3.5 w-3.5 text-secondary" aria-hidden="true" />
+              INTERNATIONAL CAPITAL PARTNERS
             </div>
-            <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-6 leading-tight">
-              Your Partner in U.S. Real Estate.{" "}
-              <span className="text-secondary">Not Your Fund.</span>
+            <h1 className="max-w-5xl font-display text-4xl font-bold leading-[0.98] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Direct U.S. Multifamily Partnerships for Family Offices &amp; Private Capital <span className="text-secondary">Worldwide.</span>
             </h1>
-            <p className="text-lg text-stone-300 max-w-2xl font-light leading-relaxed mb-6">
-              FoxRidge Equity Partners welcomes capital from the Middle East, Japan, Australia, India, Canada, Europe, Latin America, Southeast Asia — and from anywhere serious investors are looking for a real partnership in U.S. multifamily real estate.
+            <p className="mt-7 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl md:text-2xl">
+              FoxRidge partners with family offices, principals and qualified private investors seeking direct, deal-by-deal exposure to U.S. multifamily real estate.
             </p>
-            <p className="text-base text-stone-400 max-w-2xl leading-relaxed">
-              FoxRidge works with one capital partner on one acquisition at a time. The investor reviews and approves each acquisition; after closing, FoxRidge leads day-to-day execution through asset management, capital-plan oversight, and oversight of third-party property management. Each acquisition is separate and subject to diligence, financing, approval, and definitive documentation.
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
+              One investor. One deal. You review and approve every acquisition. We invest alongside you and operate through exit.
             </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Section 2: Why U.S. Multifamily Now ── */}
-      <section className="py-12 md:py-24 bg-white">
-        <div className="container max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="font-display text-4xl font-bold text-primary mb-8">Why U.S. Multifamily. Why Now.</h2>
-            <p className="text-stone-600 text-lg leading-relaxed mb-8">
-              The U.S. economy is the largest, deepest, and most resilient capital market in the world — and U.S. multifamily real estate has demonstrated consistent structural resilience within it. Through every cycle of the last forty years — recessions, financial crises, pandemics, rate shocks — multifamily has been among the asset classes that institutional capital returns to first. The reason is structural: people need housing. As with all real estate investments, past performance is not indicative of future results.
-            </p>
-
-            <div className="border-l-4 border-secondary pl-6 mb-8">
-              <p className="text-xl font-display font-bold text-stone-900">Current market conditions require careful underwriting.</p>
-            </div>
-
-            <p className="text-stone-600 text-lg leading-relaxed mb-8">
-              The multifamily market has experienced a large recent supply cycle, changing capital costs, and divergent conditions across metros and submarkets. FoxRidge evaluates Class B+/A multifamily opportunities in the Texas Triangle using asset-level underwriting, market research, and diligence. Market conditions and investment outcomes can change, and no result is assured.
-            </p>
-
-            <div className="border-l-4 border-secondary pl-6 mb-8">
-              <p className="text-xl font-display font-bold text-stone-900">Each acquisition is evaluated separately.</p>
-            </div>
-
-            <p className="text-stone-600 text-lg leading-relaxed">
-              FoxRidge evaluates acquisition opportunities individually, with attention to asset quality, basis, submarket conditions, financing, and the proposed business plan. Any transaction is subject to investor approval, diligence, financing, and definitive documentation.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Section 3: 6 Pillars ── */}
-      <section className="py-12 md:py-24 bg-stone-50">
-        <div className="container">
-          <div className="mb-14">
-            <h2 className="font-display text-4xl font-bold text-primary mb-4">We Are Your Hands-On Partner. Not a Fund.</h2>
-            <p className="text-stone-500 text-lg max-w-2xl">There is a fundamental difference between handing capital to a fund and partnering with an operator. We are not a fund.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillars.map((pillar, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-white border border-stone-200 hover:border-secondary/40 transition-colors p-8 group"
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="text-3xl font-display font-bold text-secondary/30 leading-none">{pillar.number}</span>
-                  <pillar.icon className="w-5 h-5 text-primary group-hover:text-secondary transition-colors" />
-                </div>
-                <h3 className="font-display text-base font-bold text-stone-900 mb-3 leading-snug">{pillar.title}</h3>
-                <p className="text-stone-600 text-sm leading-relaxed">{pillar.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 4: Capital from Anywhere ── */}
-      <section className="py-12 md:py-24 bg-primary text-white">
-        <div className="container">
-          <div className="mb-12">
-            <h2 className="font-display text-4xl font-bold text-white mb-4">We Welcome Capital from Around the World.</h2>
-            <p className="text-white/70 text-lg">FoxRidge actively partners with investors across the globe. We welcome capital from:</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4 mb-14">
-            {regions.map((r, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className="flex gap-4 p-5 border border-white/10 hover:border-secondary/50 transition-colors bg-white/5"
-              >
-                <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-white">{r.region}</span>
-                  <span className="text-white/60"> — {r.desc}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <div className="max-w-3xl">
-            <p className="text-xl text-white font-display font-semibold mb-4">
-              FoxRidge welcomes a conversation with family offices, principals, and qualified private investors interested in a direct multifamily partnership, including those based outside the United States.
-            </p>
-            <p className="text-white/60 leading-relaxed">
-              FoxRidge does not provide legal, tax, financial, or cross-border structuring advice. Prospective partners should consult their own qualified advisers regarding their circumstances and any applicable laws, taxes, regulations, or capital-movement requirements.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 5: How a Partnership Begins ── */}
-      <section className="py-12 md:py-24 bg-white">
-        <div className="container">
-          <div className="mb-14">
-            <h2 className="font-display text-4xl font-bold text-primary mb-3">A Conversation. Then a Deal. Then a Partnership.</h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-stone-200">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 border-r border-stone-200 last:border-r-0 hover:bg-stone-50 transition-colors group"
-              >
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors">
-                  <span className="text-white font-display font-bold text-lg">{step.number}</span>
-                </div>
-                <h3 className="font-display text-lg font-bold text-stone-900 mb-3">{step.title}</h3>
-                <p className="text-stone-600 text-sm leading-relaxed">{step.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 6: Site Visits ── */}
-      <section className="py-12 md:py-24 bg-stone-50">
-        <div className="container max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col lg:flex-row gap-12 items-start"
-          >
-            <div className="lg:w-1/3 shrink-0">
-              <div className="w-14 h-14 bg-secondary/10 border border-secondary/30 flex items-center justify-center mb-6">
-                <MapPin className="w-7 h-7 text-secondary" />
-              </div>
-              <h2 className="font-display text-3xl font-bold text-primary leading-tight">Come Walk the Property. We Host You.</h2>
-            </div>
-            <div className="lg:w-2/3">
-              <p className="text-stone-600 text-lg leading-relaxed">
-                Where appropriate, prospective partners may discuss an in-person property or market visit with FoxRidge. FoxRidge’s current acquisition focus is Dallas–Fort Worth, Houston, and San Antonio; any visit arrangements, if available, are considered case by case.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Regulation S / International Legal Disclaimer ── */}
-      <section className="py-12 bg-stone-100 border-t border-stone-200">
-        <div className="container max-w-4xl">
-          <div className="flex items-start gap-4">
-            <div className="w-8 h-8 bg-secondary/20 border border-secondary/30 flex items-center justify-center shrink-0 mt-0.5">
-              <Shield className="w-4 h-4 text-secondary" />
-            </div>
-            <div className="space-y-3">
-              <p className="text-xs font-bold uppercase tracking-widest text-secondary">Important Notice to Non-U.S. Persons</p>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                <strong className="text-stone-800">Regulation S Notice:</strong> The information on this page is directed solely at persons who are not "U.S. persons" as defined in Rule 902(k) of Regulation S under the U.S. Securities Act of 1933, as amended. Any securities offered by FoxRidge Equity Partners / Consulting Point LLC have not been and will not be registered under the Securities Act and may not be offered or sold in the United States or to U.S. persons absent registration or an applicable exemption from registration.
-              </p>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                <strong className="text-stone-800">No Offer or Solicitation:</strong> Nothing on this page constitutes an offer to sell or a solicitation of an offer to buy any security in any jurisdiction where such offer or solicitation would be unlawful. Prospective non-U.S. investors are responsible for ensuring that any investment they make complies with all applicable laws and regulations in their home jurisdiction, including any foreign investment restrictions, currency controls, and securities regulations.
-              </p>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                <strong className="text-stone-800">Tax Considerations:</strong> Non-U.S. investors in U.S. real estate may be subject to FIRPTA withholding and other U.S. federal and state tax obligations. FoxRidge Equity Partners does not provide tax advice. Prospective investors are strongly encouraged to consult qualified legal and tax advisors in their home jurisdiction before making any investment decision.
-              </p>
-              <p className="text-stone-500 text-xs leading-relaxed">
-                By continuing to engage with this page and our team, non-U.S. persons confirm that they are doing so in compliance with the laws of their jurisdiction and that they are not relying on this website as the basis for any investment decision.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 7: CTA ── */}
-      <section className="py-12 md:py-24 bg-primary text-white">
-        <div className="container text-center max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Explore International Investing.</h2>
-            <p className="text-white/70 text-lg mb-10">Discuss whether a direct multifamily partnership may be a fit for your objectives and circumstances.</p>
-            <Link href="/contact">
-              <Button className="bg-secondary text-white hover:bg-secondary/90 rounded-none px-10 py-6 text-lg font-bold">
-                Request a confidential introduction <ArrowUpRight className="ml-2 w-5 h-5" />
+            <div className="mt-8">
+              <Button asChild size="lg" className="h-auto min-h-14 bg-secondary px-6 py-3 text-left text-sm font-bold leading-snug text-white hover:bg-[#b8942a] sm:px-8 sm:text-base">
+                <Link href="/contact">
+                  Request a confidential international introduction <ArrowUpRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
+                </Link>
               </Button>
-            </Link>
-          </motion.div>
+              <p className="mt-4 max-w-3xl text-xs leading-relaxed text-white/60">
+                Available to eligible investors, subject to applicable law, internal compliance, KYC/AML, sanctions screening and final deal documentation.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Why this model */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-start lg:gap-16">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Why this model</p>
+              <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">A direct partnership around a specific asset.</h2>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-stone-600 md:text-lg">
+                The model is designed for a principal or capital partner who wants to review a specific acquisition, its underwriting, and its key risks before making a decision.
+              </p>
+              <p className="mt-5 max-w-lg text-sm leading-relaxed text-stone-500">
+                It is a direct, deal-by-deal partnership rather than a blind-pool fund. Each acquisition stands on its own and remains subject to review, approval, and definitive documentation.
+              </p>
+            </div>
+
+            <div className="border-l-2 border-secondary bg-stone-50 p-6 md:p-8">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-stone-400">Partnership at a glance</p>
+              <ul className="mt-5 space-y-4">
+                {partnershipPrinciples.map((principle) => (
+                  <li key={principle} className="flex items-start gap-3 text-sm leading-relaxed text-stone-700 md:text-base">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
+                    <span>{principle}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Practical international process */}
+      <section className="border-y border-white/10 bg-primary py-16 text-white md:py-24">
+        <div className="container">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">A practical international process</p>
+            <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">Clear steps. Appropriate review.</h2>
+            <p className="mt-5 text-base leading-relaxed text-white/75 md:text-lg">
+              Cross-border relationships require careful coordination. The process is deliberately staged and no timing, jurisdictional outcome, or transaction is guaranteed.
+            </p>
+          </div>
+
+          <div className="mt-11 grid gap-4 sm:grid-cols-2 lg:grid-cols-5 md:gap-5">
+            {processSteps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <article key={step.number} className="border border-white/15 bg-white/[0.06] p-5 backdrop-blur-sm md:p-6">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold tracking-[0.12em] text-secondary">{step.number}</span>
+                    <Icon className="h-5 w-5 text-secondary" aria-hidden="true" />
+                  </div>
+                  <h3 className="mt-7 font-display text-xl font-bold leading-tight text-white">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">{step.description}</p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-stone-50 py-16 md:py-24">
+        <div className="container max-w-4xl">
+          <div className="text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">International FAQ</p>
+            <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">Practical questions, answered directly.</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-stone-600 md:text-lg">
+              This overview is informational only. It does not provide legal, tax, securities, immigration, or investment advice.
+            </p>
+          </div>
+
+          <div className="mt-10 divide-y divide-stone-200 border-y border-stone-200 bg-white">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="group px-5 py-5 md:px-7">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-display text-lg font-bold text-primary marker:content-none">
+                  <span>{faq.question}</span>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-stone-300 text-secondary transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                </summary>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-stone-600">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-xs leading-relaxed text-stone-500">
+            Europe, the GCC, Asia-Pacific, and Latin America, among other markets, may be considered subject to applicable requirements. No region or jurisdiction is automatically eligible.
+          </p>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-16">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Experience and accountability</p>
+              <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">Experienced principals. Direct accountability.</h2>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-stone-600 md:text-lg">
+                FoxRidge applies experienced principal leadership to each acquisition while maintaining a direct relationship with the capital partner throughout the asset lifecycle.
+              </p>
+              <Link href="/track-record" className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-secondary transition-colors hover:text-primary">
+                View principal experience <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[
+                  { value: "$1B+", label: "Transaction experience" },
+                  { value: "7,000+", label: "Units" },
+                  { value: "36", label: "Properties" },
+                ].map((item) => (
+                  <div key={item.label} className="border border-stone-200 bg-stone-50 p-5 md:p-6">
+                    <p className="font-display text-3xl font-bold text-primary md:text-4xl">{item.value}</p>
+                    <p className="mt-2 text-xs font-bold uppercase tracking-[0.1em] text-stone-500">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 border-l-2 border-secondary pl-4 text-xs leading-relaxed text-stone-500">
+                Experience shown reflects prior activities of the principals under prior sponsoring entities. Past performance is not indicative of future results.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative overflow-hidden bg-stone-950 py-16 text-white md:py-24">
+        <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(201,168,70,0.20),transparent_65%)] lg:block" />
+        <div className="container relative z-10 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a private conversation</p>
+          <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">Request a confidential international introduction.</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
+            Discuss whether a direct U.S. multifamily partnership may be a fit for your objectives and circumstances.
+          </p>
+          <Button asChild size="lg" className="mt-8 h-auto min-h-14 bg-secondary px-6 py-3 text-left text-sm font-bold leading-snug text-white hover:bg-[#b8942a] sm:px-8 sm:text-base">
+            <Link href="/contact">
+              Request a confidential international introduction <ArrowUpRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
+            </Link>
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }
