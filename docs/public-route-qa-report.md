@@ -48,7 +48,7 @@
 
 ## Verification Summary
 
-The production build and TypeScript check passed. The local route audit verified English language, exactly one H1, canonical metadata, descriptions, Open Graph metadata, Twitter summary metadata, skip navigation, main landmark presence, and runtime image-alt coverage across 13 routes. The rendered link audit checked **302 internal links** across the public pages and Investor Portal with **zero failures**. The sitemap includes all intended public routes and the current public research note; it excludes controlled and obsolete materials.
+The production build and TypeScript check passed. Production verification confirmed the deployed homepage title, current direct-multifamily description, skip-navigation link, updated hero presentation, and readable concise footer disclosure. The local route audit verified English language, exactly one H1, canonical metadata, descriptions, Open Graph metadata, Twitter summary metadata, skip navigation, main landmark presence, and runtime image-alt coverage across 13 routes. The rendered link audit checked **302 internal links** across the public pages and Investor Portal with **zero failures**. The sitemap includes all intended public routes and the current public research note; it excludes controlled and obsolete materials.
 
 Mobile visual QA at a 390px width covered the homepage, Track Record, Research & Insights hub, current research note, Investor Portal, and Privacy Policy. The review confirmed readable hero overlays, CTA wrapping, responsive historical-proof layout, long-form research readability, contextual portal presentation, and the corrected Privacy Policy contrast.
 
