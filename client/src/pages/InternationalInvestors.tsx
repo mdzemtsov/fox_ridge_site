@@ -110,7 +110,7 @@ export default function InternationalInvestors() {
             <div className="mt-8">
               <Button asChild size="lg" className="h-auto min-h-14 bg-secondary px-6 py-3 text-left text-sm font-bold leading-snug text-white hover:bg-[#b8942a] sm:px-8 sm:text-base">
                 <Link href="/contact">
-                  Request a confidential international introduction <ArrowUpRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
+                  Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
                 </Link>
               </Button>
               <p className="mt-4 max-w-3xl text-xs leading-relaxed text-white/60">
@@ -249,13 +249,13 @@ export default function InternationalInvestors() {
         <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(201,168,70,0.20),transparent_65%)] lg:block" />
         <div className="container relative z-10 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a private conversation</p>
-          <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">Request a confidential international introduction.</h2>
+          <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">Request a confidential introduction.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
             Discuss whether a direct U.S. multifamily partnership may be a fit for your objectives and circumstances.
           </p>
           <Button asChild size="lg" className="mt-8 h-auto min-h-14 bg-secondary px-6 py-3 text-left text-sm font-bold leading-snug text-white hover:bg-[#b8942a] sm:px-8 sm:text-base">
             <Link href="/contact">
-              Request a confidential international introduction <ArrowUpRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
+              Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
             </Link>
           </Button>
         </div>

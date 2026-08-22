@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ArrowUpRight, ChevronRight, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
-import InvestorListPopup from "@/components/InvestorListPopup";
 
 type NavigationItem = {
   name: string;
@@ -46,8 +45,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-background text-foreground selection:bg-secondary selection:text-white">
-      <InvestorListPopup />
-
       <header
         className={cn(
           "fixed z-40 w-full border-b border-border bg-background/92 backdrop-blur-xl transition-[height,box-shadow,background-color] duration-300",
@@ -203,6 +200,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <Link href="/investor-resources" className="transition-colors hover:text-white">Research</Link>
                   <Link href="/about" className="transition-colors hover:text-white">About</Link>
                   <Link href="/investor-portal" className="transition-colors hover:text-white">Investor Portal</Link>
+                  <Link href="/contact?interest=research" className="transition-colors hover:text-white">Receive research updates</Link>
                 </div>
               </nav>
 

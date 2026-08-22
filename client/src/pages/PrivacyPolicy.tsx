@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4">Privacy Policy</h1>
           <p className="text-stone-500 mb-2">Effective Date: May 28, 2026</p>
-          <p className="text-stone-500 mb-12">Last Updated: August 21, 2026</p>
+          <p className="text-stone-500 mb-12">Last Updated: August 22, 2026</p>
 
           <div className="prose prose-stone max-w-none space-y-2">
 
@@ -27,8 +27,8 @@ export default function PrivacyPolicy() {
             <p className="text-stone-600">We collect information in the following ways:</p>
             <h3 className="text-lg font-bold text-stone-800 mt-6 mb-2">a. Information You Provide Directly</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
-              <li><strong>Contact Form Submissions:</strong> Name, email address, phone number, country of residence, and any message content you submit through our contact form.</li>
-              <li><strong>Consent Notices:</strong> Relevant forms may ask you to acknowledge applicable notices before submitting your information.</li>
+              <li><strong>Confidential-Introduction Form:</strong> Full name, email address, investor type, country or region, U.S. person status, indicative capital capacity, current interest, preferred time zone, optional message content, and the required privacy/contact-consent acknowledgement that you submit.</li>
+              <li><strong>Detailed-Materials Requests:</strong> If you request a confidential introduction in connection with detailed materials, we use the same initial-introduction information to review the request. This form is not investor verification.</li>
             </ul>
             <h3 className="text-lg font-bold text-stone-800 mt-6 mb-2">b. Information Collected Automatically</h3>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
               Our Website uses the following types of cookies and browser storage:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
-              <li><strong>Preferences and session controls:</strong> We use browser localStorage for theme preferences and the Investor Portal’s browser-session record, and sessionStorage to avoid repeatedly displaying the Investor List popup during the same browser session. These controls do not independently verify investor eligibility.</li>
+              <li><strong>Theme preference:</strong> We use browser localStorage only to remember your selected display theme. The current public site does not use browser storage for investor verification, automatic lead-capture popups, or Investor Portal access.</li>
               <li><strong>Analytics Cookies:</strong> We do not currently use third-party analytics services (e.g., Google Analytics). If we add analytics in the future, this policy will be updated and a cookie consent banner will be displayed.</li>
               <li><strong>No Advertising Cookies:</strong> We do not use advertising, retargeting, or tracking cookies of any kind.</li>
             </ul>
@@ -66,12 +66,12 @@ export default function PrivacyPolicy() {
               We retain personal information only for as long as necessary to fulfill the purposes for which it was collected, or as required by applicable law:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
-              <li><strong>Contact form submissions:</strong> Retained for up to <strong>3 years</strong> from the date of submission, or until you request deletion, whichever comes first.</li>
-              <li><strong>Server log data:</strong> Retained for up to <strong>90 days</strong> for security and operational purposes.</li>
-              <li><strong>Browser storage data</strong> (theme preferences, Investor Portal browser-session record, and popup session preference): Stored locally in your browser only; retained according to the relevant feature’s session or expiry setting, or until you clear your browser data.</li>
+              <li><strong>Confidential-introduction submissions:</strong> Routed through a Vercel-hosted endpoint and written to a private Vercel Blob store for FoxRidge’s review of the inquiry. The reviewed application source does not implement automated deletion; the retention schedule for these records must be administered under FoxRidge’s internal policy and applicable legal requirements.</li>
+              <li><strong>Hosting and security logs:</strong> May be retained by the applicable hosting provider for security and operational purposes according to its service configuration.</li>
+              <li><strong>Browser storage data</strong> (theme preference): Stored locally in your browser until you clear browser storage or change the preference.</li>
             </ul>
             <p className="text-stone-600">
-              After the applicable retention period, personal data is securely deleted or anonymized.
+              FoxRidge’s internal retention and deletion process for confidential-introduction records must be applied to the private record store; the reviewed website source does not itself automate deletion or anonymization.
             </p>
 
             <h2 className="text-2xl font-bold text-stone-900 mt-10 mb-4">4. Disclosure of Your Information</h2>
@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
               We do not sell, trade, rent, or otherwise transfer your personal information to third parties for their own marketing purposes. We may disclose personal information in the following limited circumstances:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
-              <li><strong>Service Providers:</strong> To trusted third-party vendors who assist us in operating our Website or conducting our business (e.g., email service providers, web hosting), subject to confidentiality obligations.</li>
+              <li><strong>Form routing and private storage:</strong> The reviewed confidential-introduction implementation uses Vercel-hosted form routing and a private Vercel Blob store. No CRM or email-service provider is configured in the reviewed website source. Any future provider will be evaluated and reflected in this policy as appropriate.</li>
               <li><strong>Legal Compliance:</strong> To comply with any applicable law, regulation, court order, or governmental request.</li>
               <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of all or a portion of our assets, with appropriate confidentiality protections.</li>
               <li><strong>Protection of Rights:</strong> To enforce our Terms of Service or protect the rights, property, or safety of FoxRidge Equity Partners / Consulting Point LLC, our users, or others.</li>
@@ -109,7 +109,7 @@ export default function PrivacyPolicy() {
 
             <h2 className="text-2xl font-bold text-stone-900 mt-10 mb-4">7. Your Rights — Other Jurisdictions</h2>
             <p className="text-stone-600 leading-relaxed">
-              Depending on your country or state of residence, you may have additional rights under applicable data protection laws (including GDPR for EU/EEA residents, PIPEDA for Canadian residents, or other applicable frameworks). These rights may include the right to access, rectify, erase, restrict processing of, or port your personal data, and the right to object to processing. To exercise any such rights, please contact us at the address below.
+              If you submit a confidential-introduction inquiry from outside the United States, your information may be routed through and stored using the website’s hosting and private-storage services. The reviewed application source does not implement a visitor-selected storage location or separate regional processing workflow. Depending on your country or state of residence, you may have additional rights under applicable data protection laws. To exercise a request regarding your information, please contact us at the address below.
             </p>
 
             <h2 className="text-2xl font-bold text-stone-900 mt-10 mb-4">8. Children's Privacy</h2>
