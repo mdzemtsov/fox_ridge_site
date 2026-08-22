@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/ScrollToTop";
+import RouteMetadata from "./components/RouteMetadata";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Strategy from "./pages/Strategy";
@@ -23,6 +24,7 @@ function Router() {
   return (
     <Layout>
       <ScrollToTop />
+      <RouteMetadata />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />

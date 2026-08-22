@@ -1,15 +1,10 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 
 export default function PrivacyPolicy() {
   return (
     <div className="flex flex-col min-h-screen bg-stone-50 pt-32 pb-24">
       <div className="container max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-4">Privacy Policy</h1>
           <p className="text-stone-500 mb-2">Effective Date: May 28, 2026</p>
           <p className="text-stone-500 mb-12">Last Updated: August 22, 2026</p>
@@ -143,7 +138,7 @@ export default function PrivacyPolicy() {
             <Link href="/terms-of-service" className="text-secondary font-semibold hover:underline text-sm">Terms of Service →</Link>
             <Link href="/contact" className="text-secondary font-semibold hover:underline text-sm">Contact Us →</Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
