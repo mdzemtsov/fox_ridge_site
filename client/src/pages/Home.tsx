@@ -61,7 +61,9 @@ export default function Home() {
             </div>
 
             <h1 className="max-w-4xl font-display text-4xl font-bold leading-[0.98] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-              One Investor. <span className="text-secondary">One Deal.</span> Full Alignment.
+              The asset is named.<br />
+              The numbers are <span className="text-secondary">known.</span><br />
+              Then capital moves.
             </h1>
 
             <p className="mt-7 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl md:text-2xl">
