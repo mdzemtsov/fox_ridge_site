@@ -230,3 +230,47 @@ html[lang="zh-CN"] .tracking-\[0\.12em\],
 html[lang="zh-CN"] .tracking-\[0\.08em\] {
   letter-spacing: 0.06em;
 }
+
+html[lang="ar"] body,
+.locale-ar {
+  font-family: "Noto Sans Arabic", "Tahoma", sans-serif;
+}
+
+html[lang="ar"] .font-display,
+.locale-ar .font-display {
+  font-family: "Noto Naskh Arabic", "Noto Sans Arabic", serif;
+  letter-spacing: 0;
+}
+
+html[lang="ar"] .tracking-\[0\.16em\],
+html[lang="ar"] .tracking-\[0\.12em\],
+html[lang="ar"] .tracking-\[0\.08em\],
+html[lang="ar"] .tracking-wider,
+.locale-ar .tracking-\[0\.16em\],
+.locale-ar .tracking-\[0\.12em\],
+.locale-ar .tracking-\[0\.08em\],
+.locale-ar .tracking-wider {
+  letter-spacing: 0;
+}
+
+html[lang="ar"] .font-mono,
+.locale-ar .font-mono {
+  font-family: "DM Sans", monospace;
+}
+
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] select,
+.locale-ar input,
+.locale-ar textarea,
+.locale-ar select {
+  text-align: right;
+}
+
+html[lang="ar"] input[type="email"],
+html[lang="ar"] input[type="url"],
+.locale-ar input[type="email"],
+.locale-ar input[type="url"] {
+  direction: ltr;
+  text-align: left;
+}

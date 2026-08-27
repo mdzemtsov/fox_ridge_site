@@ -32,6 +32,19 @@ import NotFoundZh from "./pages/zh/NotFoundZh";
 import MarketInsightsZh from "./pages/zh/MarketInsightsZh";
 import InvestorPortalZh from "./pages/zh/InvestorPortalZh";
 import ResearchCurrentProgramZh from "./pages/zh/ResearchCurrentProgramZh";
+import HomeAr from "./pages/ar/HomeAr";
+import AboutAr from "./pages/ar/AboutAr";
+import StrategyAr from "./pages/ar/StrategyAr";
+import OurInvestorsAr from "./pages/ar/OurInvestorsAr";
+import TrackRecordAr from "./pages/ar/TrackRecordAr";
+import ContactAr from "./pages/ar/ContactAr";
+import InternationalInvestorsAr from "./pages/ar/InternationalInvestorsAr";
+import PrivacyPolicyAr from "./pages/ar/PrivacyPolicyAr";
+import TermsOfServiceAr from "./pages/ar/TermsOfServiceAr";
+import NotFoundAr from "./pages/ar/NotFoundAr";
+import MarketInsightsAr from "./pages/ar/MarketInsightsAr";
+import InvestorPortalAr from "./pages/ar/InvestorPortalAr";
+import ResearchCurrentProgramAr from "./pages/ar/ResearchCurrentProgramAr";
 
 function Router() {
   return (
@@ -66,6 +79,21 @@ function Router() {
         <Route path="/zh/investor-portal" component={InvestorPortalZh} />
         <Route path="/zh/404" component={NotFoundZh} />
         <Route path="/zh/:rest*" component={NotFoundZh} />
+
+        <Route path="/ar" component={HomeAr} />
+        <Route path="/ar/about" component={AboutAr} />
+        <Route path="/ar/strategy" component={StrategyAr} />
+        <Route path="/ar/our-investors" component={OurInvestorsAr} />
+        <Route path="/ar/track-record" component={TrackRecordAr} />
+        <Route path="/ar/contact" component={ContactAr} />
+        <Route path="/ar/international-investors" component={InternationalInvestorsAr} />
+        <Route path="/ar/privacy-policy" component={PrivacyPolicyAr} />
+        <Route path="/ar/terms-of-service" component={TermsOfServiceAr} />
+        <Route path="/ar/investor-resources" component={MarketInsightsAr} />
+        <Route path="/ar/research/current-acquisition-framework" component={ResearchCurrentProgramAr} />
+        <Route path="/ar/investor-portal" component={InvestorPortalAr} />
+        <Route path="/ar/404" component={NotFoundAr} />
+        <Route path="/ar/:rest*" component={NotFoundAr} />
 
         <Route component={NotFound} />
       </Switch>

@@ -93,7 +93,15 @@ function internalNotificationContent(record) {
 function acknowledgementContent(record) {
   const safeName = escapeHtml(record.fullName);
   const chinese = record.locale === "zh-CN";
-  const resourcesUrl = `${FOXRIDGE_SITE_URL}${chinese ? "/zh/investor-resources" : "/investor-resources"}`;
+  const arabic = record.locale === "ar";
+  const resourcesUrl = `${FOXRIDGE_SITE_URL}${chinese ? "/zh/investor-resources" : arabic ? "/ar/investor-resources" : "/investor-resources"}`;
+
+  if (arabic) {
+    return {
+      text: `مرحبًا ${record.fullName}،\n\nشكرًا لطلبك تواصلاً سريًا أوليًا مع FoxRidge Equity Partners. لقد تلقينا استفسارك وسنراجعه شخصيًا. إذا وُجد توافق متبادل، سيتواصل أحد أعضاء فريق FoxRidge معك لترتيب محادثة تمهيدية سرية.\n\nفي هذه الأثناء، يمكنك الاطلاع على موارد المستثمرين: ${resourcesUrl}\n\nتؤكد هذه الرسالة استلام استفسارك فقط. ولا تشكل عرضًا أو طلبًا أو دعوةً للاستثمار.\n\nFoxRidge Equity Partners\n${FOXRIDGE_SITE_URL}`,
+      html: `<!doctype html><html lang="ar" dir="rtl"><body style="margin:0;background:#f7f5f2;font-family:'Noto Sans Arabic',Tahoma,Arial,sans-serif;color:#1e293b;direction:rtl;text-align:right;"><div style="max-width:680px;margin:0 auto;padding:32px 20px;"><div style="background:#0e2148;padding:24px 28px;"><p style="margin:0;color:#d2ad52;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;direction:ltr;text-align:right;">FoxRidge Equity Partners</p><h1 style="margin:10px 0 0;color:#ffffff;font-size:24px;line-height:1.45;">لقد تلقينا استفسارك.</h1></div><div style="background:#ffffff;border:1px solid #e7e3dc;padding:28px;"><p style="margin:0 0 18px;color:#1e293b;font-size:16px;line-height:1.8;">مرحبًا ${safeName}،</p><p style="margin:0 0 18px;color:#5f5a52;font-size:15px;line-height:1.8;">شكرًا لطلبك تواصلاً سريًا أوليًا مع FoxRidge Equity Partners. لقد تلقينا استفسارك وسنراجعه شخصيًا.</p><p style="margin:0 0 24px;color:#5f5a52;font-size:15px;line-height:1.8;">إذا وُجد توافق متبادل، سيتواصل أحد أعضاء فريق FoxRidge معك لترتيب محادثة تمهيدية سرية.</p><div style="border-right:2px solid #d2ad52;background:#fbfaf8;padding:18px 20px;"><p style="margin:0 0 7px;color:#0e2148;font-size:12px;font-weight:700;letter-spacing:0;">في هذه الأثناء</p><p style="margin:0;color:#5f5a52;font-size:14px;line-height:1.75;">يمكنك الاطلاع على <a href="${resourcesUrl}" style="color:#0e2148;font-weight:700;text-decoration:underline;">موارد المستثمرين</a>.</p></div></div><p style="margin:16px 0 0;color:#7a746b;font-size:12px;line-height:1.7;">تؤكد هذه الرسالة استلام استفسارك فقط. ولا تشكل عرضًا أو طلبًا أو دعوةً للاستثمار.</p></div></body></html>`,
+    };
+  }
 
   if (chinese) {
     return {
@@ -156,7 +164,7 @@ async function sendInternalNotification(record, submissionId) {
 async function sendApplicantAcknowledgement(record, submissionId) {
   await sendEmail({
     to: record.email,
-    subject: record.locale === "zh-CN" ? "我们已收到您的保密初步沟通申请" : "We received your confidential introduction request",
+    subject: record.locale === "zh-CN" ? "我们已收到您的保密初步沟通申请" : record.locale === "ar" ? "لقد تلقينا طلبك للتواصل السري" : "We received your confidential introduction request",
     content: acknowledgementContent(record),
     idempotencyKey: `foxridge-confidential-introduction/applicant-acknowledgement/${submissionId}`,
     category: "applicant-acknowledgement",
@@ -223,7 +231,7 @@ export default async function handler(req, res) {
     message,
     privacyConsent,
     source: "confidential-introduction-form",
-    locale: req.body?.locale === "zh-CN" ? "zh-CN" : "en",
+    locale: req.body?.locale === "zh-CN" ? "zh-CN" : req.body?.locale === "ar" ? "ar" : "en",
     formVersion: "2026-08",
   };
 
