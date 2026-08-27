@@ -213,3 +213,20 @@
     }
   }
 }
+
+html[lang="zh-CN"] body,
+.locale-zh {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+html[lang="zh-CN"] .font-display,
+.locale-zh .font-display {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", serif;
+  letter-spacing: 0;
+}
+
+html[lang="zh-CN"] .tracking-\[0\.16em\],
+html[lang="zh-CN"] .tracking-\[0\.12em\],
+html[lang="zh-CN"] .tracking-\[0\.08em\] {
+  letter-spacing: 0.06em;
+}

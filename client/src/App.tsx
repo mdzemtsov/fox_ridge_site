@@ -19,6 +19,19 @@ import NotFound from "./pages/NotFound";
 import MarketInsights from "./pages/MarketInsights";
 import InvestorPortal from "./pages/InvestorPortal";
 import ResearchCurrentProgram from "./pages/ResearchCurrentProgram";
+import HomeZh from "./pages/zh/HomeZh";
+import AboutZh from "./pages/zh/AboutZh";
+import StrategyZh from "./pages/zh/StrategyZh";
+import OurInvestorsZh from "./pages/zh/OurInvestorsZh";
+import TrackRecordZh from "./pages/zh/TrackRecordZh";
+import ContactZh from "./pages/zh/ContactZh";
+import InternationalInvestorsZh from "./pages/zh/InternationalInvestorsZh";
+import PrivacyPolicyZh from "./pages/zh/PrivacyPolicyZh";
+import TermsOfServiceZh from "./pages/zh/TermsOfServiceZh";
+import NotFoundZh from "./pages/zh/NotFoundZh";
+import MarketInsightsZh from "./pages/zh/MarketInsightsZh";
+import InvestorPortalZh from "./pages/zh/InvestorPortalZh";
+import ResearchCurrentProgramZh from "./pages/zh/ResearchCurrentProgramZh";
 
 function Router() {
   return (
@@ -38,6 +51,22 @@ function Router() {
         <Route path="/investor-resources" component={MarketInsights} />
         <Route path="/research/current-acquisition-framework" component={ResearchCurrentProgram} />
         <Route path="/investor-portal" component={InvestorPortal} />
+
+        <Route path="/zh" component={HomeZh} />
+        <Route path="/zh/about" component={AboutZh} />
+        <Route path="/zh/strategy" component={StrategyZh} />
+        <Route path="/zh/our-investors" component={OurInvestorsZh} />
+        <Route path="/zh/track-record" component={TrackRecordZh} />
+        <Route path="/zh/contact" component={ContactZh} />
+        <Route path="/zh/international-investors" component={InternationalInvestorsZh} />
+        <Route path="/zh/privacy-policy" component={PrivacyPolicyZh} />
+        <Route path="/zh/terms-of-service" component={TermsOfServiceZh} />
+        <Route path="/zh/investor-resources" component={MarketInsightsZh} />
+        <Route path="/zh/research/current-acquisition-framework" component={ResearchCurrentProgramZh} />
+        <Route path="/zh/investor-portal" component={InvestorPortalZh} />
+        <Route path="/zh/404" component={NotFoundZh} />
+        <Route path="/zh/:rest*" component={NotFoundZh} />
+
         <Route component={NotFound} />
       </Switch>
     </Layout>

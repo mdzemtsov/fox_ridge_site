@@ -92,7 +92,15 @@ function internalNotificationContent(record) {
 
 function acknowledgementContent(record) {
   const safeName = escapeHtml(record.fullName);
-  const resourcesUrl = `${FOXRIDGE_SITE_URL}/investor-resources`;
+  const chinese = record.locale === "zh-CN";
+  const resourcesUrl = `${FOXRIDGE_SITE_URL}${chinese ? "/zh/investor-resources" : "/investor-resources"}`;
+
+  if (chinese) {
+    return {
+      text: `您好 ${record.fullName}，\n\n感谢您向 FoxRidge Equity Partners 申请保密初步沟通。我们已收到您的咨询，并将逐一进行审核。如存在相互适配，FoxRidge 团队成员将与您联系并安排保密初步沟通。\n\n在此期间，您可以查看我们的研究资料：${resourcesUrl}\n\n本邮件仅确认已收到您的咨询，不构成任何要约、招揽或投资邀请。\n\nFoxRidge Equity Partners\n${FOXRIDGE_SITE_URL}`,
+      html: `<!doctype html><html lang="zh-CN"><body style="margin:0;background:#f7f5f2;font-family:'Noto Sans SC','Microsoft YaHei',Arial,sans-serif;color:#1e293b;"><div style="max-width:680px;margin:0 auto;padding:32px 20px;"><div style="background:#0e2148;padding:24px 28px;"><p style="margin:0;color:#d2ad52;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;">FoxRidge Equity Partners</p><h1 style="margin:10px 0 0;color:#ffffff;font-size:24px;line-height:1.3;">我们已收到您的咨询。</h1></div><div style="background:#ffffff;border:1px solid #e7e3dc;padding:28px;"><p style="margin:0 0 18px;color:#1e293b;font-size:16px;line-height:1.6;">您好 ${safeName}，</p><p style="margin:0 0 18px;color:#5f5a52;font-size:15px;line-height:1.65;">感谢您向 FoxRidge Equity Partners 申请保密初步沟通。我们已收到您的咨询，并将逐一进行审核。</p><p style="margin:0 0 24px;color:#5f5a52;font-size:15px;line-height:1.65;">如存在相互适配，FoxRidge 团队成员将与您联系并安排保密初步沟通。</p><div style="border-left:2px solid #d2ad52;background:#fbfaf8;padding:18px 20px;"><p style="margin:0 0 7px;color:#0e2148;font-size:12px;font-weight:700;letter-spacing:1px;">在此期间</p><p style="margin:0;color:#5f5a52;font-size:14px;line-height:1.6;">您可以查看我们的 <a href="${resourcesUrl}" style="color:#0e2148;font-weight:700;text-decoration:underline;">研究资料</a>。</p></div></div><p style="margin:16px 0 0;color:#7a746b;font-size:12px;line-height:1.55;">本邮件仅确认已收到您的咨询，不构成任何要约、招揽或投资邀请。</p></div></body></html>`,
+    };
+  }
 
   return {
     text: `Hello ${record.fullName},\n\nThank you for requesting a confidential introduction with FoxRidge Equity Partners. We have received your inquiry and will review it personally. If there is mutual fit, a member of the FoxRidge team will contact you to arrange a confidential introductory conversation.\n\nIn the meantime, you may review our Investor Resources: ${resourcesUrl}\n\nThis email confirms receipt of your inquiry only. It is not an offer, solicitation, or invitation to invest.\n\nFoxRidge Equity Partners\n${FOXRIDGE_SITE_URL}`,
@@ -148,7 +156,7 @@ async function sendInternalNotification(record, submissionId) {
 async function sendApplicantAcknowledgement(record, submissionId) {
   await sendEmail({
     to: record.email,
-    subject: "We received your confidential introduction request",
+    subject: record.locale === "zh-CN" ? "我们已收到您的保密初步沟通申请" : "We received your confidential introduction request",
     content: acknowledgementContent(record),
     idempotencyKey: `foxridge-confidential-introduction/applicant-acknowledgement/${submissionId}`,
     category: "applicant-acknowledgement",
@@ -215,6 +223,7 @@ export default async function handler(req, res) {
     message,
     privacyConsent,
     source: "confidential-introduction-form",
+    locale: req.body?.locale === "zh-CN" ? "zh-CN" : "en",
     formVersion: "2026-08",
   };
 
