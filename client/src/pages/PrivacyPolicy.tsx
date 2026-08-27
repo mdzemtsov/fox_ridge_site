@@ -47,7 +47,7 @@ export default function PrivacyPolicy() {
             <p className="text-stone-600">We use the information we collect to:</p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
               <li>Respond to your inquiries and communicate with you about potential investment partnerships.</li>
-              <li>Route a submitted confidential-introduction inquiry to FoxRidge’s designated operational inbox for individual review.</li>
+              <li>Route a submitted confidential-introduction inquiry to FoxRidge’s designated operational inbox for individual review and send an automated confirmation of receipt to the email address submitted through the form.</li>
               <li>Present our Website and its contents to you.</li>
               <li>Comply with applicable legal and regulatory obligations.</li>
               <li>Improve and maintain our Website.</li>
@@ -62,7 +62,7 @@ export default function PrivacyPolicy() {
               We retain personal information only for as long as necessary to fulfill the purposes for which it was collected, or as required by applicable law:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
-              <li><strong>Confidential-introduction submissions:</strong> Routed through a Vercel-hosted endpoint, written to a private Vercel Blob store, and sent as an operational email notification through Resend to <strong>partners@foxridgeequity.com</strong> for FoxRidge’s individual review of the inquiry. The reviewed application source does not implement automated deletion; the retention schedule for these records must be administered under FoxRidge’s internal policy and applicable legal requirements.</li>
+              <li><strong>Confidential-introduction submissions:</strong> Routed through a Vercel-hosted endpoint, written to a private Vercel Blob store, and sent through Resend as an operational notification to <strong>partners@foxridgeequity.com</strong> and as an automated confirmation of receipt to the email address submitted through the form. The reviewed application source does not implement automated deletion; the retention schedule for these records must be administered under FoxRidge’s internal policy and applicable legal requirements.</li>
               <li><strong>Hosting and security logs:</strong> May be retained by the applicable hosting provider for security and operational purposes according to its service configuration.</li>
               <li><strong>Browser storage data</strong> (theme preference): Stored locally in your browser until you clear browser storage or change the preference.</li>
             </ul>
@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
               We do not sell, trade, rent, or otherwise transfer your personal information to third parties for their own marketing purposes. We may disclose personal information in the following limited circumstances:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-2 text-stone-600">
-              <li><strong>Form routing, private storage, and email notification:</strong> The confidential-introduction implementation uses Vercel-hosted form routing, a private Vercel Blob store, and Resend to send the submitted inquiry as an operational notification to <strong>partners@foxridgeequity.com</strong>. No CRM is configured in the reviewed website source. Any additional provider will be evaluated and reflected in this policy as appropriate.</li>
+              <li><strong>Form routing, private storage, and email notification:</strong> The confidential-introduction implementation uses Vercel-hosted form routing, a private Vercel Blob store, and Resend to send the submitted inquiry as an operational notification to <strong>partners@foxridgeequity.com</strong> and an automated confirmation of receipt to the email address submitted through the form. No CRM is configured in the reviewed website source. Any additional provider will be evaluated and reflected in this policy as appropriate.</li>
               <li><strong>Legal Compliance:</strong> To comply with any applicable law, regulation, court order, or governmental request.</li>
               <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of all or a portion of our assets, with appropriate confidentiality protections.</li>
               <li><strong>Protection of Rights:</strong> To enforce our Terms of Service or protect the rights, property, or safety of FoxRidge Equity Partners / Consulting Point LLC, our users, or others.</li>

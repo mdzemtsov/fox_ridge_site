@@ -2,6 +2,7 @@ import { put } from "@vercel/blob";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_EMAIL_ENDPOINT = "https://api.resend.com/emails";
+const FOXRIDGE_SITE_URL = "https://www.foxridgeequity.com";
 const NOTIFICATION_RECIPIENT = "partners@foxridgeequity.com";
 const NOTIFICATION_SENDER = "FoxRidge Equity Partners <partners@foxridgeequity.com>";
 const INVESTOR_TYPES = new Set([
@@ -57,7 +58,7 @@ function formatHtmlField(label, value) {
   return `<tr><td style="padding:8px 14px 8px 0;color:#5f5a52;font-weight:600;vertical-align:top;white-space:nowrap;">${escapeHtml(label)}</td><td style="padding:8px 0;color:#1e293b;vertical-align:top;">${escapeHtml(value || "Not provided")}</td></tr>`;
 }
 
-function notificationContent(record) {
+function internalNotificationContent(record) {
   const fields = [
     ["Submitted", record.submittedAt],
     ["Full name", record.fullName],
@@ -89,39 +90,69 @@ function notificationContent(record) {
   };
 }
 
-async function sendNotification(record, submissionId) {
+function acknowledgementContent(record) {
+  const safeName = escapeHtml(record.fullName);
+  const resourcesUrl = `${FOXRIDGE_SITE_URL}/investor-resources`;
+
+  return {
+    text: `Hello ${record.fullName},\n\nThank you for requesting a confidential introduction with FoxRidge Equity Partners. We have received your inquiry and will review it personally. If there is mutual fit, a member of the FoxRidge team will contact you to arrange a confidential introductory conversation.\n\nIn the meantime, you may review our Investor Resources: ${resourcesUrl}\n\nThis email confirms receipt of your inquiry only. It is not an offer, solicitation, or invitation to invest.\n\nFoxRidge Equity Partners\n${FOXRIDGE_SITE_URL}`,
+    html: `<!doctype html><html><body style="margin:0;background:#f7f5f2;font-family:Arial,sans-serif;color:#1e293b;"><div style="max-width:680px;margin:0 auto;padding:32px 20px;"><div style="background:#0e2148;padding:24px 28px;"><p style="margin:0;color:#d2ad52;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;">FoxRidge Equity Partners</p><h1 style="margin:10px 0 0;color:#ffffff;font-size:24px;line-height:1.3;">We received your inquiry.</h1></div><div style="background:#ffffff;border:1px solid #e7e3dc;padding:28px;"><p style="margin:0 0 18px;color:#1e293b;font-size:16px;line-height:1.6;">Hello ${safeName},</p><p style="margin:0 0 18px;color:#5f5a52;font-size:15px;line-height:1.65;">Thank you for requesting a confidential introduction with FoxRidge Equity Partners. We have received your inquiry and will review it personally.</p><p style="margin:0 0 24px;color:#5f5a52;font-size:15px;line-height:1.65;">If there is mutual fit, a member of the FoxRidge team will contact you to arrange a confidential introductory conversation.</p><div style="border-left:2px solid #d2ad52;background:#fbfaf8;padding:18px 20px;"><p style="margin:0 0 7px;color:#0e2148;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">In the meantime</p><p style="margin:0;color:#5f5a52;font-size:14px;line-height:1.6;">You may review our <a href="${resourcesUrl}" style="color:#0e2148;font-weight:700;text-decoration:underline;">Investor Resources</a>.</p></div></div><p style="margin:16px 0 0;color:#7a746b;font-size:12px;line-height:1.55;">This email confirms receipt of your inquiry only. It is not an offer, solicitation, or invitation to invest.</p></div></body></html>`,
+  };
+}
+
+async function sendEmail({ to, replyTo, subject, content, idempotencyKey, category }) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error("Resend notification is not configured.");
   }
 
-  const content = notificationContent(record);
   const response = await fetch(RESEND_EMAIL_ENDPOINT, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
-      "Idempotency-Key": `foxridge-confidential-introduction/${submissionId}`,
+      "Idempotency-Key": idempotencyKey,
     },
     body: JSON.stringify({
       from: NOTIFICATION_SENDER,
-      to: [NOTIFICATION_RECIPIENT],
-      reply_to: record.email,
-      subject: `New confidential introduction — ${record.fullName}`,
+      to: [to],
+      ...(replyTo ? { reply_to: replyTo } : {}),
+      subject,
       text: content.text,
       html: content.html,
-      tags: [{ name: "source", value: "confidential-introduction" }],
+      tags: [{ name: "source", value: "confidential-introduction" }, { name: "category", value: category }],
     }),
   });
 
   if (!response.ok) {
-    console.error("Confidential introduction notification failed", {
+    console.error("Confidential introduction email failed", {
+      category,
       status: response.status,
       statusText: response.statusText,
-      submissionId,
     });
-    throw new Error("Confidential introduction notification could not be delivered.");
+    throw new Error("Confidential introduction email could not be delivered.");
   }
+}
+
+async function sendInternalNotification(record, submissionId) {
+  await sendEmail({
+    to: NOTIFICATION_RECIPIENT,
+    replyTo: record.email,
+    subject: `New confidential introduction — ${record.fullName}`,
+    content: internalNotificationContent(record),
+    idempotencyKey: `foxridge-confidential-introduction/internal/${submissionId}`,
+    category: "internal-notification",
+  });
+}
+
+async function sendApplicantAcknowledgement(record, submissionId) {
+  await sendEmail({
+    to: record.email,
+    subject: "We received your confidential introduction request",
+    content: acknowledgementContent(record),
+    idempotencyKey: `foxridge-confidential-introduction/applicant-acknowledgement/${submissionId}`,
+    category: "applicant-acknowledgement",
+  });
 }
 
 export default async function handler(req, res) {
@@ -201,7 +232,8 @@ export default async function handler(req, res) {
       },
     );
 
-    await sendNotification(record, submissionId);
+    await sendInternalNotification(record, submissionId);
+    await sendApplicantAcknowledgement(record, submissionId);
     return res.status(201).json({ success: true });
   } catch (error) {
     console.error("Confidential introduction capture failed", {
