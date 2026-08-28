@@ -212,6 +212,40 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+
+  /**
+   * Shared non-Research content system. Full-bleed sections retain their own
+   * backgrounds and media; these primitives only govern their inner content.
+   */
+  .layout-system {
+    --content-gutter: clamp(1rem, 3vw, 2rem);
+    --content-wide: 80rem; /* 1280px */
+    --content-standard: 72rem; /* 1152px */
+    --content-reading: 44rem; /* 704px */
+    --section-space: clamp(3.75rem, 7vw, 7rem);
+    --section-space-tight: clamp(2.75rem, 5vw, 5rem);
+  }
+
+  .content-wide,
+  .content-standard,
+  .content-reading {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--content-gutter);
+  }
+
+  .content-wide { max-width: var(--content-wide); }
+  .content-standard { max-width: var(--content-standard); }
+  .content-reading { max-width: var(--content-reading); }
+
+  .section-rhythm { padding-block: var(--section-space); }
+  .section-rhythm-tight { padding-block: var(--section-space-tight); }
+
+  /* Existing page containers inherit the wide grid boundary without changing Research. */
+  .layout-system .container {
+    max-width: var(--content-wide);
+    padding-inline: var(--content-gutter);
+  }
 }
 
 html[lang="zh-CN"] body,
@@ -271,6 +305,45 @@ html[lang="ar"] input[type="email"],
 html[lang="ar"] input[type="url"],
 .locale-ar input[type="email"],
 .locale-ar input[type="url"] {
+  direction: ltr;
+  text-align: left;
+}
+
+html[lang="he"] body,
+.locale-he {
+  font-family: "Noto Sans Hebrew", "Arial Hebrew", Arial, sans-serif;
+}
+
+html[lang="he"] .font-display,
+.locale-he .font-display {
+  font-family: "Noto Sans Hebrew", "Arial Hebrew", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+html[lang="he"] .tracking-\[0\.16em\],
+html[lang="he"] .tracking-\[0\.12em\],
+html[lang="he"] .tracking-\[0\.08em\],
+html[lang="he"] .tracking-wider,
+.locale-he .tracking-\[0\.16em\],
+.locale-he .tracking-\[0\.12em\],
+.locale-he .tracking-\[0\.08em\],
+.locale-he .tracking-wider {
+  letter-spacing: 0;
+}
+
+html[lang="he"] input,
+html[lang="he"] textarea,
+html[lang="he"] select,
+.locale-he input,
+.locale-he textarea,
+.locale-he select {
+  text-align: right;
+}
+
+html[lang="he"] input[type="email"],
+html[lang="he"] input[type="url"],
+.locale-he input[type="email"],
+.locale-he input[type="url"] {
   direction: ltr;
   text-align: left;
 }

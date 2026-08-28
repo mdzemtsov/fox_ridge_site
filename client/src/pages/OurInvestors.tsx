@@ -69,19 +69,26 @@ export default function OurInvestors() {
             <p className="mt-7 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl md:text-2xl">
               FoxRidge partners with one family office, principal, or qualified private investor on each approved acquisition. You see the asset and underwriting before you decide. We invest alongside you and lead execution after closing.
             </p>
-            <Button asChild size="lg" className="mt-9 h-14 bg-secondary px-7 text-base font-bold text-white hover:bg-[#b8942a] sm:px-8">
-              <Link href="/contact">
-                Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
-            </Button>
+            <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+              <Button asChild size="lg" className="h-auto min-h-14 w-full whitespace-normal bg-secondary px-7 py-3 text-base font-bold text-white hover:bg-[#b8942a] sm:h-14 sm:w-auto sm:whitespace-nowrap sm:px-8 sm:py-0">
+                <Link href="/contact">
+                  Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="h-auto min-h-14 w-full whitespace-normal border-white/40 bg-white/[0.04] px-6 py-3 text-base font-semibold text-white hover:border-white hover:bg-white/10 hover:text-white sm:h-14 sm:w-auto sm:whitespace-nowrap sm:px-8 sm:py-0">
+                <a href="/our-investors#partnership-model">
+                  See the partnership model <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Plain-language steps */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
+      <section id="partnership-model" className="scroll-mt-28 bg-white py-16 md:py-24">
+        <div className="content-wide">
+          <div className="content-reading text-center">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">The model, in plain language</p>
             <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">You evaluate the asset. We lead the work.</h2>
             <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">
@@ -109,7 +116,7 @@ export default function OurInvestors() {
 
       {/* Partnership at a glance */}
       <section className="bg-primary py-16 text-white md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-start lg:gap-16">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Partnership at a glance</p>
@@ -138,7 +145,7 @@ export default function OurInvestors() {
 
       {/* Audience and international context */}
       <section className="border-b border-stone-200 bg-stone-50 py-14 md:py-20">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Who we work with</p>
@@ -165,7 +172,7 @@ export default function OurInvestors() {
 
       {/* Principal experience */}
       <section className="bg-white py-16 md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-16">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Principal experience</p>
@@ -202,13 +209,13 @@ export default function OurInvestors() {
       {/* Final CTA */}
       <section className="relative overflow-hidden bg-stone-950 py-16 text-white md:py-24">
         <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(201,168,70,0.20),transparent_65%)] lg:block" />
-        <div className="container relative z-10 text-center">
+        <div className="content-standard relative z-10 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a direct conversation</p>
           <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">Request a confidential introduction.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
             Discuss whether the direct partnership model may be a fit for your objectives and circumstances.
           </p>
-          <Button asChild size="lg" className="mt-8 h-14 bg-secondary px-8 text-base font-bold text-white hover:bg-[#b8942a]">
+          <Button asChild size="lg" className="mt-8 h-auto min-h-14 w-full whitespace-normal bg-secondary px-8 py-3 text-base font-bold text-white hover:bg-[#b8942a] sm:h-14 sm:w-auto sm:whitespace-nowrap sm:py-0">
             <Link href="/contact">
               Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Link>

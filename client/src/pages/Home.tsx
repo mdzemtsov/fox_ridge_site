@@ -12,12 +12,17 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "wouter";
+import { motion, useReducedMotion } from "framer-motion";
 
-const proofPoints = [
-  "You approve the deal.",
-  "We invest alongside you.",
-  "We operate through exit.",
+const modelAtGlance = [
+  { title: "You review and approve the asset.", icon: CheckCircle2 },
+  { title: "FoxRidge invests alongside you.", icon: Handshake },
+  { title: "FoxRidge leads execution through exit.", icon: Building2 },
+  { title: "Current focus: Texas Triangle, Class B+/A multifamily, 2000+ vintage.", icon: MapPin },
 ];
+
+// Draft copy — requires content and compliance review before any future publication.
+const MODEL_SUPPORTING_COPY = "One investor. One asset-specific decision. One accountable operating partner.";
 
 const partnershipSteps = [
   {
@@ -41,6 +46,8 @@ const partnershipSteps = [
 ];
 
 export default function Home() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero */}
@@ -71,12 +78,12 @@ export default function Home() {
             </p>
 
             <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-              <Button asChild size="lg" className="h-14 bg-secondary px-6 text-base font-bold text-white hover:bg-[#b8942a] sm:px-8">
+              <Button asChild size="lg" className="h-auto min-h-14 w-full whitespace-normal bg-secondary px-6 py-3 text-base font-bold text-white hover:bg-[#b8942a] sm:h-14 sm:w-auto sm:whitespace-nowrap sm:px-8 sm:py-0">
                 <Link href="/contact">
                   Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-14 border-white/40 bg-white/[0.04] px-6 text-base font-semibold text-white hover:border-white hover:bg-white/10 hover:text-white sm:px-8">
+              <Button asChild variant="outline" size="lg" className="h-auto min-h-14 w-full whitespace-normal border-white/40 bg-white/[0.04] px-6 py-3 text-base font-semibold text-white hover:border-white hover:bg-white/10 hover:text-white sm:h-14 sm:w-auto sm:whitespace-nowrap sm:px-8 sm:py-0">
                 <a href="#partnership-model">
                   See how the partnership works <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </a>
@@ -86,27 +93,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Compact proof strip */}
-      <section className="border-y border-stone-200 bg-white">
-        <div className="container py-5 md:py-6">
-          <div className="grid gap-3 md:grid-cols-3 md:divide-x md:divide-stone-200">
-            {proofPoints.map((point) => (
-              <div key={point} className="flex items-center gap-3 px-1 text-sm font-semibold text-primary md:justify-center md:px-5">
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-secondary" aria-hidden="true" />
-                {point}
-              </div>
-            ))}
+      {/* FoxRidge model at a glance */}
+      <section aria-labelledby="model-at-a-glance-heading" className="border-y border-stone-200 bg-white py-16 md:py-20">
+        <div className="content-wide">
+          <div className="content-reading text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">A direct partnership, clearly structured</p>
+            <h2 id="model-at-a-glance-heading" className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">The FoxRidge model at a glance.</h2>
           </div>
-          <p className="mt-5 text-center text-xs font-bold uppercase tracking-[0.12em] text-stone-500 md:mt-4">
-            Current focus: Texas Triangle · Class B+/A multifamily · 2000+ vintage
+
+          <ol className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-4">
+            {modelAtGlance.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.li
+                  key={item.title}
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+                  whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.22 }}
+                  transition={{ duration: 0.28, delay: index * 0.07, ease: [0.23, 1, 0.32, 1] }}
+                  className="relative min-h-44 border border-stone-200 bg-stone-50 p-6 shadow-[0_10px_28px_rgba(14,33,72,0.045)]"
+                >
+                  {index < modelAtGlance.length - 1 && (
+                    <span aria-hidden="true" className="absolute right-[-17px] top-1/2 z-10 hidden h-px w-[18px] bg-secondary/45 lg:block" />
+                  )}
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/35 bg-secondary/10 text-secondary">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span className="font-mono text-[10px] font-bold tracking-[0.14em] text-stone-400">0{index + 1}</span>
+                  </div>
+                  <p className="mt-8 max-w-[24ch] font-display text-xl font-bold leading-snug text-primary">{item.title}</p>
+                </motion.li>
+              );
+            })}
+          </ol>
+
+          <p className="mx-auto mt-8 max-w-3xl text-center font-display text-xl font-semibold leading-relaxed text-primary md:text-2xl">
+            {MODEL_SUPPORTING_COPY}
           </p>
+
+          <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <Button asChild size="lg" className="h-14 bg-secondary px-6 text-base font-bold text-white hover:bg-[#b8942a] sm:px-8">
+              <Link href="/contact">
+                Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="h-14 border-primary px-6 text-base font-semibold text-primary hover:bg-primary hover:text-white sm:px-8">
+              <Link href="/our-investors">
+                Explore the direct partnership model <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Partnership model */}
       <section id="partnership-model" className="scroll-mt-24 bg-stone-50 py-16 md:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
+        <div className="content-wide">
+          <div className="content-reading text-center">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">How the partnership works</p>
             <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">One clear process. Shared accountability.</h2>
             <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">
@@ -140,7 +184,7 @@ export default function Home() {
 
       {/* Current focus */}
       <section className="bg-primary py-16 text-white md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Strategy &amp; markets</p>
@@ -186,7 +230,7 @@ export default function Home() {
 
       {/* Principal experience */}
       <section className="bg-white py-16 md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-16">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Principal experience</p>
@@ -222,7 +266,7 @@ export default function Home() {
 
       {/* Research */}
       <section className="border-y border-stone-200 bg-stone-50 py-14 md:py-20">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid items-center gap-7 md:grid-cols-[1fr_auto]">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Research</p>
@@ -242,7 +286,7 @@ export default function Home() {
 
       {/* International */}
       <section className="bg-[#0E2148] py-12 text-white md:py-14">
-        <div className="container">
+        <div className="content-standard">
           <div className="flex flex-col items-start justify-between gap-7 md:flex-row md:items-center">
             <div className="flex max-w-3xl items-start gap-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-secondary/40 bg-secondary/10">
@@ -267,13 +311,13 @@ export default function Home() {
       {/* Final conversion */}
       <section className="relative overflow-hidden bg-primary py-16 text-white md:py-24">
         <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(201,168,70,0.20),transparent_65%)] lg:block" />
-        <div className="container relative z-10 text-center">
+        <div className="content-standard relative z-10 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a direct conversation</p>
           <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">Request a confidential introduction.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
             Discuss whether a direct multifamily partnership may be a fit for your objectives and circumstances.
           </p>
-          <Button asChild size="lg" className="mt-8 h-14 bg-secondary px-8 text-base font-bold text-white hover:bg-[#b8942a]">
+          <Button asChild size="lg" className="mt-8 h-auto min-h-14 w-full whitespace-normal bg-secondary px-8 py-3 text-base font-bold text-white hover:bg-[#b8942a] sm:h-14 sm:w-auto sm:whitespace-nowrap sm:py-0">
             <Link href="/contact">
               Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
             </Link>

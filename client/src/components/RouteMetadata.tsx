@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
-import { getLocale, SiteLocale, toArabicPath, toChinesePath, toEnglishPath, toLocalizedPath } from "@/lib/locale";
+import { getLocale, LOCALES, SiteLocale, toArabicPath, toChinesePath, toEnglishPath, toHebrewPath, toLocalizedPath } from "@/lib/locale";
 
 const SITE_URL = "https://www.foxridgeequity.com";
 const SOCIAL_IMAGE = `${SITE_URL}/favicon-512x512.png`;
@@ -57,7 +57,20 @@ const ARABIC_METADATA: Record<string, Metadata> = {
   "/investor-portal": { title: "مواد تفصيلية | FoxRidge Equity Partners", description: "مسار سياقي لطلب الوصول إلى مواد FoxRidge التفصيلية بعد التواصل السري الأولي.", canonicalPath: "/investor-portal", noindex: true },
 };
 
-const METADATA_BY_LOCALE: Record<SiteLocale, Record<string, Metadata>> = { en: ENGLISH_METADATA, zh: CHINESE_METADATA, ar: ARABIC_METADATA };
+const HEBREW_METADATA: Record<string, Metadata> = {
+  "/": { title: "FoxRidge Equity Partners | שותפויות ישירות בנדל״ן רב-משפחתי בארה״ב", description: "שותפויות ישירות בנדל״ן רב-משפחתי בארה״ב עבור משרדי משפחות, מנהלים והון פרטי כשיר. כל הזדמנות נבחנת בנפרד.", canonicalPath: "/", noindex: true },
+  "/our-investors": { title: "שותפי הון | FoxRidge Equity Partners", description: "למדו על מודל השותפות הישירה של FoxRidge בנדל״ן רב-משפחתי בארה״ב, בכפוף למסמכי העסקה ולתנאים הרלוונטיים.", canonicalPath: "/our-investors", noindex: true },
+  "/strategy": { title: "אסטרטגיה ושווקים | FoxRidge Equity Partners", description: "מסגרת הרכישה הנוכחית של FoxRidge: נכסי מגורים רב-משפחתיים Class B+/A במשולש טקסס, שנבנו בשנת 2000 או לאחר מכן ונבחנים עסקה אחר עסקה.", canonicalPath: "/strategy", noindex: true },
+  "/international-investors": { title: "משקיעים בין-לאומיים | FoxRidge Equity Partners", description: "שותפויות ישירות בנדל״ן רב-משפחתי בארה״ב עבור משרדי משפחות והון פרטי כשיר ברחבי העולם, בכפוף לדרישות החלות.", canonicalPath: "/international-investors", noindex: true },
+  "/track-record": { title: "ניסיון קודם | FoxRidge Equity Partners", description: "ניסיון היסטורי נבחר של מנהלי FoxRidge, המיוחס לגופים קודמים לפי הצורך. ביצועי עבר אינם מעידים על תוצאות עתידיות.", canonicalPath: "/track-record", noindex: true },
+  "/about": { title: "אודות | FoxRidge Equity Partners", description: "הכירו את מנהלי FoxRidge ואת האופן שבו ניסיונם הקודם תומך במודל השותפות הישירה הנוכחי.", canonicalPath: "/about", noindex: true },
+  "/contact": { title: "בקשת שיחת היכרות חסויה | FoxRidge Equity Partners", description: "בקשו שיחת היכרות חסויה לשיחה על שותפות ישירה אפשרית בנדל״ן רב-משפחתי בארה״ב עם FoxRidge.", canonicalPath: "/contact", noindex: true },
+  "/privacy-policy": { title: "מדיניות פרטיות | FoxRidge Equity Partners", description: "קראו את מדיניות הפרטיות של FoxRidge Equity Partners ואת מידע נוהלי הנתונים הנוגעים לבקשת היכרות חסויה.", canonicalPath: "/privacy-policy", noindex: true },
+  "/terms-of-service": { title: "תנאי שימוש | FoxRidge Equity Partners", description: "קראו את תנאי השימוש של FoxRidge Equity Partners ו-Consulting Point LLC.", canonicalPath: "/terms-of-service", noindex: true },
+  "/investor-portal": { title: "חומרים מפורטים | FoxRidge Equity Partners", description: "מסלול הקשר לבקשת גישה לחומרים מפורטים של FoxRidge לאחר שיחת היכרות חסויה.", canonicalPath: "/investor-portal", noindex: true },
+};
+
+const METADATA_BY_LOCALE: Record<SiteLocale, Record<string, Metadata>> = { en: ENGLISH_METADATA, zh: CHINESE_METADATA, ar: ARABIC_METADATA, he: HEBREW_METADATA };
 
 function upsertMeta(attribute: "name" | "property", key: string, content: string) {
   const selector = `meta[${attribute}="${key}"]`;
@@ -104,15 +117,18 @@ export default function RouteMetadata() {
       ? { title: "页面未找到｜FoxRidge Equity Partners", description: "您请求的页面暂不可用。", canonicalPath: basePath, noindex: true }
       : locale === "ar"
         ? { title: "الصفحة غير موجودة | FoxRidge Equity Partners", description: "الصفحة التي طلبتها غير متاحة.", canonicalPath: basePath, noindex: true }
-        : { title: "Page Not Found | FoxRidge Equity Partners", description: "The page you requested is not available.", canonicalPath: basePath, noindex: true };
+        : locale === "he"
+          ? { title: "הדף אינו זמין | FoxRidge Equity Partners", description: "הדף שביקשת אינו זמין.", canonicalPath: basePath, noindex: true }
+          : { title: "Page Not Found | FoxRidge Equity Partners", description: "The page you requested is not available.", canonicalPath: basePath, noindex: true };
     const metadata = catalog[basePath] ?? fallback;
     const canonicalUrl = `${SITE_URL}${toLocalizedPath(metadata.canonicalPath, locale)}`;
     const englishUrl = `${SITE_URL}${toEnglishPath(metadata.canonicalPath)}`;
     const chineseUrl = `${SITE_URL}${toChinesePath(metadata.canonicalPath)}`;
     const arabicUrl = `${SITE_URL}${toArabicPath(metadata.canonicalPath)}`;
+    const hebrewUrl = `${SITE_URL}${toHebrewPath(metadata.canonicalPath)}`;
 
-    document.documentElement.lang = locale === "zh" ? "zh-CN" : locale;
-    document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = LOCALES[locale].htmlLang;
+    document.documentElement.dir = LOCALES[locale].direction;
     document.title = metadata.title;
     upsertMeta("name", "description", metadata.description);
     upsertMeta("name", "robots", metadata.noindex ? "noindex, nofollow" : "index, follow");
@@ -121,7 +137,7 @@ export default function RouteMetadata() {
     upsertMeta("property", "og:type", "website");
     upsertMeta("property", "og:url", canonicalUrl);
     upsertMeta("property", "og:image", SOCIAL_IMAGE);
-    upsertMeta("property", "og:image:alt", locale === "zh" ? "FoxRidge Equity Partners 标识" : locale === "ar" ? "شعار FoxRidge Equity Partners" : "FoxRidge Equity Partners logo");
+    upsertMeta("property", "og:image:alt", locale === "zh" ? "FoxRidge Equity Partners 标识" : locale === "ar" ? "شعار FoxRidge Equity Partners" : locale === "he" ? "הלוגו של FoxRidge Equity Partners" : "FoxRidge Equity Partners logo");
     upsertMeta("name", "twitter:card", "summary");
     upsertMeta("name", "twitter:title", metadata.title);
     upsertMeta("name", "twitter:description", metadata.description);
@@ -130,6 +146,9 @@ export default function RouteMetadata() {
     upsertAlternateLanguage("en", englishUrl);
     upsertAlternateLanguage("zh-CN", chineseUrl);
     upsertAlternateLanguage("ar", arabicUrl);
+    // Hebrew is locally complete as a candidate only and remains noindex until native-language and compliance review.
+    // Do not advertise it as an hreflang alternate before its reviewed-public release.
+    void hebrewUrl;
     upsertAlternateLanguage("x-default", englishUrl);
   }, [location]);
 

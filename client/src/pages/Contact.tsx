@@ -110,7 +110,7 @@ export default function Contact() {
   return (
     <div className="bg-stone-50">
       <section className="border-b border-stone-200 bg-primary py-16 text-white md:py-24">
-        <div className="container max-w-5xl">
+        <div className="content-standard">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Confidential introduction</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">Request a confidential introduction.</h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80 md:text-xl">
@@ -119,12 +119,12 @@ export default function Contact() {
         </div>
       </section>
 
-      <main className="container grid max-w-6xl gap-10 py-12 md:py-16 lg:grid-cols-[.82fr_1.18fr] lg:gap-16">
+      <main className="content-standard grid gap-10 py-12 md:py-16 lg:grid-cols-[.82fr_1.18fr] lg:gap-16">
         <aside className="space-y-7 lg:pt-3">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">A considered first step</p>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-primary">Start with mutual fit.</h2>
-            <p className="mt-4 text-base leading-relaxed text-stone-600">This form helps FoxRidge understand the context for an initial conversation. It is not investor verification, an offering process, or an investment commitment.</p>
+            <p className="mt-4 max-w-[var(--content-reading)] text-base leading-relaxed text-stone-600">This form helps FoxRidge understand the context for an initial conversation. It is not investor verification, an offering process, or an investment commitment.</p>
           </div>
 
           <div className="border-l-2 border-secondary bg-white p-5">
@@ -145,7 +145,7 @@ export default function Contact() {
             <div className="py-6 text-center md:py-10" role="status" aria-live="polite">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-secondary/30 bg-secondary/10"><CheckCircle2 className="h-7 w-7 text-secondary" aria-hidden="true" /></div>
               <h2 id="introduction-form-heading" className="mt-6 font-display text-3xl font-bold text-primary">Thank you.</h2>
-              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-stone-600">We review each inquiry personally. If there is mutual fit, a member of the FoxRidge team will contact you to arrange a confidential introductory conversation.</p>
+              <p className="content-reading mt-4 text-base leading-relaxed text-stone-600">We review each inquiry personally. If there is mutual fit, a member of the FoxRidge team will contact you to arrange a confidential introductory conversation.</p>
               <button type="button" onClick={() => setSubmitted(false)} className="mt-8 inline-flex items-center gap-2 border border-primary px-5 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2">Submit another inquiry <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></button>
             </div>
           ) : (
@@ -197,7 +197,7 @@ export default function Contact() {
 
                 <button type="submit" disabled={isSubmitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 bg-secondary px-6 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-65 md:w-auto">
                   {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <LockKeyhole className="h-4 w-4" aria-hidden="true" />}
-                  {isSubmitting ? "Submitting inquiry" : "Request a confidential introduction"}
+                  {isSubmitting ? "Submitting inquiry" : "Send confidential inquiry"}
                 </button>
               </form>
             </>

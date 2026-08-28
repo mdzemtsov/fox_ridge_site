@@ -28,7 +28,7 @@ export default function About() {
             <p className="inline-flex items-center gap-2 border border-white/20 bg-primary/50 px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm">
               <Users className="h-3.5 w-3.5 text-secondary" aria-hidden="true" /> Our Team
             </p>
-            <h1 className="mt-7 font-display text-5xl font-bold leading-[0.95] text-white md:text-7xl">Principal-led.<br /><span className="text-secondary">Directly accountable.</span></h1>
+            <h1 className="mt-7 font-display text-4xl font-bold leading-[0.95] text-white sm:text-5xl md:text-7xl">Principal-led.<br /><span className="text-secondary">Directly accountable.</span></h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-stone-200 md:text-xl">
               Mikhail Pritsker and Slava Davidenko bring disciplined principal experience to FoxRidge’s direct, deal-by-deal multifamily partnership model.
             </p>
@@ -38,7 +38,7 @@ export default function About() {
 
       {/* Principal experience methodology */}
       <section className="border-b border-stone-200 bg-white py-10 md:py-14">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-end">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Combined principal experience</p>
@@ -53,7 +53,7 @@ export default function About() {
               ))}
             </div>
           </div>
-          <p className="mt-6 border-l-2 border-secondary pl-4 text-xs leading-relaxed text-stone-500 md:text-sm">
+          <p className="mt-6 max-w-[var(--content-reading)] border-l-2 border-secondary pl-4 text-xs leading-relaxed text-stone-500 md:text-sm">
             Combined transaction experience, units, and properties reflect the principals’ prior activities under prior sponsoring entities where applicable. These figures are historical experience metrics, not a representation of FoxRidge’s own track record. Past performance is not indicative of future results.
           </p>
         </div>
@@ -61,7 +61,7 @@ export default function About() {
 
       {/* Mikhail */}
       <section className="bg-white py-16 md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <div className="overflow-hidden border border-stone-200 bg-stone-100">
@@ -78,7 +78,7 @@ export default function About() {
               <h2 className={NAME_CLASS}>Mikhail Pritsker</h2>
               <p className={TITLE_CLASS}>Co-Founder &amp; Managing Partner</p>
               <p className="mt-8 font-display text-2xl leading-relaxed text-stone-800 md:text-3xl">Capital-partner communication, reporting discipline, and portfolio-level execution.</p>
-              <div className="mt-7 space-y-5">
+              <div className="mt-7 max-w-[var(--content-reading)] space-y-5">
                 <p className={BODY_CLASS}>
                   Mikhail leads FoxRidge’s work with capital partners and helps connect acquisition review, reporting, asset-management priorities, and transaction execution. His approach is centered on giving a partner clear information before a decision and maintaining direct communication after closing.
                 </p>
@@ -94,17 +94,17 @@ export default function About() {
         </div>
       </section>
 
-      <div className="container"><div className="h-px bg-stone-200" /></div>
+      <div className="content-standard"><div className="h-px bg-stone-200" /></div>
 
       {/* Slava */}
       <section className="bg-white py-16 md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="order-2 lg:order-1 lg:col-span-7 lg:pt-4">
               <h2 className={NAME_CLASS}>Slava Davidenko</h2>
               <p className={TITLE_CLASS}>Chairman, Advisory Board</p>
               <p className="mt-8 font-display text-2xl leading-relaxed text-stone-800 md:text-3xl">Strategic perspective on sourcing, underwriting, operations, and principal accountability.</p>
-              <div className="mt-7 space-y-5">
+              <div className="mt-7 max-w-[var(--content-reading)] space-y-5">
                 <p className={BODY_CLASS}>
                   As Chairman of the Advisory Board, Slava contributes strategic and operating perspective to FoxRidge’s deal-by-deal model, including the assessment of acquisition opportunities, business-plan assumptions, and execution priorities.
                 </p>
@@ -133,7 +133,7 @@ export default function About() {
 
       {/* Trust and international link */}
       <section className="bg-stone-50 py-12 md:py-16">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-6 border border-stone-200 bg-white p-6 md:grid-cols-[1.15fr_.85fr] md:p-8">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Historical proof</p>
@@ -160,7 +160,7 @@ export default function About() {
 
       {/* CTA */}
       <section className="bg-primary py-16 text-white md:py-20">
-        <div className="container flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+        <div className="content-standard flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a direct conversation</p>
             <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Request a confidential introduction.</h2>

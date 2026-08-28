@@ -79,16 +79,16 @@ export default function TrackRecord() {
       </section>
 
       <section className="border-b border-stone-200 bg-white py-8 md:py-10">
-        <div className="container">
-          <p className="border-l-2 border-secondary pl-4 text-xs leading-relaxed text-stone-500 md:text-sm">
+        <div className="content-wide">
+          <p className="max-w-[var(--content-reading)] border-l-2 border-secondary pl-4 text-xs leading-relaxed text-stone-500 md:text-sm">
             The historical context below is organized from completed full-cycle investments, to deals in progress, to limited-partner participation. It reflects prior activities of the principals under prior sponsoring entities where applicable, is not a fund-level composite, and is not a representation of FoxRidge’s own track record. Past performance is not indicative of future results.
           </p>
         </div>
       </section>
 
       <section className="bg-white py-16 md:py-24">
-        <div className="container">
-          <div className="max-w-3xl">
+        <div className="content-wide">
+          <div className="max-w-[var(--content-reading)]">
             <SectionMarker number="01" label="Full-cycle completed" />
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">Six completed investments, shown sequentially.</h2>
             <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">
@@ -131,8 +131,8 @@ export default function TrackRecord() {
       </section>
 
       <section className="border-y border-stone-200 bg-stone-50 py-16 md:py-24">
-        <div className="container">
-          <div className="max-w-3xl">
+        <div className="content-wide">
+          <div className="max-w-[var(--content-reading)]">
             <SectionMarker number="02" label="Deals in progress" />
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">Four selected communities in progress.</h2>
             <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">
@@ -170,7 +170,7 @@ export default function TrackRecord() {
       </section>
 
       <section className="bg-primary py-16 text-white md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-8 border border-white/15 bg-white/[0.04] p-7 md:grid-cols-[.8fr_1.2fr] md:p-10">
             <div>
               <SectionMarker number="03" label="LP participation" />
@@ -188,7 +188,7 @@ export default function TrackRecord() {
       </section>
 
       <section className="bg-stone-950 py-16 text-white md:py-20">
-        <div className="container grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+        <div className="content-standard grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Further conversation</p>
             <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Request a confidential introduction.</h2>

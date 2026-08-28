@@ -45,6 +45,15 @@ import NotFoundAr from "./pages/ar/NotFoundAr";
 import MarketInsightsAr from "./pages/ar/MarketInsightsAr";
 import InvestorPortalAr from "./pages/ar/InvestorPortalAr";
 import ResearchCurrentProgramAr from "./pages/ar/ResearchCurrentProgramAr";
+import HomeHe from "./pages/he/HomeHe";
+import AboutHe from "./pages/he/AboutHe";
+import StrategyHe from "./pages/he/StrategyHe";
+import OurInvestorsHe from "./pages/he/OurInvestorsHe";
+import TrackRecordHe from "./pages/he/TrackRecordHe";
+import ContactHe from "./pages/he/ContactHe";
+import InternationalInvestorsHe from "./pages/he/InternationalInvestorsHe";
+import InvestorPortalHe from "./pages/he/InvestorPortalHe";
+import NotFoundHe from "./pages/he/NotFoundHe";
 
 function Router() {
   return (
@@ -94,6 +103,20 @@ function Router() {
         <Route path="/ar/investor-portal" component={InvestorPortalAr} />
         <Route path="/ar/404" component={NotFoundAr} />
         <Route path="/ar/:rest*" component={NotFoundAr} />
+
+        <Route path="/he" component={HomeHe} />
+        <Route path="/he/about" component={AboutHe} />
+        <Route path="/he/strategy" component={StrategyHe} />
+        <Route path="/he/our-investors" component={OurInvestorsHe} />
+        <Route path="/he/track-record" component={TrackRecordHe} />
+        <Route path="/he/contact" component={ContactHe} />
+        <Route path="/he/international-investors" component={InternationalInvestorsHe} />
+        {/* Legal source wording remains approved English until a reviewed Hebrew legal translation is supplied. */}
+        <Route path="/he/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/he/terms-of-service" component={TermsOfService} />
+        <Route path="/he/investor-portal" component={InvestorPortalHe} />
+        <Route path="/he/404" component={NotFoundHe} />
+        <Route path="/he/:rest*" component={NotFoundHe} />
 
         <Route component={NotFound} />
       </Switch>

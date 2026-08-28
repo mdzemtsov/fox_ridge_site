@@ -107,13 +107,18 @@ export default function InternationalInvestors() {
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
               One investor. One deal. You review and approve every acquisition. We invest alongside you and operate through exit.
             </p>
-            <div className="mt-8">
-              <Button asChild size="lg" className="h-auto min-h-14 bg-secondary px-6 py-3 text-left text-sm font-bold leading-snug text-white hover:bg-[#b8942a] sm:px-8 sm:text-base">
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Button asChild size="lg" className="h-auto min-h-14 w-full whitespace-normal bg-secondary px-6 py-3 text-left text-sm font-bold leading-snug text-white hover:bg-[#b8942a] sm:w-auto sm:whitespace-nowrap sm:px-8 sm:text-base">
                 <Link href="/contact">
                   Request a confidential introduction <ArrowUpRight className="ml-2 h-4 w-4 shrink-0" aria-hidden="true" />
                 </Link>
               </Button>
-              <p className="mt-4 max-w-3xl text-xs leading-relaxed text-white/60">
+              <Button asChild variant="outline" size="lg" className="min-h-14 w-full whitespace-normal border-white/40 bg-white/[0.04] px-6 text-sm font-semibold text-white hover:border-white hover:bg-white/10 hover:text-white sm:w-auto sm:whitespace-nowrap sm:text-base">
+                <a href="#international-faq">
+                  Explore international eligibility <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </a>
+              </Button>
+              <p className="max-w-3xl text-xs leading-relaxed text-white/60 sm:basis-full">
                 Available to eligible investors, subject to applicable law, internal compliance, KYC/AML, sanctions screening and final deal documentation.
               </p>
             </div>
@@ -123,7 +128,7 @@ export default function InternationalInvestors() {
 
       {/* Why this model */}
       <section className="bg-white py-16 md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-start lg:gap-16">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Why this model</p>
@@ -153,8 +158,8 @@ export default function InternationalInvestors() {
 
       {/* Practical international process */}
       <section className="border-y border-white/10 bg-primary py-16 text-white md:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
+        <div className="content-wide">
+          <div className="content-reading text-center">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">A practical international process</p>
             <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">Clear steps. Appropriate review.</h2>
             <p className="mt-5 text-base leading-relaxed text-white/75 md:text-lg">
@@ -181,8 +186,8 @@ export default function InternationalInvestors() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-stone-50 py-16 md:py-24">
-        <div className="container max-w-4xl">
+      <section id="international-faq" className="scroll-mt-28 bg-stone-50 py-16 md:py-24">
+        <div className="content-reading">
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">International FAQ</p>
             <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">Practical questions, answered directly.</h2>
@@ -198,7 +203,7 @@ export default function InternationalInvestors() {
                   <span>{faq.question}</span>
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-stone-300 text-secondary transition-transform group-open:rotate-45" aria-hidden="true">+</span>
                 </summary>
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-stone-600">{faq.answer}</p>
+                <p className="mt-4 max-w-[var(--content-reading)] text-sm leading-relaxed text-stone-600">{faq.answer}</p>
               </details>
             ))}
           </div>
@@ -210,7 +215,7 @@ export default function InternationalInvestors() {
 
       {/* Experience */}
       <section className="bg-white py-16 md:py-24">
-        <div className="container">
+        <div className="content-standard">
           <div className="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-end lg:gap-16">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Experience and accountability</p>
@@ -247,7 +252,7 @@ export default function InternationalInvestors() {
       {/* Final CTA */}
       <section className="relative overflow-hidden bg-stone-950 py-16 text-white md:py-24">
         <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_center,rgba(201,168,70,0.20),transparent_65%)] lg:block" />
-        <div className="container relative z-10 text-center">
+        <div className="content-standard relative z-10 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Begin a private conversation</p>
           <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">Request a confidential introduction.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
