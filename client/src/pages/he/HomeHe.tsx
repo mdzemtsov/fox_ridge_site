@@ -23,7 +23,7 @@ const partnershipSteps = [
   {
     number: "01",
     title: "סקירה",
-    description: "FoxRidge מספקת הזדמנויות רכישה ממוקדות עם מימון מאובטח, יחד עם בדיקת נאותות ותוכנית פעולה ברורה.",
+    description: "FoxRidge מציגה הזדמנויות רכישה ממוקדות עם חיתום, בדיקת נאותות ותוכנית פעולה ברורה.",
     icon: Landmark,
   },
   {
