@@ -142,7 +142,7 @@ const copy: Record<SiteLocale, LocaleCopy> = {
     researchUpdates: "Receive research updates",
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
-    strapline: "Institutional discipline. Entrepreneurial execution. Direct multifamily partnerships for family offices and qualified private capital.",
+    strapline: "Institutional discipline. Entrepreneurial execution. Asset-specific multifamily investments for family offices and qualified private capital.",
     shortDisclosureLead: "FoxRidge Equity Partners is a DBA of Consulting Point LLC.",
     shortDisclosureBody: "This website is for informational and educational purposes only and is not an offer, solicitation, recommendation, or investment advice. Real estate investments involve risk, including possible loss of principal.",
     fullLegalDisclosures: "Full legal disclosures",

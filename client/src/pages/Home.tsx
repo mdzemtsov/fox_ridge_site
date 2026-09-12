@@ -118,7 +118,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-7 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl md:text-2xl">
-              Asset-specific multifamily investments for private capital. You evaluate the actual property before investing. FoxRidge sources it, independently underwrites it, solves the financing and closing, operates it, and invests its own capital alongside you.
+              Asset-specific multifamily investments for private capital. You evaluate the actual property before investing. FoxRidge sources it, independently underwrites it, leads the financing and closing, operates it, and invests its own capital alongside you.
             </p>
             <p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-secondary sm:text-sm">
               Specific asset. Professional execution. Meaningful rights. Aligned capital.
@@ -177,10 +177,7 @@ export default function Home() {
           </ol>
 
           <div className="mx-auto mt-9 max-w-3xl text-center">
-            <p className="font-display text-xl font-semibold leading-relaxed text-primary md:text-2xl">
-              More authority than conventional passive LP exposure, without becoming the operator.
-            </p>
-            <p className="mt-3 text-sm font-bold uppercase tracking-[0.14em] text-secondary">Control is an option, not a job.</p>
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-secondary">Control is an option, not a job.</p>
           </div>
 
           <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
@@ -203,7 +200,7 @@ export default function Home() {
         <div className="content-standard grid gap-8 lg:grid-cols-[.72fr_1.28fr] lg:items-start lg:gap-16">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Why this is different</p>
-            <h2 id="difference-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">More than a conventional single-asset LP investment.</h2>
+            <h2 id="difference-heading" className="mt-3 font-display text-3xl font-bold leading-tight text-primary md:text-5xl">More than knowing the asset.</h2>
           </div>
           <div className="border-l-2 border-secondary pl-6 md:pl-8">
             <p className="text-base leading-relaxed text-stone-600 md:text-lg">
@@ -220,7 +217,7 @@ export default function Home() {
       <section id="partnership-model" className="scroll-mt-24 bg-white py-16 md:py-24">
         <div className="content-wide">
           <div className="content-reading text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">How the partnership works</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">How the model works</p>
             <h2 className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">One clear process. Shared accountability.</h2>
             <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">
               The model is asset-specific: the capital partner evaluates the actual investment before committing, retains meaningful rights over major decisions, and relies on FoxRidge for financing, execution and day-to-day real-estate operations.
@@ -401,9 +398,9 @@ export default function Home() {
           <div className="grid items-center gap-7 md:grid-cols-[1fr_auto]">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Research</p>
-              <h2 className="mt-3 font-display text-2xl font-bold text-primary md:text-3xl">Texas Triangle market context.</h2>
+              <h2 className="mt-3 font-display text-2xl font-bold text-primary md:text-3xl">Multifamily market context.</h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600 md:text-base">
-                FoxRidge shares current, approved observations on Texas Triangle multifamily conditions and the diligence considerations that inform its acquisition process.
+                FoxRidge shares current observations on the markets we follow and the diligence considerations that inform our acquisition process.
               </p>
             </div>
             <Link href="/investor-resources" className="shrink-0">
@@ -424,7 +421,7 @@ export default function Home() {
                 <Globe2 className="h-5 w-5 text-secondary" aria-hidden="true" />
               </div>
               <div>
-                <h2 className="font-display text-xl font-bold text-white">International capital, direct partnership.</h2>
+                <h2 className="font-display text-xl font-bold text-white">International capital. The same asset-specific discipline.</h2>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">
                   FoxRidge works with family offices, principals, and qualified private investors worldwide.
                 </p>
