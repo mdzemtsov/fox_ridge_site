@@ -250,7 +250,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const localizedNavigation = SHARED_NAVIGATION[locale];
   const desktopNavigation = locale === "en" && !isProtectedResearchRoute ? ENGLISH_NON_RESEARCH_DESKTOP_NAVIGATION : localizedNavigation.desktop;
   const footerNavigation = localizedNavigation.desktop;
-  const mobileNavigation = localizedNavigation.mobile;
+  // On English non-Research routes, mobile navigation must match the current English desktop terminology.
+  // Research intentionally retains its existing standalone navigation shell and labels.
+  const mobileNavigation = locale === "en" && !isProtectedResearchRoute ? ENGLISH_NON_RESEARCH_DESKTOP_NAVIGATION : localizedNavigation.mobile;
   const localize = (path: string) => toEquivalentLocalizedPath(path, locale);
   // Research remains excluded: preserve its existing standalone locale links and do not render the new selector there.
   const alternateLanguages = (["en", "zh", "ar"] as SiteLocale[]).filter((item) => item !== locale);
