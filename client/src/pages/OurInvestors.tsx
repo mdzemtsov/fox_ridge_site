@@ -214,7 +214,7 @@ export default function OurInvestors() {
           </div>
 
           <p className="content-reading mx-auto mt-8 border-l-2 border-secondary pl-5 text-sm leading-relaxed text-stone-600 md:pl-6 md:text-base">
-            You do not need to build a real-estate operating platform to own institutional-quality multifamily directly.
+            You do not need to build a real-estate operating platform to access institutional-quality multifamily on an asset-specific basis.
           </p>
         </div>
       </section>
