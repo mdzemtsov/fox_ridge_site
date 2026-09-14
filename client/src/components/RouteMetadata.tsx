@@ -13,7 +13,7 @@ type Metadata = {
 };
 
 const ENGLISH_METADATA: Record<string, Metadata> = {
-  "/": { title: "FoxRidge Equity Partners | Direct U.S. Multifamily Partnerships", description: "Direct U.S. multifamily partnerships for family offices, principals, and qualified private investors. One investor. One deal. Full alignment.", canonicalPath: "/" },
+  "/": { title: "FoxRidge Equity Partners | Direct U.S. Multifamily Partnerships", description: "Asset-specific U.S. multifamily investments for family offices, principals, and qualified private capital, with negotiated governance and FoxRidge execution.", canonicalPath: "/" },
   "/our-investors": { title: "Capital Partners | FoxRidge Equity Partners", description: "Explore FoxRidge's one-investor, one-deal model for direct U.S. multifamily partnerships with family offices, principals, and qualified private investors.", canonicalPath: "/our-investors" },
   "/strategy": { title: "Strategy & Markets | FoxRidge Equity Partners", description: "FoxRidge's current acquisition framework: Texas Triangle Class B+/A multifamily assets built in 2000 or later, evaluated one acquisition at a time.", canonicalPath: "/strategy" },
   "/international-investors": { title: "International Investors | FoxRidge Equity Partners", description: "Direct U.S. multifamily partnerships for family offices, principals, and qualified private investors worldwide, subject to applicable requirements.", canonicalPath: "/international-investors" },
