@@ -188,7 +188,7 @@ export default function Home() {
             </Button>
             <Button asChild variant="outline" size="lg" className="h-auto min-h-14 w-full whitespace-normal border-primary px-6 py-3 text-base font-semibold text-primary hover:bg-primary hover:text-white sm:h-14 sm:w-auto sm:whitespace-nowrap sm:px-8 sm:py-0">
               <Link href="/our-investors">
-                Explore the direct partnership model <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                Explore the FoxRidge model <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </div>
