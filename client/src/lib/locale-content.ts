@@ -82,7 +82,7 @@ export const SHARED_NAVIGATION: Record<SiteLocale, { desktop: NavigationItem[]; 
 
 /** English labels intentionally differ outside Research; the protected route retains SHARED_NAVIGATION.en. */
 export const ENGLISH_NON_RESEARCH_DESKTOP_NAVIGATION: NavigationItem[] = [
-  { name: "What We Do", path: "/strategy" },
+  { name: "Strategy", path: "/strategy" },
   { name: "How We Partner", path: "/our-investors" },
   { name: "Track Record", path: "/track-record" },
   { name: "Research", path: "/investor-resources" },
