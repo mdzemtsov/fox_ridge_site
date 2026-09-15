@@ -467,7 +467,7 @@ export default function Strategy() {
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Evaluate the actual investment</p>
           <h2 className="mx-auto mt-3 max-w-3xl font-display text-3xl font-bold leading-tight md:text-5xl">See the framework applied to a real deal.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
-            Review the property, underwriting, financing, business plan and transaction structure behind an actual FoxRidge investment opportunity.
+            Review a representative property, underwriting, financing, business plan and transaction structure to see how the FoxRidge framework is applied in practice.
           </p>
           <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
             <Button asChild size="lg" className="h-auto min-h-14 w-full whitespace-normal bg-secondary px-8 py-3 text-base font-bold text-white hover:bg-[#b8942a] sm:h-14 sm:w-auto sm:whitespace-nowrap sm:py-0">
