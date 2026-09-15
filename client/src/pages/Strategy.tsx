@@ -69,6 +69,14 @@ const opportunityDrivers = [
   },
 ];
 
+const accessSelectionStages = [
+  "Financing capability",
+  "Certainty of close",
+  "Broker & seller confidence",
+  "Broader actionable deal flow",
+  "Better selection",
+];
+
 const valueCreation = [
   {
     number: "01",
@@ -287,6 +295,36 @@ export default function Strategy() {
           </ol>
           <p className="mx-auto mt-8 max-w-3xl bg-primary px-5 py-5 text-center font-display text-xl font-bold leading-tight text-white md:text-2xl">
             Motivated seller does not have to mean distressed property.
+          </p>
+        </div>
+      </section>
+
+      <section aria-labelledby="access-selection-heading" className="bg-white py-16 md:py-20">
+        <div className="content-wide">
+          <div className="content-reading text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Access &amp; selection</p>
+            <h2 id="access-selection-heading" className="mt-3 font-display text-3xl font-bold text-primary md:text-5xl">Execution certainty creates access. Discipline creates selection.</h2>
+            <p className="mt-5 text-base leading-relaxed text-stone-600 md:text-lg">
+              In multifamily, access depends partly on whether brokers and sellers believe a buyer can actually close. FoxRidge combines durable broker relationships with financing capability and execution certainty, giving us recurring access to actionable opportunities — including marketed transactions, early looks, broken deals, second looks and limited-buyer situations.
+            </p>
+          </div>
+          <ol aria-label="Access and selection progression" className="mx-auto mt-11 grid max-w-6xl gap-4 lg:grid-cols-5 lg:gap-0">
+            {accessSelectionStages.map((stage, index) => (
+              <motion.li
+                key={stage}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.26, delay: index * 0.06 }}
+                className="relative flex min-h-32 items-center border border-stone-200 bg-stone-50 p-5 text-center sm:min-h-36 lg:min-h-44 lg:rounded-none lg:first:rounded-l-sm lg:last:rounded-r-sm"
+              >
+                {index < accessSelectionStages.length - 1 && <ArrowRight aria-hidden="true" className="absolute -bottom-3 left-1/2 z-10 h-6 w-6 -translate-x-1/2 rotate-90 bg-white p-1 text-secondary lg:bottom-auto lg:left-auto lg:right-[-13px] lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 lg:rotate-0" />}
+                <span className="w-full text-xs font-bold uppercase tracking-[0.12em] text-primary">{stage}</span>
+              </motion.li>
+            ))}
+          </ol>
+          <p className="mx-auto mt-8 max-w-3xl border-l-2 border-secondary bg-stone-50 px-5 py-4 text-center text-sm font-semibold leading-relaxed text-primary md:text-base">
+            Access does not make a deal attractive. It gives us more opportunities from which to be selective.
           </p>
         </div>
       </section>
