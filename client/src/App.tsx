@@ -1,11 +1,12 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch } from "wouter";
+import { Redirect, Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/ScrollToTop";
 import RouteMetadata from "./components/RouteMetadata";
+import { toEnglishPath } from "./lib/locale";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Strategy from "./pages/Strategy";
@@ -19,41 +20,16 @@ import NotFound from "./pages/NotFound";
 import MarketInsights from "./pages/MarketInsights";
 import InvestorPortal from "./pages/InvestorPortal";
 import ResearchCurrentProgram from "./pages/ResearchCurrentProgram";
-import HomeZh from "./pages/zh/HomeZh";
-import AboutZh from "./pages/zh/AboutZh";
-import StrategyZh from "./pages/zh/StrategyZh";
-import OurInvestorsZh from "./pages/zh/OurInvestorsZh";
-import TrackRecordZh from "./pages/zh/TrackRecordZh";
-import ContactZh from "./pages/zh/ContactZh";
-import InternationalInvestorsZh from "./pages/zh/InternationalInvestorsZh";
-import PrivacyPolicyZh from "./pages/zh/PrivacyPolicyZh";
-import TermsOfServiceZh from "./pages/zh/TermsOfServiceZh";
-import NotFoundZh from "./pages/zh/NotFoundZh";
-import MarketInsightsZh from "./pages/zh/MarketInsightsZh";
-import InvestorPortalZh from "./pages/zh/InvestorPortalZh";
-import ResearchCurrentProgramZh from "./pages/zh/ResearchCurrentProgramZh";
-import HomeAr from "./pages/ar/HomeAr";
-import AboutAr from "./pages/ar/AboutAr";
-import StrategyAr from "./pages/ar/StrategyAr";
-import OurInvestorsAr from "./pages/ar/OurInvestorsAr";
-import TrackRecordAr from "./pages/ar/TrackRecordAr";
-import ContactAr from "./pages/ar/ContactAr";
-import InternationalInvestorsAr from "./pages/ar/InternationalInvestorsAr";
-import PrivacyPolicyAr from "./pages/ar/PrivacyPolicyAr";
-import TermsOfServiceAr from "./pages/ar/TermsOfServiceAr";
-import NotFoundAr from "./pages/ar/NotFoundAr";
-import MarketInsightsAr from "./pages/ar/MarketInsightsAr";
-import InvestorPortalAr from "./pages/ar/InvestorPortalAr";
-import ResearchCurrentProgramAr from "./pages/ar/ResearchCurrentProgramAr";
-import HomeHe from "./pages/he/HomeHe";
-import AboutHe from "./pages/he/AboutHe";
-import StrategyHe from "./pages/he/StrategyHe";
-import OurInvestorsHe from "./pages/he/OurInvestorsHe";
-import TrackRecordHe from "./pages/he/TrackRecordHe";
-import ContactHe from "./pages/he/ContactHe";
-import InternationalInvestorsHe from "./pages/he/InternationalInvestorsHe";
-import InvestorPortalHe from "./pages/he/InvestorPortalHe";
-import NotFoundHe from "./pages/he/NotFoundHe";
+
+/**
+ * Translated page source remains in the repository for a later approved release. Until then,
+ * legacy locale URLs return visitors to the equivalent English route rather than rendering
+ * unreviewed language content.
+ */
+function LegacyLocaleRedirect() {
+  const [location] = useLocation();
+  return <Redirect to={toEnglishPath(location)} replace />;
+}
 
 function Router() {
   return (
@@ -74,49 +50,12 @@ function Router() {
         <Route path="/research/current-acquisition-framework" component={ResearchCurrentProgram} />
         <Route path="/investor-portal" component={InvestorPortal} />
 
-        <Route path="/zh" component={HomeZh} />
-        <Route path="/zh/about" component={AboutZh} />
-        <Route path="/zh/strategy" component={StrategyZh} />
-        <Route path="/zh/our-investors" component={OurInvestorsZh} />
-        <Route path="/zh/track-record" component={TrackRecordZh} />
-        <Route path="/zh/contact" component={ContactZh} />
-        <Route path="/zh/international-investors" component={InternationalInvestorsZh} />
-        <Route path="/zh/privacy-policy" component={PrivacyPolicyZh} />
-        <Route path="/zh/terms-of-service" component={TermsOfServiceZh} />
-        <Route path="/zh/investor-resources" component={MarketInsightsZh} />
-        <Route path="/zh/research/current-acquisition-framework" component={ResearchCurrentProgramZh} />
-        <Route path="/zh/investor-portal" component={InvestorPortalZh} />
-        <Route path="/zh/404" component={NotFoundZh} />
-        <Route path="/zh/:rest*" component={NotFoundZh} />
-
-        <Route path="/ar" component={HomeAr} />
-        <Route path="/ar/about" component={AboutAr} />
-        <Route path="/ar/strategy" component={StrategyAr} />
-        <Route path="/ar/our-investors" component={OurInvestorsAr} />
-        <Route path="/ar/track-record" component={TrackRecordAr} />
-        <Route path="/ar/contact" component={ContactAr} />
-        <Route path="/ar/international-investors" component={InternationalInvestorsAr} />
-        <Route path="/ar/privacy-policy" component={PrivacyPolicyAr} />
-        <Route path="/ar/terms-of-service" component={TermsOfServiceAr} />
-        <Route path="/ar/investor-resources" component={MarketInsightsAr} />
-        <Route path="/ar/research/current-acquisition-framework" component={ResearchCurrentProgramAr} />
-        <Route path="/ar/investor-portal" component={InvestorPortalAr} />
-        <Route path="/ar/404" component={NotFoundAr} />
-        <Route path="/ar/:rest*" component={NotFoundAr} />
-
-        <Route path="/he" component={HomeHe} />
-        <Route path="/he/about" component={AboutHe} />
-        <Route path="/he/strategy" component={StrategyHe} />
-        <Route path="/he/our-investors" component={OurInvestorsHe} />
-        <Route path="/he/track-record" component={TrackRecordHe} />
-        <Route path="/he/contact" component={ContactHe} />
-        <Route path="/he/international-investors" component={InternationalInvestorsHe} />
-        {/* Legal source wording remains approved English until a reviewed Hebrew legal translation is supplied. */}
-        <Route path="/he/privacy-policy" component={PrivacyPolicy} />
-        <Route path="/he/terms-of-service" component={TermsOfService} />
-        <Route path="/he/investor-portal" component={InvestorPortalHe} />
-        <Route path="/he/404" component={NotFoundHe} />
-        <Route path="/he/:rest*" component={NotFoundHe} />
+        <Route path="/zh" component={LegacyLocaleRedirect} />
+        <Route path="/zh/:rest*" component={LegacyLocaleRedirect} />
+        <Route path="/ar" component={LegacyLocaleRedirect} />
+        <Route path="/ar/:rest*" component={LegacyLocaleRedirect} />
+        <Route path="/he" component={LegacyLocaleRedirect} />
+        <Route path="/he/:rest*" component={LegacyLocaleRedirect} />
 
         <Route component={NotFound} />
       </Switch>

@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getLocale, isProtectedResearchPath, SiteLocale, toEquivalentLocalizedPath, toLocalizedPath } from "@/lib/locale";
+import { isProtectedResearchPath, SiteLocale, toEquivalentLocalizedPath, toLocalizedPath } from "@/lib/locale";
 import { ENGLISH_NON_RESEARCH_DESKTOP_NAVIGATION, SHARED_NAVIGATION } from "@/lib/locale-content";
-import LanguageSelector from "@/components/LanguageSelector";
 
 type NavigationItem = {
   name: string;
@@ -106,20 +105,6 @@ const englishDesktopNavigation: NavigationItem[] = [
   { name: "International Investors", path: "/international-investors" },
   { name: "About FoxRidge", path: "/about" },
 ];
-
-const languageLabels: Record<SiteLocale, string> = {
-  en: "EN",
-  zh: "简体中文",
-  ar: "العربية",
-  he: "עברית",
-};
-
-const languageAriaLabels: Record<SiteLocale, string> = {
-  en: "Switch to English",
-  zh: "切换至简体中文",
-  ar: "التبديل إلى العربية",
-  he: "מעבר לעברית",
-};
 
 const copy: Record<SiteLocale, LocaleCopy> = {
   en: {
@@ -237,11 +222,17 @@ function isCurrentRoute(location: string, path: string, locale: SiteLocale) {
   return location.split("?")[0] === toLocalizedPath(path, locale);
 }
 
+function getPublicLocale(): SiteLocale {
+  return "en";
+}
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const locale = getLocale(location);
+  // Locale-prefixed URLs are redirected in App before a page renders. Retain the English shell
+  // defensively so a legacy path cannot expose non-English navigation during that transition.
+  const locale = getPublicLocale();
   const arabic = locale === "ar";
   const rtl = locale === "ar" || locale === "he";
   const localeCopy = copy[locale];
@@ -254,9 +245,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   // Research intentionally retains its existing standalone navigation shell and labels.
   const mobileNavigation = locale === "en" && !isProtectedResearchRoute ? ENGLISH_NON_RESEARCH_DESKTOP_NAVIGATION : localizedNavigation.mobile;
   const localize = (path: string) => toEquivalentLocalizedPath(path, locale);
-  // Research remains excluded: preserve its existing standalone locale links and do not render the new selector there.
-  const alternateLanguages = (["en", "zh", "ar"] as SiteLocale[]).filter((item) => item !== locale);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -289,7 +277,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <span className={cn("absolute inset-x-2.5 bottom-0 h-[2px] scale-x-0 bg-secondary transition-transform duration-200 2xl:inset-x-3", rtl ? "origin-right" : "origin-left", active && "scale-x-100")} />
                 </Link>;
               })}
-              {alternateLanguages.map((alternate) => <Link key={alternate} href={toLocalizedPath(location.split("?")[0] || "/", alternate)} className="ms-2 rounded-sm border border-primary/15 px-2.5 py-2 text-[10px] font-bold tracking-[0.03em] text-primary transition-colors hover:border-secondary hover:text-secondary" aria-label={languageAriaLabels[alternate]}>{languageLabels[alternate]}</Link>)}
               <Link href={localize("/contact")} className="ms-2.5 shrink-0"><Button className="h-10 bg-secondary px-3.5 text-[10px] font-bold uppercase tracking-[0.08em] text-white hover:bg-primary 2xl:px-4">{localeCopy.introduction}<ArrowUpRight className={cn("ms-2 h-3.5 w-3.5", rtl && "-scale-x-100")} aria-hidden="true" /></Button></Link>
             </nav>
           ) : (
@@ -303,13 +290,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   </Link>;
                 })}
               </nav>
-              <LanguageSelector currentPath={location} locale={locale} />
               <Link href={localize("/contact")} className="shrink-0"><Button className="h-10 bg-secondary px-3.5 text-[10px] font-bold uppercase tracking-[0.08em] text-white hover:bg-primary 2xl:px-4">{localeCopy.introduction}<ArrowUpRight className={cn("ms-2 h-3.5 w-3.5", rtl && "-scale-x-100")} aria-hidden="true" /></Button></Link>
             </div>
           )}
 
           <div className="flex items-center gap-1 xl:hidden">
-            {isProtectedResearchRoute ? alternateLanguages.map((alternate) => <Link key={alternate} href={toLocalizedPath(location.split("?")[0] || "/", alternate)} className="rounded-sm px-2 py-2 text-[11px] font-bold text-primary transition-colors hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2" aria-label={languageAriaLabels[alternate]}>{alternate === "zh" ? "中文" : languageLabels[alternate]}</Link>) : <LanguageSelector currentPath={location} locale={locale} compact />}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild><Button variant="ghost" size="icon" className="h-11 w-11 rounded-none text-primary hover:bg-primary/5 hover:text-secondary" aria-label={localeCopy.openNavigation} aria-haspopup="dialog"><Menu className="h-6 w-6" aria-hidden="true" /><span className="sr-only">{localeCopy.openNavigation}</span></Button></SheetTrigger>
               <SheetContent side={rtl ? "left" : "right"} className={cn("w-[min(100vw,430px)] p-0", rtl ? "border-r" : "border-l")}>

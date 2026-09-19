@@ -13,18 +13,18 @@ export type LocaleDefinition = {
 };
 
 /**
- * Selector availability is deliberately separate from URL recognition.
- * Candidate locales may be implemented locally, but remain unavailable for public selection
- * until native-language and content/compliance review is recorded.
+ * English is the sole public locale while the translated source content remains dormant for
+ * later review. Legacy locale prefixes are recognized only so the app can return visitors to
+ * the matching English page.
  */
 export const LOCALES: Record<SiteLocale, LocaleDefinition> = {
   en: { code: "en", htmlLang: "en", direction: "ltr", nativeName: "English", selectorLabel: "English", reviewStatus: "reviewed", selectable: true },
-  zh: { code: "zh", htmlLang: "zh-CN", direction: "ltr", nativeName: "简体中文", selectorLabel: "简体中文", reviewStatus: "candidate", selectable: true },
-  ar: { code: "ar", htmlLang: "ar", direction: "rtl", nativeName: "العربية", selectorLabel: "العربية", reviewStatus: "candidate", selectable: true },
+  zh: { code: "zh", htmlLang: "zh-CN", direction: "ltr", nativeName: "简体中文", selectorLabel: "简体中文", reviewStatus: "candidate", selectable: false },
+  ar: { code: "ar", htmlLang: "ar", direction: "rtl", nativeName: "العربية", selectorLabel: "العربية", reviewStatus: "candidate", selectable: false },
   he: { code: "he", htmlLang: "he", direction: "rtl", nativeName: "עברית", selectorLabel: "עברית", reviewStatus: "candidate", selectable: false },
 };
 
-export const LOCALE_ORDER: SiteLocale[] = ["en", "zh", "ar", "he"];
+export const LOCALE_ORDER: SiteLocale[] = ["en"];
 
 /** Only these routes participate in new locale-equivalence selection. */
 export const ACTIVE_NON_RESEARCH_PATHS = [
@@ -114,6 +114,10 @@ export function hasLocalizedEquivalent(path: string, locale: SiteLocale) {
 
 export function hasReviewedEquivalent(path: string, locale: SiteLocale) {
   return hasLocalizedEquivalent(path, locale) && LOCALES[locale].reviewStatus === "reviewed";
+}
+
+export function isPublicLocalePath(path: string) {
+  return getLocale(path) === "en";
 }
 
 /**

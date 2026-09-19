@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
-import { getLocale, LOCALES, SiteLocale, toArabicPath, toChinesePath, toEnglishPath, toHebrewPath, toLocalizedPath } from "@/lib/locale";
+import { LOCALES, SiteLocale, toEnglishPath } from "@/lib/locale";
 
 const SITE_URL = "https://www.foxridgeequity.com";
 const SOCIAL_IMAGE = `${SITE_URL}/favicon-512x512.png`;
@@ -105,27 +105,22 @@ function upsertAlternateLanguage(hreflang: string, href: string) {
   element.href = href;
 }
 
+function removeAlternateLanguage(hreflang: string) {
+  document.head.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${hreflang}"]`)?.remove();
+}
+
 export default function RouteMetadata() {
   const [location] = useLocation();
 
   useEffect(() => {
     const path = location.split("?")[0] || "/";
-    const locale = getLocale(path);
+    const locale: SiteLocale = "en";
     const basePath = toEnglishPath(path);
     const catalog = METADATA_BY_LOCALE[locale];
-    const fallback = locale === "zh"
-      ? { title: "页面未找到｜FoxRidge Equity Partners", description: "您请求的页面暂不可用。", canonicalPath: basePath, noindex: true }
-      : locale === "ar"
-        ? { title: "الصفحة غير موجودة | FoxRidge Equity Partners", description: "الصفحة التي طلبتها غير متاحة.", canonicalPath: basePath, noindex: true }
-        : locale === "he"
-          ? { title: "הדף אינו זמין | FoxRidge Equity Partners", description: "הדף שביקשת אינו זמין.", canonicalPath: basePath, noindex: true }
-          : { title: "Page Not Found | FoxRidge Equity Partners", description: "The page you requested is not available.", canonicalPath: basePath, noindex: true };
+    const fallback = { title: "Page Not Found | FoxRidge Equity Partners", description: "The page you requested is not available.", canonicalPath: basePath, noindex: true };
     const metadata = catalog[basePath] ?? fallback;
-    const canonicalUrl = `${SITE_URL}${toLocalizedPath(metadata.canonicalPath, locale)}`;
+    const canonicalUrl = `${SITE_URL}${metadata.canonicalPath}`;
     const englishUrl = `${SITE_URL}${toEnglishPath(metadata.canonicalPath)}`;
-    const chineseUrl = `${SITE_URL}${toChinesePath(metadata.canonicalPath)}`;
-    const arabicUrl = `${SITE_URL}${toArabicPath(metadata.canonicalPath)}`;
-    const hebrewUrl = `${SITE_URL}${toHebrewPath(metadata.canonicalPath)}`;
 
     document.documentElement.lang = LOCALES[locale].htmlLang;
     document.documentElement.dir = LOCALES[locale].direction;
@@ -137,18 +132,16 @@ export default function RouteMetadata() {
     upsertMeta("property", "og:type", "website");
     upsertMeta("property", "og:url", canonicalUrl);
     upsertMeta("property", "og:image", SOCIAL_IMAGE);
-    upsertMeta("property", "og:image:alt", locale === "zh" ? "FoxRidge Equity Partners 标识" : locale === "ar" ? "شعار FoxRidge Equity Partners" : locale === "he" ? "הלוגו של FoxRidge Equity Partners" : "FoxRidge Equity Partners logo");
+    upsertMeta("property", "og:image:alt", "FoxRidge Equity Partners logo");
     upsertMeta("name", "twitter:card", "summary");
     upsertMeta("name", "twitter:title", metadata.title);
     upsertMeta("name", "twitter:description", metadata.description);
     upsertMeta("name", "twitter:image", SOCIAL_IMAGE);
     upsertCanonical(canonicalUrl);
     upsertAlternateLanguage("en", englishUrl);
-    upsertAlternateLanguage("zh-CN", chineseUrl);
-    upsertAlternateLanguage("ar", arabicUrl);
-    // Hebrew is locally complete as a candidate only and remains noindex until native-language and compliance review.
-    // Do not advertise it as an hreflang alternate before its reviewed-public release.
-    void hebrewUrl;
+    removeAlternateLanguage("zh-CN");
+    removeAlternateLanguage("ar");
+    removeAlternateLanguage("he");
     upsertAlternateLanguage("x-default", englishUrl);
   }, [location]);
 
