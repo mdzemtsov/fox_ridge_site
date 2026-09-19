@@ -8,7 +8,10 @@
     { "source": "/ar", "destination": "/", "permanent": false },
     { "source": "/ar/:path*", "destination": "/:path*", "permanent": false },
     { "source": "/he", "destination": "/", "permanent": false },
-    { "source": "/he/:path*", "destination": "/:path*", "permanent": false }
+    { "source": "/he/:path*", "destination": "/:path*", "permanent": false },
+    { "source": "/presentations/investor-presentation-ar.html", "destination": "/presentations/investor-presentation-en.html", "permanent": false },
+    { "source": "/presentations/investor-presentation-ru.html", "destination": "/presentations/investor-presentation-en.html", "permanent": false },
+    { "source": "/presentations/investor-presentation-zh.html", "destination": "/presentations/investor-presentation-en.html", "permanent": false }
   ],
   "rewrites": [
     {

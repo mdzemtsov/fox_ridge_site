@@ -43,7 +43,7 @@ export default function InvestorPortal() {
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-white md:text-4xl">Context before content.</h2>
           </div>
           <div className="space-y-5 text-base leading-relaxed text-[#B5C0CE] md:text-lg">
-            <p>Detailed program materials may be available in English or Russian after a confidential introduction and a review of the relevant context. Availability is not automatic and does not itself constitute an offer, solicitation, recommendation, or verification of eligibility.</p>
+            <p>Detailed program materials may be available in English after a confidential introduction and a review of the relevant context. Availability is not automatic and does not itself constitute an offer, solicitation, recommendation, or verification of eligibility.</p>
             <p>Where an eligibility self-attestation is later requested, it is a preliminary acknowledgement only. It is separate from, and does not replace, any compliance or investor-verification process that may be required.</p>
           </div>
         </section>
