@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import InternationalInvestors from "./pages/InternationalInvestors";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Disclosures from "./pages/Disclosures";
 import NotFound from "./pages/NotFound";
 import MarketInsights from "./pages/MarketInsights";
 import InvestorPortal from "./pages/InvestorPortal";
@@ -46,6 +47,7 @@ function Router() {
         <Route path="/international-investors" component={InternationalInvestors} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
+        <Route path="/disclosures" component={Disclosures} />
         <Route path="/investor-resources" component={MarketInsights} />
         <Route path="/research/current-acquisition-framework" component={ResearchCurrentProgram} />
         <Route path="/investor-portal" component={InvestorPortal} />

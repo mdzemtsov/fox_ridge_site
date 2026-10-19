@@ -24,6 +24,7 @@ const ENGLISH_METADATA: Record<string, Metadata> = {
   "/contact": { title: "Request a Confidential Introduction | FoxRidge Equity Partners", description: "Request a confidential introduction to discuss a direct U.S. multifamily partnership with FoxRidge Equity Partners.", canonicalPath: "/contact" },
   "/privacy-policy": { title: "Privacy Policy | FoxRidge Equity Partners", description: "Read the FoxRidge Equity Partners Privacy Policy and confidential-introduction data-practice information.", canonicalPath: "/privacy-policy" },
   "/terms-of-service": { title: "Terms of Service | FoxRidge Equity Partners", description: "Read the Terms of Service for FoxRidge Equity Partners and Consulting Point LLC.", canonicalPath: "/terms-of-service" },
+  "/disclosures": { title: "Disclosures | FoxRidge Equity Partners", description: "Read important legal, investment-risk, offering, and informational disclosures from FoxRidge Equity Partners.", canonicalPath: "/disclosures" },
   "/investor-portal": { title: "Detailed Materials | FoxRidge Equity Partners", description: "A contextual path for requesting access to detailed FoxRidge materials after a confidential introduction.", canonicalPath: "/investor-portal", noindex: true },
 };
 
