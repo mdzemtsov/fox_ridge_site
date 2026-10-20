@@ -69,7 +69,6 @@ function AnimatedMetric({ metric, index, shouldReduceMotion }: AnimatedMetricPro
     }
 
     if (!isInView || hasAnimated.current) return;
-    hasAnimated.current = true;
 
     let animationFrame: number | undefined;
     const delay = window.setTimeout(() => {
