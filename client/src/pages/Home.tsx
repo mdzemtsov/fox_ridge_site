@@ -74,7 +74,7 @@ function AnimatedMetric({ metric, index, shouldReduceMotion }: AnimatedMetricPro
     const delay = window.setTimeout(() => {
       hasAnimated.current = true;
       const start = performance.now();
-      const duration = 1050;
+      const duration = 2100;
 
       const updateCount = (now: number) => {
         const progress = Math.min((now - start) / duration, 1);
