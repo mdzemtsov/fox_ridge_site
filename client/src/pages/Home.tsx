@@ -12,7 +12,8 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "wouter";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const modelAtGlance = [
   {
@@ -40,6 +41,79 @@ const modelAtGlance = [
     icon: Landmark,
   },
 ];
+
+const modelExperienceMetrics = [
+  { value: 7000, suffix: "+", label: "Units invested" },
+  { value: 36, suffix: "", label: "Property investments" },
+  { value: 8, suffix: "", label: "Full-cycle exits" },
+  { value: 25, suffix: "+", label: "Properties with LP participation" },
+  { value: 4, suffix: "", label: "Current focus markets" },
+];
+
+type AnimatedMetricProps = {
+  metric: (typeof modelExperienceMetrics)[number];
+  index: number;
+  shouldReduceMotion: boolean | null;
+};
+
+function AnimatedMetric({ metric, index, shouldReduceMotion }: AnimatedMetricProps) {
+  const metricRef = useRef<HTMLLIElement>(null);
+  const isInView = useInView(metricRef, { once: true, amount: 0.45 });
+  const hasAnimated = useRef(false);
+  const [displayValue, setDisplayValue] = useState(() => shouldReduceMotion ? metric.value : 0);
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      setDisplayValue(metric.value);
+      return;
+    }
+
+    if (!isInView || hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    let animationFrame: number | undefined;
+    const delay = window.setTimeout(() => {
+      hasAnimated.current = true;
+      const start = performance.now();
+      const duration = 1050;
+
+      const updateCount = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        setDisplayValue(Math.round(metric.value * easedProgress));
+
+        if (progress < 1) {
+          animationFrame = window.requestAnimationFrame(updateCount);
+        }
+      };
+
+      animationFrame = window.requestAnimationFrame(updateCount);
+    }, index * 75);
+
+    return () => {
+      window.clearTimeout(delay);
+      if (animationFrame !== undefined) window.cancelAnimationFrame(animationFrame);
+    };
+  }, [index, isInView, metric.value, shouldReduceMotion]);
+
+  const accessibleValue = metric.suffix ? `${metric.value.toLocaleString("en-US")} or more` : metric.value.toLocaleString("en-US");
+
+  return (
+    <motion.li
+      ref={metricRef}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
+      whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.28 }}
+      transition={{ duration: 0.28, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+      className={`min-w-0 bg-white px-3 py-5 text-center sm:px-4 ${index === modelExperienceMetrics.length - 1 ? "col-span-2 md:col-span-1" : ""}`}
+    >
+      <p className="font-display text-3xl font-bold tabular-nums text-primary md:text-4xl" aria-label={`${accessibleValue} ${metric.label}`}>
+        <span aria-hidden="true">{`${displayValue.toLocaleString("en-US")}${metric.suffix}`}</span>
+      </p>
+      <p aria-hidden="true" className="mt-2 text-[10px] font-bold uppercase leading-relaxed tracking-[0.1em] text-stone-500 sm:text-xs">{metric.label}</p>
+    </motion.li>
+  );
+}
 
 const partnershipSteps = [
   {
@@ -175,6 +249,17 @@ export default function Home() {
               );
             })}
           </ol>
+
+          <div className="mt-7 border border-stone-200 bg-stone-200">
+            <ul aria-label="Experience and current focus metrics" className="grid grid-cols-2 gap-px md:grid-cols-5">
+              {modelExperienceMetrics.map((metric, index) => (
+                <AnimatedMetric key={metric.label} metric={metric} index={index} shouldReduceMotion={shouldReduceMotion} />
+              ))}
+            </ul>
+          </div>
+          <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-stone-500">
+            Experience figures reflect cumulative career participation of the principals across prior firms and sponsorships. They are not the track record of FoxRidge Equity Partners as a legal entity. Current focus markets reflects FoxRidge’s current stated market focus and may change. Past performance is not indicative of future results.
+          </p>
 
           <div className="mx-auto mt-9 max-w-3xl text-center">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-secondary">Control is an option, not a job.</p>
